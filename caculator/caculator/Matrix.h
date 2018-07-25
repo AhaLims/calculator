@@ -3,23 +3,21 @@
 
 class Matrix
 {
-	Matrix(ll r, ll c, bool flag = false) :row(r), column(c) {};
+public:
+	Matrix(unsigned int r, unsigned int c, bool ) ;
+	Matrix();
 	//Matrix(const Matrix&);//拷贝构造函数
 
-	/*判断行列是不是相等*/
-	bool check_equal_row_column(const Matrix &)const;
+	bool check(const Matrix & )const;
 
-	/*第一个矩阵的列数是不是等于第二个矩阵的行数*/
-	bool check_can_mul(const Matrix &)const;
+	bool checkMul(const Matrix &)const;
 
-	/*Judge if it's a Symmetric matrix*/
-	bool if_symmetric()const;
+	bool symmetric()const;
 
-	/*Judge if it's an Antisymmetric matrix*/
-	bool if_anti_symmetric()const;
+	bool antisymmetric()const;
 
 	/*Judge if it's a square*/
-	bool if_square()const { return row == column; };
+	bool square()const { return row == column; };
 
 
 	/*Operational part*/
@@ -27,7 +25,7 @@ class Matrix
 
 	bool operator !=(const Matrix&)const;
 
-	Matrix operator =(const Matrix&);//因为有指针....要不还是用vector算了？
+	Matrix operator =(const Matrix&);
 
 	friend Matrix operator +(const Matrix&, const Matrix&);
 
@@ -40,12 +38,12 @@ class Matrix
 	friend Matrix operator *(const Matrix&, const double&);
 
 	/*Number multiplying*/
-	friend  Matrix operator*(const t& num, const Matrix &matrix) { return matrix * num; };
+	friend  Matrix operator *(const int &num, const Matrix &matrix) { return (matrix * num); };
 
 
-	Matrix power(ll time)const;
+	Matrix power(unsigned int time)const;
 
-	Matrix fast_power(ll time)const;
+	Matrix FastPower(unsigned int time)const;
 
 	friend std::ostream & operator<<(std::ostream &os, const Matrix &m);
 	friend std::istream & operator>>(std::istream &is, Matrix &m);//“istream”: 不允许在数据声明中使用“friend”????
@@ -62,34 +60,35 @@ class Matrix
 	double determinant()const;
 
 	/*get Rank*/
-	ll get_rank()const;
+	double getRank()const;
 
 	/*Staircase simplest*/
-	Matrix get_simplest_matrix()const;//阶梯最简型
+	Matrix getSimplest()const;//阶梯最简型
 
 	/*trace(The sum of the main diagonal lines)*/
-	double trace()const;//矩阵的迹（主对角线之和）
+	double trace()const;
 
 	/*Adjoint matrix*/
 	Matrix Adjoint()const;
 
 	/*LU decomposition*/
-	void LU_decomposition(Matrix & ,Matrix &)const;
+	void LUdecomposition(Matrix & ,Matrix &)const;
 
-	Matrix Cholesky_decomposition();//把一个对称正定的矩阵表示成一个下三角矩阵L和其转置的乘积的分解
+	Matrix Choleskydecomposition();//把一个对称正定的矩阵表示成一个下三角矩阵L和其转置的乘积的分解
 
 
-	ll get_data(ll i, ll j) const { return data[i][j]; };
+	double getData(int i, int j) const { return data[i][j]; };
 
-	ll get_row()const { return row; };
+	unsigned int getRow()const { return row; };
 
-	ll get_column()const { return column; };
+	unsigned int getColumn()const { return column; };
 
-	void set_data(ll i, ll j, double x) { data[i][j] = x; };
+	void setData(unsigned int i, unsigned int j, double x) { data[i][j] = x; };
 
-	void set_row(ll);
-	void set_column(ll);
+	void setRow(unsigned int);
+	void setRolumn(unsigned int);
+	void show();
 private:
 	vector <vector <double>  >data;
-	ll row, column;//行数 列数
+	unsigned int row, column;//行数 列数
 };
