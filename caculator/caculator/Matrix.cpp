@@ -192,6 +192,70 @@ Matrix Matrix::FastPower(unsigned int time)const
 	return ans;
 }
 
+
+/*properties part*/
+double Matrix::determinant()const
+{
+	Matrix simplest_matrix(row, column);
+	unsigned int time = 0, rank = 0;
+	getSimplest(simplest_matrix, time, rank);
+	double ans = 1;
+	for (int i = 0; i < row; i++)
+	{
+		if (simplest_matrix.getData(i, i) == 0)
+		{
+			ans = 0;
+			break;
+		}
+		ans *= simplest_matrix.getData(i, i);
+	}
+	if (time & 1 == 0)return ans;
+	else return -ans;
+}
+
+//problem...
+Matrix Matrix::getSimplest(Matrix &m,unsigned int & time,unsigned int &rank)const
+{
+	time = 0;
+	double MAX = 0;//mark the max element of each column
+	int t = 0;//the column of the MAX element
+	rank = std::min(row,column);//problem!!!!!
+	for (int i = 0; i < row; i++)
+	{
+		MAX = data[i][0];
+
+		/*find the MAX element of each column*/
+		for (int j = 0; j < column; j++)
+		{
+			if (MAX < data[i][j])
+			{
+				MAX = data[i][j];
+				t = j;
+			}
+		}
+		if (fabs(MAX) < math::eps)//0
+			rank--;
+		else
+		{
+			double temp = 0;
+			for (unsigned int j = 0; j < row ;j++)
+			{
+				if (data[j][i] == 0 || j == i)//当前行的这一列不需要减掉了
+					continue;
+				else
+				{
+					temp = MAX / data[j][i];
+					for (int k = 0; k < column; k++)
+					{
+						m.setData(j, i, data[j][k] * temp - data[j][t]);
+					}
+				}
+			}
+		}
+		if (t != i)time++;//indicate that we need to exchange the two rows
+	}
+}
+
 double Matrix::trace()const
 {
 	double temp = 0;

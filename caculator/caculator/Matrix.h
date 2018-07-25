@@ -63,7 +63,7 @@ public:
 	double getRank()const;
 
 	/*Staircase simplest*/
-	Matrix getSimplest()const;//阶梯最简型
+	Matrix getSimplest(Matrix &,unsigned int &,unsigned int &)const;//阶梯最简型 返回交换次数
 
 	/*trace(The sum of the main diagonal lines)*/
 	double trace()const;
