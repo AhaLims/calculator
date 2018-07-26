@@ -4,19 +4,13 @@
 
 int main()
 {
-	Matrix m1(3,3,true);
-	Matrix m2(3, 3, false);
+	Matrix m1(2,2,true);
+	Matrix m2(2, 2, false);
+	m1.reset();
 	m1.show();
-	for(int i = 0;i<3;i++)
-		for (int j = 0; j < 3; j++)
-		{
-			double temp = m1.getData(i,j);
-			temp++;
-			m1.setData(i, j, temp);
-		}
-	m1.show();
-	m1 = m1 * m1;
-	m1.show();
+	std::cout << "transposition matrix:\n";
+	m2 = m1.Transposition();
+	m2.show();
 	system("pause");
 	return 0;
 }

@@ -7,5 +7,5 @@
 using std::vector;
 namespace math
 {
-	const double eps = 0.000001;
+	const double eps = 0.0000001;
 }

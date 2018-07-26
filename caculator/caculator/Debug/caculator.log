@@ -1,2 +1,11 @@
-﻿  main.cpp
+﻿  AnalyticFormula.cpp
+  main.cpp
+  Matrix.cpp
+c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(173): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(187): warning C4554: “&”: 检查运算符优先级是否存在的可能的错误；使用括号阐明优先级
+c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(214): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(218): warning C4554: “&”: 检查运算符优先级是否存在的可能的错误；使用括号阐明优先级
+c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(230): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(269): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...
   caculator.vcxproj -> C:\Users\lmx\source\calculator\caculator\Debug\caculator.exe

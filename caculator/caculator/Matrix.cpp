@@ -194,40 +194,47 @@ Matrix Matrix::FastPower(unsigned int time)const
 
 
 /*properties part*/
+Matrix Matrix::Transposition()const
+{
+	Matrix m(column, row);
+	for (unsigned int i = 0; i < row; i++)
+	{
+		for (unsigned int j = 0; j < column; j++)
+			m.setData(j, i, data[i][j]);
+	}
+	return m;
+}
 double Matrix::determinant()const
 {
 	Matrix simplest_matrix(row, column);
 	unsigned int time = 0, rank = 0;
 	getSimplest(simplest_matrix, time, rank);
 	double ans = 1;
+	if (rank < row) return 0;
 	for (int i = 0; i < row; i++)
 	{
-		if (simplest_matrix.getData(i, i) == 0)
-		{
-			ans = 0;
-			break;
-		}
 		ans *= simplest_matrix.getData(i, i);
 	}
 	if (time & 1 == 0)return ans;
 	else return -ans;
 }
-
-//problem...
+/*trouble*/
+/*Gauss elimination method to get the simplest matrix*/
 Matrix Matrix::getSimplest(Matrix &m,unsigned int & time,unsigned int &rank)const
 {
+	m = *this;
 	time = 0;
 	double MAX = 0;//mark the max element of each column
 	int t = 0;//the column of the MAX element
 	rank = std::min(row,column);//problem!!!!!
 	for (int i = 0; i < row; i++)
 	{
-		MAX = data[i][0];
+		MAX = data[i][i];
 
 		/*find the MAX element of each column*/
-		for (int j = 0; j < column; j++)
+		for (unsigned int j = 0; j < column; j++)
 		{
-			if (MAX < data[i][j])
+			if (fabs(MAX) < fabs(data[i][j]))
 			{
 				MAX = data[i][j];
 				t = j;
@@ -237,23 +244,39 @@ Matrix Matrix::getSimplest(Matrix &m,unsigned int & time,unsigned int &rank)cons
 			rank--;
 		else
 		{
-			double temp = 0;
-			for (unsigned int j = 0; j < row ;j++)
+			if (t != i)			//indicate that they need to be swap
 			{
-				if (data[j][i] == 0 || j == i)//当前行的这一列不需要减掉了
+				time++;
+				double tmp;
+				for (unsigned int j = 0; j < column; j++)
+				{
+					tmp = m.getData(i, j);
+					m.setData(i, j, m.getData(t, j));
+					m.setData(t, j, tmp);
+				}
+			}
+
+			/*eliminate part */
+
+			double temp = 0;
+			for (unsigned int j = i + 1; j < row ;j++)
+			{
+				if (data[j][i] == 0 )//当前行的这一列不需要减掉了
 					continue;
 				else
 				{
-					temp = MAX / data[j][i];
+					temp = data[j][i] / data[i][i];
 					for (int k = 0; k < column; k++)
 					{
-						m.setData(j, i, data[j][k] * temp - data[j][t]);
+						m.setData(j, k, data[i][k] * temp - data[j][t]);
 					}
 				}
 			}
+
 		}
-		if (t != i)time++;//indicate that we need to exchange the two rows
+		
 	}
+	return m;
 }
 
 double Matrix::trace()const
@@ -279,17 +302,28 @@ double Matrix::trace()const
 
 
 
-
-
-
-
+void Matrix::reset()
+{
+	std::cout << "enter row and column:\n";
+	std::cin >> row >> column;
+	data.resize(row);
+	std::cout << "enter the data:\n";
+	for (unsigned int i = 0; i < row; i++)
+	{
+		data[i].resize(column);
+		for (unsigned int j = 0; j < column; j++)
+		{
+			std::cin >> data[i][j];
+		}
+	}
+}
 
 
 void Matrix::show()
 {
-	for (int i = 0; i < row; i++)
+	for (unsigned int i = 0; i < row; i++)
 	{
-		for (int j = 0; j < column; j++)
+		for (unsigned int j = 0; j < column; j++)
 			std::cout << data[i][j] << " ";
 		std::cout << std::endl;
 	}

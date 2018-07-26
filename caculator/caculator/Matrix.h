@@ -57,7 +57,7 @@ public:
 	Matrix inverse_matrix()const;
 
 	/*get det*/
-	double determinant()const;
+	double determinant()const;//problem
 
 	/*get Rank*/
 	double getRank()const;
@@ -85,10 +85,13 @@ public:
 
 	void setData(unsigned int i, unsigned int j, double x) { data[i][j] = x; };
 
-	void setRow(unsigned int);
-	void setRolumn(unsigned int);
+	void setRow(unsigned int r) { row = r; };
+	void setColumn(unsigned int c) { column = c; };
+
+	/*test part*/
+	void reset();
 	void show();
 private:
 	vector <vector <double>  >data;
-	unsigned int row, column;//行数 列数
+	unsigned int row, column;
 };
