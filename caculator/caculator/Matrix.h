@@ -60,7 +60,7 @@ public:
 	double determinant()const;//problem
 
 	/*get Rank*/
-	double getRank()const;
+	unsigned int getRank()const;
 
 	/*Staircase simplest*/
 	Matrix getSimplest(Matrix &,unsigned int &,unsigned int &)const;//阶梯最简型 返回交换次数
@@ -91,6 +91,8 @@ public:
 	/*test part*/
 	void reset();
 	void show();
+
+	void debug();
 private:
 	vector <vector <double>  >data;
 	unsigned int row, column;

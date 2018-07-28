@@ -204,21 +204,112 @@ Matrix Matrix::Transposition()const
 	}
 	return m;
 }
+
+/*use Gauss elimination method*/
+Matrix Matrix::inverse_matrix()const
+{
+
+	Matrix inv_matrix(row,column,true);
+	if (determinant() == 0)
+	{
+		std::cerr << "wrong because det == 0 ,the matrix does not have inverse matrix\n";
+		return inv_matrix;
+	}
+	Matrix m;
+	m = *this;
+	double MAX = 0;//mark the max element of each column
+	int t = 0;//the column of the MAX element
+	double temp = 0;
+
+	for (unsigned int i = 0; i < row; i++)
+	{
+		MAX = m.getData(i, i);
+		t = i;
+
+		/*find the MAX element of each column*/
+		for (unsigned int j = i + 1; j < column; j++)
+		{
+			if (fabs(MAX) < fabs(m.getData(j, i)))
+			{
+				MAX = m.getData(j, i);
+				t = j;
+			}
+		}
+
+		if (t != i)	//indicate that they need to be swap
+		{
+			for (unsigned int j = 0; j < column; j++)
+			{
+				temp = m.getData(i, j);
+				m.setData(i, j, m.getData(t, j));
+				m.setData(t, j, temp);
+
+				temp = inv_matrix.getData(i, j);
+				inv_matrix.setData(i, j, inv_matrix.getData(t, j));
+				inv_matrix.setData(t, j, temp);
+			}
+		}
+
+		/*eliminate part */
+
+		for (unsigned int j = i + 1; j < row; j++)
+		{
+			if (m.getData(j, i) == 0)//当前行的这一列不需要减掉了
+				continue;
+			else
+			{
+				temp = m.getData(j, i) / m.getData(i, i);
+				for (int k = 0; k < column; k++)
+				{
+					m.setData(j, k, m.getData(j, k) - m.getData(i, k) * temp);
+					inv_matrix.setData(j, k, inv_matrix.getData(j, k) - inv_matrix.getData(i, k) * temp);
+				}
+			}
+		}
+	}	
+
+	/*recall to make matrix m Unitized*/
+	for (unsigned int i = row - 1; i >= 0; i--)
+	{
+		if (inv_matrix.getData(i, i) != 1)
+		{
+			temp = inv_matrix.getData(i, i);
+		}
+	}
+	return inv_matrix;
+}
+/*only square*/
 double Matrix::determinant()const
 {
-	Matrix simplest_matrix(row, column);
+	if (!square())
+	{
+		std::cerr << "wrong because it's not square and does not have det.\n";
+		return 0;
+	}
+	Matrix simpliest_matrix(row, column);
 	unsigned int time = 0, rank = 0;
-	getSimplest(simplest_matrix, time, rank);
+	getSimplest(simpliest_matrix, time, rank);
 	double ans = 1;
 	if (rank < row) return 0;
 	for (int i = 0; i < row; i++)
 	{
-		ans *= simplest_matrix.getData(i, i);
+		ans *= simpliest_matrix.getData(i, i);
 	}
 	if (time %2  == 0)return ans;
 	else return -ans;
 }
-/*square part done (still has trouble)*/
+
+/*only square */
+unsigned int Matrix::getRank()const
+{
+	unsigned int time = 0, rank = 0;
+	Matrix sim(row, column);
+	getSimplest(sim, time, rank);
+	if (rank > std::min(row, column))
+		rank = std::min(row, column);
+	return rank;
+}
+/*only square */
 /*Gauss elimination method to get the simplest matrix*/
 Matrix Matrix::getSimplest(Matrix &m,unsigned int & time,unsigned int &rank)const
 {
@@ -226,19 +317,20 @@ Matrix Matrix::getSimplest(Matrix &m,unsigned int & time,unsigned int &rank)cons
 	time = 0;
 	double MAX = 0;//mark the max element of each column
 	int t = 0;//the column of the MAX element
-	rank = std::min(row,column);//problem!!!!!
+	rank = std::min(row, column);//problem!!!!!
 	if (row <= column)
 	{
 		for (unsigned int i = 0; i < row; i++)
 		{
-			MAX = data[i][i];
+			MAX = m.getData(i, i);
 			t = i;
 			/*find the MAX element of each column*/
-			for (unsigned int j = 0; j < column; j++)
+			for(unsigned int j = i + 1;j < column;j++)
 			{
-				if (fabs(MAX) < fabs(data[i][j]))
+				if (fabs(MAX) < fabs(m.getData(j,i)) )
 				{
-					MAX = data[i][j];
+					//std::cout << MAX << " " << m.getData(j, i) << std::endl;
+					MAX = m.getData(j,i);
 					t = j;
 				}
 			}
@@ -248,6 +340,7 @@ Matrix Matrix::getSimplest(Matrix &m,unsigned int & time,unsigned int &rank)cons
 			{
 				if (t != i)			//indicate that they need to be swap
 				{
+					//std::cout << "swap" << t << "to" << i << std::endl;
 					time++;
 					double tmp;
 					for (unsigned int j = 0; j < column; j++)
@@ -263,17 +356,16 @@ Matrix Matrix::getSimplest(Matrix &m,unsigned int & time,unsigned int &rank)cons
 				double temp = 0;
 				for (unsigned int j = i + 1; j < row; j++)
 				{
-					if (data[j][i] == 0)//当前行的这一列不需要减掉了
+					if (m.getData(j,i) == 0)//当前行的这一列不需要减掉了
 						continue;
 					else
 					{
-						//temp = data[j][i] / data[i][i];
-						temp = data[i][i] / data[j][i];
+						temp = m.getData(j, i) / m.getData(i, i);
 						for (int k = 0; k < column; k++)
 						{
-							//m.setData(j, k, data[i][k] * temp - data[j][t]);
-							m.setData(j, k, data[j][k] * temp - data[i][k]);
+							m.setData(j, k, m.getData(j, k) - m.getData(i, k) * temp );
 						}
+						//m.show();
 					}
 				}
 
@@ -332,4 +424,18 @@ void Matrix::show()
 			std::cout << data[i][j] << " ";
 		std::cout << std::endl;
 	}
+}
+
+
+void Matrix::debug()
+{
+	std::fstream file;
+	//file.open("file.txt");
+	for (unsigned int i = 0; i < row; i++)
+	{
+		for (unsigned int j = 0; j < column; j++)
+			//file >> data[i][j];
+			std::cin >> data[i][j];
+	}
+	return;
 }

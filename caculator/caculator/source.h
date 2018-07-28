@@ -4,6 +4,7 @@
 #include<cmath>
 #include<vector>
 #include<algorithm>
+#include<fstream>
 using std::vector;
 namespace math
 {

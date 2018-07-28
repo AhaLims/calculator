@@ -39,7 +39,13 @@ void test()
 					m1 = m1.Transposition();
 					m1.show();
 				}
+				else if (order == '5')
+				{
+					m3 = m1.inverse_matrix();
+					m3.show();
+				}
 				else if (order == '6')std::cout << m1.determinant() << std::endl;
+				else if (order == '7')std::cout << m1.getRank() << std::endl;
 				else if (order == '8')
 				{
 					m3 = m1.getSimplest(m3, do_nothing[0], do_nothing[1]);
@@ -55,9 +61,19 @@ void test()
 		}
 	}
 }
+void test_simpliest()
+{
+	Matrix m(3, 3, false);
+	m.debug();
+	unsigned int do_nothing[2];
+	Matrix m1;
+	m.getSimplest(m1, do_nothing[0], do_nothing[1]);
+	m1.show();
+}
 int main()
 {
 	test();
+	
 	system("pause");
 	return 0;
 }
