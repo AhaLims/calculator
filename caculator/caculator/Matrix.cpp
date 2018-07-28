@@ -278,6 +278,7 @@ Matrix Matrix::inverse_matrix()const
 	}
 	return inv_matrix;
 }
+
 /*only square*/
 double Matrix::determinant()const
 {
@@ -384,6 +385,11 @@ double Matrix::trace()const
 		temp += getData(i,i);
 	}
 	return temp;
+}
+
+Matrix Matrix::Adjoint()const
+{
+
 }
 
 

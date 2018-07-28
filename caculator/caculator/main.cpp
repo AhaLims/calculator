@@ -70,6 +70,7 @@ void test_simpliest()
 	m.getSimplest(m1, do_nothing[0], do_nothing[1]);
 	m1.show();
 }
+
 int main()
 {
 	test();
