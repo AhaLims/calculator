@@ -215,10 +215,10 @@ double Matrix::determinant()const
 	{
 		ans *= simplest_matrix.getData(i, i);
 	}
-	if (time & 1 == 0)return ans;
+	if (time %2  == 0)return ans;
 	else return -ans;
 }
-/*trouble*/
+/*square part done (still has trouble)*/
 /*Gauss elimination method to get the simplest matrix*/
 Matrix Matrix::getSimplest(Matrix &m,unsigned int & time,unsigned int &rank)const
 {
@@ -227,54 +227,59 @@ Matrix Matrix::getSimplest(Matrix &m,unsigned int & time,unsigned int &rank)cons
 	double MAX = 0;//mark the max element of each column
 	int t = 0;//the column of the MAX element
 	rank = std::min(row,column);//problem!!!!!
-	for (int i = 0; i < row; i++)
+	if (row <= column)
 	{
-		MAX = data[i][i];
-
-		/*find the MAX element of each column*/
-		for (unsigned int j = 0; j < column; j++)
+		for (unsigned int i = 0; i < row; i++)
 		{
-			if (fabs(MAX) < fabs(data[i][j]))
+			MAX = data[i][i];
+			t = i;
+			/*find the MAX element of each column*/
+			for (unsigned int j = 0; j < column; j++)
 			{
-				MAX = data[i][j];
-				t = j;
-			}
-		}
-		if (fabs(MAX) < math::eps)//0
-			rank--;
-		else
-		{
-			if (t != i)			//indicate that they need to be swap
-			{
-				time++;
-				double tmp;
-				for (unsigned int j = 0; j < column; j++)
+				if (fabs(MAX) < fabs(data[i][j]))
 				{
-					tmp = m.getData(i, j);
-					m.setData(i, j, m.getData(t, j));
-					m.setData(t, j, tmp);
+					MAX = data[i][j];
+					t = j;
 				}
 			}
-
-			/*eliminate part */
-
-			double temp = 0;
-			for (unsigned int j = i + 1; j < row ;j++)
+			if (fabs(MAX) < math::eps)//0
+				rank--;
+			else
 			{
-				if (data[j][i] == 0 )//当前行的这一列不需要减掉了
-					continue;
-				else
+				if (t != i)			//indicate that they need to be swap
 				{
-					temp = data[j][i] / data[i][i];
-					for (int k = 0; k < column; k++)
+					time++;
+					double tmp;
+					for (unsigned int j = 0; j < column; j++)
 					{
-						m.setData(j, k, data[i][k] * temp - data[j][t]);
+						tmp = m.getData(i, j);
+						m.setData(i, j, m.getData(t, j));
+						m.setData(t, j, tmp);
 					}
 				}
+
+				/*eliminate part */
+
+				double temp = 0;
+				for (unsigned int j = i + 1; j < row; j++)
+				{
+					if (data[j][i] == 0)//当前行的这一列不需要减掉了
+						continue;
+					else
+					{
+						//temp = data[j][i] / data[i][i];
+						temp = data[i][i] / data[j][i];
+						for (int k = 0; k < column; k++)
+						{
+							//m.setData(j, k, data[i][k] * temp - data[j][t]);
+							m.setData(j, k, data[j][k] * temp - data[i][k]);
+						}
+					}
+				}
+
 			}
 
 		}
-		
 	}
 	return m;
 }
