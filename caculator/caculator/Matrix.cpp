@@ -389,20 +389,9 @@ double Matrix::trace()const
 
 Matrix Matrix::Adjoint()const
 {
-
+	Matrix m(1, 1, 1);
+	return m;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 void Matrix::reset()

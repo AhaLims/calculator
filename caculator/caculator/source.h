@@ -5,6 +5,8 @@
 #include<vector>
 #include<algorithm>
 #include<fstream>
+#include<string>
+using std::string;
 using std::vector;
 namespace math
 {

@@ -116,11 +116,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AnalyticFormula.h" />
+    <ClInclude Include="fraction.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="source.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnalyticFormula.cpp" />
+    <ClCompile Include="fraction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
   </ItemGroup>

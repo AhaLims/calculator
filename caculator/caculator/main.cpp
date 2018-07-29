@@ -1,6 +1,6 @@
 #include"source.h"
 #include"Matrix.h"
-
+#include"fraction.h"
 void test()
 {
 	Matrix m1(2, 2, true);
@@ -73,8 +73,17 @@ void test_simpliest()
 
 int main()
 {
-	test();
-	
+	//test();
+	string str;
+	int integer[2];
+	double dou;
+	Fraction fraction;
+	while (true)
+	{
+		std::cin >> str;
+		fraction.reset(str);
+		fraction.show();
+	}
 	system("pause");
 	return 0;
 }
