@@ -124,6 +124,7 @@
     <ClCompile Include="AnalyticFormula.cpp" />
     <ClCompile Include="fraction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mathTool.cpp" />
     <ClCompile Include="Matrix.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

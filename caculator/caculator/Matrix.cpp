@@ -428,11 +428,8 @@ Matrix Matrix::Adjoint()const
 				residualSubtype.setData(i, j, m.determinant());
 			else
 				residualSubtype.setData(i, j, -m.determinant());
-		}
-
-		
+		}	
 	}
-	//residualSubtype.show();
 	return residualSubtype.Transposition();
 }
 

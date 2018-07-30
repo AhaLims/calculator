@@ -51,6 +51,10 @@ void test()
 					m3 = m1.getSimplest(m3, do_nothing[0], do_nothing[1]);
 					m3.show();
 				}
+				else if(order == '9')
+				{
+					std::cout << m1.trace() << std::endl;
+				}
 				else if (order == 'a')
 				{
 					m3 = m1.Adjoint();
