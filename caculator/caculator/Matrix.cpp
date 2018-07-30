@@ -210,73 +210,83 @@ Matrix Matrix::inverse_matrix()const
 {
 
 	Matrix inv_matrix(row,column,true);
-	if (determinant() == 0)
+	inv_matrix = Adjoint();
+	double temp = determinant();
+	for (int i = 0; i < row; i++)
 	{
-		std::cerr << "wrong because det == 0 ,the matrix does not have inverse matrix\n";
-		return inv_matrix;
-	}
-	Matrix m;
-	m = *this;
-	double MAX = 0;//mark the max element of each column
-	int t = 0;//the column of the MAX element
-	double temp = 0;
-
-	for (unsigned int i = 0; i < row; i++)
-	{
-		MAX = m.getData(i, i);
-		t = i;
-
-		/*find the MAX element of each column*/
-		for (unsigned int j = i + 1; j < column; j++)
+		for (int j = 0; j < column; j++)
 		{
-			if (fabs(MAX) < fabs(m.getData(j, i)))
-			{
-				MAX = m.getData(j, i);
-				t = j;
-			}
-		}
-
-		if (t != i)	//indicate that they need to be swap
-		{
-			for (unsigned int j = 0; j < column; j++)
-			{
-				temp = m.getData(i, j);
-				m.setData(i, j, m.getData(t, j));
-				m.setData(t, j, temp);
-
-				temp = inv_matrix.getData(i, j);
-				inv_matrix.setData(i, j, inv_matrix.getData(t, j));
-				inv_matrix.setData(t, j, temp);
-			}
-		}
-
-		/*eliminate part */
-
-		for (unsigned int j = i + 1; j < row; j++)
-		{
-			if (m.getData(j, i) == 0)//当前行的这一列不需要减掉了
-				continue;
-			else
-			{
-				temp = m.getData(j, i) / m.getData(i, i);
-				for (int k = 0; k < column; k++)
-				{
-					m.setData(j, k, m.getData(j, k) - m.getData(i, k) * temp);
-					inv_matrix.setData(j, k, inv_matrix.getData(j, k) - inv_matrix.getData(i, k) * temp);
-				}
-			}
-		}
-	}	
-
-	/*recall to make matrix m Unitized*/
-	for (unsigned int i = row - 1; i >= 0; i--)
-	{
-		if (inv_matrix.getData(i, i) != 1)
-		{
-			temp = inv_matrix.getData(i, i);
+			inv_matrix.setData(i, j, inv_matrix.getData(i, j) / temp);
 		}
 	}
+	//if (determinant() == 0)
+	//{
+	//	std::cerr << "wrong because det == 0 ,the matrix does not have inverse matrix\n";
+	//	return inv_matrix;
+	//}
+	//Matrix m;
+	//m = *this;
+	//double MAX = 0;//mark the max element of each column
+	//int t = 0;//the column of the MAX element
+	//double temp = 0;
+
+	//for (unsigned int i = 0; i < row; i++)
+	//{
+	//	MAX = m.getData(i, i);
+	//	t = i;
+
+	//	/*find the MAX element of each column*/
+	//	for (unsigned int j = i + 1; j < column; j++)
+	//	{
+	//		if (fabs(MAX) < fabs(m.getData(j, i)))
+	//		{
+	//			MAX = m.getData(j, i);
+	//			t = j;
+	//		}
+	//	}
+
+	//	if (t != i)	//indicate that they need to be swap
+	//	{
+	//		for (unsigned int j = 0; j < column; j++)
+	//		{
+	//			temp = m.getData(i, j);
+	//			m.setData(i, j, m.getData(t, j));
+	//			m.setData(t, j, temp);
+
+	//			temp = inv_matrix.getData(i, j);
+	//			inv_matrix.setData(i, j, inv_matrix.getData(t, j));
+	//			inv_matrix.setData(t, j, temp);
+	//		}
+	//	}
+
+	//	/*eliminate part */
+
+	//	for (unsigned int j = i + 1; j < row; j++)
+	//	{
+	//		if (m.getData(j, i) == 0)//当前行的这一列不需要减掉了
+	//			continue;
+	//		else
+	//		{
+	//			temp = m.getData(j, i) / m.getData(i, i);
+	//			for (int k = 0; k < column; k++)
+	//			{
+	//				m.setData(j, k, m.getData(j, k) - m.getData(i, k) * temp);
+	//				inv_matrix.setData(j, k, inv_matrix.getData(j, k) - inv_matrix.getData(i, k) * temp);
+	//			}
+	//		}
+	//	}
+	//}	
+
+	///*recall to make matrix m Unitized*/
+	//for (unsigned int i = row - 1; i >= 0; i--)
+	//{
+	//	if (inv_matrix.getData(i, i) != 1)
+	//	{
+	//		temp = inv_matrix.getData(i, i);
+	//	}
+	//}
 	return inv_matrix;
+
 }
 
 /*only square*/
@@ -296,7 +306,7 @@ double Matrix::determinant()const
 	{
 		ans *= simpliest_matrix.getData(i, i);
 	}
-	if (time %2  == 0)return ans;
+	if (time % 2  == 0)return ans;
 	else return -ans;
 }
 
@@ -389,8 +399,41 @@ double Matrix::trace()const
 
 Matrix Matrix::Adjoint()const
 {
-	Matrix m(1, 1, 1);
-	return m;
+	if (row <= 1 || column <= 1 ||!square())return *this;//wrong
+	Matrix m(row - 1, column - 1, false);
+	Matrix residualSubtype(row, column, false);
+	for (unsigned int i = 0; i < row; i++)
+	{
+		for (unsigned int j = 0; j < column; j++)
+		{
+			for (unsigned int k = 0,true_k = 0; k < row; k++,true_k++)
+			{
+				//true_k,true_k means the real position of m
+				if (k == i)
+				{
+					true_k--;
+					continue;
+				}
+				for (unsigned int g = 0 ,true_g = 0; g < column; g++,true_g++)
+				{
+					if (g == j)
+					{
+						true_g--;
+						continue;
+					}
+					m.setData(true_k, true_g, getData(k, g));
+				}
+			}
+			if( (i+j) % 2 == 0)
+				residualSubtype.setData(i, j, m.determinant());
+			else
+				residualSubtype.setData(i, j, -m.determinant());
+		}
+
+		
+	}
+	//residualSubtype.show();
+	return residualSubtype.Transposition();
 }
 
 

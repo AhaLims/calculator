@@ -92,6 +92,7 @@ int Fraction::maxFactor(int a,int b)const
 	}
 	return a;
 }
+
 /*最小公倍数*/
 int Fraction::minCom(int nr, int dr)const
 {

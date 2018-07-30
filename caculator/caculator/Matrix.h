@@ -21,15 +21,15 @@ public:
 
 
 	/*Operational part*/
-	bool operator ==(const Matrix&)const;
+	bool operator == (const Matrix&)const;
 
 	bool operator !=(const Matrix&)const;
 
-	Matrix operator =(const Matrix&);
+	Matrix operator = (const Matrix&);
 
-	friend Matrix operator +(const Matrix&, const Matrix&);
+	friend Matrix operator + (const Matrix&, const Matrix&);
 
-	friend Matrix operator -(const Matrix&, const Matrix&);
+	friend Matrix operator - (const Matrix&, const Matrix&);
 
 	/*Matrix multiplication*/
 	friend Matrix operator *(const Matrix&, const Matrix&);

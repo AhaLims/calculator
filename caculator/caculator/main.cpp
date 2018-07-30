@@ -51,6 +51,11 @@ void test()
 					m3 = m1.getSimplest(m3, do_nothing[0], do_nothing[1]);
 					m3.show();
 				}
+				else if (order == 'a')
+				{
+					m3 = m1.Adjoint();
+					m3.show();
+				}
 				else if (order == 0)break;
 				else continue;
 			}
@@ -73,17 +78,7 @@ void test_simpliest()
 
 int main()
 {
-	//test();
-	string str;
-	int integer[2];
-	double dou;
-	Fraction fraction;
-	while (true)
-	{
-		std::cin >> str;
-		fraction.reset(str);
-		fraction.show();
-	}
+	test();
 	system("pause");
 	return 0;
 }
