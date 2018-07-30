@@ -10,5 +10,6 @@ using std::string;
 using std::vector;
 namespace math
 {
+	const double pi = 3.1415926;
 	const double eps = 0.0000001;
 }

@@ -76,6 +76,9 @@ public:
 
 	Matrix Choleskydecomposition();//把一个对称正定的矩阵表示成一个下三角矩阵L和其转置的乘积的分解
 
+	/*Jacobi iterative method to get characteristic value and feature vector*/
+	/*maybe only get Real area value*/
+	Matrix getFeatureVector(Matrix &)const;
 
 	double getData(int i, int j) const { return data[i][j]; };
 
