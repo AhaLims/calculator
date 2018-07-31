@@ -29,17 +29,7 @@ void Fraction::reset(int a,int b = 1)
 
 void Fraction::reset(double num)
 {
-	denominator = 1;
-	while (true)
-	{
-		double tmp = floor(num);
-		if (fabs(tmp - num) < math::eps)
-			break;
-		denominator *= 10;
-		num *= 10;
-	}
-	numerator = num;
-	FractionReduce();
+	*this = num;
 }
 
 void Fraction::reset(string str)
@@ -74,12 +64,106 @@ void Fraction::reset(string str)
 	FractionReduce();
 }
 
+double Fraction::toDouble()
+{
+	double tmp = double(numerator) / double(denominator);
+	return tmp;
+}
+
+string Fraction::toString()//to be continue
+{
+	string tmp;
+
+
+	return tmp;
+}
+
+Fraction Fraction::operator + (const Fraction & f)const
+{
+	Fraction tmp;
+	tmp = *this;
+	if (tmp.getD() == f.getD())
+		tmp.setN(tmp.getN() + f.getN());
+	else
+	{
+		int deno = tmp.getD() *f.getD();
+		int nume = tmp.getN() * f.getD() + f.getN() * tmp.getD();
+		tmp.reset(nume, deno);
+	}
+	tmp.FractionReduce();
+	return tmp;
+}
+
+Fraction Fraction::operator - (const Fraction & f)const
+{
+	Fraction tmp;
+	tmp = *this;
+	Fraction F;
+	F = f;
+	F.setN(-F.getN());
+	return *this + F;
+}
+
+Fraction Fraction::operator * (const Fraction & f)const
+{
+	Fraction tmp;
+	tmp.reset(this->getN() * f.getN(), this->getD() *f.getD());
+	tmp.FractionReduce();
+	return tmp;
+}
+
+Fraction Fraction::operator / (const Fraction & f)const
+{
+	Fraction tmp;
+	tmp.reset(this -> getN() * f.getD(),this ->getD() * f.getN());
+	tmp.FractionReduce();
+	return tmp;
+}
+
+Fraction& Fraction::operator = (const Fraction & f)
+{
+	this->denominator = f.getD();
+	this->numerator = f.getN();
+	return *this;
+}
+
+Fraction& Fraction::operator = ( double num)
+{
+	denominator = 1;
+	while (true)
+	{
+		double tmp = floor(num);
+		if (fabs(tmp - num) < math::eps)
+			break;
+		denominator *= 10;
+		num *= 10;
+	}
+	numerator = num;
+	FractionReduce();
+	return *this;
+}
 
 void Fraction::show()
 {
 	std::cout << numerator << "/" << denominator << std::endl;
 }
 
+int Fraction::getD()const
+{
+	return denominator;
+}
+int Fraction::getN()const
+{
+	return numerator;
+}
+void Fraction::setD(int d)
+{
+	denominator = d;
+}
+void Fraction::setN(int n)
+{
+	numerator = n;
+}
 /*最大公因数*/
 int Fraction::maxFactor(int a,int b)const
 {

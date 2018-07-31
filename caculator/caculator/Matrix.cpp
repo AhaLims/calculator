@@ -444,7 +444,7 @@ Matrix Matrix::Adjoint()const
 /*refer to https://blog.csdn.net/zhouxuguang236/article/details/40212143 */
 Matrix Matrix::getFeatureVector(Matrix &characteristicValueMatrix)const
 {
-	Matrix FeatureVetor(row, column, true);
+	Matrix FeatureVetor(row, column, true);//ÌØÕ÷ÏòÁ¿
 	Matrix m(row, column, false);
 	Matrix U(row, column, true);
 	m = *this;
