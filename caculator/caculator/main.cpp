@@ -80,9 +80,31 @@ void test_simpliest()
 	m1.show();
 }
 
+void test_fraction()
+{
+	while (true)
+	{
+		std::cout << "enter the fraction:\n";
+		int d , n ;
+
+		std::cin >> n >> d;
+		
+		Fraction f(n, d);
+		std::cin >> n >> d;
+		Fraction ff(n, d);
+		ff = 1.145;
+		ff.show();
+
+		//std::cout << f.getN() << "/" << f.getD()<<std::endl;
+		//std::cout << f.toString()<<std::endl;
+	}
+	return;
+}
+
 int main()
 {
-	test();
+	
+	test_fraction();
 	system("pause");
 	return 0;
 }

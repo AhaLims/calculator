@@ -21,10 +21,15 @@ Fraction::Fraction(string str)
 
 void Fraction::reset(int a,int b = 1)
 {
-	if (b < 0)a = 0 - a;
+	if (b < 0)
+	{
+		a = 0 - a;
+		b = -b;
+	}
 	numerator = a;
 	denominator = b;
 	FractionReduce();
+	return;
 }
 
 void Fraction::reset(double num)
@@ -73,8 +78,9 @@ double Fraction::toDouble()
 string Fraction::toString()//to be continue
 {
 	string tmp;
-
-
+	tmp = std::to_string(this->getN());
+	tmp += "/";
+	tmp += std::to_string(this->getD());
 	return tmp;
 }
 
@@ -86,7 +92,7 @@ Fraction Fraction::operator + (const Fraction & f)const
 		tmp.setN(tmp.getN() + f.getN());
 	else
 	{
-		int deno = tmp.getD() *f.getD();
+		int deno = tmp.getD() * f.getD();
 		int nume = tmp.getN() * f.getD() + f.getN() * tmp.getD();
 		tmp.reset(nume, deno);
 	}
@@ -145,7 +151,11 @@ Fraction& Fraction::operator = ( double num)
 
 void Fraction::show()
 {
-	std::cout << numerator << "/" << denominator << std::endl;
+	if (numerator == 0)
+		std::cout << 0 << std::endl;
+	else if (denominator == 1)std::cout << numerator << std::endl;
+	else
+		std::cout << numerator << "/" << denominator << std::endl;
 }
 
 int Fraction::getD()const
@@ -167,6 +177,12 @@ void Fraction::setN(int n)
 /*最大公因数*/
 int Fraction::maxFactor(int a,int b)const
 {
+	if (a > b)//change a b 
+	{
+		int c = a;
+		a = b;
+		b = c;
+	}
 	int c = a % b;
 	while (c != 0)
 	{
@@ -189,7 +205,18 @@ int Fraction::minCom(int nr, int dr)const
 void Fraction::FractionReduce()
 {
 	int temp = maxFactor(numerator,denominator);
+	if (temp == 0)
+	{
+		numerator = 0;
+		denominator = 1;
+		return;
+	}
 	numerator /= temp;
 	denominator /= temp;
+	if (denominator < 0)
+	{
+		denominator = -denominator;
+		numerator = -numerator;
+	}
 	return;
 }
