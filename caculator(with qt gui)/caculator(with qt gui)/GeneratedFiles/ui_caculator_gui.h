@@ -87,7 +87,8 @@ public:
     {
         if (caculator_guiClass->objectName().isEmpty())
             caculator_guiClass->setObjectName(QStringLiteral("caculator_guiClass"));
-        caculator_guiClass->resize(1266, 943);
+        caculator_guiClass->resize(1799, 1041);
+        caculator_guiClass->setMinimumSize(QSize(1700, 1000));
         centralWidget = new QWidget(caculator_guiClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
@@ -330,7 +331,7 @@ public:
         caculator_guiClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(caculator_guiClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1266, 26));
+        menuBar->setGeometry(QRect(0, 0, 1799, 26));
         caculator_guiClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(caculator_guiClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
