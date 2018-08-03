@@ -495,20 +495,12 @@ bool Matrix::getFeatureVector(Matrix &characteristicValueMatrix ,Matrix & FV,int
 		get new matrix m
 		only p,q row and p,q column element change
 		*/
-		/*set data[maxrow][maxrow]*/
-
-
 		double tmp1 = m.getData(MAXRow, MAXRow) * cosAngle * cosAngle + m.getData(MAXColumn, MAXColumn) * sinAngle * sinAngle;
 		tmp1 += 2 * m.getData(MAXRow, MAXColumn) * cosAngle * sinAngle;
-		
 
-
-		/*set data[maxcolumn][maxcolumn]*/
 		double tmp2 = m.getData(MAXRow, MAXRow) * sinAngle * sinAngle + m.getData(MAXColumn, MAXColumn) * cosAngle * cosAngle;
 		tmp2 -= 2 * m.getData(MAXRow, MAXColumn) * cosAngle * sinAngle;
 		
-
-		/*set data[maxrow][maxcolumn] and data[maxcolumn][maxrow]*/
 		double tmp3 = m.getData(MAXColumn, MAXColumn) - m.getData(MAXRow, MAXRow);
 		tmp3 = tmp3 / 2 * sin(2 * Angle);
 		tmp3 += m.getData(MAXRow, MAXColumn) * cos(2 * Angle);
@@ -518,39 +510,22 @@ bool Matrix::getFeatureVector(Matrix &characteristicValueMatrix ,Matrix & FV,int
 		m.setData(MAXColumn, MAXRow, tmp3);
 		m.setData(MAXRow, MAXColumn, tmp3);
 
-		double tmp41,tmp42,tmp51,tmp52;//emmmmmmmmmm
+		double tmp41,tmp42,tmp51,tmp52;
 		for (unsigned int i = 0,j = 0; i < column && j < row; i++,j++)
 		{
 			if (i == MAXRow || i == MAXColumn)continue;
 			tmp41 = cosAngle * m.getData(MAXRow, i) + sinAngle * m.getData(MAXColumn, i);
-			
 			tmp42 = -sinAngle * m.getData(MAXRow, i) + cosAngle * m.getData(MAXColumn, i);
-
 			tmp51 = cosAngle * m.getData(j, MAXRow) + sinAngle * m.getData(j, MAXColumn);
 			tmp52 = -sinAngle * m.getData(j, MAXRow) + cosAngle * m.getData(j, MAXColumn);
-
 			m.setData(MAXRow, i, tmp41);
 			m.setData(MAXColumn, i, tmp42);
 			m.setData(j, MAXRow, tmp51);
 			m.setData(j, MAXColumn, tmp52);
-
-
-
 		}
-
-		//for (unsigned int j = 0; j < row; j++)
-		//{
-		//	if (j == MAXRow || j == MAXColumn)continue;
-		//	tmp5 = cosAngle * m.getData(j, MAXRow) + sinAngle * m.getData(j, MAXColumn);
-		//	m.setData(j, MAXRow, tmp5);
-		//	tmp5 = -sinAngle * m.getData(j, MAXRow) + cosAngle * m.getData(j, MAXColumn);
-		//	m.setData(j, MAXColumn, tmp5);
-		//}
-		
 	}
 	characteristicValueMatrix = m;//对角线上的元素就是特征值
-	//return FeatureVetor ;//特征向量
-	FV = FeatureVetor;
+	FV = FeatureVetor;//特征向量
 	return true;
 }
 

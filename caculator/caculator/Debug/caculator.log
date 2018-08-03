@@ -6,4 +6,5 @@ c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(224): warning C401
 c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(312): warning C4018: “<”: 有符号/无符号不匹配
 c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(382): warning C4018: “<”: 有符号/无符号不匹配
 c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(477): warning C4018: “>=”: 有符号/无符号不匹配
+  LINK : 没有找到 C:\Users\lmx\source\calculator\caculator\Debug\caculator.exe 或上一个增量链接没有生成它；正在执行完全链接
   caculator.vcxproj -> C:\Users\lmx\source\calculator\caculator\Debug\caculator.exe
