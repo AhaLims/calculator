@@ -540,15 +540,14 @@ void Matrix::showFeatureVector_Value()const
 	}
 	else
 	{
-		double value[10];
-		//double *value = new double(row);
+		//double value[10];
+		double *value = new double(row + 1);
 		for (unsigned int i = 0; i < row; i++)
 		{
 			value[i] = FeatureValue.getData(i, i);
 			std::cout << value[i] << std::endl;
 		}
-		//for(int i = 0;i < row;i++)
-
+		delete value;
 	}
 	return;
 }

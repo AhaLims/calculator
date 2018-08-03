@@ -1,4 +1,5 @@
-﻿  Matrix.cpp
+﻿  AnalyticFormula.cpp
+  Matrix.cpp
 c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(174): warning C4018: “<”: 有符号/无符号不匹配
 c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(188): warning C4554: “&”: 检查运算符优先级是否存在的可能的错误；使用括号阐明优先级
 c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(222): warning C4018: “<”: 有符号/无符号不匹配
@@ -6,5 +7,12 @@ c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(224): warning C401
 c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(312): warning C4018: “<”: 有符号/无符号不匹配
 c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(382): warning C4018: “<”: 有符号/无符号不匹配
 c:\users\lmx\source\calculator\caculator\caculator\matrix.cpp(477): warning C4018: “>=”: 有符号/无符号不匹配
-  LINK : 没有找到 C:\Users\lmx\source\calculator\caculator\Debug\caculator.exe 或上一个增量链接没有生成它；正在执行完全链接
+  main.cpp
+  mathTool.cpp
+c:\users\lmx\source\calculator\caculator\caculator\mathtool.cpp(13): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\lmx\source\calculator\caculator\caculator\mathtool.cpp(27): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\lmx\source\calculator\caculator\caculator\mathtool.cpp(29): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...
+c:\users\lmx\source\calculator\caculator\caculator\mathtool.cpp(21): warning C4715: “Compatible”: 不是所有的控件路径都返回值
+c:\users\lmx\source\calculator\caculator\caculator\mathtool.cpp(58): warning C4715: “getSolution”: 不是所有的控件路径都返回值
   caculator.vcxproj -> C:\Users\lmx\source\calculator\caculator\Debug\caculator.exe

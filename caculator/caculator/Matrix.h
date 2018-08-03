@@ -95,7 +95,6 @@ public:
 	/*test part*/
 	void reset();
 	void show();
-
 	void debug();
 private:
 	vector <vector <double>  >data;
