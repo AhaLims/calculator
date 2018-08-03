@@ -29,7 +29,7 @@ void test()
 				std::cout << "8.get simpliest matrix\n";
 				std::cout << "9 get trace\n";
 				std::cout << "a. get adjoint\n";
-				std::cout << "b. get....\n";
+				std::cout << "b. get Feature value\n";
 				std::cin >> order;
 				if (order == '0')break;
 				else if (order == '1')std::cout << m1.symmetric() << std::endl;
@@ -59,6 +59,10 @@ void test()
 				{
 					m3 = m1.Adjoint();
 					m3.show();
+				}
+				else if (order == 'b')
+				{
+					m1.showFeatureVector_Value();
 				}
 				else if (order == 0)break;
 				else continue;
@@ -104,7 +108,7 @@ void test_fraction()
 int main()
 {
 	
-	test_fraction();
+	test();
 	system("pause");
 	return 0;
 }

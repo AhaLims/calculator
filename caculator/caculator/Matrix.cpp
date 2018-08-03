@@ -54,12 +54,13 @@ bool Matrix::checkMul(const Matrix &m)const
 bool Matrix::symmetric()const
 {
 	if (!square())return false;
-	for (unsigned int i = 0; i < row; i++)
+	/*for (unsigned int i = 0; i < row; i++)
 	{
 		for (unsigned int j = i + 1; j < column; j++)
 			if (data[i][j] != data[j][i])
 				return false;
-	}
+	}*/
+	if (this->Transposition() != *this)return false;
 	return true;
 }
 
@@ -439,24 +440,29 @@ Matrix Matrix::Adjoint()const
 	return residualSubtype.Transposition();
 }
 
-
-/*maybe have problem*/
+//only symmetric matrix( which characteristic values are real numbers)
+/*maxTime:The maximum number of iterations*/
 /*refer to https://blog.csdn.net/zhouxuguang236/article/details/40212143 */
-Matrix Matrix::getFeatureVector(Matrix &characteristicValueMatrix)const
+bool Matrix::getFeatureVector(Matrix &characteristicValueMatrix ,Matrix & FV,int maxTime = 100)const
 {
-	Matrix FeatureVetor(row, column, true);//特征向量
+	if (!this->symmetric())return 0;
+
+	Matrix FeatureVetor(row, column, true);//characteristc vector is a unit matrix at first
 	Matrix m(row, column, false);
 	Matrix U(row, column, true);
 	m = *this;
-	double MAX = getData(0, 1);
-	double Angle,sinAngle, cosAngle;
+	double MAX = m.getData(0, 1);
+	double Angle, sinAngle, cosAngle;
 	unsigned MAXRow = 0, MAXColumn = 1;
-	unsigned int time = 0,maxTime = 100;//迭代次数
-	while (true)//主循环 迭代
+	unsigned int time = 0;//iterations time
+	while (true)
 	{
+		MAX = m.getData(0, 1);
+		MAXRow = 0;
+		MAXColumn = 1;
 		for (unsigned int i = 0; i < row; i++)
 		{
-			for (unsigned int j = 0; j < column; j++)
+			for (unsigned int j = 1; j < column; j++)
 			{
 				if (i == j)continue;//it can't be diagonal element
 				if (fabs(MAX) < fabs(m.getData(i, j)))
@@ -468,8 +474,8 @@ Matrix Matrix::getFeatureVector(Matrix &characteristicValueMatrix)const
 			}//find the max element of matrix
 		}
 		if (fabs(MAX) < math::eps) break;
-		//if (time >= maxTime) break;
-		//time++;//暂时不控制迭代次数
+		if (time >= maxTime) break;
+		time++;
 
 		/*get the rotation angle */
 		Angle = 0.5 *atan2(-2 * m.getData(MAXRow, MAXColumn), m.getData(MAXColumn, MAXColumn) - m.getData(MAXRow, MAXRow));
@@ -489,34 +495,75 @@ Matrix Matrix::getFeatureVector(Matrix &characteristicValueMatrix)const
 		get new matrix m
 		only p,q row and p,q column element change
 		*/
-		double tmp = m.getData(MAXRow, MAXRow) * cosAngle * cosAngle + m.getData(MAXColumn, MAXColumn) * sinAngle * sinAngle;
-		tmp += 2 * m.getData(MAXRow, MAXRow) * m.getData(MAXColumn, MAXColumn) *cosAngle *sinAngle;
-		m.setData(MAXRow, MAXRow, tmp);
+		/*set data[maxrow][maxrow]*/
 
-		tmp = m.getData(MAXRow, MAXRow) * sinAngle * sinAngle + m.getData(MAXColumn, MAXColumn) * cosAngle * cosAngle;
-		tmp -= 2 * m.getData(MAXRow, MAXRow) * m.getData(MAXColumn, MAXColumn) *cosAngle *sinAngle;
-		m.setData(MAXColumn, MAXColumn, tmp);
 
-		for (unsigned int i = 0; i < column; i++)
+		double tmp1 = m.getData(MAXRow, MAXRow) * cosAngle * cosAngle + m.getData(MAXColumn, MAXColumn) * sinAngle * sinAngle;
+		tmp1 += 2 * m.getData(MAXRow, MAXColumn) * cosAngle * sinAngle;
+		m.setData(MAXRow, MAXRow, tmp1);
+
+
+		/*set data[maxcolumn][maxcolumn]*/
+		double tmp2 = m.getData(MAXRow, MAXRow) * sinAngle * sinAngle + m.getData(MAXColumn, MAXColumn) * cosAngle * cosAngle;
+		tmp2 -= 2 * m.getData(MAXRow, MAXColumn) * cosAngle * sinAngle;
+		m.setData(MAXColumn, MAXColumn, tmp2);
+
+		/*set data[maxrow][maxcolumn] and data[maxcolumn][maxrow]*/
+		double tmp3 = m.getData(MAXColumn, MAXColumn) - m.getData(MAXRow, MAXRow);
+		tmp3 = tmp3 / 2 * sin(2 * Angle);
+		tmp3 += m.getData(MAXRow, MAXColumn) * cos(2 * Angle);
+		m.setData(MAXColumn, MAXRow, tmp3);
+		m.setData(MAXRow, MAXColumn, tmp3);
+
+		double tmp4,tmp5;
+		for (unsigned int i = 0,j = 0; i < column && j < row; i++,j++)
 		{
 			if (i == MAXRow || i == MAXColumn)continue;
-			tmp = cosAngle * m.getData(MAXRow, i) + sinAngle * m.getData(MAXColumn, i);
-			m.setData(MAXRow, i, tmp);
-			tmp = -sinAngle * m.getData(MAXRow, i) + cosAngle * m.getData(MAXColumn, i);
-			m.setData(MAXColumn, i, tmp);
+			tmp4 = cosAngle * m.getData(MAXRow, i) + sinAngle * m.getData(MAXColumn, i);
+			m.setData(MAXRow, i, tmp4);
+			tmp4 = -sinAngle * m.getData(MAXRow, i) + cosAngle * m.getData(MAXColumn, i);
+			m.setData(MAXColumn, i, tmp4);
+
 		}
+
 		for (unsigned int j = 0; j < row; j++)
 		{
-			if (j == MAXRow || j == MAXColumn)continue;
-			tmp = cosAngle * m.getData(j, MAXRow) + sinAngle * m.getData(j, MAXColumn);
-			m.setData(j, MAXRow, tmp);
-			tmp = -sinAngle * m.getData(j, MAXRow) + cosAngle * m.getData(j, MAXColumn);
-			m.setData(j, MAXColumn, tmp);
+			if (i == MAXRow || i == MAXColumn)continue;
+			tmp5 = cosAngle * m.getData(j, MAXRow) + sinAngle * m.getData(j, MAXColumn);
+			m.setData(j, MAXRow, tmp5);
+			tmp5 = -sinAngle * m.getData(j, MAXRow) + cosAngle * m.getData(j, MAXColumn);
+			m.setData(j, MAXColumn, tmp5);
 		}
 		
 	}
 	characteristicValueMatrix = m;//对角线上的元素就是特征值
-	return FeatureVetor;//特征向量
+	//return FeatureVetor ;//特征向量
+	FV = FeatureVetor;
+	return true;
+}
+
+void Matrix::showFeatureVector_Value()const
+{
+	Matrix FeatureVector(row, column);
+	Matrix FeatureValue(row, column);
+	if (!getFeatureVector(FeatureValue, FeatureVector))
+	{
+		std::cout << "not sy\n";
+		return;
+	}
+	else
+	{
+		double value[10];
+		//double *value = new double(row);
+		for (unsigned int i = 0; i < row; i++)
+		{
+			value[i] = FeatureValue.getData(i, i);
+			std::cout << value[i] << std::endl;
+		}
+		//for(int i = 0;i < row;i++)
+
+	}
+	return;
 }
 
 void Matrix::reset()

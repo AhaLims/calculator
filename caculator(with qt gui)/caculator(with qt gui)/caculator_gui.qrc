@@ -1,4 +1,5 @@
 <RCC>
-    <qresource prefix="caculator_gui">
+    <qresource prefix="/caculator_gui">
+        <file>myico.ico</file>
     </qresource>
 </RCC>

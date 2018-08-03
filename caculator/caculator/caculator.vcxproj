@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClInclude Include="AnalyticFormula.h" />
     <ClInclude Include="fraction.h" />
+    <ClInclude Include="mathTool.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="source.h" />
   </ItemGroup>

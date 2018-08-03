@@ -27,6 +27,9 @@
     <ClInclude Include="fraction.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="mathTool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnalyticFormula.cpp">
