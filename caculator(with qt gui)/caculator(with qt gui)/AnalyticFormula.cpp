@@ -41,4 +41,17 @@ double AnalyticFormula::getNum(string str)
 	}
 	return num;
 }
+void AnalyticFormula::Computational_formula(string expression)
+{
+	stack<string> operation, operand;
+
+}
+
+
+
+
+
+
+
+//void AnalyticFormula::function_formula(string expression,string variable)
 

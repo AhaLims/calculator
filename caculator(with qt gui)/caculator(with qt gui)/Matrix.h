@@ -78,8 +78,9 @@ public:
 
 	/*Jacobi iterative method to get characteristic value and feature vector*/
 	/*maybe only get Real area value*/
-	Matrix getFeatureVector(Matrix &)const;
+	bool getFeatureVector(Matrix &,Matrix &,int )const;
 
+	void showFeatureVector_Value()const;
 	double getData(int i, int j) const { return data[i][j]; };
 
 	unsigned int getRow()const { return row; };
@@ -94,7 +95,6 @@ public:
 	/*test part*/
 	void reset();
 	void show();
-
 	void debug();
 private:
 	vector <vector <double>  >data;

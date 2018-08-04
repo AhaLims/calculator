@@ -6,8 +6,10 @@
 #include<algorithm>
 #include<fstream>
 #include<string>
+#include<stack>
 using std::string;
 using std::vector;
+using std::stack;
 namespace math
 {
 	const double pi = 3.1415926;
