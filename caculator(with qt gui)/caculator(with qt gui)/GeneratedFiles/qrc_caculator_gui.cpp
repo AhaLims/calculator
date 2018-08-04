@@ -5,7 +5,8 @@
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
-
+#include"GeneratedFiles/ui_caculator_gui.h"
+#include"qdialog.h"
 static const unsigned char qt_resource_data[] = {
   // C:/Users/lmx/source/calculator/caculator(with qt gui)/caculator(with qt gui)/myico.ico
   0x0,0x0,0x13,0xbe,
@@ -402,3 +403,4 @@ namespace {
        ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_caculator_gui)(); }
    } dummy;
 }
+

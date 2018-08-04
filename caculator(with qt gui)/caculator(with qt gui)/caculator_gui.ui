@@ -77,7 +77,7 @@
       <x>250</x>
       <y>480</y>
       <width>961</width>
-      <height>209</height>
+      <height>244</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -90,38 +90,10 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="invB">
-         <property name="text">
-          <string>逆矩阵</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="clearB">
-         <property name="text">
-          <string>清除</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="charactorValueB">
-         <property name="text">
-          <string>特征值</string>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="0">
         <widget class="QPushButton" name="tranB">
          <property name="text">
           <string>转置矩阵</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="trB">
-         <property name="text">
-          <string>求秩</string>
          </property>
         </widget>
        </item>
@@ -132,10 +104,52 @@
          </property>
         </widget>
        </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="charactorValueB">
+         <property name="text">
+          <string>特征值</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QPushButton" name="mulityNumB">
+           <property name="text">
+            <string>数乘</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_NumB"/>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="trB">
+         <property name="text">
+          <string>求秩</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="randomB">
+         <property name="text">
+          <string>随机</string>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="0">
         <widget class="QPushButton" name="charactorVectorB">
          <property name="text">
           <string>特征向量</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="invB">
+         <property name="text">
+          <string>逆矩阵</string>
          </property>
         </widget>
        </item>
@@ -153,24 +167,10 @@
          </item>
         </layout>
        </item>
-       <item row="5" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QPushButton" name="mulityNumB">
-           <property name="text">
-            <string>数乘</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_NumB"/>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="randomB">
+       <item row="0" column="1">
+        <widget class="QPushButton" name="clearB">
          <property name="text">
-          <string>随机</string>
+          <string>清除</string>
          </property>
         </widget>
        </item>
@@ -309,7 +309,7 @@
      <string>矩阵B</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="output_test_browser">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -397,29 +397,184 @@
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1700</width>
-     <height>26</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="caculator_gui.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>add</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_add_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>763</x>
+     <y>183</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sub</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_subtract_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>756</x>
+     <y>261</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>multiply</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_multiply_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>756</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>exchange</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_swap_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>756</x>
+     <y>429</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>randomB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_randomA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>493</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>366</x>
+     <y>455</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>randomA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_randomB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>916</x>
+     <y>501</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>970</x>
+     <y>445</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_clearA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>496</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>523</x>
+     <y>462</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_clearB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1096</x>
+     <y>496</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1089</x>
+     <y>472</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>detB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_detA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>322</x>
+     <y>533</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>229</x>
+     <y>523</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>detA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_detB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>884</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1239</x>
+     <y>503</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>push_add_button()</slot>
+  <slot>push_subtract_button()</slot>
+  <slot>push_multiply_button()</slot>
+  <slot>push_swap_button()</slot>
+  <slot>push_randomA_button()</slot>
+  <slot>push_randomB_button()</slot>
+  <slot>push_clearA_button()</slot>
+  <slot>push_clearB_button()</slot>
+  <slot>push_detA_button()</slot>
+  <slot>push_detB_button()</slot>
+ </slots>
 </ui>

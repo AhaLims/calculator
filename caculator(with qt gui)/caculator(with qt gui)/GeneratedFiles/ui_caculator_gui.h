@@ -17,16 +17,13 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-
 QT_BEGIN_NAMESPACE
 
 class Ui_caculator_guiClass
@@ -78,7 +75,7 @@ public:
     QPushButton *charactorVectorA;
     QLabel *label;
     QLabel *label_2;
-    QTextBrowser *textBrowser;
+    QTextBrowser *output_test_browser;
     QLineEdit *expression;
     QPushButton *expression_equal;
     QCheckBox *checkBox;
@@ -87,8 +84,6 @@ public:
     QLabel *label_3;
     QSpinBox *decimals_num;
     QPushButton *clearA_2;
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *caculator_guiClass)
@@ -327,9 +322,9 @@ public:
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(990, 0, 91, 51));
         label_2->setFont(font);
-        textBrowser = new QTextBrowser(centralWidget);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
-        textBrowser->setGeometry(QRect(270, 740, 961, 191));
+        output_test_browser = new QTextBrowser(centralWidget);
+        output_test_browser->setObjectName(QStringLiteral("output_test_browser"));
+        output_test_browser->setGeometry(QRect(270, 740, 961, 191));
         expression = new QLineEdit(centralWidget);
         expression->setObjectName(QStringLiteral("expression"));
         expression->setGeometry(QRect(660, 440, 191, 31));
@@ -361,18 +356,15 @@ public:
         clearA_2->setObjectName(QStringLiteral("clearA_2"));
         clearA_2->setGeometry(QRect(990, 700, 234, 28));
         caculator_guiClass->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(caculator_guiClass);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1700, 26));
-        caculator_guiClass->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(caculator_guiClass);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        caculator_guiClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(caculator_guiClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         caculator_guiClass->setStatusBar(statusBar);
 
         retranslateUi(caculator_guiClass);
+        QObject::connect(add, SIGNAL(clicked()), caculator_guiClass, SLOT(push_add_button()));
+        QObject::connect(sub, SIGNAL(clicked()), caculator_guiClass, SLOT(push_subtract_button()));
+        QObject::connect(multiply, SIGNAL(clicked()), caculator_guiClass, SLOT(push_multiply_button()));
+        QObject::connect(exchange, SIGNAL(clicked()), caculator_guiClass, SLOT(push_swap_button()));
 
         QMetaObject::connectSlotsByName(caculator_guiClass);
     } // setupUi

@@ -1,3 +1,3 @@
 #include"source.h"
 
-//scientic
+class scientic
