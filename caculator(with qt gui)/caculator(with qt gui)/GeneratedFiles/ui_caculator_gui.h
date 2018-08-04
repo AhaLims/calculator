@@ -12,12 +12,14 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QCommandLinkButton>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
@@ -33,80 +35,115 @@ public:
     QWidget *centralWidget;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
-    QTextEdit *MatrixB;
+    QVBoxLayout *verticalLayout_2;
+    QPushButton *clearA;
+    QPushButton *randomA;
+    QSpacerItem *verticalSpacer;
+    QTextEdit *MatrixA;
     QVBoxLayout *verticalLayout;
     QPushButton *add;
     QPushButton *sub;
     QPushButton *multiply;
+    QSpacerItem *verticalSpacer_4;
     QPushButton *exchange;
-    QTextEdit *MatrixA;
-    QWidget *horizontalLayoutWidget_6;
-    QHBoxLayout *horizontalLayout_6;
-    QGridLayout *gridLayoutA_2;
-    QPushButton *detB;
-    QPushButton *tranB;
-    QPushButton *simplestB;
-    QPushButton *charactorValueB;
-    QHBoxLayout *horizontalLayout_4;
-    QPushButton *mulityNumB;
-    QLineEdit *lineEdit_NumB;
-    QPushButton *trB;
-    QPushButton *randomB;
-    QPushButton *charactorVectorB;
-    QPushButton *invB;
-    QHBoxLayout *horizontalLayout_5;
-    QPushButton *timeB;
-    QLineEdit *lineEdit_TimeB;
+    QSpacerItem *verticalSpacer_3;
+    QTextEdit *MatrixB;
+    QVBoxLayout *verticalLayout_3;
     QPushButton *clearB;
-    QGridLayout *gridLayoutA;
-    QPushButton *trA;
-    QHBoxLayout *horizontalLayout_3;
-    QPushButton *timeA;
-    QLineEdit *lineEdit_TimeA;
+    QPushButton *randomB;
+    QSpacerItem *verticalSpacer_2;
+    QTextBrowser *output_test_browser;
+    QWidget *widget;
+    QGridLayout *gridLayoutA_2;
     QPushButton *charactorValueA;
-    QPushButton *detA;
-    QHBoxLayout *horizontalLayout_2;
+    QPushButton *charactorVectorA;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *timeA;
+    QLineEdit *lineEdit_TimeA_2;
+    QPushButton *tranA;
+    QHBoxLayout *horizontalLayout_4;
     QPushButton *mulityNumA;
     QLineEdit *lineEdit_NumA;
-    QPushButton *tranA;
-    QPushButton *randomA;
-    QPushButton *clearA;
-    QPushButton *invA;
+    QPushButton *detA;
+    QPushButton *trA;
     QPushButton *simplestA;
-    QPushButton *charactorVectorA;
-    QLabel *label;
-    QLabel *label_2;
-    QTextBrowser *output_test_browser;
+    QPushButton *invA;
+    QPushButton *pushButton_2;
+    QWidget *widget1;
+    QGridLayout *gridLayoutA;
+    QPushButton *trB;
+    QHBoxLayout *horizontalLayout_3;
+    QPushButton *timeB;
+    QLineEdit *lineEdit_TimeA;
+    QPushButton *tranB;
+    QPushButton *invB;
+    QPushButton *simplestB;
+    QPushButton *charactorValueB;
+    QPushButton *charactorVectorB;
+    QPushButton *detB;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *mulityNumB;
+    QLineEdit *lineEdit_NumB;
+    QPushButton *dialogB;
+    QWidget *horizontalLayoutWidget_3;
+    QHBoxLayout *horizontalLayout_6;
     QLineEdit *expression;
     QPushButton *expression_equal;
-    QCheckBox *checkBox;
-    QWidget *horizontalLayoutWidget_2;
-    QHBoxLayout *horizontalLayout_7;
+    QWidget *horizontalLayoutWidget_4;
+    QHBoxLayout *horizontalLayout_8;
+    QCheckBox *use_float;
     QLabel *label_3;
     QSpinBox *decimals_num;
-    QPushButton *clearA_2;
+    QWidget *horizontalLayoutWidget_2;
+    QHBoxLayout *horizontalLayout_7;
+    QSpacerItem *horizontalSpacer_2;
+    QLabel *label;
+    QSpacerItem *horizontalSpacer;
+    QLabel *label_2;
+    QSpacerItem *horizontalSpacer_3;
+    QCommandLinkButton *commandLinkButton;
+    QCommandLinkButton *commandLinkButton_2;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *caculator_guiClass)
     {
         if (caculator_guiClass->objectName().isEmpty())
             caculator_guiClass->setObjectName(QStringLiteral("caculator_guiClass"));
-        caculator_guiClass->resize(1700, 1041);
-        caculator_guiClass->setMinimumSize(QSize(1700, 1000));
+        caculator_guiClass->resize(1374, 912);
         centralWidget = new QWidget(caculator_guiClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(280, 60, 951, 371));
+        horizontalLayoutWidget->setGeometry(QRect(270, 90, 1061, 291));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        MatrixB = new QTextEdit(horizontalLayoutWidget);
-        MatrixB->setObjectName(QStringLiteral("MatrixB"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        clearA = new QPushButton(horizontalLayoutWidget);
+        clearA->setObjectName(QStringLiteral("clearA"));
 
-        horizontalLayout->addWidget(MatrixB);
+        verticalLayout_2->addWidget(clearA);
+
+        randomA = new QPushButton(horizontalLayoutWidget);
+        randomA->setObjectName(QStringLiteral("randomA"));
+
+        verticalLayout_2->addWidget(randomA);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
+
+        horizontalLayout->addLayout(verticalLayout_2);
+
+        MatrixA = new QTextEdit(horizontalLayoutWidget);
+        MatrixA->setObjectName(QStringLiteral("MatrixA"));
+
+        horizontalLayout->addWidget(MatrixA);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
@@ -126,236 +163,292 @@ public:
 
         verticalLayout->addWidget(multiply);
 
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_4);
+
         exchange = new QPushButton(horizontalLayoutWidget);
         exchange->setObjectName(QStringLiteral("exchange"));
 
         verticalLayout->addWidget(exchange);
 
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_3);
+
 
         horizontalLayout->addLayout(verticalLayout);
 
-        MatrixA = new QTextEdit(horizontalLayoutWidget);
-        MatrixA->setObjectName(QStringLiteral("MatrixA"));
+        MatrixB = new QTextEdit(horizontalLayoutWidget);
+        MatrixB->setObjectName(QStringLiteral("MatrixB"));
 
-        horizontalLayout->addWidget(MatrixA);
+        horizontalLayout->addWidget(MatrixB);
 
-        horizontalLayoutWidget_6 = new QWidget(centralWidget);
-        horizontalLayoutWidget_6->setObjectName(QStringLiteral("horizontalLayoutWidget_6"));
-        horizontalLayoutWidget_6->setGeometry(QRect(250, 480, 961, 244));
-        horizontalLayout_6 = new QHBoxLayout(horizontalLayoutWidget_6);
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
-        gridLayoutA_2 = new QGridLayout();
-        gridLayoutA_2->setSpacing(6);
-        gridLayoutA_2->setObjectName(QStringLiteral("gridLayoutA_2"));
-        detB = new QPushButton(horizontalLayoutWidget_6);
-        detB->setObjectName(QStringLiteral("detB"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        clearB = new QPushButton(horizontalLayoutWidget);
+        clearB->setObjectName(QStringLiteral("clearB"));
 
-        gridLayoutA_2->addWidget(detB, 1, 0, 1, 1);
+        verticalLayout_3->addWidget(clearB);
 
-        tranB = new QPushButton(horizontalLayoutWidget_6);
-        tranB->setObjectName(QStringLiteral("tranB"));
-
-        gridLayoutA_2->addWidget(tranB, 2, 0, 1, 1);
-
-        simplestB = new QPushButton(horizontalLayoutWidget_6);
-        simplestB->setObjectName(QStringLiteral("simplestB"));
-
-        gridLayoutA_2->addWidget(simplestB, 3, 1, 1, 1);
-
-        charactorValueB = new QPushButton(horizontalLayoutWidget_6);
-        charactorValueB->setObjectName(QStringLiteral("charactorValueB"));
-
-        gridLayoutA_2->addWidget(charactorValueB, 4, 1, 1, 1);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        mulityNumB = new QPushButton(horizontalLayoutWidget_6);
-        mulityNumB->setObjectName(QStringLiteral("mulityNumB"));
-
-        horizontalLayout_4->addWidget(mulityNumB);
-
-        lineEdit_NumB = new QLineEdit(horizontalLayoutWidget_6);
-        lineEdit_NumB->setObjectName(QStringLiteral("lineEdit_NumB"));
-
-        horizontalLayout_4->addWidget(lineEdit_NumB);
-
-
-        gridLayoutA_2->addLayout(horizontalLayout_4, 5, 0, 1, 1);
-
-        trB = new QPushButton(horizontalLayoutWidget_6);
-        trB->setObjectName(QStringLiteral("trB"));
-
-        gridLayoutA_2->addWidget(trB, 2, 1, 1, 1);
-
-        randomB = new QPushButton(horizontalLayoutWidget_6);
+        randomB = new QPushButton(horizontalLayoutWidget);
         randomB->setObjectName(QStringLiteral("randomB"));
 
-        gridLayoutA_2->addWidget(randomB, 0, 0, 1, 1);
+        verticalLayout_3->addWidget(randomB);
 
-        charactorVectorB = new QPushButton(horizontalLayoutWidget_6);
-        charactorVectorB->setObjectName(QStringLiteral("charactorVectorB"));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayoutA_2->addWidget(charactorVectorB, 4, 0, 1, 1);
+        verticalLayout_3->addItem(verticalSpacer_2);
 
-        invB = new QPushButton(horizontalLayoutWidget_6);
-        invB->setObjectName(QStringLiteral("invB"));
 
-        gridLayoutA_2->addWidget(invB, 1, 1, 1, 1);
+        horizontalLayout->addLayout(verticalLayout_3);
+
+        output_test_browser = new QTextBrowser(centralWidget);
+        output_test_browser->setObjectName(QStringLiteral("output_test_browser"));
+        output_test_browser->setGeometry(QRect(340, 690, 861, 191));
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(380, 430, 381, 201));
+        gridLayoutA_2 = new QGridLayout(widget);
+        gridLayoutA_2->setSpacing(6);
+        gridLayoutA_2->setContentsMargins(11, 11, 11, 11);
+        gridLayoutA_2->setObjectName(QStringLiteral("gridLayoutA_2"));
+        gridLayoutA_2->setContentsMargins(0, 0, 0, 0);
+        charactorValueA = new QPushButton(widget);
+        charactorValueA->setObjectName(QStringLiteral("charactorValueA"));
+
+        gridLayoutA_2->addWidget(charactorValueA, 3, 1, 1, 1);
+
+        charactorVectorA = new QPushButton(widget);
+        charactorVectorA->setObjectName(QStringLiteral("charactorVectorA"));
+
+        gridLayoutA_2->addWidget(charactorVectorA, 3, 0, 1, 1);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        timeB = new QPushButton(horizontalLayoutWidget_6);
-        timeB->setObjectName(QStringLiteral("timeB"));
+        timeA = new QPushButton(widget);
+        timeA->setObjectName(QStringLiteral("timeA"));
 
-        horizontalLayout_5->addWidget(timeB);
+        horizontalLayout_5->addWidget(timeA);
 
-        lineEdit_TimeB = new QLineEdit(horizontalLayoutWidget_6);
-        lineEdit_TimeB->setObjectName(QStringLiteral("lineEdit_TimeB"));
+        lineEdit_TimeA_2 = new QLineEdit(widget);
+        lineEdit_TimeA_2->setObjectName(QStringLiteral("lineEdit_TimeA_2"));
 
-        horizontalLayout_5->addWidget(lineEdit_TimeB);
-
-
-        gridLayoutA_2->addLayout(horizontalLayout_5, 5, 1, 1, 1);
-
-        clearB = new QPushButton(horizontalLayoutWidget_6);
-        clearB->setObjectName(QStringLiteral("clearB"));
-
-        gridLayoutA_2->addWidget(clearB, 0, 1, 1, 1);
+        horizontalLayout_5->addWidget(lineEdit_TimeA_2);
 
 
-        horizontalLayout_6->addLayout(gridLayoutA_2);
+        gridLayoutA_2->addLayout(horizontalLayout_5, 4, 1, 1, 1);
 
-        gridLayoutA = new QGridLayout();
-        gridLayoutA->setSpacing(6);
-        gridLayoutA->setObjectName(QStringLiteral("gridLayoutA"));
-        trA = new QPushButton(horizontalLayoutWidget_6);
+        tranA = new QPushButton(widget);
+        tranA->setObjectName(QStringLiteral("tranA"));
+
+        gridLayoutA_2->addWidget(tranA, 1, 0, 1, 1);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        mulityNumA = new QPushButton(widget);
+        mulityNumA->setObjectName(QStringLiteral("mulityNumA"));
+
+        horizontalLayout_4->addWidget(mulityNumA);
+
+        lineEdit_NumA = new QLineEdit(widget);
+        lineEdit_NumA->setObjectName(QStringLiteral("lineEdit_NumA"));
+
+        horizontalLayout_4->addWidget(lineEdit_NumA);
+
+
+        gridLayoutA_2->addLayout(horizontalLayout_4, 4, 0, 1, 1);
+
+        detA = new QPushButton(widget);
+        detA->setObjectName(QStringLiteral("detA"));
+
+        gridLayoutA_2->addWidget(detA, 0, 0, 1, 1);
+
+        trA = new QPushButton(widget);
         trA->setObjectName(QStringLiteral("trA"));
 
-        gridLayoutA->addWidget(trA, 2, 1, 1, 1);
+        gridLayoutA_2->addWidget(trA, 1, 1, 1, 1);
+
+        simplestA = new QPushButton(widget);
+        simplestA->setObjectName(QStringLiteral("simplestA"));
+
+        gridLayoutA_2->addWidget(simplestA, 2, 1, 1, 1);
+
+        invA = new QPushButton(widget);
+        invA->setObjectName(QStringLiteral("invA"));
+
+        gridLayoutA_2->addWidget(invA, 0, 1, 1, 1);
+
+        pushButton_2 = new QPushButton(widget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+
+        gridLayoutA_2->addWidget(pushButton_2, 2, 0, 1, 1);
+
+        widget1 = new QWidget(centralWidget);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        widget1->setGeometry(QRect(840, 430, 381, 201));
+        gridLayoutA = new QGridLayout(widget1);
+        gridLayoutA->setSpacing(6);
+        gridLayoutA->setContentsMargins(11, 11, 11, 11);
+        gridLayoutA->setObjectName(QStringLiteral("gridLayoutA"));
+        gridLayoutA->setContentsMargins(0, 0, 0, 0);
+        trB = new QPushButton(widget1);
+        trB->setObjectName(QStringLiteral("trB"));
+
+        gridLayoutA->addWidget(trB, 1, 1, 1, 1);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        timeA = new QPushButton(horizontalLayoutWidget_6);
-        timeA->setObjectName(QStringLiteral("timeA"));
+        timeB = new QPushButton(widget1);
+        timeB->setObjectName(QStringLiteral("timeB"));
 
-        horizontalLayout_3->addWidget(timeA);
+        horizontalLayout_3->addWidget(timeB);
 
-        lineEdit_TimeA = new QLineEdit(horizontalLayoutWidget_6);
+        lineEdit_TimeA = new QLineEdit(widget1);
         lineEdit_TimeA->setObjectName(QStringLiteral("lineEdit_TimeA"));
 
         horizontalLayout_3->addWidget(lineEdit_TimeA);
 
 
-        gridLayoutA->addLayout(horizontalLayout_3, 5, 1, 1, 1);
+        gridLayoutA->addLayout(horizontalLayout_3, 4, 1, 1, 1);
 
-        charactorValueA = new QPushButton(horizontalLayoutWidget_6);
-        charactorValueA->setObjectName(QStringLiteral("charactorValueA"));
+        tranB = new QPushButton(widget1);
+        tranB->setObjectName(QStringLiteral("tranB"));
 
-        gridLayoutA->addWidget(charactorValueA, 4, 1, 1, 1);
+        gridLayoutA->addWidget(tranB, 1, 0, 1, 1);
 
-        detA = new QPushButton(horizontalLayoutWidget_6);
-        detA->setObjectName(QStringLiteral("detA"));
+        invB = new QPushButton(widget1);
+        invB->setObjectName(QStringLiteral("invB"));
 
-        gridLayoutA->addWidget(detA, 1, 0, 1, 1);
+        gridLayoutA->addWidget(invB, 0, 1, 1, 1);
+
+        simplestB = new QPushButton(widget1);
+        simplestB->setObjectName(QStringLiteral("simplestB"));
+
+        gridLayoutA->addWidget(simplestB, 2, 1, 1, 1);
+
+        charactorValueB = new QPushButton(widget1);
+        charactorValueB->setObjectName(QStringLiteral("charactorValueB"));
+
+        gridLayoutA->addWidget(charactorValueB, 3, 1, 1, 1);
+
+        charactorVectorB = new QPushButton(widget1);
+        charactorVectorB->setObjectName(QStringLiteral("charactorVectorB"));
+
+        gridLayoutA->addWidget(charactorVectorB, 3, 0, 1, 1);
+
+        detB = new QPushButton(widget1);
+        detB->setObjectName(QStringLiteral("detB"));
+
+        gridLayoutA->addWidget(detB, 0, 0, 1, 1);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        mulityNumA = new QPushButton(horizontalLayoutWidget_6);
-        mulityNumA->setObjectName(QStringLiteral("mulityNumA"));
+        mulityNumB = new QPushButton(widget1);
+        mulityNumB->setObjectName(QStringLiteral("mulityNumB"));
 
-        horizontalLayout_2->addWidget(mulityNumA);
+        horizontalLayout_2->addWidget(mulityNumB);
 
-        lineEdit_NumA = new QLineEdit(horizontalLayoutWidget_6);
-        lineEdit_NumA->setObjectName(QStringLiteral("lineEdit_NumA"));
+        lineEdit_NumB = new QLineEdit(widget1);
+        lineEdit_NumB->setObjectName(QStringLiteral("lineEdit_NumB"));
 
-        horizontalLayout_2->addWidget(lineEdit_NumA);
-
-
-        gridLayoutA->addLayout(horizontalLayout_2, 5, 0, 1, 1);
-
-        tranA = new QPushButton(horizontalLayoutWidget_6);
-        tranA->setObjectName(QStringLiteral("tranA"));
-
-        gridLayoutA->addWidget(tranA, 2, 0, 1, 1);
-
-        randomA = new QPushButton(horizontalLayoutWidget_6);
-        randomA->setObjectName(QStringLiteral("randomA"));
-
-        gridLayoutA->addWidget(randomA, 0, 0, 1, 1);
-
-        clearA = new QPushButton(horizontalLayoutWidget_6);
-        clearA->setObjectName(QStringLiteral("clearA"));
-
-        gridLayoutA->addWidget(clearA, 0, 1, 1, 1);
-
-        invA = new QPushButton(horizontalLayoutWidget_6);
-        invA->setObjectName(QStringLiteral("invA"));
-
-        gridLayoutA->addWidget(invA, 1, 1, 1, 1);
-
-        simplestA = new QPushButton(horizontalLayoutWidget_6);
-        simplestA->setObjectName(QStringLiteral("simplestA"));
-
-        gridLayoutA->addWidget(simplestA, 3, 1, 1, 1);
-
-        charactorVectorA = new QPushButton(horizontalLayoutWidget_6);
-        charactorVectorA->setObjectName(QStringLiteral("charactorVectorA"));
-
-        gridLayoutA->addWidget(charactorVectorA, 4, 0, 1, 1);
+        horizontalLayout_2->addWidget(lineEdit_NumB);
 
 
-        horizontalLayout_6->addLayout(gridLayoutA);
+        gridLayoutA->addLayout(horizontalLayout_2, 4, 0, 1, 1);
 
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(430, 0, 91, 51));
-        QFont font;
-        font.setPointSize(15);
-        label->setFont(font);
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(990, 0, 91, 51));
-        label_2->setFont(font);
-        output_test_browser = new QTextBrowser(centralWidget);
-        output_test_browser->setObjectName(QStringLiteral("output_test_browser"));
-        output_test_browser->setGeometry(QRect(270, 740, 961, 191));
-        expression = new QLineEdit(centralWidget);
+        dialogB = new QPushButton(widget1);
+        dialogB->setObjectName(QStringLiteral("dialogB"));
+
+        gridLayoutA->addWidget(dialogB, 2, 0, 1, 1);
+
+        horizontalLayoutWidget_3 = new QWidget(centralWidget);
+        horizontalLayoutWidget_3->setObjectName(QStringLiteral("horizontalLayoutWidget_3"));
+        horizontalLayoutWidget_3->setGeometry(QRect(640, 390, 391, 31));
+        horizontalLayout_6 = new QHBoxLayout(horizontalLayoutWidget_3);
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
+        expression = new QLineEdit(horizontalLayoutWidget_3);
         expression->setObjectName(QStringLiteral("expression"));
-        expression->setGeometry(QRect(660, 440, 191, 31));
-        expression_equal = new QPushButton(centralWidget);
+
+        horizontalLayout_6->addWidget(expression);
+
+        expression_equal = new QPushButton(horizontalLayoutWidget_3);
         expression_equal->setObjectName(QStringLiteral("expression_equal"));
-        expression_equal->setGeometry(QRect(860, 440, 93, 28));
-        checkBox = new QCheckBox(centralWidget);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setGeometry(QRect(280, 710, 111, 19));
+
+        horizontalLayout_6->addWidget(expression_equal);
+
+        horizontalLayoutWidget_4 = new QWidget(centralWidget);
+        horizontalLayoutWidget_4->setObjectName(QStringLiteral("horizontalLayoutWidget_4"));
+        horizontalLayoutWidget_4->setGeometry(QRect(340, 640, 209, 41));
+        horizontalLayout_8 = new QHBoxLayout(horizontalLayoutWidget_4);
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        horizontalLayout_8->setContentsMargins(0, 0, 0, 0);
+        use_float = new QCheckBox(horizontalLayoutWidget_4);
+        use_float->setObjectName(QStringLiteral("use_float"));
+
+        horizontalLayout_8->addWidget(use_float);
+
+        label_3 = new QLabel(horizontalLayoutWidget_4);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        horizontalLayout_8->addWidget(label_3);
+
+        decimals_num = new QSpinBox(horizontalLayoutWidget_4);
+        decimals_num->setObjectName(QStringLiteral("decimals_num"));
+
+        horizontalLayout_8->addWidget(decimals_num);
+
         horizontalLayoutWidget_2 = new QWidget(centralWidget);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(390, 710, 160, 23));
+        horizontalLayoutWidget_2->setGeometry(QRect(270, 10, 1061, 80));
         horizontalLayout_7 = new QHBoxLayout(horizontalLayoutWidget_2);
         horizontalLayout_7->setSpacing(6);
         horizontalLayout_7->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
         horizontalLayout_7->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(horizontalLayoutWidget_2);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_7->addWidget(label_3);
+        horizontalLayout_7->addItem(horizontalSpacer_2);
 
-        decimals_num = new QSpinBox(horizontalLayoutWidget_2);
-        decimals_num->setObjectName(QStringLiteral("decimals_num"));
+        label = new QLabel(horizontalLayoutWidget_2);
+        label->setObjectName(QStringLiteral("label"));
+        QFont font;
+        font.setPointSize(15);
+        label->setFont(font);
+        label->setOpenExternalLinks(false);
 
-        horizontalLayout_7->addWidget(decimals_num);
+        horizontalLayout_7->addWidget(label);
 
-        clearA_2 = new QPushButton(centralWidget);
-        clearA_2->setObjectName(QStringLiteral("clearA_2"));
-        clearA_2->setGeometry(QRect(990, 700, 234, 28));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer);
+
+        label_2 = new QLabel(horizontalLayoutWidget_2);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setFont(font);
+
+        horizontalLayout_7->addWidget(label_2);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer_3);
+
+        commandLinkButton = new QCommandLinkButton(centralWidget);
+        commandLinkButton->setObjectName(QStringLiteral("commandLinkButton"));
+        commandLinkButton->setGeometry(QRect(20, 20, 222, 48));
+        commandLinkButton_2 = new QCommandLinkButton(centralWidget);
+        commandLinkButton_2->setObjectName(QStringLiteral("commandLinkButton_2"));
+        commandLinkButton_2->setGeometry(QRect(20, 90, 222, 48));
         caculator_guiClass->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(caculator_guiClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -366,12 +459,28 @@ public:
         QObject::connect(sub, SIGNAL(clicked()), caculator_guiClass, SLOT(push_subtract_button()));
         QObject::connect(multiply, SIGNAL(clicked()), caculator_guiClass, SLOT(push_multiply_button()));
         QObject::connect(exchange, SIGNAL(clicked()), caculator_guiClass, SLOT(push_swap_button()));
-        QObject::connect(randomB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_randomA_button()));
-        QObject::connect(randomA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_randomB_button()));
-        QObject::connect(clearB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_clearA_button()));
-        QObject::connect(clearA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_clearB_button()));
-        QObject::connect(detB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_detA_button()));
-        QObject::connect(detA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_detB_button()));
+        QObject::connect(randomA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_randomA_button()));
+        QObject::connect(randomB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_randomB_button()));
+        QObject::connect(clearA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_clearA_button()));
+        QObject::connect(clearB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_clearB_button()));
+        QObject::connect(detA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_detA_button()));
+        QObject::connect(detB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_detB_button()));
+        QObject::connect(invA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_invA_button()));
+        QObject::connect(invB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_invB_button()));
+        QObject::connect(tranA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_tranA_button()));
+        QObject::connect(tranB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_tranB_button()));
+        QObject::connect(trA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_rankA_button()));
+        QObject::connect(trB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_rankB_button()));
+        QObject::connect(simplestA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_getSimplestA_button()));
+        QObject::connect(simplestB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_getSimplestB_button()));
+        QObject::connect(charactorVectorA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_FeatureVectorA_button()));
+        QObject::connect(charactorVectorB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_FeatureVectorB_button()));
+        QObject::connect(charactorValueA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_FeatureVectorA_button()));
+        QObject::connect(charactorValueB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_FeatureValueB_button()));
+        QObject::connect(mulityNumA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_NumMulA_button()));
+        QObject::connect(mulityNumB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_NumMulB_button()));
+        QObject::connect(timeA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_timeA_button()));
+        QObject::connect(timeB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_timeB_button()));
 
         QMetaObject::connectSlotsByName(caculator_guiClass);
     } // setupUi
@@ -379,43 +488,46 @@ public:
     void retranslateUi(QMainWindow *caculator_guiClass)
     {
         caculator_guiClass->setWindowTitle(QApplication::translate("caculator_guiClass", "caculator_gui", nullptr));
+        clearA->setText(QApplication::translate("caculator_guiClass", "\346\270\205\351\231\244", nullptr));
+        randomA->setText(QApplication::translate("caculator_guiClass", "\351\232\217\346\234\272", nullptr));
         add->setText(QApplication::translate("caculator_guiClass", "A + B", nullptr));
         sub->setText(QApplication::translate("caculator_guiClass", "A - B", nullptr));
         multiply->setText(QApplication::translate("caculator_guiClass", "A * B", nullptr));
         exchange->setText(QApplication::translate("caculator_guiClass", "\342\206\222\n"
 "\342\206\220", nullptr));
-        detB->setText(QApplication::translate("caculator_guiClass", "\350\241\214\345\210\227\345\274\217", nullptr));
+        clearB->setText(QApplication::translate("caculator_guiClass", "\346\270\205\351\231\244", nullptr));
+        randomB->setText(QApplication::translate("caculator_guiClass", "\351\232\217\346\234\272", nullptr));
+        charactorValueA->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\200\274", nullptr));
+        charactorVectorA->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\220\221\351\207\217", nullptr));
+        timeA->setText(QApplication::translate("caculator_guiClass", "\345\271\202", nullptr));
+        tranA->setText(QApplication::translate("caculator_guiClass", "\350\275\254\347\275\256\347\237\251\351\230\265", nullptr));
+        mulityNumA->setText(QApplication::translate("caculator_guiClass", "\346\225\260\344\271\230", nullptr));
+        detA->setText(QApplication::translate("caculator_guiClass", "\350\241\214\345\210\227\345\274\217", nullptr));
+        trA->setText(QApplication::translate("caculator_guiClass", "\346\261\202\347\247\251", nullptr));
+        simplestA->setText(QApplication::translate("caculator_guiClass", "\344\270\211\350\247\222\347\237\251\351\230\265", nullptr));
+        invA->setText(QApplication::translate("caculator_guiClass", "\351\200\206\347\237\251\351\230\265", nullptr));
+        pushButton_2->setText(QApplication::translate("caculator_guiClass", "\345\257\271\350\247\222\347\237\251\351\230\265", nullptr));
+        trB->setText(QApplication::translate("caculator_guiClass", "\346\261\202\347\247\251", nullptr));
+        timeB->setText(QApplication::translate("caculator_guiClass", "\345\271\202", nullptr));
         tranB->setText(QApplication::translate("caculator_guiClass", "\350\275\254\347\275\256\347\237\251\351\230\265", nullptr));
+        invB->setText(QApplication::translate("caculator_guiClass", "\351\200\206\347\237\251\351\230\265", nullptr));
         simplestB->setText(QApplication::translate("caculator_guiClass", "\344\270\211\350\247\222\347\237\251\351\230\265", nullptr));
         charactorValueB->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\200\274", nullptr));
-        mulityNumB->setText(QApplication::translate("caculator_guiClass", "\346\225\260\344\271\230", nullptr));
-        trB->setText(QApplication::translate("caculator_guiClass", "\346\261\202\347\247\251", nullptr));
-        randomB->setText(QApplication::translate("caculator_guiClass", "\351\232\217\346\234\272", nullptr));
         charactorVectorB->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\220\221\351\207\217", nullptr));
-        invB->setText(QApplication::translate("caculator_guiClass", "\351\200\206\347\237\251\351\230\265", nullptr));
-        timeB->setText(QApplication::translate("caculator_guiClass", "\345\271\202", nullptr));
-        clearB->setText(QApplication::translate("caculator_guiClass", "\346\270\205\351\231\244", nullptr));
-        trA->setText(QApplication::translate("caculator_guiClass", "\346\261\202\347\247\251", nullptr));
-        timeA->setText(QApplication::translate("caculator_guiClass", "\345\271\202", nullptr));
-        charactorValueA->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\200\274", nullptr));
-        detA->setText(QApplication::translate("caculator_guiClass", "\350\241\214\345\210\227\345\274\217", nullptr));
-        mulityNumA->setText(QApplication::translate("caculator_guiClass", "\346\225\260\344\271\230", nullptr));
-        tranA->setText(QApplication::translate("caculator_guiClass", "\350\275\254\347\275\256\347\237\251\351\230\265", nullptr));
-        randomA->setText(QApplication::translate("caculator_guiClass", "\351\232\217\346\234\272", nullptr));
-        clearA->setText(QApplication::translate("caculator_guiClass", "\346\270\205\351\231\244", nullptr));
-        invA->setText(QApplication::translate("caculator_guiClass", "\351\200\206\347\237\251\351\230\265", nullptr));
-        simplestA->setText(QApplication::translate("caculator_guiClass", "\344\270\211\350\247\222\347\237\251\351\230\265", nullptr));
-        charactorVectorA->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\220\221\351\207\217", nullptr));
-        label->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265A", nullptr));
-        label_2->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265B", nullptr));
+        detB->setText(QApplication::translate("caculator_guiClass", "\350\241\214\345\210\227\345\274\217", nullptr));
+        mulityNumB->setText(QApplication::translate("caculator_guiClass", "\346\225\260\344\271\230", nullptr));
+        dialogB->setText(QApplication::translate("caculator_guiClass", "\345\257\271\350\247\222\347\237\251\351\230\265", nullptr));
 #ifndef QT_NO_TOOLTIP
         expression->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         expression->setText(QApplication::translate("caculator_guiClass", "1*A+2*B  ", nullptr));
         expression_equal->setText(QApplication::translate("caculator_guiClass", "=", nullptr));
-        checkBox->setText(QApplication::translate("caculator_guiClass", "\347\224\250\345\260\217\346\225\260\350\241\250\347\244\272", nullptr));
+        use_float->setText(QApplication::translate("caculator_guiClass", "\347\224\250\345\260\217\346\225\260\350\241\250\347\244\272", nullptr));
         label_3->setText(QApplication::translate("caculator_guiClass", "\345\260\217\346\225\260\344\275\215", nullptr));
-        clearA_2->setText(QApplication::translate("caculator_guiClass", "\346\270\205\351\231\244", nullptr));
+        label->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265A", nullptr));
+        label_2->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265B", nullptr));
+        commandLinkButton->setText(QApplication::translate("caculator_guiClass", "te", nullptr));
+        commandLinkButton_2->setText(QApplication::translate("caculator_guiClass", "ttt", nullptr));
     } // retranslateUi
 
 };

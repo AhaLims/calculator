@@ -6,15 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1700</width>
-    <height>1041</height>
+    <width>1374</width>
+    <height>912</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>1700</width>
-    <height>1000</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>caculator_gui</string>
@@ -23,15 +17,46 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>60</y>
-      <width>951</width>
-      <height>371</height>
+      <x>270</x>
+      <y>90</y>
+      <width>1061</width>
+      <height>291</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QTextEdit" name="MatrixB"/>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QPushButton" name="clearA">
+         <property name="text">
+          <string>清除</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="randomA">
+         <property name="text">
+          <string>随机</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="MatrixA"/>
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -57,6 +82,19 @@
         </widget>
        </item>
        <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QPushButton" name="exchange">
          <property name="text">
           <string>→
@@ -64,313 +102,305 @@
          </property>
         </widget>
        </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </item>
      <item>
-      <widget class="QTextEdit" name="MatrixA"/>
+      <widget class="QTextEdit" name="MatrixB"/>
      </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_6">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>480</y>
-      <width>961</width>
-      <height>244</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_6">
      <item>
-      <layout class="QGridLayout" name="gridLayoutA_2">
-       <item row="1" column="0">
-        <widget class="QPushButton" name="detB">
-         <property name="text">
-          <string>行列式</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="tranB">
-         <property name="text">
-          <string>转置矩阵</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QPushButton" name="simplestB">
-         <property name="text">
-          <string>三角矩阵</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="charactorValueB">
-         <property name="text">
-          <string>特征值</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QPushButton" name="mulityNumB">
-           <property name="text">
-            <string>数乘</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_NumB"/>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="trB">
-         <property name="text">
-          <string>求秩</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="randomB">
-         <property name="text">
-          <string>随机</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QPushButton" name="charactorVectorB">
-         <property name="text">
-          <string>特征向量</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="invB">
-         <property name="text">
-          <string>逆矩阵</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QPushButton" name="timeB">
-           <property name="text">
-            <string>幂</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_TimeB"/>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="1">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
         <widget class="QPushButton" name="clearB">
          <property name="text">
           <string>清除</string>
          </property>
         </widget>
        </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QGridLayout" name="gridLayoutA">
-       <item row="2" column="1">
-        <widget class="QPushButton" name="trA">
-         <property name="text">
-          <string>求秩</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QPushButton" name="timeA">
-           <property name="text">
-            <string>幂</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_TimeA"/>
-         </item>
-        </layout>
-       </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="charactorValueA">
-         <property name="text">
-          <string>特征值</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="detA">
-         <property name="text">
-          <string>行列式</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QPushButton" name="mulityNumA">
-           <property name="text">
-            <string>数乘</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_NumA"/>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="tranA">
-         <property name="text">
-          <string>转置矩阵</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="randomA">
+       <item>
+        <widget class="QPushButton" name="randomB">
          <property name="text">
           <string>随机</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="clearA">
-         <property name="text">
-          <string>清除</string>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="invA">
-         <property name="text">
-          <string>逆矩阵</string>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
          </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QPushButton" name="simplestA">
-         <property name="text">
-          <string>三角矩阵</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QPushButton" name="charactorVectorA">
-         <property name="text">
-          <string>特征向量</string>
-         </property>
-        </widget>
+        </spacer>
        </item>
       </layout>
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>0</y>
-      <width>91</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>矩阵A</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>990</x>
-      <y>0</y>
-      <width>91</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>矩阵B</string>
-    </property>
-   </widget>
    <widget class="QTextBrowser" name="output_test_browser">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>740</y>
-      <width>961</width>
+      <x>340</x>
+      <y>690</y>
+      <width>861</width>
       <height>191</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="expression">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>440</y>
-      <width>191</width>
+      <x>380</x>
+      <y>430</y>
+      <width>381</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayoutA_2">
+     <item row="3" column="1">
+      <widget class="QPushButton" name="charactorValueA">
+       <property name="text">
+        <string>特征值</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="charactorVectorA">
+       <property name="text">
+        <string>特征向量</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QPushButton" name="timeA">
+         <property name="text">
+          <string>幂</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_TimeA_2"/>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="tranA">
+       <property name="text">
+        <string>转置矩阵</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QPushButton" name="mulityNumA">
+         <property name="text">
+          <string>数乘</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_NumA"/>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="detA">
+       <property name="text">
+        <string>行列式</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="trA">
+       <property name="text">
+        <string>求秩</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="simplestA">
+       <property name="text">
+        <string>三角矩阵</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="invA">
+       <property name="text">
+        <string>逆矩阵</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>对角矩阵</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>430</y>
+      <width>381</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayoutA">
+     <item row="1" column="1">
+      <widget class="QPushButton" name="trB">
+       <property name="text">
+        <string>求秩</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="timeB">
+         <property name="text">
+          <string>幂</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_TimeA"/>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="tranB">
+       <property name="text">
+        <string>转置矩阵</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="invB">
+       <property name="text">
+        <string>逆矩阵</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="simplestB">
+       <property name="text">
+        <string>三角矩阵</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QPushButton" name="charactorValueB">
+       <property name="text">
+        <string>特征值</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="charactorVectorB">
+       <property name="text">
+        <string>特征向量</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="detB">
+       <property name="text">
+        <string>行列式</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="mulityNumB">
+         <property name="text">
+          <string>数乘</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_NumB"/>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="dialogB">
+       <property name="text">
+        <string>对角矩阵</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>390</y>
+      <width>391</width>
       <height>31</height>
      </rect>
     </property>
-    <property name="toolTip">
-     <string extracomment="输入表达式"/>
-    </property>
-    <property name="text">
-     <string>1*A+2*B  </string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QLineEdit" name="expression">
+       <property name="toolTip">
+        <string extracomment="输入表达式"/>
+       </property>
+       <property name="text">
+        <string>1*A+2*B  </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="expression_equal">
+       <property name="text">
+        <string>=</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QPushButton" name="expression_equal">
+   <widget class="QWidget" name="horizontalLayoutWidget_4">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>440</y>
-      <width>93</width>
-      <height>28</height>
+      <x>340</x>
+      <y>640</y>
+      <width>209</width>
+      <height>41</height>
      </rect>
     </property>
-    <property name="text">
-     <string>=</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkBox">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>710</y>
-      <width>111</width>
-      <height>19</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>用小数表示</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>710</y>
-      <width>160</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_7">
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QCheckBox" name="use_float">
+       <property name="text">
+        <string>用小数表示</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
@@ -383,17 +413,108 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="clearA_2">
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>990</x>
-      <y>700</y>
-      <width>234</width>
-      <height>28</height>
+      <x>270</x>
+      <y>10</y>
+      <width>1061</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>矩阵A</string>
+       </property>
+       <property name="openExternalLinks">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>矩阵B</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QCommandLinkButton" name="commandLinkButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>222</width>
+      <height>48</height>
      </rect>
     </property>
     <property name="text">
-     <string>清除</string>
+     <string>te</string>
+    </property>
+   </widget>
+   <widget class="QCommandLinkButton" name="commandLinkButton_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>222</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ttt</string>
     </property>
    </widget>
   </widget>
@@ -469,14 +590,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>randomB</sender>
+   <sender>randomA</sender>
    <signal>clicked()</signal>
    <receiver>caculator_guiClass</receiver>
    <slot>push_randomA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>390</x>
-     <y>493</y>
+     <x>374</x>
+     <y>110</y>
     </hint>
     <hint type="destinationlabel">
      <x>366</x>
@@ -485,14 +606,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>randomA</sender>
+   <sender>randomB</sender>
    <signal>clicked()</signal>
    <receiver>caculator_guiClass</receiver>
    <slot>push_randomB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>916</x>
-     <y>501</y>
+     <x>1338</x>
+     <y>118</y>
     </hint>
     <hint type="destinationlabel">
      <x>970</x>
@@ -501,14 +622,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>clearB</sender>
+   <sender>clearA</sender>
    <signal>clicked()</signal>
    <receiver>caculator_guiClass</receiver>
    <slot>push_clearA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>530</x>
-     <y>496</y>
+     <x>374</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
      <x>523</x>
@@ -517,14 +638,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>clearA</sender>
+   <sender>clearB</sender>
    <signal>clicked()</signal>
    <receiver>caculator_guiClass</receiver>
    <slot>push_clearB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1096</x>
-     <y>496</y>
+     <x>1338</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
      <x>1089</x>
@@ -533,14 +654,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>detB</sender>
+   <sender>detA</sender>
    <signal>clicked()</signal>
    <receiver>caculator_guiClass</receiver>
    <slot>push_detA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>322</x>
-     <y>533</y>
+     <x>433</x>
+     <y>508</y>
     </hint>
     <hint type="destinationlabel">
      <x>229</x>
@@ -549,18 +670,274 @@
    </hints>
   </connection>
   <connection>
-   <sender>detA</sender>
+   <sender>detB</sender>
    <signal>clicked()</signal>
    <receiver>caculator_guiClass</receiver>
    <slot>push_detB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>884</x>
-     <y>531</y>
+     <x>1066</x>
+     <y>508</y>
     </hint>
     <hint type="destinationlabel">
      <x>1239</x>
      <y>503</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>invA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_invA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>729</x>
+     <y>508</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>150</x>
+     <y>541</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>invB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_invB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1269</x>
+     <y>508</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1298</x>
+     <y>533</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tranA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_tranA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>466</x>
+     <y>543</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>566</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tranB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_tranB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1066</x>
+     <y>543</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1226</x>
+     <y>558</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>trA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_rankA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>729</x>
+     <y>543</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>13</x>
+     <y>557</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>trB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_rankB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1269</x>
+     <y>543</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1457</x>
+     <y>561</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>simplestA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_getSimplestA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>729</x>
+     <y>578</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>598</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>simplestB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_getSimplestB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1269</x>
+     <y>578</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1231</x>
+     <y>596</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>charactorVectorA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_FeatureVectorA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>473</x>
+     <y>613</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>628</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>charactorVectorB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_FeatureVectorB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1066</x>
+     <y>613</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1231</x>
+     <y>631</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>charactorValueA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_FeatureVectorA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>729</x>
+     <y>613</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>639</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>charactorValueB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_FeatureValueB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1269</x>
+     <y>613</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1545</x>
+     <y>622</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mulityNumA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_NumMulA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>663</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>114</x>
+     <y>675</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mulityNumB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_NumMulB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>964</x>
+     <y>663</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1231</x>
+     <y>678</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>timeA</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_timeA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>642</x>
+     <y>663</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>159</x>
+     <y>681</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>timeB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_timeB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1167</x>
+     <y>663</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1216</x>
+     <y>684</y>
     </hint>
    </hints>
   </connection>
@@ -576,5 +953,21 @@
   <slot>push_clearB_button()</slot>
   <slot>push_detA_button()</slot>
   <slot>push_detB_button()</slot>
+  <slot>push_invA_button()</slot>
+  <slot>push_invB_button()</slot>
+  <slot>push_tranA_button()</slot>
+  <slot>push_tranB_button()</slot>
+  <slot>push_rankA_button()</slot>
+  <slot>push_rankB_button()</slot>
+  <slot>push_getSimplestA_button()</slot>
+  <slot>push_getSimplestB_button()</slot>
+  <slot>push_FeatureValueA_button()</slot>
+  <slot>push_FeatureValueB_button()</slot>
+  <slot>push_FeatureVectorA_button()</slot>
+  <slot>push_FeatureVectorB_button()</slot>
+  <slot>push_NumMulA_button()</slot>
+  <slot>push_NumMulB_button()</slot>
+  <slot>push_timeA_button()</slot>
+  <slot>push_timeB_button()</slot>
  </slots>
 </ui>

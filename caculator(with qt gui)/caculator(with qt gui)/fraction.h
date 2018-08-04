@@ -1,6 +1,5 @@
 #pragma once
 #include"source.h"
-#include<string>
 using std::string;
 /*The symbol is stored on the molecule*/
 class Fraction

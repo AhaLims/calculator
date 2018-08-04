@@ -2,46 +2,105 @@
 //#include <QtCore/QDebug>
 #include<QtCore/QString>
 #include"Matrix.h"
+#include"AnalyticFormula.h"
 #include"source.h"
 #include <QtWidgets/QMessageBox>
+
+bool caculator_gui::number_judge(const char c)const//can judge float and fraction
+{
+	if (	c == '/'
+		|| (c >= '0' && c <= '9')
+		||  c == '\\'
+		||  c == '.')
+		return true;
+	else return false;
+}
+
+Matrix caculator_gui::get_random_matrix()
+{
+	Matrix m(4, 4, false);
+	return m;
+}
+///////////////////////////////////////////////////////////////////need to be test
+/*manage string to get matrix*/
 Matrix caculator_gui::QString_to_matrix(const QString& qstr ,bool &type)const
-{//通过什么机制去获得这样的一个矩阵
-	string str;
-	Matrix m;
+{
+	string str,tmp;
 	str = qstr.toStdString();
-	unsigned int length,row = 0, column = 0;
+	unsigned int length,row = 0, column = 0 ,first_column = 0;
 	length = str.length();
-	for (unsigned int i = 0,j = 0; i < length,j<length; i++)
+	char c;
+
+	/*get row and column and check at the same time*/
+	for (unsigned int i = 0; i < length; i++)
 	{
-		
-		if (str.at(i) == ' '  ||str.at(i) == ',')
+		c = str.at(i);
+		if (c == ' '  || c == ',')
 		{
-			j++;
-			if(i != j)
-			{ 
-
+			continue;
+			
+		}
+		else if ( number_judge(c) )
+		{
+			if (i == 0 || (i != 0 && !number_judge( str.at(i - 1) ))//the signal of number start
+				)
+			{
+				column++;
 			}
-		}
-		else if (str.at(i) == '/')
-		{
+			tmp += str.at(i);
+			//maybe wrong 
+			//if (i == length - 1 || !number_judge(str.at(i + 1)))//the signal of number end
+			//{
 
+			//}
 		}
-		else if (str.at(i) == '.')
-		{
-
-		}
-		else if (str.at(i) == '\n')
+		else if (c == '\n' && row == 0)//when in the first row ,set first column
 		{
 			row++;
+			first_column = column;
+			column = 0;
+			
+		}
+		else if (c == '\n')
+		{
+			row++;
+			if (column != first_column)//error input
+			{
+				type = status::WrongInput;
+				return Matrix(1,1,0);//emmmmm no useful
+			}
+			else
+				column = 0;//reset
+		}
+	}
+	if (str.at(length - 1) != '\n')row++;
+	if (row == 0) row = 1;//非常糟糕的输入
+	std::cout << row << std::endl << first_column << std::endl;
+	//return Matrix(1, 1, true);
+	
+	/*set matrix*/
+	Matrix m(row,first_column ,false);
+	for (unsigned int i = 0,j = 0,amount = 0; i < length,j < length; i++)
+	{
+		c = str.at(i);
+		if (!number_judge(c))
+		{
+			j++;
+			continue;
 		}
 		else
 		{
-			type = status::WrongInput;
-			return m;
+			amount++;
+			tmp = "";
+			for (; j < i + 1; j++)
+				tmp = tmp + c;
+			double num = AnalyticFormula::getNum(tmp);
+			std::cout << num << std::endl;
+			m.setData(amount/row, (amount - 1) % first_column , num);
 		}
-
 	}
-	//return m;
+	//return Matrix(1, 1, true);
+	return m;
 }
 QString caculator_gui::Matrix_to_QString(const Matrix& m)const
 {
@@ -151,4 +210,35 @@ void caculator_gui::push_swap_button()
 	ui.MatrixA->setPlainText(strB);
 	ui.MatrixB->setPlainText(strA);
 	return;
+}
+void caculator_gui::push_randomA_button()
+{
+	Matrix A = get_random_matrix();
+	QString qstr = Matrix_to_QString(A);
+	ui.MatrixA->setPlainText(qstr);
+	return;
+}
+void caculator_gui::push_randomB_button()
+{
+	Matrix B = get_random_matrix();
+	QString qstr = Matrix_to_QString(B);
+	ui.MatrixB->setPlainText(qstr);
+	return;
+}
+void caculator_gui::push_clearA_button()
+{
+	ui.MatrixA->clear();
+}
+
+void caculator_gui::push_clearB_button()
+{
+	ui.MatrixB->clear();
+}
+void caculator_gui::push_detA_button()
+{
+
+}
+void caculator_gui::push_detB_button()
+{
+
 }
