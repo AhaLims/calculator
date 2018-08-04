@@ -14,7 +14,7 @@ Matrix caculator_gui::QString_to_matrix(const QString& qstr ,bool &type)const
 	for (unsigned int i = 0,j = 0; i < length,j<length; i++)
 	{
 		
-		if (str.at(i) == ' '  ||str.at == ',')
+		if (str.at(i) == ' '  ||str.at(i) == ',')
 		{
 			j++;
 			if(i != j)
@@ -41,6 +41,7 @@ Matrix caculator_gui::QString_to_matrix(const QString& qstr ,bool &type)const
 		}
 
 	}
+	//return m;
 }
 QString caculator_gui::Matrix_to_QString(const Matrix& m)const
 {
@@ -55,6 +56,7 @@ QString caculator_gui::Matrix_to_QString(const Matrix& m)const
 		}
 		qstr = qstr + "\n";
 	}
+	return qstr;
 }
 caculator_gui::caculator_gui(QWidget *parent)
 	: QMainWindow(parent)

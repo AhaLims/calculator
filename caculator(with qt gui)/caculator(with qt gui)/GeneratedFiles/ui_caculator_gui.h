@@ -24,6 +24,7 @@
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+
 QT_BEGIN_NAMESPACE
 
 class Ui_caculator_guiClass
@@ -43,20 +44,20 @@ public:
     QHBoxLayout *horizontalLayout_6;
     QGridLayout *gridLayoutA_2;
     QPushButton *detB;
-    QPushButton *invB;
-    QPushButton *clearB;
-    QPushButton *charactorValueB;
     QPushButton *tranB;
-    QPushButton *trB;
     QPushButton *simplestB;
-    QPushButton *charactorVectorB;
-    QHBoxLayout *horizontalLayout_5;
-    QPushButton *timeB;
-    QLineEdit *lineEdit_TimeB;
+    QPushButton *charactorValueB;
     QHBoxLayout *horizontalLayout_4;
     QPushButton *mulityNumB;
     QLineEdit *lineEdit_NumB;
+    QPushButton *trB;
     QPushButton *randomB;
+    QPushButton *charactorVectorB;
+    QPushButton *invB;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *timeB;
+    QLineEdit *lineEdit_TimeB;
+    QPushButton *clearB;
     QGridLayout *gridLayoutA;
     QPushButton *trA;
     QHBoxLayout *horizontalLayout_3;
@@ -140,7 +141,7 @@ public:
 
         horizontalLayoutWidget_6 = new QWidget(centralWidget);
         horizontalLayoutWidget_6->setObjectName(QStringLiteral("horizontalLayoutWidget_6"));
-        horizontalLayoutWidget_6->setGeometry(QRect(250, 480, 961, 209));
+        horizontalLayoutWidget_6->setGeometry(QRect(250, 480, 961, 244));
         horizontalLayout_6 = new QHBoxLayout(horizontalLayoutWidget_6);
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
@@ -154,56 +155,20 @@ public:
 
         gridLayoutA_2->addWidget(detB, 1, 0, 1, 1);
 
-        invB = new QPushButton(horizontalLayoutWidget_6);
-        invB->setObjectName(QStringLiteral("invB"));
-
-        gridLayoutA_2->addWidget(invB, 1, 1, 1, 1);
-
-        clearB = new QPushButton(horizontalLayoutWidget_6);
-        clearB->setObjectName(QStringLiteral("clearB"));
-
-        gridLayoutA_2->addWidget(clearB, 0, 1, 1, 1);
-
-        charactorValueB = new QPushButton(horizontalLayoutWidget_6);
-        charactorValueB->setObjectName(QStringLiteral("charactorValueB"));
-
-        gridLayoutA_2->addWidget(charactorValueB, 4, 1, 1, 1);
-
         tranB = new QPushButton(horizontalLayoutWidget_6);
         tranB->setObjectName(QStringLiteral("tranB"));
 
         gridLayoutA_2->addWidget(tranB, 2, 0, 1, 1);
-
-        trB = new QPushButton(horizontalLayoutWidget_6);
-        trB->setObjectName(QStringLiteral("trB"));
-
-        gridLayoutA_2->addWidget(trB, 2, 1, 1, 1);
 
         simplestB = new QPushButton(horizontalLayoutWidget_6);
         simplestB->setObjectName(QStringLiteral("simplestB"));
 
         gridLayoutA_2->addWidget(simplestB, 3, 1, 1, 1);
 
-        charactorVectorB = new QPushButton(horizontalLayoutWidget_6);
-        charactorVectorB->setObjectName(QStringLiteral("charactorVectorB"));
+        charactorValueB = new QPushButton(horizontalLayoutWidget_6);
+        charactorValueB->setObjectName(QStringLiteral("charactorValueB"));
 
-        gridLayoutA_2->addWidget(charactorVectorB, 4, 0, 1, 1);
-
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        timeB = new QPushButton(horizontalLayoutWidget_6);
-        timeB->setObjectName(QStringLiteral("timeB"));
-
-        horizontalLayout_5->addWidget(timeB);
-
-        lineEdit_TimeB = new QLineEdit(horizontalLayoutWidget_6);
-        lineEdit_TimeB->setObjectName(QStringLiteral("lineEdit_TimeB"));
-
-        horizontalLayout_5->addWidget(lineEdit_TimeB);
-
-
-        gridLayoutA_2->addLayout(horizontalLayout_5, 5, 1, 1, 1);
+        gridLayoutA_2->addWidget(charactorValueB, 4, 1, 1, 1);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
@@ -221,10 +186,46 @@ public:
 
         gridLayoutA_2->addLayout(horizontalLayout_4, 5, 0, 1, 1);
 
+        trB = new QPushButton(horizontalLayoutWidget_6);
+        trB->setObjectName(QStringLiteral("trB"));
+
+        gridLayoutA_2->addWidget(trB, 2, 1, 1, 1);
+
         randomB = new QPushButton(horizontalLayoutWidget_6);
         randomB->setObjectName(QStringLiteral("randomB"));
 
         gridLayoutA_2->addWidget(randomB, 0, 0, 1, 1);
+
+        charactorVectorB = new QPushButton(horizontalLayoutWidget_6);
+        charactorVectorB->setObjectName(QStringLiteral("charactorVectorB"));
+
+        gridLayoutA_2->addWidget(charactorVectorB, 4, 0, 1, 1);
+
+        invB = new QPushButton(horizontalLayoutWidget_6);
+        invB->setObjectName(QStringLiteral("invB"));
+
+        gridLayoutA_2->addWidget(invB, 1, 1, 1, 1);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        timeB = new QPushButton(horizontalLayoutWidget_6);
+        timeB->setObjectName(QStringLiteral("timeB"));
+
+        horizontalLayout_5->addWidget(timeB);
+
+        lineEdit_TimeB = new QLineEdit(horizontalLayoutWidget_6);
+        lineEdit_TimeB->setObjectName(QStringLiteral("lineEdit_TimeB"));
+
+        horizontalLayout_5->addWidget(lineEdit_TimeB);
+
+
+        gridLayoutA_2->addLayout(horizontalLayout_5, 5, 1, 1, 1);
+
+        clearB = new QPushButton(horizontalLayoutWidget_6);
+        clearB->setObjectName(QStringLiteral("clearB"));
+
+        gridLayoutA_2->addWidget(clearB, 0, 1, 1, 1);
 
 
         horizontalLayout_6->addLayout(gridLayoutA_2);
@@ -365,6 +366,12 @@ public:
         QObject::connect(sub, SIGNAL(clicked()), caculator_guiClass, SLOT(push_subtract_button()));
         QObject::connect(multiply, SIGNAL(clicked()), caculator_guiClass, SLOT(push_multiply_button()));
         QObject::connect(exchange, SIGNAL(clicked()), caculator_guiClass, SLOT(push_swap_button()));
+        QObject::connect(randomB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_randomA_button()));
+        QObject::connect(randomA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_randomB_button()));
+        QObject::connect(clearB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_clearA_button()));
+        QObject::connect(clearA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_clearB_button()));
+        QObject::connect(detB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_detA_button()));
+        QObject::connect(detA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_detB_button()));
 
         QMetaObject::connectSlotsByName(caculator_guiClass);
     } // setupUi
@@ -378,16 +385,16 @@ public:
         exchange->setText(QApplication::translate("caculator_guiClass", "\342\206\222\n"
 "\342\206\220", nullptr));
         detB->setText(QApplication::translate("caculator_guiClass", "\350\241\214\345\210\227\345\274\217", nullptr));
-        invB->setText(QApplication::translate("caculator_guiClass", "\351\200\206\347\237\251\351\230\265", nullptr));
-        clearB->setText(QApplication::translate("caculator_guiClass", "\346\270\205\351\231\244", nullptr));
-        charactorValueB->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\200\274", nullptr));
         tranB->setText(QApplication::translate("caculator_guiClass", "\350\275\254\347\275\256\347\237\251\351\230\265", nullptr));
-        trB->setText(QApplication::translate("caculator_guiClass", "\346\261\202\347\247\251", nullptr));
         simplestB->setText(QApplication::translate("caculator_guiClass", "\344\270\211\350\247\222\347\237\251\351\230\265", nullptr));
-        charactorVectorB->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\220\221\351\207\217", nullptr));
-        timeB->setText(QApplication::translate("caculator_guiClass", "\345\271\202", nullptr));
+        charactorValueB->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\200\274", nullptr));
         mulityNumB->setText(QApplication::translate("caculator_guiClass", "\346\225\260\344\271\230", nullptr));
+        trB->setText(QApplication::translate("caculator_guiClass", "\346\261\202\347\247\251", nullptr));
         randomB->setText(QApplication::translate("caculator_guiClass", "\351\232\217\346\234\272", nullptr));
+        charactorVectorB->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\220\221\351\207\217", nullptr));
+        invB->setText(QApplication::translate("caculator_guiClass", "\351\200\206\347\237\251\351\230\265", nullptr));
+        timeB->setText(QApplication::translate("caculator_guiClass", "\345\271\202", nullptr));
+        clearB->setText(QApplication::translate("caculator_guiClass", "\346\270\205\351\231\244", nullptr));
         trA->setText(QApplication::translate("caculator_guiClass", "\346\261\202\347\247\251", nullptr));
         timeA->setText(QApplication::translate("caculator_guiClass", "\345\271\202", nullptr));
         charactorValueA->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\200\274", nullptr));
