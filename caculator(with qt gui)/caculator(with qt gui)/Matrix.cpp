@@ -106,11 +106,13 @@ Matrix operator +(const Matrix & m1, const Matrix &m2)
 {
 	Matrix temp(m1.getRow(), m2.getColumn());//unit
 	double x = 0;
+#ifdef CONSOLE_MOD
 	if (m1.getRow() != m2.getRow() || m1.getColumn() != m2.getColumn())
 	{
 		std::cerr << "Wrong\nCan't add or sub.\n";
 		return temp;
 	}
+#endif // CONSOLE_MOD
 	for(unsigned int i = 0;i<m1.getRow();i++)
 		for (unsigned int j = 0; j < m1.getColumn(); j++)
 		{
@@ -124,11 +126,13 @@ Matrix operator -(const Matrix & m1, const Matrix &m2)
 {
 	Matrix temp(m1.getRow(), m2.getColumn());//unit
 	double x = 0;
+#ifdef CONSOLE_MOD
 	if (m1.getRow() != m2.getRow() || m1.getColumn() != m2.getColumn())
 	{
 		std::cerr << "Wrong\nCan't add or sub.\n";
 		return temp;
 	}
+#endif
 	for (unsigned int i = 0; i<m1.getRow(); i++)
 		for (unsigned int j = 0; j < m1.getColumn(); j++)
 		{
@@ -140,11 +144,13 @@ Matrix operator -(const Matrix & m1, const Matrix &m2)
 Matrix operator *(const Matrix & m1, const Matrix &m2)
 {
 	Matrix temp(m1.getRow(), m2.getColumn(),false);// all 0 matrix
+#ifdef CONSOLE_MOD
 	if (!m1.checkMul(m2))
 	{
 		std::cerr << "wrong .";
 		return temp;
 	}
+#endif
 	double x = 0;
 	for (unsigned int i = 0; i < m1.getRow(); i++)
 	{

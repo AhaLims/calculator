@@ -4,6 +4,11 @@
 #include "ui_caculator_gui.h"
 #include<Matrix.h>
 #include<QtCore/QString>
+namespace status
+{
+	const bool WrongInput = 0;
+	const bool RightInput = 1;
+}
 class caculator_gui : public QMainWindow
 {
 	Q_OBJECT
@@ -23,6 +28,6 @@ public slots://信号与槽在这里定义！！！！！
 	void push_detB_button();
 private:
 	Ui::caculator_guiClass ui;
-	Matrix QString_to_matrix(const QString&)const;
+	Matrix QString_to_matrix(const QString&,bool &)const;
 	QString Matrix_to_QString(const Matrix&)const;
 };
