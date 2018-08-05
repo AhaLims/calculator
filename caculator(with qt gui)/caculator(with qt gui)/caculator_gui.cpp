@@ -129,6 +129,11 @@ void caculator_gui::push_add_button()
 	QString strA,strB;
 	strA = ui.MatrixA->toPlainText();
 	strB = ui.MatrixB->toPlainText();
+	if (strA == "" || strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "ÇëÊäÈë¾ØÕó");
+		return;
+	}
 	Matrix a, b;
 	a = QString_to_matrix(strA,type);
 	b = QString_to_matrix(strB,type);
@@ -156,6 +161,11 @@ void caculator_gui::push_subtract_button()
 	QString strA, strB;
 	strA = ui.MatrixA->toPlainText();
 	strB = ui.MatrixB->toPlainText();
+	if (strA == "" || strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "ÇëÊäÈë¾ØÕó");
+		return;
+	}
 	Matrix a, b;
 	a = QString_to_matrix(strA,type);
 	b = QString_to_matrix(strB,type);
@@ -182,6 +192,11 @@ void caculator_gui::push_multiply_button()
 	QString strA, strB;
 	strA = ui.MatrixA->toPlainText();
 	strB = ui.MatrixB->toPlainText();
+	if (strA == "" || strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "ÇëÊäÈë¾ØÕó");
+		return;
+	}
 	Matrix a, b;
 	a = QString_to_matrix(strA,type);
 	b = QString_to_matrix(strB,type);
@@ -207,6 +222,11 @@ void caculator_gui::push_swap_button()
 	QString strA, strB,tmp;
 	strA = ui.MatrixA->toPlainText();
 	strB = ui.MatrixB->toPlainText();
+	if (strA == "" || strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "ÇëÊäÈë¾ØÕó");
+		return;
+	}
 	ui.MatrixA->setPlainText(strB);
 	ui.MatrixB->setPlainText(strA);
 	return;

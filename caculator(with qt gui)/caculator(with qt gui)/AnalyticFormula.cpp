@@ -1,9 +1,18 @@
 #include"Matrix.h"
 #include"source.h"
 #include"AnalyticFormula.h"
+Matrix AnalyticFormula::Matrix_formula(string str)
+{
+	Matrix m(1, 1, 0);
+	unsigned int len = str.length();
+	for (unsigned int i = 0; i < len; i++)
+	{
+		//for(int i = 0)
+	}
+	return m;
+}
 
 /*make sure the str only has num (has the problem of accuracy)*/
-//应该包括小数或者是分数的处理吧（好像目前只有小数的处理呢...
 double AnalyticFormula::getNum(string str)
 {
 	double num = 0;
