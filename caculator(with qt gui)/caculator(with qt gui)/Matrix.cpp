@@ -210,12 +210,14 @@ Matrix Matrix::Transposition()const
 //如果不可逆怎么办...
 Matrix Matrix::inverse_matrix()const
 {
+#ifdef DEBUG
 	if (fabs(determinant()) < math::eps)
 	{
 		Matrix m(1, 1, 0);
 		std::cerr << "it doesn't have inverse matrix\n";
 		return m;
 	}
+#endif
 	Matrix inv_matrix(row,column,true);
 	inv_matrix = Adjoint();
 	double temp = determinant();

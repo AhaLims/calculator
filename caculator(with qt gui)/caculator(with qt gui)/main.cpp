@@ -6,6 +6,7 @@
 #ifndef DEBUG
 int main(int argc, char *argv[])
 {
+	srand((unsigned)time(NULL));
 	QApplication a(argc, argv);
 	caculator_gui w;
 	w.show(); //创建控制台函数
@@ -126,7 +127,7 @@ void test_fraction()
 
 int main()
 {
-
+	srand((unsigned)time(NULL));
 	test();
 	system("pause");
 	return 0;

@@ -6,6 +6,8 @@
 #include"source.h"
 #include <QtWidgets/QMessageBox>
 
+
+
 bool caculator_gui::number_judge(const char c)const//can judge float and fraction
 {
 	if (	c == '/'
@@ -18,7 +20,18 @@ bool caculator_gui::number_judge(const char c)const//can judge float and fractio
 
 Matrix caculator_gui::get_random_matrix()
 {
-	Matrix m(4, 4, false);
+	unsigned int size = 4;
+	Matrix m(size, size, false);
+	double x = 0; 
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			x = rand() % 10;
+			m.setData(i, j, x);
+		}
+	}
+	//m.show();
 	return m;
 }
 ///////////////////////////////////////////////////////////////////need to be test
@@ -111,9 +124,11 @@ QString caculator_gui::Matrix_to_QString(const Matrix& m)const
 	{
 		for (int j = 0; j < column; j++)
 		{
+			qstr = qstr + QString::number(m.getData(i, j), 10, 2);////////////////////////
+			if (j != column - 1) qstr = qstr + " ";
 			//qstr = qstr.toStdString();
 		}
-		qstr = qstr + "\n";
+		if(i != row - 1 )qstr = qstr + "\n";
 	}
 	return qstr;
 }
@@ -186,6 +201,7 @@ void caculator_gui::push_subtract_button()
 	strA = "ans of A - B =\n" + Matrix_to_QString(a);
 	ui.output_test_browser->setPlainText(strA);//设置
 }
+
 void caculator_gui::push_multiply_button()
 {
 	bool type = true;
@@ -256,9 +272,133 @@ void caculator_gui::push_clearB_button()
 }
 void caculator_gui::push_detA_button()
 {
-
+	bool type = true;
+	QString strA;
+	strA = ui.MatrixA->toPlainText();
+	if (strA == "" )
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix a;
+	a = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	if (!a.square())
+	{
+		QMessageBox::about(NULL, "WRONG", "非方阵");
+		return;
+	}
+	double det = a.determinant();
+	strA = QString::number(det, 10, 2);
+	ui.output_test_browser->setPlainText(strA);//设置
 }
 void caculator_gui::push_detB_button()
+{
+	
+}
+
+void caculator_gui::push_invA_button()
+{
+	bool type = true;
+	QString strA;
+	strA = ui.MatrixA->toPlainText();
+	if (strA == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix a;
+	a = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	if (!a.square())
+	{
+		QMessageBox::about(NULL, "WRONG", "非方阵");
+		return;
+	}
+
+	int det = a.determinant();
+	if (fabs(det) < math::eps)
+	{
+		QMessageBox::about(NULL, "WRONG", "行列式为零，没有逆矩阵");
+		return;
+	}
+	Matrix inv_matrix = a.inverse_matrix();
+	strA = Matrix_to_QString(inv_matrix);
+	ui.output_test_browser->setPlainText(strA);//设置
+}
+void caculator_gui::push_invB_button()
+{
+
+}
+void caculator_gui::push_tranA_button()
+{
+
+}
+void caculator_gui::push_tranB_button()
+{
+
+}
+void caculator_gui::push_rankA_button()
+{
+
+}
+void caculator_gui::push_rankB_button()
+{
+
+}
+void caculator_gui::push_getSimplestA_button()
+{
+
+}
+void caculator_gui::push_getSimplestB_button()
+{
+
+}
+void caculator_gui::push_FeatureVectorA_button()
+{
+
+}
+void caculator_gui::push_FeatureVectorB_button()
+{
+
+}
+void caculator_gui::push_FeatureValueA_button()
+{
+
+}
+void caculator_gui::push_FeatureValueB_button()
+{
+
+}
+void caculator_gui::push_NumMulA_button()
+{
+
+}
+void caculator_gui::push_NumMulB_button()
+{
+
+}
+void caculator_gui::push_timeA_button()
+{
+
+}
+void caculator_gui::push_timeB_button()
+{
+
+}
+void caculator_gui::push_timeA_button()
+{
+
+}
+void caculator_gui::push_timeB_button()
 {
 
 }

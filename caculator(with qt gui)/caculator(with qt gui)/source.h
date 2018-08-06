@@ -7,6 +7,7 @@
 #include<fstream>
 #include<string>
 #include<stack>
+#include <time.h> 
 using std::string;
 using std::vector;
 using std::stack;
