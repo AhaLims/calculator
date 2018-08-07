@@ -42,8 +42,6 @@ public slots://信号与槽在这里定义！！！！！
 	void push_NumMulB_button();
 	void push_timeA_button();
 	void push_timeB_button();
-	void push_timeA_button();
-	void push_timeB_button();
 
 private:
 	Ui::caculator_guiClass ui;
@@ -52,5 +50,5 @@ private:
 	Matrix get_random_matrix();
 	Matrix QString_to_matrix(const QString&,bool &)const;
 	QString Matrix_to_QString(const Matrix&, const unsigned int& )const;
-	
+	unsigned int DecimalDigit;
 };

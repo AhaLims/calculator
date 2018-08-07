@@ -139,7 +139,6 @@
   <ItemGroup>
     <ClInclude Include="AnalyticFormula.h" />
     <ClInclude Include="fraction.h" />
-    <ClInclude Include="GeneratedFiles\ui_caculator_gui.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="source.h" />
   </ItemGroup>

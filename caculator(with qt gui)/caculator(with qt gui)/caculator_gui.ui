@@ -2,11 +2,14 @@
 <ui version="4.0">
  <class>caculator_guiClass</class>
  <widget class="QMainWindow" name="caculator_guiClass">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1374</width>
+    <width>1341</width>
     <height>912</height>
    </rect>
   </property>
@@ -197,7 +200,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_TimeA_2"/>
+        <widget class="QLineEdit" name="lineEdit_TimeA"/>
        </item>
       </layout>
      </item>
@@ -396,8 +399,31 @@
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
       <widget class="QCheckBox" name="use_float">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="font">
+        <font>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="tabletTracking">
+        <bool>false</bool>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>用小数表示</string>
+       </property>
+       <property name="tristate">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -776,7 +802,7 @@
      <y>493</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1457</x>
+     <x>1340</x>
      <y>561</y>
     </hint>
    </hints>
@@ -872,7 +898,7 @@
      <y>563</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1545</x>
+     <x>1340</x>
      <y>622</y>
     </hint>
    </hints>

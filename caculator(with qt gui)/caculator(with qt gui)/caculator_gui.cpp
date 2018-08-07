@@ -1,5 +1,5 @@
 #include "caculator_gui.h"
-//#include <QtCore/QDebug>
+#include <QtCore/QDebug>
 #include<QtCore/QString>
 #include"Matrix.h"
 #include"AnalyticFormula.h"
@@ -117,6 +117,7 @@ Matrix caculator_gui::QString_to_matrix(const QString& qstr ,bool &type)const
 }
 
 /*digit is the decimal digits*/
+/*BUG!!!!!!!!!!!!!!!!!!!!!*/
 QString caculator_gui::Matrix_to_QString(const Matrix& m, const unsigned int& digit)const
 {
 	QString qstr;
@@ -139,6 +140,9 @@ caculator_gui::caculator_gui(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	DecimalDigit = 2;
+	ui.use_float->setCheckState(Qt::Checked);//set default state
+	//为啥会有三态？？？？？
 }
 
 void caculator_gui::push_add_button()
@@ -169,7 +173,7 @@ void caculator_gui::push_add_button()
 	}
 
 	a = a + b;
-	strA = "ans of A + B =\n" + Matrix_to_QString(a,2);
+	strA = "ans of A + B =\n" + Matrix_to_QString(a, DecimalDigit );
 	ui.output_test_browser->setPlainText(strA);//设置
 }
 
@@ -201,7 +205,7 @@ void caculator_gui::push_subtract_button()
 	}
 
 	a = a - b;
-	strA = "ans of A - B =\n" + Matrix_to_QString(a,2);
+	strA = "ans of A - B =\n" + Matrix_to_QString(a, DecimalDigit);
 	ui.output_test_browser->setPlainText(strA);//设置
 }
 
@@ -232,7 +236,7 @@ void caculator_gui::push_multiply_button()
 		return;
 	}
 	a = a * b;
-	strA = "ans of A * B =\n" + Matrix_to_QString(a,2);
+	strA = "ans of A * B =\n" + Matrix_to_QString(a, DecimalDigit);
 	ui.output_test_browser->setPlainText(strA);//设置
 
 }
@@ -268,7 +272,6 @@ void caculator_gui::push_clearA_button()
 {
 	ui.MatrixA->clear();
 }
-
 void caculator_gui::push_clearB_button()
 {
 	ui.MatrixB->clear();
@@ -296,12 +299,34 @@ void caculator_gui::push_detA_button()
 		return;
 	}
 	double det = a.determinant();
-	strA = QString::number(det, 10, 2);
+	strA = QString::number(det, 10, DecimalDigit);
 	ui.output_test_browser->setPlainText(strA);//设置
 }
 void caculator_gui::push_detB_button()
 {
-	
+	bool type = true;
+	QString strB;
+	strB = ui.MatrixB->toPlainText();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	if (!B.square())
+	{
+		QMessageBox::about(NULL, "WRONG", "非方阵");
+		return;
+	}
+	double det = B.determinant();
+	strB = QString::number(det, 10, DecimalDigit);
+	ui.output_test_browser->setPlainText(strB);//设置
 }
 
 void caculator_gui::push_invA_button()
@@ -334,74 +359,346 @@ void caculator_gui::push_invA_button()
 		return;
 	}
 	Matrix inv_matrix = a.inverse_matrix();
-	strA = Matrix_to_QString(inv_matrix,2);
+	strA = Matrix_to_QString(inv_matrix, DecimalDigit);
 	ui.output_test_browser->setPlainText(strA);//设置
 }
 void caculator_gui::push_invB_button()
 {
+	bool type = true;
+	QString strB;
+	strB = ui.MatrixA->toPlainText();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	if (!B.square())
+	{
+		QMessageBox::about(NULL, "WRONG", "非方阵");
+		return;
+	}
 
+	int det = B.determinant();
+	if (fabs(det) < math::eps)
+	{
+		QMessageBox::about(NULL, "WRONG", "行列式为零，没有逆矩阵");
+		return;
+	}
+	Matrix inv_matrix = B.inverse_matrix();
+	strB = Matrix_to_QString(inv_matrix, DecimalDigit);
+	ui.output_test_browser->setPlainText(strB);//设置
 }
-void caculator_gui::push_tranA_button()
+void caculator_gui::push_tranA_button()//get transport matrix
 {
-
+	bool type = true;
+	QString strA;
+	strA = ui.MatrixA->toPlainText();
+	if (strA == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix a;
+	a = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix transport_matrix = a.Transposition();
+	strA = Matrix_to_QString(transport_matrix, DecimalDigit);
+	ui.output_test_browser->setPlainText(strA);//set
 }
 void caculator_gui::push_tranB_button()
 {
-
+	bool type = true;
+	QString strB;
+	strB = ui.MatrixB->toPlainText();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix transport_matrix = B.Transposition();
+	strB = Matrix_to_QString(transport_matrix, DecimalDigit);
+	ui.output_test_browser->setPlainText(strB);//set
 }
 void caculator_gui::push_rankA_button()
 {
-
+	bool type = true;
+	QString strA;
+	strA = ui.MatrixA->toPlainText();
+	if (strA == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix a;
+	a = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	unsigned int rank = a.getRank();
+	//strA = "矩阵的秩为\n" + QString::number(rank, 10, 0);
+	strA = QString::number(rank, 10, 0);
+	ui.output_test_browser->setPlainText(strA);//set
 }
 void caculator_gui::push_rankB_button()
 {
-
+	bool type = true;
+	QString strB;
+	strB = ui.MatrixB->toPlainText();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	unsigned int rank = B.getRank();
+	//strA = "矩阵的秩为\n" + QString::number(rank, 10, 0);
+	strB = QString::number(rank, 10, 0);
+	ui.output_test_browser->setPlainText(strB);//set
 }
 void caculator_gui::push_getSimplestA_button()
 {
-
+	bool type = true;
+	QString strA;
+	strA = ui.MatrixA->toPlainText();
+	if (strA == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix a;
+	a = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix m;
+	unsigned int time, rank;
+	a.getSimplest(m, time, rank);
+	//strA = "矩阵的三角最简型为\n" + ;
+	strA = Matrix_to_QString(m, DecimalDigit);
+	ui.output_test_browser->setPlainText(strA);//set
 }
 void caculator_gui::push_getSimplestB_button()
 {
-
+	bool type = true;
+	QString strB;
+	strB = ui.MatrixB->toPlainText();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix m;
+	unsigned int time, rank;
+	B.getSimplest(m, time, rank);
+	//strA = "矩阵的三角最简型为\n" + ;
+	strB = Matrix_to_QString(m, DecimalDigit);
+	ui.output_test_browser->setPlainText(strB);//set
 }
+
+
+/*NO BUILD PART*/
 void caculator_gui::push_FeatureVectorA_button()
 {
-
+	QMessageBox::about(NULL, "WRONG", "NO BUILD");
+	////接口还没设计好....先看看矩阵的接口再写
+	//bool type = true;
+	//QString strA;
+	//strA = ui.MatrixA->toPlainText();
+	//if (strA == "")
+	//{
+	//	QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+	//	return;
+	//}
+	//Matrix a;
+	//a = QString_to_matrix(strA, type);
+	//if (type == false)
+	//{
+	//	QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+	//	return;
+	//}
+	//Matrix m;
+	//unsigned int time, rank;
+	////a.getFeatureVector();
+	//////strA = "矩阵的三角最简型为\n" + ;
+	////strA = Matrix_to_QString(m, 2);
+	////ui.output_test_browser->setPlainText(strA);//set
 }
 void caculator_gui::push_FeatureVectorB_button()
 {
-
+	QMessageBox::about(NULL, "WRONG", "NO BUILD");
 }
 void caculator_gui::push_FeatureValueA_button()
 {
-
+	QMessageBox::about(NULL, "WRONG", "NO BUILD");
 }
 void caculator_gui::push_FeatureValueB_button()
 {
-
+	QMessageBox::about(NULL, "WRONG", "NO BUILD");
 }
+
+
 void caculator_gui::push_NumMulA_button()
 {
-
+	bool type = true;
+	QString strA,strNum;
+	strA = ui.MatrixA->toPlainText();
+	strNum = ui.lineEdit_NumA->text();
+	if (strA == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	if (strNum == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入数字");
+		return;
+	}
+	double num = strNum.toDouble();//能处理负数吗...
+	Matrix a;
+	a = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix m;
+	m = a * num;
+	//strA = "矩阵为\n" + ;
+	strA = Matrix_to_QString(m, DecimalDigit);
+	ui.output_test_browser->setPlainText(strA);//set
 }
 void caculator_gui::push_NumMulB_button()
 {
-
+	bool type = true;
+	QString strB, strNum;
+	strB = ui.MatrixB->toPlainText();
+	strNum = ui.lineEdit_NumB->text();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	if (strNum == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入数字");
+		return;
+	}
+	double num = strNum.toDouble();//能处理负数吗...
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix m;
+	m = B * num;
+	//strA = "矩阵为\n" + ;
+	strB = Matrix_to_QString(m, DecimalDigit);
+	ui.output_test_browser->setPlainText(strB);//set
 }
 void caculator_gui::push_timeA_button()
 {
-
+	bool type = true;
+	QString strA, strTime;
+	strA = ui.MatrixA->toPlainText();
+	strTime = ui.lineEdit_TimeA->text();
+	if (strA == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	if (strTime == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入数字");
+		return;
+	}
+	int num = strTime.toInt();
+	if (num <= 0)
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入大于0的整数");
+		return;
+	}
+	Matrix A;
+	A = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix m;
+	m = A.FastPower(num);
+	//strA = "矩阵为\n" + ;
+	strA = Matrix_to_QString(m, DecimalDigit);
+	ui.output_test_browser->setPlainText(strA);//set
 }
 void caculator_gui::push_timeB_button()
 {
-
-}
-void caculator_gui::push_timeA_button()
-{
-
-}
-void caculator_gui::push_timeB_button()
-{
-
+	bool type = true;
+	QString strB, strTime;
+	strB = ui.MatrixA->toPlainText();
+	strTime = ui.lineEdit_TimeB->text();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	if (strTime == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入数字");
+		return;
+	}
+	int num = strTime.toInt();
+	if (num <= 0)
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入大于0的整数");
+		return;
+	}
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix m;
+	m = B.FastPower(num);
+	//strA = "矩阵为\n" + ;
+	strB = Matrix_to_QString(m, DecimalDigit);
+	ui.output_test_browser->setPlainText(strB);//set
 }
