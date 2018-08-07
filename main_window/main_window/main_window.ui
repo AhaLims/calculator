@@ -62,13 +62,13 @@
      <string>退出</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="numbe_caculator_button">
+   <widget class="QPushButton" name="scientic_caculator_button">
     <property name="enabled">
      <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>260</x>
       <y>110</y>
       <width>229</width>
       <height>28</height>
@@ -84,9 +84,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>290</x>
       <y>50</y>
-      <width>158</width>
+      <width>171</width>
       <height>28</height>
      </rect>
     </property>
@@ -94,7 +94,7 @@
      <string>矩阵计算器</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="matrix_caculator_button_2">
+   <widget class="QPushButton" name="linear_equation_button">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -140,7 +140,7 @@
    <slot>push_matrix_caculator_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>491</x>
+     <x>401</x>
      <y>63</y>
     </hint>
     <hint type="destinationlabel">
@@ -150,7 +150,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>numbe_caculator_button</sender>
+   <sender>scientic_caculator_button</sender>
    <signal>clicked()</signal>
    <receiver>main_windowClass</receiver>
    <slot>push_scientic_caculator_button()</slot>
@@ -198,7 +198,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>matrix_caculator_button_2</sender>
+   <sender>linear_equation_button</sender>
    <signal>clicked()</signal>
    <receiver>main_windowClass</receiver>
    <slot>push_linear_equation_button()</slot>

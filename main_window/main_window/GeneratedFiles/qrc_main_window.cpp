@@ -5,7 +5,7 @@
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
-#include"GeneratedFiles/ui_main_window.h"
+
 #ifdef QT_NAMESPACE
 #  define QT_RCC_PREPEND_NAMESPACE(name) ::QT_NAMESPACE::name
 #  define QT_RCC_MANGLE_NAMESPACE0(x) x
@@ -43,20 +43,4 @@ namespace {
        initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_main_window)(); }
        ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_main_window)(); }
    } dummy;
-}
-void Ui_main_windowClass::push_matrix_caculator_button()
-{
-
-}
-void Ui_main_windowClass::push_scientic_caculator_button()
-{
-
-}
-void Ui_main_windowClass::push_function_caculator_button()
-{
-
-}
-void Ui_main_windowClass::push_help_button()
-{
-
 }
