@@ -163,7 +163,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -259,7 +259,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>840</x>
@@ -286,7 +286,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_TimeA"/>
+        <widget class="QLineEdit" name="lineEdit_TimeB"/>
        </item>
       </layout>
      </item>
@@ -532,8 +532,8 @@
    <slot>push_add_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>801</x>
-     <y>133</y>
+     <x>846</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
      <x>763</x>
@@ -548,8 +548,8 @@
    <slot>push_subtract_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>801</x>
-     <y>212</y>
+     <x>846</x>
+     <y>154</y>
     </hint>
     <hint type="destinationlabel">
      <x>756</x>
@@ -564,8 +564,8 @@
    <slot>push_multiply_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>801</x>
-     <y>291</y>
+     <x>846</x>
+     <y>189</y>
     </hint>
     <hint type="destinationlabel">
      <x>756</x>
@@ -580,8 +580,8 @@
    <slot>push_swap_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>801</x>
-     <y>383</y>
+     <x>846</x>
+     <y>308</y>
     </hint>
     <hint type="destinationlabel">
      <x>756</x>
@@ -596,8 +596,8 @@
    <slot>push_randomA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>110</y>
+     <x>364</x>
+     <y>147</y>
     </hint>
     <hint type="destinationlabel">
      <x>366</x>
@@ -612,8 +612,8 @@
    <slot>push_randomB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1338</x>
-     <y>118</y>
+     <x>1328</x>
+     <y>154</y>
     </hint>
     <hint type="destinationlabel">
      <x>970</x>
@@ -628,8 +628,8 @@
    <slot>push_clearA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>78</y>
+     <x>364</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
      <x>523</x>
@@ -644,8 +644,8 @@
    <slot>push_clearB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1338</x>
-     <y>78</y>
+     <x>1328</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
      <x>1089</x>
@@ -660,8 +660,8 @@
    <slot>push_detA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>433</x>
-     <y>508</y>
+     <x>434</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
      <x>229</x>
@@ -676,8 +676,8 @@
    <slot>push_detB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1066</x>
-     <y>508</y>
+     <x>1026</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
      <x>1239</x>
@@ -692,8 +692,8 @@
    <slot>push_invA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>729</x>
-     <y>508</y>
+     <x>759</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
      <x>150</x>
@@ -708,8 +708,8 @@
    <slot>push_invB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1269</x>
-     <y>508</y>
+     <x>1219</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
      <x>1298</x>
@@ -724,8 +724,8 @@
    <slot>push_tranA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>466</x>
-     <y>543</y>
+     <x>467</x>
+     <y>493</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -740,8 +740,8 @@
    <slot>push_tranB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1066</x>
-     <y>543</y>
+     <x>1026</x>
+     <y>493</y>
     </hint>
     <hint type="destinationlabel">
      <x>1226</x>
@@ -756,8 +756,8 @@
    <slot>push_rankA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>729</x>
-     <y>543</y>
+     <x>759</x>
+     <y>493</y>
     </hint>
     <hint type="destinationlabel">
      <x>13</x>
@@ -772,8 +772,8 @@
    <slot>push_rankB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1269</x>
-     <y>543</y>
+     <x>1219</x>
+     <y>493</y>
     </hint>
     <hint type="destinationlabel">
      <x>1457</x>
@@ -788,8 +788,8 @@
    <slot>push_getSimplestA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>729</x>
-     <y>578</y>
+     <x>759</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
      <x>163</x>
@@ -804,8 +804,8 @@
    <slot>push_getSimplestB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1269</x>
-     <y>578</y>
+     <x>1219</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
      <x>1231</x>
@@ -820,8 +820,8 @@
    <slot>push_FeatureVectorA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>473</x>
-     <y>613</y>
+     <x>474</x>
+     <y>563</y>
     </hint>
     <hint type="destinationlabel">
      <x>103</x>
@@ -836,8 +836,8 @@
    <slot>push_FeatureVectorB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1066</x>
-     <y>613</y>
+     <x>1026</x>
+     <y>563</y>
     </hint>
     <hint type="destinationlabel">
      <x>1231</x>
@@ -852,8 +852,8 @@
    <slot>push_FeatureVectorA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>729</x>
-     <y>613</y>
+     <x>759</x>
+     <y>563</y>
     </hint>
     <hint type="destinationlabel">
      <x>163</x>
@@ -868,8 +868,8 @@
    <slot>push_FeatureValueB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1269</x>
-     <y>613</y>
+     <x>1219</x>
+     <y>563</y>
     </hint>
     <hint type="destinationlabel">
      <x>1545</x>
@@ -884,8 +884,8 @@
    <slot>push_NumMulA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>401</x>
-     <y>663</y>
+     <x>403</x>
+     <y>613</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -900,8 +900,8 @@
    <slot>push_NumMulB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>964</x>
-     <y>663</y>
+     <x>934</x>
+     <y>613</y>
     </hint>
     <hint type="destinationlabel">
      <x>1231</x>
@@ -916,8 +916,8 @@
    <slot>push_timeA_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>642</x>
-     <y>663</y>
+     <x>667</x>
+     <y>613</y>
     </hint>
     <hint type="destinationlabel">
      <x>159</x>
@@ -932,8 +932,8 @@
    <slot>push_timeB_button()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1167</x>
-     <y>663</y>
+     <x>1127</x>
+     <y>613</y>
     </hint>
     <hint type="destinationlabel">
      <x>1216</x>

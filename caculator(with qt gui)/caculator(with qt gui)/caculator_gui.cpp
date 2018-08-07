@@ -115,7 +115,9 @@ Matrix caculator_gui::QString_to_matrix(const QString& qstr ,bool &type)const
 	//return Matrix(1, 1, true);
 	return m;
 }
-QString caculator_gui::Matrix_to_QString(const Matrix& m)const
+
+/*digit is the decimal digits*/
+QString caculator_gui::Matrix_to_QString(const Matrix& m, const unsigned int& digit)const
 {
 	QString qstr;
 	int row = m.getRow();
@@ -124,7 +126,7 @@ QString caculator_gui::Matrix_to_QString(const Matrix& m)const
 	{
 		for (int j = 0; j < column; j++)
 		{
-			qstr = qstr + QString::number(m.getData(i, j), 10, 2);////////////////////////
+			qstr = qstr + QString::number(m.getData(i, j), 10, digit);////////////////////////
 			if (j != column - 1) qstr = qstr + " ";
 			//qstr = qstr.toStdString();
 		}
@@ -132,6 +134,7 @@ QString caculator_gui::Matrix_to_QString(const Matrix& m)const
 	}
 	return qstr;
 }
+
 caculator_gui::caculator_gui(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -166,7 +169,7 @@ void caculator_gui::push_add_button()
 	}
 
 	a = a + b;
-	strA = "ans of A + B =\n" + Matrix_to_QString(a);
+	strA = "ans of A + B =\n" + Matrix_to_QString(a,2);
 	ui.output_test_browser->setPlainText(strA);//设置
 }
 
@@ -198,7 +201,7 @@ void caculator_gui::push_subtract_button()
 	}
 
 	a = a - b;
-	strA = "ans of A - B =\n" + Matrix_to_QString(a);
+	strA = "ans of A - B =\n" + Matrix_to_QString(a,2);
 	ui.output_test_browser->setPlainText(strA);//设置
 }
 
@@ -229,7 +232,7 @@ void caculator_gui::push_multiply_button()
 		return;
 	}
 	a = a * b;
-	strA = "ans of A * B =\n" + Matrix_to_QString(a);
+	strA = "ans of A * B =\n" + Matrix_to_QString(a,2);
 	ui.output_test_browser->setPlainText(strA);//设置
 
 }
@@ -250,14 +253,14 @@ void caculator_gui::push_swap_button()
 void caculator_gui::push_randomA_button()
 {
 	Matrix A = get_random_matrix();
-	QString qstr = Matrix_to_QString(A);
+	QString qstr = Matrix_to_QString(A,2);
 	ui.MatrixA->setPlainText(qstr);
 	return;
 }
 void caculator_gui::push_randomB_button()
 {
 	Matrix B = get_random_matrix();
-	QString qstr = Matrix_to_QString(B);
+	QString qstr = Matrix_to_QString(B,2);
 	ui.MatrixB->setPlainText(qstr);
 	return;
 }
@@ -331,7 +334,7 @@ void caculator_gui::push_invA_button()
 		return;
 	}
 	Matrix inv_matrix = a.inverse_matrix();
-	strA = Matrix_to_QString(inv_matrix);
+	strA = Matrix_to_QString(inv_matrix,2);
 	ui.output_test_browser->setPlainText(strA);//设置
 }
 void caculator_gui::push_invB_button()

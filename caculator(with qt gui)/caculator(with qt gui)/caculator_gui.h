@@ -51,6 +51,6 @@ private:
 	//bug
 	Matrix get_random_matrix();
 	Matrix QString_to_matrix(const QString&,bool &)const;
-	QString Matrix_to_QString(const Matrix&)const;
+	QString Matrix_to_QString(const Matrix&, const unsigned int& )const;
 	
 };
