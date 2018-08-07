@@ -59,7 +59,11 @@
       </layout>
      </item>
      <item>
-      <widget class="QTextEdit" name="MatrixA"/>
+      <widget class="QTextEdit" name="MatrixA">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;输入A矩阵&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -121,7 +125,11 @@
       </layout>
      </item>
      <item>
-      <widget class="QTextEdit" name="MatrixB"/>
+      <widget class="QTextEdit" name="MatrixB">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;输入B矩阵&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -392,38 +400,15 @@
      <rect>
       <x>340</x>
       <y>640</y>
-      <width>209</width>
+      <width>222</width>
       <height>41</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
-      <widget class="QCheckBox" name="use_float">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="font">
-        <font>
-         <strikeout>false</strikeout>
-        </font>
-       </property>
-       <property name="tabletTracking">
-        <bool>false</bool>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::DefaultContextMenu</enum>
-       </property>
-       <property name="acceptDrops">
-        <bool>true</bool>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
+      <widget class="QRadioButton" name="use_float">
        <property name="text">
         <string>用小数表示</string>
-       </property>
-       <property name="tristate">
-        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -525,6 +510,12 @@
       <width>222</width>
       <height>48</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="text">
      <string>te</string>
@@ -967,6 +958,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>use_float</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>change_state_use_float()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>379</x>
+     <y>656</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>32</x>
+     <y>706</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>push_add_button()</slot>
@@ -995,5 +1002,6 @@
   <slot>push_NumMulB_button()</slot>
   <slot>push_timeA_button()</slot>
   <slot>push_timeB_button()</slot>
+  <slot>change_state_use_float()</slot>
  </slots>
 </ui>

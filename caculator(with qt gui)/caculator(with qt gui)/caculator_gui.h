@@ -43,6 +43,8 @@ public slots://信号与槽在这里定义！！！！！
 	void push_timeA_button();
 	void push_timeB_button();
 
+
+	void change_state_use_float();
 private:
 	Ui::caculator_guiClass ui;
 	bool number_judge(char)const;
@@ -51,4 +53,5 @@ private:
 	Matrix QString_to_matrix(const QString&,bool &)const;
 	QString Matrix_to_QString(const Matrix&, const unsigned int& )const;
 	unsigned int DecimalDigit;
+	bool float_use;
 };

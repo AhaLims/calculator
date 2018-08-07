@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/caculator_gui">
-        <file>myico.ico</file>
+        <file>picture/baidu.PNG</file>
+        <file>picture/myico.ico</file>
+        <file>picture/wiki.PNG</file>
     </qresource>
 </RCC>

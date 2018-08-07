@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QCommandLinkButton>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -19,6 +18,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
@@ -91,7 +91,7 @@ public:
     QPushButton *expression_equal;
     QWidget *horizontalLayoutWidget_4;
     QHBoxLayout *horizontalLayout_8;
-    QCheckBox *use_float;
+    QRadioButton *use_float;
     QLabel *label_3;
     QSpinBox *decimals_num;
     QWidget *horizontalLayoutWidget_2;
@@ -388,23 +388,14 @@ public:
 
         horizontalLayoutWidget_4 = new QWidget(centralWidget);
         horizontalLayoutWidget_4->setObjectName(QStringLiteral("horizontalLayoutWidget_4"));
-        horizontalLayoutWidget_4->setGeometry(QRect(340, 640, 209, 41));
+        horizontalLayoutWidget_4->setGeometry(QRect(340, 640, 222, 41));
         horizontalLayout_8 = new QHBoxLayout(horizontalLayoutWidget_4);
         horizontalLayout_8->setSpacing(6);
         horizontalLayout_8->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
         horizontalLayout_8->setContentsMargins(0, 0, 0, 0);
-        use_float = new QCheckBox(horizontalLayoutWidget_4);
+        use_float = new QRadioButton(horizontalLayoutWidget_4);
         use_float->setObjectName(QStringLiteral("use_float"));
-        use_float->setEnabled(true);
-        QFont font;
-        font.setStrikeOut(false);
-        use_float->setFont(font);
-        use_float->setTabletTracking(false);
-        use_float->setContextMenuPolicy(Qt::DefaultContextMenu);
-        use_float->setAcceptDrops(true);
-        use_float->setAutoFillBackground(false);
-        use_float->setTristate(true);
 
         horizontalLayout_8->addWidget(use_float);
 
@@ -432,9 +423,9 @@ public:
 
         label = new QLabel(horizontalLayoutWidget_2);
         label->setObjectName(QStringLiteral("label"));
-        QFont font1;
-        font1.setPointSize(15);
-        label->setFont(font1);
+        QFont font;
+        font.setPointSize(15);
+        label->setFont(font);
         label->setOpenExternalLinks(false);
 
         horizontalLayout_7->addWidget(label);
@@ -445,7 +436,7 @@ public:
 
         label_2 = new QLabel(horizontalLayoutWidget_2);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setFont(font1);
+        label_2->setFont(font);
 
         horizontalLayout_7->addWidget(label_2);
 
@@ -491,6 +482,7 @@ public:
         QObject::connect(mulityNumB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_NumMulB_button()));
         QObject::connect(timeA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_timeA_button()));
         QObject::connect(timeB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_timeB_button()));
+        QObject::connect(use_float, SIGNAL(toggled(bool)), caculator_guiClass, SLOT(change_state_use_float()));
 
         QMetaObject::connectSlotsByName(caculator_guiClass);
     } // setupUi
@@ -500,11 +492,17 @@ public:
         caculator_guiClass->setWindowTitle(QApplication::translate("caculator_guiClass", "caculator_gui", nullptr));
         clearA->setText(QApplication::translate("caculator_guiClass", "\346\270\205\351\231\244", nullptr));
         randomA->setText(QApplication::translate("caculator_guiClass", "\351\232\217\346\234\272", nullptr));
+#ifndef QT_NO_TOOLTIP
+        MatrixA->setToolTip(QApplication::translate("caculator_guiClass", "<html><head/><body><p>\350\276\223\345\205\245A\347\237\251\351\230\265</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
         add->setText(QApplication::translate("caculator_guiClass", "A + B", nullptr));
         sub->setText(QApplication::translate("caculator_guiClass", "A - B", nullptr));
         multiply->setText(QApplication::translate("caculator_guiClass", "A * B", nullptr));
         exchange->setText(QApplication::translate("caculator_guiClass", "\342\206\222\n"
 "\342\206\220", nullptr));
+#ifndef QT_NO_TOOLTIP
+        MatrixB->setToolTip(QApplication::translate("caculator_guiClass", "<html><head/><body><p>\350\276\223\345\205\245B\347\237\251\351\230\265</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
         clearB->setText(QApplication::translate("caculator_guiClass", "\346\270\205\351\231\244", nullptr));
         randomB->setText(QApplication::translate("caculator_guiClass", "\351\232\217\346\234\272", nullptr));
         charactorValueA->setText(QApplication::translate("caculator_guiClass", "\347\211\271\345\276\201\345\200\274", nullptr));
@@ -536,6 +534,12 @@ public:
         label_3->setText(QApplication::translate("caculator_guiClass", "\345\260\217\346\225\260\344\275\215", nullptr));
         label->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265A", nullptr));
         label_2->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265B", nullptr));
+#ifndef QT_NO_TOOLTIP
+        commandLinkButton->setToolTip(QApplication::translate("caculator_guiClass", "<html><head/><body><p><br/></p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_WHATSTHIS
+        commandLinkButton->setWhatsThis(QApplication::translate("caculator_guiClass", "<html><head/><body><p><br/></p></body></html>", nullptr));
+#endif // QT_NO_WHATSTHIS
         commandLinkButton->setText(QApplication::translate("caculator_guiClass", "te", nullptr));
         commandLinkButton_2->setText(QApplication::translate("caculator_guiClass", "ttt", nullptr));
     } // retranslateUi

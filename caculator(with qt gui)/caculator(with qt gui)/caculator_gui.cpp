@@ -7,7 +7,6 @@
 #include <QtWidgets/QMessageBox>
 
 
-
 bool caculator_gui::number_judge(const char c)const//can judge float and fraction
 {
 	if (	c == '/'
@@ -141,8 +140,14 @@ caculator_gui::caculator_gui(QWidget *parent)
 {
 	ui.setupUi(this);
 	DecimalDigit = 2;
-	ui.use_float->setCheckState(Qt::Checked);//set default state
-	//为啥会有三态？？？？？
+	ui.use_float->setCheckable(true);
+	ui.use_float->setChecked(true);
+	float_use = true;
+
+	ui.decimals_num->setRange(0, 6);  // 范围
+	ui.decimals_num->setValue(2);//当前值
+	ui.decimals_num->setWrapping(false);  // 不开启循环
+	//set default states
 }
 
 void caculator_gui::push_add_button()
@@ -701,4 +706,19 @@ void caculator_gui::push_timeB_button()
 	//strA = "矩阵为\n" + ;
 	strB = Matrix_to_QString(m, DecimalDigit);
 	ui.output_test_browser->setPlainText(strB);//set
+}
+
+void caculator_gui::change_state_use_float()
+{
+	if (ui.use_float->isChecked())
+	{
+		float_use = true;
+		DecimalDigit = ui.decimals_num->value();//get dicimal digit
+	}
+	else
+	{
+		float_use = false;
+		DecimalDigit = 0;
+		//use fraction (has not built yet)
+	}
 }
