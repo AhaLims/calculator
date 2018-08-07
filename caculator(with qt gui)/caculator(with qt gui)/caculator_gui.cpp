@@ -547,28 +547,26 @@ void caculator_gui::push_getSimplestB_button()
 void caculator_gui::push_FeatureVectorA_button()
 {
 	QMessageBox::about(NULL, "WRONG", "NO BUILD");
-	////接口还没设计好....先看看矩阵的接口再写
-	//bool type = true;
-	//QString strA;
-	//strA = ui.MatrixA->toPlainText();
-	//if (strA == "")
-	//{
-	//	QMessageBox::about(NULL, "WRONG", "请输入矩阵");
-	//	return;
-	//}
-	//Matrix a;
-	//a = QString_to_matrix(strA, type);
-	//if (type == false)
-	//{
-	//	QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
-	//	return;
-	//}
-	//Matrix m;
-	//unsigned int time, rank;
-	////a.getFeatureVector();
-	//////strA = "矩阵的三角最简型为\n" + ;
-	////strA = Matrix_to_QString(m, 2);
-	////ui.output_test_browser->setPlainText(strA);//set
+	//接口还没设计好....先看看矩阵的接口再写
+	bool type = true;
+	QString strA;
+	strA = ui.MatrixA->toPlainText();
+	if (strA == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix a;
+	a = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix vector,value;
+	////strA = "矩阵的三角最简型为\n" + ;
+	//strA = Matrix_to_QString(m, 2);
+	//ui.output_test_browser->setPlainText(strA);//set
 }
 void caculator_gui::push_FeatureVectorB_button()
 {
