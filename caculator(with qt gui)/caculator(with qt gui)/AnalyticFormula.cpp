@@ -13,8 +13,9 @@ Matrix AnalyticFormula::Matrix_formula(string str)
 }
 
 /*make sure the str only has num (has the problem of accuracy)*/
-double AnalyticFormula::getNum(string str)
+double AnalyticFormula::getNum(string str)//does not support fraction
 {
+	//std::cout << "str is" << str << std::endl;
 	double num = 0;
 	unsigned int len = str.length();
 	for (unsigned int i = 0; i < len; i++)
@@ -31,7 +32,7 @@ double AnalyticFormula::getNum(string str)
 			for (unsigned int j = i + 1; j < len; j++)
 			{
 				tmp = str.at(j) - '0';
-				num += (tmp / divisor);
+				num += (double(tmp) / double(divisor));
 				divisor *= 10;
 			}
 			break;
