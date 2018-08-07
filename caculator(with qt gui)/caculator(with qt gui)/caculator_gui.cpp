@@ -90,7 +90,7 @@ Matrix caculator_gui::QString_to_matrix(const QString& qstr ,bool &type)const
 	
 	/*set matrix*/
 	Matrix m(row,first_column ,false);
-	std::cout << m.getRow() << " " << m.getColumn() << std::endl;
+	//std::cout << m.getRow() << " " << m.getColumn() << std::endl;
 	for (unsigned int i = 0,j = 0,amount = 0; i < length && j < length; i++)
 	{
 		if (amount == row * first_column) break;
@@ -142,12 +142,12 @@ QString caculator_gui::Matrix_to_QString(const Matrix& m, const unsigned int& di
 caculator_gui::caculator_gui(QWidget *parent)
 	: QMainWindow(parent)
 {
+
 	ui.setupUi(this);
-	DecimalDigit = 2;
 	ui.use_float->setCheckable(true);
 	ui.use_float->setChecked(true);
 	float_use = true;
-
+	DecimalDigit = 2;
 	ui.decimals_num->setRange(0, 6);  // 范围
 	ui.decimals_num->setValue(2);//当前值
 	ui.decimals_num->setWrapping(false);  // 不开启循环
@@ -156,6 +156,8 @@ caculator_gui::caculator_gui(QWidget *parent)
 
 void caculator_gui::push_add_button()
 {
+	std::cout << "the digits is " << DecimalDigit<<std::endl;
+	std::cout << "the status of dicimal:" << float_use << std::endl;
 	bool type = true;
 	QString strA,strB;
 	strA = ui.MatrixA->toPlainText();

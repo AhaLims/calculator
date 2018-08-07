@@ -42,8 +42,6 @@ public slots://信号与槽在这里定义！！！！！
 	void push_NumMulB_button();
 	void push_timeA_button();
 	void push_timeB_button();
-
-
 	void change_state_use_float();
 private:
 	Ui::caculator_guiClass ui;

@@ -126,6 +126,26 @@ Fraction Fraction::operator / (const Fraction & f)const
 	return tmp;
 }
 
+Fraction Fraction::operator +=(const Fraction& f)
+{
+	*this = *this + f;
+	return *this;
+}
+Fraction Fraction::operator -=(const Fraction& f)
+{
+	*this = *this - f;
+	return *this;
+}
+Fraction Fraction::operator *=(const Fraction& f)
+{
+	*this = *this * f;
+	return *this;
+}
+Fraction Fraction::operator /=(const Fraction& f)
+{
+	*this = *this / f;
+	return *this;
+}
 Fraction& Fraction::operator = (const Fraction & f)
 {
 	this->denominator = f.getD();
@@ -148,6 +168,103 @@ Fraction& Fraction::operator = ( double num)
 	FractionReduce();
 	return *this;
 }
+bool Fraction::operator > (const Fraction& f) const
+{
+	if (this->getD() == f.getD())
+	{
+		return this->getN() > f.getN();
+	}
+	else
+	{
+		int gcd = minCom(this->getD(), f.getD());
+		int n1 = this->getN() * gcd / this->getD();
+		int n2 = f.getN() * gcd / f.getD();
+		return n1 > n2;
+	}
+}
+
+bool Fraction::operator >= (const Fraction&f) const
+{
+	if (*this == f || *this > f)
+		return true;
+	else return false;
+}
+
+bool Fraction::operator < (const Fraction&f) const
+{
+	if (*this >= f) return false;
+	else return true;
+}
+
+bool Fraction::operator <= (const Fraction&f) const
+{
+	if (*this > f)return false;
+	else return true;
+}
+
+bool Fraction::operator == (const Fraction&f) const
+{
+	if (this->getD() == f.getD() && this->getN() == f.getD())
+		return true;
+	else if (this->getN() * f.getD() == this->getD() * f.getN())
+		return true;
+	return false;
+}
+
+bool Fraction::operator != (const Fraction&f) const
+{
+	return !(*this == f);
+}
+
+Fraction Fraction::operator +(const double &D)const
+{
+	Fraction f(D);
+	return *this + f;
+}
+
+Fraction Fraction::operator -(const double &D)const
+{
+	Fraction f(D);
+	return *this - f;
+}
+
+Fraction Fraction::operator *(const double &D)const
+{
+	Fraction f(D);
+	return *this * f;
+}
+
+Fraction Fraction::operator /(const double &D)const
+{
+	Fraction f(D);
+	return *this / f;
+}
+
+
+Fraction operator + (const double & D, const Fraction&  f)
+{
+	Fraction f1(D);
+	return f1 + f;
+}
+
+Fraction operator - (const double & D, const Fraction&  f)
+{
+	Fraction f1(D);
+	return f1 - f;
+}
+
+Fraction operator * (const double & D, const Fraction&  f)
+{
+	Fraction f1(D);
+	return f1 * f;
+}
+
+Fraction operator / (const double & D, const Fraction&  f)
+{
+	Fraction f1(D);
+	return f1 / f;
+}
+
 
 void Fraction::show()
 {

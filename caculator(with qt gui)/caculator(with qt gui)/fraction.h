@@ -21,10 +21,16 @@ public:
 	Fraction operator - (const Fraction&) const;
 	Fraction operator * (const Fraction&) const;
 	Fraction operator / (const Fraction&) const;
-	//Fraction operator - ();
+
+	Fraction operator +=(const Fraction&);
+	Fraction operator -=(const Fraction&);
+	Fraction operator *=(const Fraction&);
+	Fraction operator /=(const Fraction&);
+
 	Fraction& operator = (const Fraction&);
 	Fraction& operator = (double );
 
+	/////////need to test
 	bool operator > (const Fraction& ) const;
 	bool operator >= (const Fraction& ) const;
 	bool operator < (const Fraction& ) const;
@@ -38,10 +44,10 @@ public:
 	Fraction operator / (const double &)const;
 
 	
-	friend Fraction operator + (const double &, const Fraction);
-	friend Fraction operator - (const double &, const Fraction);
-	friend Fraction operator * (const double &, const Fraction);
-	friend Fraction operator / (const double &, const Fraction);
+	friend Fraction operator + (const double &, const Fraction&);
+	friend Fraction operator - (const double &, const Fraction&);
+	friend Fraction operator * (const double &, const Fraction&);
+	friend Fraction operator / (const double &, const Fraction&);
 	
 	/*debug part*/
 	void show();
