@@ -1,7 +1,7 @@
 #include "caculator_gui.h"
 #include <QtWidgets/QApplication>
 //#define DEBUG
-
+#include <QTextCodec>
 
 #ifndef DEBUG
 int main(int argc, char *argv[])

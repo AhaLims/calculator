@@ -156,8 +156,8 @@ caculator_gui::caculator_gui(QWidget *parent)
 
 void caculator_gui::push_add_button()
 {
-	std::cout << "the digits is " << DecimalDigit<<std::endl;
-	std::cout << "the status of dicimal:" << float_use << std::endl;
+	//std::cout << "the digits is " << DecimalDigit<<std::endl;
+	//std::cout << "the status of dicimal:" << float_use << std::endl;
 	bool type = true;
 	QString strA,strB;
 	strA = ui.MatrixA->toPlainText();

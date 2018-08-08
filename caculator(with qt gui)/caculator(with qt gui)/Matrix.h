@@ -80,7 +80,7 @@ public:
 	/*maybe only get Real area value*/
 	bool getFeatureVector(Matrix &,Matrix &,int )const;
 
-	void showFeatureVector_Value()const;
+	bool showFeatureVector_Value(Matrix &,double *)const;
 	double getData(int i, int j) const { return data[i][j]; };
 
 	unsigned int getRow()const { return row; };

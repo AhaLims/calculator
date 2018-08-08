@@ -530,28 +530,31 @@ bool Matrix::getFeatureVector(Matrix &characteristicValueMatrix ,Matrix & FV,int
 	FV = FeatureVetor;//ÌØÕ÷ÏòÁ¿
 	return true;
 }
-
-void Matrix::showFeatureVector_Value()const
+//////////////////////////////////////continue!!!!!!!!!!!!!!!!!!!!!!
+bool Matrix::showFeatureVector_Value(Matrix & FeatureVector,double * value)const
 {
-	Matrix FeatureVector(row, column);
+	//Matrix FeatureVector(row, column);
+	FeatureVector.setRow(row);
+	FeatureVector.setColumn(column);
 	Matrix FeatureValue(row, column);
 	if (!getFeatureVector(FeatureValue, FeatureVector))
 	{
-		std::cout << "not sy\n";
-		return;
+		//std::cout << "not sy\n";
+		return false;
 	}
 	else
 	{
-		//double value[10];
-		double *value = new double(row + 1);
+		value = new double(row + 1);
+		//double *value = new double(row + 1);
 		for (unsigned int i = 0; i < row; i++)
 		{
 			value[i] = FeatureValue.getData(i, i);
 			std::cout << value[i] << std::endl;
 		}
-		delete value;
+		//delete value;
+		return true;
 	}
-	return;
+
 }
 
 void Matrix::reset()
