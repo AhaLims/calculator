@@ -110,7 +110,7 @@ public:
         if (caculator_guiClass->objectName().isEmpty())
             caculator_guiClass->setObjectName(QStringLiteral("caculator_guiClass"));
         caculator_guiClass->setEnabled(true);
-        caculator_guiClass->resize(1341, 912);
+        caculator_guiClass->resize(1333, 912);
         centralWidget = new QWidget(caculator_guiClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
@@ -476,13 +476,14 @@ public:
         QObject::connect(simplestB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_getSimplestB_button()));
         QObject::connect(charactorVectorA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_FeatureVectorA_button()));
         QObject::connect(charactorVectorB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_FeatureVectorB_button()));
-        QObject::connect(charactorValueA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_FeatureVectorA_button()));
+        QObject::connect(charactorValueA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_FeatureValueA_button()));
         QObject::connect(charactorValueB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_FeatureValueB_button()));
         QObject::connect(mulityNumA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_NumMulA_button()));
         QObject::connect(mulityNumB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_NumMulB_button()));
         QObject::connect(timeA, SIGNAL(clicked()), caculator_guiClass, SLOT(push_timeA_button()));
         QObject::connect(timeB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_timeB_button()));
         QObject::connect(use_float, SIGNAL(toggled(bool)), caculator_guiClass, SLOT(change_state_use_float()));
+        QObject::connect(decimals_num, SIGNAL(valueChanged(int)), caculator_guiClass, SLOT(change_float_digit()));
 
         QMetaObject::connectSlotsByName(caculator_guiClass);
     } // setupUi

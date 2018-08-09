@@ -546,8 +546,6 @@ void caculator_gui::push_getSimplestB_button()
 /*NO BUILD PART*/
 void caculator_gui::push_FeatureVectorA_button()
 {
-	QMessageBox::about(NULL, "WRONG", "NO BUILD");
-	//接口还没设计好....先看看矩阵的接口再写
 	bool type = true;
 	QString strA;
 	strA = ui.MatrixA->toPlainText();
@@ -563,22 +561,158 @@ void caculator_gui::push_FeatureVectorA_button()
 		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
 		return;
 	}
-	Matrix vector,value;
-	////strA = "矩阵的三角最简型为\n" + ;
-	//strA = Matrix_to_QString(m, 2);
-	//ui.output_test_browser->setPlainText(strA);//set
+	Matrix vector(a.getRow(),a.getColumn(),false);
+	double *value = nullptr;
+	value = new double[a.getRow() + 1];
+	if (!a.showFeatureVector_Value(vector, value))
+	{
+		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		return;
+	}
+	strA = "the feature vector of matrix A \n";
+	for (unsigned int i = 0; i < vector.getRow(); i++)
+	{
+		strA += "{" ;
+		for (unsigned int j = 0; j < vector.getColumn(); j++)
+		{
+			strA += QString::number(vector.getData(i, j),10,DecimalDigit);//////
+			if (j != vector.getColumn() - 1)
+			{
+				strA += " , ";
+			}
+		}
+		strA += "}\n";
+	}
+	ui.output_test_browser->setPlainText(strA);//set
+	if (value != nullptr)
+	{
+		delete value;
+		value = nullptr;
+	}
+	return;
 }
 void caculator_gui::push_FeatureVectorB_button()
 {
-	QMessageBox::about(NULL, "WRONG", "NO BUILD");
+	bool type = true;
+	QString strB;
+	strB = ui.MatrixB->toPlainText();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix vector(B.getRow(), B.getColumn(), false);
+	double *value = nullptr;
+	value = new double[B.getRow() + 1];;
+	if (!B.showFeatureVector_Value(vector, value))
+	{
+		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		return;
+	}
+	strB = "the feature vector of matrix A \n";
+	for (unsigned int i = 0; i < vector.getRow(); i++)
+	{
+		strB += "{";
+		for (unsigned int j = 0; j < vector.getColumn(); j++)
+		{
+			strB += QString::number(vector.getData(i, j), 10, DecimalDigit);//////
+			if (j != vector.getColumn() - 1)
+			{
+				strB += " , ";
+			}
+		}
+		strB += "}\n";
+	}
+	ui.output_test_browser->setPlainText(strB);//set
+	if (value != nullptr)
+	{
+		delete value;
+		value = nullptr;
+	}
+	return;
 }
 void caculator_gui::push_FeatureValueA_button()
 {
-	QMessageBox::about(NULL, "WRONG", "NO BUILD");
+	bool type = true;
+	QString strA;
+	strA = ui.MatrixA->toPlainText();
+	if (strA == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix a;
+	a = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix vector(a.getRow(), a.getColumn(), false);
+	double *value = nullptr;
+	value = new double[a.getRow() + 1];
+	if (!a.showFeatureVector_Value(vector, value))
+	{
+		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		return;
+	}
+	strA = "the feature value of matrix A \n";
+	for (unsigned int i = 0; i < a.getRow(); i++)
+	{
+		strA += "x" + QString::number(i + 1) + " =" + QString::number(value[i],10,DecimalDigit) +"\n";
+	}
+	ui.output_test_browser->setPlainText(strA);//set
+	if (value != nullptr)
+	{
+		delete value;
+		value = nullptr;
+	}
+	return;
 }
 void caculator_gui::push_FeatureValueB_button()
 {
-	QMessageBox::about(NULL, "WRONG", "NO BUILD");
+	bool type = true;
+	QString strB;
+	strB = ui.MatrixA->toPlainText();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix vector(B.getRow(), B.getColumn(), false);
+	double *value = nullptr;
+	value = new double[B.getRow() + 1];
+	if (!B.showFeatureVector_Value(vector, value))
+	{
+		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		return;
+	}
+	strB = "the feature value of matrix B \n";
+	for (unsigned int i = 0; i < B.getRow(); i++)
+	{
+		strB += "x" + QString::number(i + 1) + " =" + QString::number(value[i], 10, DecimalDigit) + "\n";
+	}
+	ui.output_test_browser->setPlainText(strB);//set
+	if (value != nullptr)
+	{
+		delete value;
+		value = nullptr;
+	}
+	return;
 }
 
 
@@ -725,5 +859,14 @@ void caculator_gui::change_state_use_float()
 		float_use = false;
 		DecimalDigit = 0;
 		//use fraction (has not built yet)
+	}
+}
+
+void caculator_gui::change_float_digit()
+{
+	if (float_use == true)
+	{
+		DecimalDigit = ui.decimals_num->value();
+		//std::cout << DecimalDigit;
 	}
 }

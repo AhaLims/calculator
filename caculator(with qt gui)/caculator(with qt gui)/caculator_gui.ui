@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1341</width>
+    <width>1333</width>
     <height>912</height>
    </rect>
   </property>
@@ -697,7 +697,7 @@
      <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1239</x>
+     <x>1128</x>
      <y>503</y>
     </hint>
    </hints>
@@ -729,7 +729,7 @@
      <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1298</x>
+     <x>1128</x>
      <y>533</y>
     </hint>
    </hints>
@@ -761,7 +761,7 @@
      <y>493</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1226</x>
+     <x>1128</x>
      <y>558</y>
     </hint>
    </hints>
@@ -793,7 +793,7 @@
      <y>493</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1340</x>
+     <x>1128</x>
      <y>561</y>
     </hint>
    </hints>
@@ -825,7 +825,7 @@
      <y>528</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1231</x>
+     <x>1128</x>
      <y>596</y>
     </hint>
    </hints>
@@ -857,7 +857,7 @@
      <y>563</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1231</x>
+     <x>1128</x>
      <y>631</y>
     </hint>
    </hints>
@@ -866,7 +866,7 @@
    <sender>charactorValueA</sender>
    <signal>clicked()</signal>
    <receiver>caculator_guiClass</receiver>
-   <slot>push_FeatureVectorA_button()</slot>
+   <slot>push_FeatureValueA_button()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>759</x>
@@ -889,7 +889,7 @@
      <y>563</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1340</x>
+     <x>1128</x>
      <y>622</y>
     </hint>
    </hints>
@@ -921,7 +921,7 @@
      <y>613</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1231</x>
+     <x>1128</x>
      <y>678</y>
     </hint>
    </hints>
@@ -953,7 +953,7 @@
      <y>613</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1216</x>
+     <x>1128</x>
      <y>684</y>
     </hint>
    </hints>
@@ -971,6 +971,22 @@
     <hint type="destinationlabel">
      <x>32</x>
      <y>706</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>decimals_num</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>change_float_digit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>526</x>
+     <y>660</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>92</x>
+     <y>738</y>
     </hint>
    </hints>
   </connection>
@@ -1003,5 +1019,6 @@
   <slot>push_timeA_button()</slot>
   <slot>push_timeB_button()</slot>
   <slot>change_state_use_float()</slot>
+  <slot>change_float_digit()</slot>
  </slots>
 </ui>

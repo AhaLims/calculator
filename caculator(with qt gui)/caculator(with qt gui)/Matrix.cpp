@@ -530,28 +530,23 @@ bool Matrix::getFeatureVector(Matrix &characteristicValueMatrix ,Matrix & FV,int
 	FV = FeatureVetor;//ÌØÕ÷ÏòÁ¿
 	return true;
 }
-//////////////////////////////////////continue!!!!!!!!!!!!!!!!!!!!!!
-bool Matrix::showFeatureVector_Value(Matrix & FeatureVector,double * value)const
+//value array are feature values while FeatureVector Matrix are the feature vector
+bool Matrix::showFeatureVector_Value(Matrix & FeatureVector,double * value)const//use string value_str...is not a good choice
 {
-	//Matrix FeatureVector(row, column);
 	FeatureVector.setRow(row);
 	FeatureVector.setColumn(column);
 	Matrix FeatureValue(row, column);
 	if (!getFeatureVector(FeatureValue, FeatureVector))
 	{
-		//std::cout << "not sy\n";
 		return false;
 	}
 	else
 	{
-		value = new double(row + 1);
-		//double *value = new double(row + 1);
 		for (unsigned int i = 0; i < row; i++)
 		{
 			value[i] = FeatureValue.getData(i, i);
-			std::cout << value[i] << std::endl;
+			//std::cout << value[i] << std::endl;
 		}
-		//delete value;
 		return true;
 	}
 

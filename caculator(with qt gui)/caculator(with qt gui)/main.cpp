@@ -3,6 +3,8 @@
 //#define DEBUG
 #include <QTextCodec>
 
+//#define DEBUG
+
 #ifndef DEBUG
 int main(int argc, char *argv[])
 {
@@ -82,7 +84,14 @@ void test()
 				}
 				else if (order == 'b')
 				{
-					m1.showFeatureVector_Value();
+					Matrix vector;
+					double * value;
+					m1.showFeatureVector_Value(vector,value);
+					vector.show();
+					for (int i = 0; i < vector.getRow(); i++)
+					{
+						std::cout << value[i] << std::endl;
+					}
 				}
 				else if (order == 0)break;
 				else continue;
