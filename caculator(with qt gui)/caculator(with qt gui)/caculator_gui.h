@@ -50,7 +50,7 @@ public slots://信号与槽在这里定义！！！！！
 private:
 	Ui::caculator_guiClass ui;
 	bool number_judge(char)const;
-	//bug
+
 	Matrix get_random_matrix();
 	Matrix QString_to_matrix(const QString&,bool &)const;
 	QString Matrix_to_QString(const Matrix&, const unsigned int& )const;

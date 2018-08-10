@@ -120,7 +120,6 @@ Matrix caculator_gui::QString_to_matrix(const QString& qstr ,bool &type)const
 }
 
 /*digit is the decimal digits*/
-/*BUG!!!!!!!!!!!!!!!!!!!!!*/
 QString caculator_gui::Matrix_to_QString(const Matrix& m, const unsigned int& digit)const
 {
 	QString qstr;
@@ -130,9 +129,8 @@ QString caculator_gui::Matrix_to_QString(const Matrix& m, const unsigned int& di
 	{
 		for (int j = 0; j < column; j++)
 		{
-			qstr = qstr + QString::number(m.getData(i, j), 10, digit);////////////////////////
+			qstr = qstr + QString::number(m.getData(i, j), 10, digit);
 			if (j != column - 1) qstr = qstr + " ";
-			//qstr = qstr.toStdString();
 		}
 		if(i != row - 1 )qstr = qstr + "\n";
 	}
@@ -156,8 +154,6 @@ caculator_gui::caculator_gui(QWidget *parent)
 
 void caculator_gui::push_add_button()
 {
-	//std::cout << "the digits is " << DecimalDigit<<std::endl;
-	//std::cout << "the status of dicimal:" << float_use << std::endl;
 	bool type = true;
 	QString strA,strB;
 	strA = ui.MatrixA->toPlainText();
@@ -170,8 +166,7 @@ void caculator_gui::push_add_button()
 	Matrix a, b;
 	a = QString_to_matrix(strA,type);
 	b = QString_to_matrix(strB,type);
-	//return;
-	/////////////////////////////////////////////////////////
+
 	/*juudge*/
 	if (type == status::WrongInput)
 	{
@@ -186,7 +181,7 @@ void caculator_gui::push_add_button()
 
 	a = a + b;
 	strA = "ans of A + B =\n" + Matrix_to_QString(a, DecimalDigit ) +"\n";
-	ui.output_test_browser->setPlainText(strA);//设置
+	ui.output_test_browser->setPlainText(strA);
 }
 
 void caculator_gui::push_subtract_button()
@@ -218,7 +213,7 @@ void caculator_gui::push_subtract_button()
 
 	a = a - b;
 	strA = "ans of A - B =\n" + Matrix_to_QString(a, DecimalDigit) + "\n";
-	ui.output_test_browser->setPlainText(strA);//设置
+	ui.output_test_browser->setPlainText(strA);
 }
 
 void caculator_gui::push_multiply_button()
@@ -249,7 +244,7 @@ void caculator_gui::push_multiply_button()
 	}
 	a = a * b;
 	strA = "ans of A * B =\n" + Matrix_to_QString(a, DecimalDigit) +"\n";
-	ui.output_test_browser->setPlainText(strA);//设置
+	ui.output_test_browser->setPlainText(strA);
 
 }
 void caculator_gui::push_swap_button()
@@ -312,7 +307,7 @@ void caculator_gui::push_detA_button()
 	}
 	double det = a.determinant();
 	strA = "determination of matrix A is \n" + QString::number(det, 10, DecimalDigit) +"\n";
-	ui.output_test_browser->setPlainText(strA);//设置
+	ui.output_test_browser->setPlainText(strA);
 }
 void caculator_gui::push_detB_button()
 {
@@ -338,7 +333,7 @@ void caculator_gui::push_detB_button()
 	}
 	double det = B.determinant();
 	strB = "determination of matrix B is \n" + QString::number(det, 10, DecimalDigit) + "\n";
-	ui.output_test_browser->setPlainText(strB);//设置
+	ui.output_test_browser->setPlainText(strB);
 }
 
 void caculator_gui::push_invA_button()
@@ -372,7 +367,7 @@ void caculator_gui::push_invA_button()
 	}
 	Matrix inv_matrix = a.inverse_matrix();
 	strA = "the invert matrix of matrix A is \n" + Matrix_to_QString(inv_matrix, DecimalDigit) + "\n";
-	ui.output_test_browser->setPlainText(strA);//设置
+	ui.output_test_browser->setPlainText(strA);
 }
 void caculator_gui::push_invB_button()
 {
@@ -405,7 +400,7 @@ void caculator_gui::push_invB_button()
 	}
 	Matrix inv_matrix = B.inverse_matrix();
 	strB = "the invert matrix of matrix B is \n" + Matrix_to_QString(inv_matrix, DecimalDigit) + "\n";
-	ui.output_test_browser->setPlainText(strB);//设置
+	ui.output_test_browser->setPlainText(strB);
 }
 void caculator_gui::push_tranA_button()//get transport matrix
 {
@@ -426,7 +421,7 @@ void caculator_gui::push_tranA_button()//get transport matrix
 	}
 	Matrix transport_matrix = a.Transposition();
 	strA = "the transition matrix of matrix A is \n" + Matrix_to_QString(transport_matrix, DecimalDigit) +"\n";
-	ui.output_test_browser->setPlainText(strA);//set
+	ui.output_test_browser->setPlainText(strA);
 }
 void caculator_gui::push_tranB_button()
 {
@@ -447,7 +442,7 @@ void caculator_gui::push_tranB_button()
 	}
 	Matrix transport_matrix = B.Transposition();
 	strB = "the transition matrix of matrix B is \n" + Matrix_to_QString(transport_matrix, DecimalDigit);
-	ui.output_test_browser->setPlainText(strB);//set
+	ui.output_test_browser->setPlainText(strB);
 }
 void caculator_gui::push_rankA_button()
 {
@@ -467,9 +462,8 @@ void caculator_gui::push_rankA_button()
 		return;
 	}
 	unsigned int rank = a.getRank();
-	//strA = "矩阵的秩为\n" + QString::number(rank, 10, 0);
 	strA = "the rank of the matrix A is\n" + QString::number(rank, 10, 0) + "\n";
-	ui.output_test_browser->setPlainText(strA);//set
+	ui.output_test_browser->setPlainText(strA);
 }
 
 void caculator_gui::push_rankB_button()
@@ -491,7 +485,7 @@ void caculator_gui::push_rankB_button()
 	}
 	unsigned int rank = B.getRank();
 	strB = "the rank of the matrix B is\n" + QString::number(rank, 10, 0) + "\n";
-	ui.output_test_browser->setPlainText(strB);//set
+	ui.output_test_browser->setPlainText(strB);
 }
 void caculator_gui::push_getSimplestA_button()
 {
@@ -513,9 +507,8 @@ void caculator_gui::push_getSimplestA_button()
 	Matrix m;
 	unsigned int time, rank;
 	a.getSimplest(m, time, rank);
-	//strA = "矩阵的三角最简型为\n" + ;
 	strA = "the simplest matrix of matrix A is \n" + Matrix_to_QString(m, DecimalDigit) + "\n";
-	ui.output_test_browser->setPlainText(strA);//set
+	ui.output_test_browser->setPlainText(strA);
 }
 void caculator_gui::push_getSimplestB_button()
 {
@@ -537,13 +530,11 @@ void caculator_gui::push_getSimplestB_button()
 	Matrix m;
 	unsigned int time, rank;
 	B.getSimplest(m, time, rank);
-	//strA = "矩阵的三角最简型为\n" + ;
 	strB = "the simplest matrix of matrix A is \n" + Matrix_to_QString(m, DecimalDigit) + "\n";
-	ui.output_test_browser->setPlainText(strB);//set
+	ui.output_test_browser->setPlainText(strB);
 }
 
 
-/*NO BUILD PART*/
 void caculator_gui::push_FeatureVectorA_button()
 {
 	bool type = true;
@@ -630,7 +621,7 @@ void caculator_gui::push_FeatureVectorB_button()
 		}
 		strB += "}\n";
 	}
-	ui.output_test_browser->setPlainText(strB);//set
+	ui.output_test_browser->setPlainText(strB);
 	if (value != nullptr)
 	{
 		delete value;
