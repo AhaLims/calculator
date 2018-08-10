@@ -1,12 +1,20 @@
 #include"DynamicModule.h"
 #include<qstring.h>
+#include<iostream>
 DynamicModule::DynamicModule()
 {
+#ifdef DEBUG
+	std::cout << "use DynamicModule construct\n";
+#endif // DEBUG
+
 	names = nullptr;
 	elements = nullptr;
 }
 QHBoxLayout* DynamicModule::set(int amount)//amount must >= 1
 {
+#ifdef DEBUG
+	std::cout << "use set function\n";
+#endif // DEBUG
 	int maxwidth = 25;
 	QString name;
 	if (names != nullptr)
@@ -47,6 +55,9 @@ QHBoxLayout* DynamicModule::set(int amount)//amount must >= 1
 
 DynamicModule::~DynamicModule()
 {
+#ifdef DEBUG
+	std::cout << "use DynamicModule destruct\n";
+#endif // DEBUG
 	if (names != nullptr)
 	{
 		delete names;

@@ -17,5 +17,5 @@ private:
 	DynamicModule *Module;
 private slots:
 	void change_equation();
-	//void push_get_answer_button();
+	void push_get_answer_button();
 };

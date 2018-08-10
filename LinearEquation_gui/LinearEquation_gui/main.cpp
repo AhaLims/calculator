@@ -1,5 +1,7 @@
 #include "LinearEquation_gui.h"
 #include <QtWidgets/QApplication>
+#include<iostream>
+#define DEBUG
 
 int main(int argc, char *argv[])
 {
