@@ -1,8 +1,10 @@
 #include"source.h"
 #include"Matrix.h"
+#include"LinearEqaution.h"
+
 
 /*judge if the linear equations is compatible and the number of solution*/
-int Compatible(const Matrix CoefficientMatrix, const Matrix AugmentedMatrix)
+int solveLinearEqaution::Compatible(const Matrix CoefficientMatrix, const Matrix AugmentedMatrix)
 {
 	int CRank = CoefficientMatrix.getRank();
 	int ARank = AugmentedMatrix.getRank();
@@ -19,7 +21,10 @@ int Compatible(const Matrix CoefficientMatrix, const Matrix AugmentedMatrix)
 		return 0;
 	}
 }
-Matrix getSolution(const Matrix A, const Matrix b,int & num)//solve Ax = b
+
+/*num is the amount of solution .
+If there is only one solution, return solution matrix */
+Matrix solveLinearEqaution::getSolution(const Matrix A, const Matrix b,int & num)//solve Ax = b
 {
 	//A is Coefficient Matrix
 	Matrix AugmentedMatrix(A.getRow(), A.getColumn() + 1,false);
@@ -44,11 +49,18 @@ Matrix getSolution(const Matrix A, const Matrix b,int & num)//solve Ax = b
 		Matrix m(1, 1, 0);
 		return m;// 0 solution
 	}
+
+	/* only one solution
+	the answer is A^-1 *b 
+	x[i] = solution.data[i][0];
+	*/
 	else if (num == 1)
 	{
 		Matrix solution(A.getRow(), 1, false);
 		solution = A.inverse_matrix() *b;
 		return solution;
+
+
 	}
 	else //if (num == 2)
 	{

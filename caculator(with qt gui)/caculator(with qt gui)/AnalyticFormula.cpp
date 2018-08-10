@@ -1,18 +1,9 @@
 #include"Matrix.h"
 #include"source.h"
 #include"AnalyticFormula.h"
-Matrix AnalyticFormula::Matrix_formula(string str)
-{
-	Matrix m(1, 1, 0);
-	unsigned int len = str.length();
-	for (unsigned int i = 0; i < len; i++)
-	{
-		//for(int i = 0)
-	}
-	return m;
-}
 
-/*make sure the str only has num (has the problem of accuracy)*/
+
+/*from string to number*/
 double AnalyticFormula::getNum(string str)//does not support fraction
 {
 	//std::cout << "str is" << str << std::endl;
@@ -42,6 +33,8 @@ double AnalyticFormula::getNum(string str)//does not support fraction
 	}
 	return num;
 }
+
+/*analyse the expression of formula*/
 void AnalyticFormula::Computational_formula(string expression)
 {
 	stack<string> operation, operand;

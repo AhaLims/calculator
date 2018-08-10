@@ -124,7 +124,7 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mathTool.cpp" />
+    <ClCompile Include="LinearEqaution.cpp" />
     <ClCompile Include="Matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="AnalyticFormula.h" />
     <ClInclude Include="fraction.h" />
+    <ClInclude Include="LinearEqaution.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="source.h" />
   </ItemGroup>
