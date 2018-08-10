@@ -32,7 +32,7 @@ public:
     {
         if (main_windowClass->objectName().isEmpty())
             main_windowClass->setObjectName(QStringLiteral("main_windowClass"));
-        main_windowClass->resize(731, 639);
+        main_windowClass->resize(1117, 769);
         centralWidget = new QWidget(main_windowClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         function_caculator_button = new QPushButton(centralWidget);

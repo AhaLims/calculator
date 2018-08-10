@@ -2,14 +2,14 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_main_window.h"
-
+#include"caculator_gui.h"
 class main_window : public QMainWindow
 {
 	Q_OBJECT
 
 public:
 	main_window(QWidget *parent = Q_NULLPTR);
-
+	caculator_gui matrix_caculator;
 private:
 	Ui::main_windowClass ui;
 public slots:

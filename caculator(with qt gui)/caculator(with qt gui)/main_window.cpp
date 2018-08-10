@@ -8,7 +8,7 @@ main_window::main_window(QWidget *parent)
 
 void  main_window::push_matrix_caculator_button()
 {
-
+	matrix_caculator.show();
 }
 
 void main_window::push_scientic_caculator_button()

@@ -84,10 +84,6 @@ public:
     QPushButton *mulityNumB;
     QLineEdit *lineEdit_NumB;
     QPushButton *dialogB;
-    QWidget *horizontalLayoutWidget_3;
-    QHBoxLayout *horizontalLayout_6;
-    QLineEdit *expression;
-    QPushButton *expression_equal;
     QWidget *horizontalLayoutWidget_4;
     QHBoxLayout *horizontalLayout_8;
     QRadioButton *use_float;
@@ -365,24 +361,6 @@ public:
 
         gridLayoutA->addWidget(dialogB, 2, 0, 1, 1);
 
-        horizontalLayoutWidget_3 = new QWidget(centralWidget);
-        horizontalLayoutWidget_3->setObjectName(QStringLiteral("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(640, 390, 391, 31));
-        horizontalLayout_6 = new QHBoxLayout(horizontalLayoutWidget_3);
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
-        expression = new QLineEdit(horizontalLayoutWidget_3);
-        expression->setObjectName(QStringLiteral("expression"));
-
-        horizontalLayout_6->addWidget(expression);
-
-        expression_equal = new QPushButton(horizontalLayoutWidget_3);
-        expression_equal->setObjectName(QStringLiteral("expression_equal"));
-
-        horizontalLayout_6->addWidget(expression_equal);
-
         horizontalLayoutWidget_4 = new QWidget(centralWidget);
         horizontalLayoutWidget_4->setObjectName(QStringLiteral("horizontalLayoutWidget_4"));
         horizontalLayoutWidget_4->setGeometry(QRect(340, 640, 222, 41));
@@ -519,11 +497,6 @@ public:
         detB->setText(QApplication::translate("caculator_guiClass", "\350\241\214\345\210\227\345\274\217", nullptr));
         mulityNumB->setText(QApplication::translate("caculator_guiClass", "\346\225\260\344\271\230", nullptr));
         dialogB->setText(QApplication::translate("caculator_guiClass", "\345\257\271\350\247\222\347\237\251\351\230\265", nullptr));
-#ifndef QT_NO_TOOLTIP
-        expression->setToolTip(QString());
-#endif // QT_NO_TOOLTIP
-        expression->setText(QApplication::translate("caculator_guiClass", "1*A+2*B  ", nullptr));
-        expression_equal->setText(QApplication::translate("caculator_guiClass", "=", nullptr));
         use_float->setText(QApplication::translate("caculator_guiClass", "\347\224\250\345\260\217\346\225\260\350\241\250\347\244\272", nullptr));
         label_3->setText(QApplication::translate("caculator_guiClass", "\345\260\217\346\225\260\344\275\215", nullptr));
         label->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265A", nullptr));

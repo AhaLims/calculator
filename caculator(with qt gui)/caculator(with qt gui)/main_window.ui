@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>731</width>
-    <height>639</height>
+    <width>1117</width>
+    <height>769</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -113,9 +113,7 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="main_window.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>exit_button</sender>
