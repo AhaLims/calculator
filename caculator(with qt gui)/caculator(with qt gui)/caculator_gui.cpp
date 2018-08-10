@@ -6,6 +6,20 @@
 #include"source.h"
 #include <QtWidgets/QMessageBox>
 
+caculator_gui::caculator_gui(QWidget *parent)
+	: QMainWindow(parent)
+{
+
+	ui.setupUi(this);
+	ui.use_float->setCheckable(true);
+	ui.use_float->setChecked(true);
+	float_use = true;
+	DecimalDigit = 2;
+	ui.decimals_num->setRange(0, 6);  // 范围
+	ui.decimals_num->setValue(2);//当前值
+	ui.decimals_num->setWrapping(false);  // 不开启循环
+										  //set default states
+}
 
 bool caculator_gui::number_judge(const char c)const//can judge float and fraction
 {
@@ -137,20 +151,7 @@ QString caculator_gui::Matrix_to_QString(const Matrix& m, const unsigned int& di
 	return qstr;
 }
 
-caculator_gui::caculator_gui(QWidget *parent)
-	: QMainWindow(parent)
-{
 
-	ui.setupUi(this);
-	ui.use_float->setCheckable(true);
-	ui.use_float->setChecked(true);
-	float_use = true;
-	DecimalDigit = 2;
-	ui.decimals_num->setRange(0, 6);  // 范围
-	ui.decimals_num->setValue(2);//当前值
-	ui.decimals_num->setWrapping(false);  // 不开启循环
-	//set default states
-}
 
 void caculator_gui::push_add_button()
 {
@@ -898,7 +899,7 @@ void caculator_gui::push_dialog_matrixB_button()
 		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
 		return;
 	}
-	Matrix dialog_matrix(A.getRow(), B.getColumn(), false);
+	Matrix dialog_matrix(B.getRow(), B.getColumn(), false);
 	for (unsigned int i = 0; i < B.getRow(); i++)
 	{
 		dialog_matrix.setData(i, i, value[i]);
