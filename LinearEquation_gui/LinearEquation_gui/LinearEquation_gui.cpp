@@ -14,20 +14,24 @@ LinearEquation_gui::LinearEquation_gui(QWidget *parent)
 
 void LinearEquation_gui::set()
 {
-	if (Module != nullptr)
-	{
+	//if (Module != nullptr)
+	//{
 #ifdef DEBUG
 		std::cout << "delete module\n";
 #endif // DEBUG
-		delete Module;//这里出现了断点？
-	}
+		//delete Module;//这里出现了断点？
+	//}
 #ifdef DEBUG
 	std::cout << "new dynamic module\n";
 #endif // DEBUG
+	if (Module != nullptr)
+	{
+		ui.verticalLayout->removeWidget(this);
+	}
 	Module = new DynamicModule[amount];
 	for (int i = 0; i < amount; i++)
 	{
-		ui.verticalLayout->addLayout(Module[i].set(amount));
+		ui.verticalLayout->addLayout(Module[i].set(amount,this));
 	}
 }
 
@@ -41,11 +45,4 @@ void LinearEquation_gui::push_get_answer_button()
 {
 
 }
-LinearEquation_gui::~LinearEquation_gui()
-{
-#ifdef DEBUG
-	std::cout << "use linear Equation gui destruct\n";
-#endif // DEBUG
-	if(Module != nullptr)
-		delete Module;
-}
+

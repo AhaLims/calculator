@@ -8,7 +8,7 @@ class DynamicModule
 {
 public:
 	DynamicModule();
-	QHBoxLayout* set(int);
+	QHBoxLayout* set(int, QWidget *);
 	QLabel * names;
 	QLineEdit * elements;
 	QHBoxLayout HBoxLayout;
