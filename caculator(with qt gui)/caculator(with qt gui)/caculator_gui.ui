@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1333</width>
+    <width>1627</width>
     <height>912</height>
    </rect>
   </property>
@@ -502,38 +502,6 @@
      </item>
     </layout>
    </widget>
-   <widget class="QCommandLinkButton" name="commandLinkButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>222</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="whatsThis">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="text">
-     <string>te</string>
-    </property>
-   </widget>
-   <widget class="QCommandLinkButton" name="commandLinkButton_2">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>222</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ttt</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
@@ -990,6 +958,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_dialog_matrixA_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>499</x>
+     <y>514</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>38</x>
+     <y>437</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dialogB</sender>
+   <signal>clicked()</signal>
+   <receiver>caculator_guiClass</receiver>
+   <slot>push_dialog_matrixB_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>955</x>
+     <y>515</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1410</x>
+     <y>480</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>push_add_button()</slot>
@@ -1020,5 +1020,7 @@
   <slot>push_timeB_button()</slot>
   <slot>change_state_use_float()</slot>
   <slot>change_float_digit()</slot>
+  <slot>push_dialog_matrixA_button()</slot>
+  <slot>push_dialog_matrixB_button()</slot>
  </slots>
 </ui>

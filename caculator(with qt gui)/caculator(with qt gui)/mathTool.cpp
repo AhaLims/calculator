@@ -19,7 +19,7 @@ int Compatible(const Matrix CoefficientMatrix, const Matrix AugmentedMatrix)
 		return 0;
 	}
 }
-Matrix getSolution(const Matrix A, const Matrix b)//solve Ax = b
+Matrix getSolution(const Matrix A, const Matrix b,int & num)//solve Ax = b
 {
 	//A is Coefficient Matrix
 	Matrix AugmentedMatrix(A.getRow(), A.getColumn() + 1,false);
@@ -38,7 +38,7 @@ Matrix getSolution(const Matrix A, const Matrix b)//solve Ax = b
 			}
 		}
 	}
-	int num = Compatible(A,AugmentedMatrix);
+	num = Compatible(A,AugmentedMatrix);
 	if (num == 0)
 	{
 		Matrix m(1, 1, 0);
@@ -52,7 +52,7 @@ Matrix getSolution(const Matrix A, const Matrix b)//solve Ax = b
 	}
 	else //if (num == 2)
 	{
-		;//Countless more sulution
-		//use Causs to get ?
+		Matrix m(1, 1, 0);
+		return m;//Countless more sulution
 	}
 }

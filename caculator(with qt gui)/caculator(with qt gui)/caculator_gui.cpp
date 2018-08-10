@@ -847,6 +847,77 @@ void caculator_gui::push_timeB_button()
 	ui.output_test_browser->setPlainText(strB);//set
 }
 
+void caculator_gui::push_dialog_matrixA_button()
+{
+	bool type = true;
+	QString strA;
+	strA = ui.MatrixA->toPlainText();
+	if (strA == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix A;
+	A = QString_to_matrix(strA, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix vector(A.getRow(), A.getColumn(), false);
+	double *value = nullptr;
+	value = new double[A.getRow() + 1];
+	if (!A.showFeatureVector_Value(vector, value))
+	{
+		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		return;
+	}
+	Matrix dialog_matrix(A.getRow(), A.getColumn(), false);
+	for (unsigned int i = 0; i < A.getRow(); i++)
+	{
+		dialog_matrix.setData(i, i, value[i]);
+	}
+	strA = "dialog matrix is :\n";
+	strA += Matrix_to_QString(dialog_matrix, DecimalDigit);
+	ui.output_test_browser->setPlainText(strA);//set
+	delete value;
+}
+void caculator_gui::push_dialog_matrixB_button()
+{
+	bool type = true;
+	QString strB;
+	strB = ui.MatrixB->toPlainText();
+	if (strB == "")
+	{
+		QMessageBox::about(NULL, "WRONG", "请输入矩阵");
+		return;
+	}
+	Matrix B;
+	B = QString_to_matrix(strB, type);
+	if (type == false)
+	{
+		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		return;
+	}
+	Matrix vector(B.getRow(), B.getColumn(), false);
+	double *value = nullptr;
+	value = new double[B.getRow() + 1];
+	if (!B.showFeatureVector_Value(vector, value))
+	{
+		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		return;
+	}
+	Matrix dialog_matrix(A.getRow(), B.getColumn(), false);
+	for (unsigned int i = 0; i < B.getRow(); i++)
+	{
+		dialog_matrix.setData(i, i, value[i]);
+	}
+	strB = "dialog matrix is :\n";
+	strB += Matrix_to_QString(dialog_matrix, DecimalDigit);
+	ui.output_test_browser->setPlainText(strB);//set
+	delete value;
+}
+
 void caculator_gui::change_state_use_float()
 {
 	if (ui.use_float->isChecked())

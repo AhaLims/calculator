@@ -42,8 +42,11 @@ public slots://信号与槽在这里定义！！！！！
 	void push_NumMulB_button();
 	void push_timeA_button();
 	void push_timeB_button();
+	void push_dialog_matrixA_button();
+	void push_dialog_matrixB_button();
 	void change_state_use_float();
 	void change_float_digit();
+
 private:
 	Ui::caculator_guiClass ui;
 	bool number_judge(char)const;

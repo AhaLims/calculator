@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QCommandLinkButton>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -101,8 +100,6 @@ public:
     QSpacerItem *horizontalSpacer;
     QLabel *label_2;
     QSpacerItem *horizontalSpacer_3;
-    QCommandLinkButton *commandLinkButton;
-    QCommandLinkButton *commandLinkButton_2;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *caculator_guiClass)
@@ -110,7 +107,7 @@ public:
         if (caculator_guiClass->objectName().isEmpty())
             caculator_guiClass->setObjectName(QStringLiteral("caculator_guiClass"));
         caculator_guiClass->setEnabled(true);
-        caculator_guiClass->resize(1333, 912);
+        caculator_guiClass->resize(1627, 912);
         centralWidget = new QWidget(caculator_guiClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
@@ -444,12 +441,6 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer_3);
 
-        commandLinkButton = new QCommandLinkButton(centralWidget);
-        commandLinkButton->setObjectName(QStringLiteral("commandLinkButton"));
-        commandLinkButton->setGeometry(QRect(20, 20, 222, 48));
-        commandLinkButton_2 = new QCommandLinkButton(centralWidget);
-        commandLinkButton_2->setObjectName(QStringLiteral("commandLinkButton_2"));
-        commandLinkButton_2->setGeometry(QRect(20, 90, 222, 48));
         caculator_guiClass->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(caculator_guiClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -484,6 +475,8 @@ public:
         QObject::connect(timeB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_timeB_button()));
         QObject::connect(use_float, SIGNAL(toggled(bool)), caculator_guiClass, SLOT(change_state_use_float()));
         QObject::connect(decimals_num, SIGNAL(valueChanged(int)), caculator_guiClass, SLOT(change_float_digit()));
+        QObject::connect(pushButton_2, SIGNAL(clicked()), caculator_guiClass, SLOT(push_dialog_matrixA_button()));
+        QObject::connect(dialogB, SIGNAL(clicked()), caculator_guiClass, SLOT(push_dialog_matrixB_button()));
 
         QMetaObject::connectSlotsByName(caculator_guiClass);
     } // setupUi
@@ -535,14 +528,6 @@ public:
         label_3->setText(QApplication::translate("caculator_guiClass", "\345\260\217\346\225\260\344\275\215", nullptr));
         label->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265A", nullptr));
         label_2->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265B", nullptr));
-#ifndef QT_NO_TOOLTIP
-        commandLinkButton->setToolTip(QApplication::translate("caculator_guiClass", "<html><head/><body><p><br/></p></body></html>", nullptr));
-#endif // QT_NO_TOOLTIP
-#ifndef QT_NO_WHATSTHIS
-        commandLinkButton->setWhatsThis(QApplication::translate("caculator_guiClass", "<html><head/><body><p><br/></p></body></html>", nullptr));
-#endif // QT_NO_WHATSTHIS
-        commandLinkButton->setText(QApplication::translate("caculator_guiClass", "te", nullptr));
-        commandLinkButton_2->setText(QApplication::translate("caculator_guiClass", "ttt", nullptr));
     } // retranslateUi
 
 };
