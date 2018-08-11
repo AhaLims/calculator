@@ -161,7 +161,7 @@ void caculator_gui::push_add_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strA == "" || strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a, b;
@@ -171,12 +171,12 @@ void caculator_gui::push_add_button()
 	/*juudge*/
 	if (type == status::WrongInput)
 	{
-		QMessageBox::about(NULL, "WRONG", "æÿ’Û ‰»Î”–ŒÛ");
+		QMessageBox::about(NULL, "WRONG", tr("wrong matrix"));
 		return;
 	}
 	else if (a.getRow() != b.getRow() || a.getColumn() != b.getColumn())
 	{
-		QMessageBox::about(NULL, "WRONG", "æÿ’Û¥Û–°≤ª“ª");
+		QMessageBox::about(NULL, "WRONG", tr("the size of matrix is wrong"));
 		return;
 	}
 
@@ -193,7 +193,7 @@ void caculator_gui::push_subtract_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strA == "" || strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a, b;
@@ -225,7 +225,7 @@ void caculator_gui::push_multiply_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strA == "" || strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a, b;
@@ -255,7 +255,7 @@ void caculator_gui::push_swap_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strA == "" || strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	ui.MatrixA->setPlainText(strB);
@@ -291,7 +291,7 @@ void caculator_gui::push_detA_button()
 	strA = ui.MatrixA->toPlainText();
 	if (strA == "" )
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a;
@@ -317,7 +317,7 @@ void caculator_gui::push_detB_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix B;
@@ -344,7 +344,7 @@ void caculator_gui::push_invA_button()
 	strA = ui.MatrixA->toPlainText();
 	if (strA == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a;
@@ -377,7 +377,7 @@ void caculator_gui::push_invB_button()
 	strB = ui.MatrixA->toPlainText();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix B;
@@ -410,7 +410,7 @@ void caculator_gui::push_tranA_button()//get transport matrix
 	strA = ui.MatrixA->toPlainText();
 	if (strA == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a;
@@ -431,7 +431,7 @@ void caculator_gui::push_tranB_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix B;
@@ -452,7 +452,7 @@ void caculator_gui::push_rankA_button()
 	strA = ui.MatrixA->toPlainText();
 	if (strA == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a;
@@ -474,7 +474,7 @@ void caculator_gui::push_rankB_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix B;
@@ -495,7 +495,7 @@ void caculator_gui::push_getSimplestA_button()
 	strA = ui.MatrixA->toPlainText();
 	if (strA == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a;
@@ -518,7 +518,7 @@ void caculator_gui::push_getSimplestB_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix B;
@@ -543,7 +543,7 @@ void caculator_gui::push_FeatureVectorA_button()
 	strA = ui.MatrixA->toPlainText();
 	if (strA == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a;
@@ -590,7 +590,7 @@ void caculator_gui::push_FeatureVectorB_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix B;
@@ -637,7 +637,7 @@ void caculator_gui::push_FeatureValueA_button()
 	strA = ui.MatrixA->toPlainText();
 	if (strA == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix a;
@@ -675,7 +675,7 @@ void caculator_gui::push_FeatureValueB_button()
 	strB = ui.MatrixA->toPlainText();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix B;
@@ -716,7 +716,7 @@ void caculator_gui::push_NumMulA_button()
 	strNum = ui.lineEdit_NumA->text();
 	if (strA == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	if (strNum == "")
@@ -746,7 +746,7 @@ void caculator_gui::push_NumMulB_button()
 	strNum = ui.lineEdit_NumB->text();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	if (strNum == "")
@@ -776,7 +776,7 @@ void caculator_gui::push_timeA_button()
 	strTime = ui.lineEdit_TimeA->text();
 	if (strA == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	if (strTime == "")
@@ -811,7 +811,7 @@ void caculator_gui::push_timeB_button()
 	strTime = ui.lineEdit_TimeB->text();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	if (strTime == "")
@@ -846,7 +846,7 @@ void caculator_gui::push_dialog_matrixA_button()
 	strA = ui.MatrixA->toPlainText();
 	if (strA == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix A;
@@ -881,7 +881,7 @@ void caculator_gui::push_dialog_matrixB_button()
 	strB = ui.MatrixB->toPlainText();
 	if (strB == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "«Î ‰»Îæÿ’Û");
+		QMessageBox::about(NULL, "WRONG", tr("please enter the matrix"));
 		return;
 	}
 	Matrix B;
