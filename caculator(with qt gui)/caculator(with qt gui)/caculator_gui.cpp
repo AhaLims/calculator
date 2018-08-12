@@ -203,12 +203,12 @@ void caculator_gui::push_subtract_button()
 	/*judge*/
 	if (type == status::WrongInput)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", "Incorrect matrix input");
 		return;
 	}
 	else if (a.getRow() != b.getRow() || a.getColumn() != b.getColumn())
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵大小不一");
+		QMessageBox::about(NULL, "WRONG", tr("The size of the matrix varies."));
 		return;
 	}
 
@@ -235,12 +235,12 @@ void caculator_gui::push_multiply_button()
 	/*judge*/
 	if (type == status::WrongInput)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", "Incorrect matrix input");
 		return;
 	}
 	else if (!a.checkMul(b))
 	{
-		QMessageBox::about(NULL, "WRONG", "第一矩阵横行数目应该等于第二矩阵直行数目");
+		QMessageBox::about(NULL, "WRONG", tr("The number of horizontal rows of the first matrix should be equal to the number of straight rows of the second matrix."));
 		return;
 	}
 	a = a * b;
@@ -298,12 +298,12 @@ void caculator_gui::push_detA_button()
 	a = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", "Incorrect matrix input");
 		return;
 	}
 	if (!a.square())
 	{
-		QMessageBox::about(NULL, "WRONG", "非方阵");
+		QMessageBox::about(NULL, "WRONG", tr("not square"));
 		return;
 	}
 	double det = a.determinant();
@@ -324,12 +324,12 @@ void caculator_gui::push_detB_button()
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	if (!B.square())
 	{
-		QMessageBox::about(NULL, "WRONG", "非方阵");
+		QMessageBox::about(NULL, "WRONG", tr("not square"));
 		return;
 	}
 	double det = B.determinant();
@@ -351,19 +351,19 @@ void caculator_gui::push_invA_button()
 	a = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	if (!a.square())
 	{
-		QMessageBox::about(NULL, "WRONG", "非方阵");
+		QMessageBox::about(NULL, "WRONG", tr("not square"));
 		return;
 	}
 
 	int det = a.determinant();
 	if (fabs(det) < math::eps)
 	{
-		QMessageBox::about(NULL, "WRONG", "行列式为零，没有逆矩阵");
+		QMessageBox::about(NULL, "WRONG", tr("Determinant is zero, and there is no inverse matrix."));
 		return;
 	}
 	Matrix inv_matrix = a.inverse_matrix();
@@ -384,19 +384,19 @@ void caculator_gui::push_invB_button()
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	if (!B.square())
 	{
-		QMessageBox::about(NULL, "WRONG", "非方阵");
+		QMessageBox::about(NULL, "WRONG", tr("not square"));
 		return;
 	}
 
 	int det = B.determinant();
 	if (fabs(det) < math::eps)
 	{
-		QMessageBox::about(NULL, "WRONG", "行列式为零，没有逆矩阵");
+		QMessageBox::about(NULL, "WRONG", tr("Determinant is zero, and there is no inverse matrix."));
 		return;
 	}
 	Matrix inv_matrix = B.inverse_matrix();
@@ -417,7 +417,7 @@ void caculator_gui::push_tranA_button()//get transport matrix
 	a = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix transport_matrix = a.Transposition();
@@ -438,7 +438,7 @@ void caculator_gui::push_tranB_button()
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix transport_matrix = B.Transposition();
@@ -459,7 +459,7 @@ void caculator_gui::push_rankA_button()
 	a = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	unsigned int rank = a.getRank();
@@ -481,7 +481,7 @@ void caculator_gui::push_rankB_button()
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	unsigned int rank = B.getRank();
@@ -502,7 +502,7 @@ void caculator_gui::push_getSimplestA_button()
 	a = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix m;
@@ -525,7 +525,7 @@ void caculator_gui::push_getSimplestB_button()
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix m;
@@ -550,7 +550,7 @@ void caculator_gui::push_FeatureVectorA_button()
 	a = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix vector(a.getRow(),a.getColumn(),false);
@@ -558,7 +558,7 @@ void caculator_gui::push_FeatureVectorA_button()
 	value = new double[a.getRow() + 1];
 	if (!a.showFeatureVector_Value(vector, value))
 	{
-		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		QMessageBox::about(NULL, "WRONG", tr("Not positive definite matrix"));//非正定矩阵
 		return;
 	}
 	strA = "the feature vector of matrix A \n";
@@ -597,7 +597,7 @@ void caculator_gui::push_FeatureVectorB_button()
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix vector(B.getRow(), B.getColumn(), false);
@@ -605,7 +605,7 @@ void caculator_gui::push_FeatureVectorB_button()
 	value = new double[B.getRow() + 1];;
 	if (!B.showFeatureVector_Value(vector, value))
 	{
-		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		QMessageBox::about(NULL, "WRONG", tr("Not positive definite matrix"));
 		return;
 	}
 	strB = "the feature vector of matrix A \n";
@@ -644,7 +644,7 @@ void caculator_gui::push_FeatureValueA_button()
 	a = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix vector(a.getRow(), a.getColumn(), false);
@@ -652,7 +652,7 @@ void caculator_gui::push_FeatureValueA_button()
 	value = new double[a.getRow() + 1];
 	if (!a.showFeatureVector_Value(vector, value))
 	{
-		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		QMessageBox::about(NULL, "WRONG", tr("Not positive definite matrix"));
 		return;
 	}
 	strA = "the feature value of matrix A \n";
@@ -682,7 +682,7 @@ void caculator_gui::push_FeatureValueB_button()
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix vector(B.getRow(), B.getColumn(), false);
@@ -690,7 +690,7 @@ void caculator_gui::push_FeatureValueB_button()
 	value = new double[B.getRow() + 1];
 	if (!B.showFeatureVector_Value(vector, value))
 	{
-		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		QMessageBox::about(NULL, "WRONG", tr("Not positive definite matrix"));
 		return;
 	}
 	strB = "the feature value of matrix B \n";
@@ -721,7 +721,7 @@ void caculator_gui::push_NumMulA_button()
 	}
 	if (strNum == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "请输入数字");
+		QMessageBox::about(NULL, "WRONG", tr("please enter a number"));
 		return;
 	}
 	double num = strNum.toDouble();//能处理负数吗...
@@ -729,7 +729,7 @@ void caculator_gui::push_NumMulA_button()
 	a = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix m;
@@ -751,7 +751,7 @@ void caculator_gui::push_NumMulB_button()
 	}
 	if (strNum == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "请输入数字");
+		QMessageBox::about(NULL, "WRONG", tr("please enter a number"));
 		return;
 	}
 	double num = strNum.toDouble();//能处理负数吗...
@@ -759,7 +759,7 @@ void caculator_gui::push_NumMulB_button()
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix m;
@@ -781,20 +781,20 @@ void caculator_gui::push_timeA_button()
 	}
 	if (strTime == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "请输入数字");
+		QMessageBox::about(NULL, "WRONG", tr("please enter a number"));
 		return;
 	}
 	int num = strTime.toInt();
 	if (num <= 0)
 	{
-		QMessageBox::about(NULL, "WRONG", "请输入大于0的整数");
+		QMessageBox::about(NULL, "WRONG", tr("Please enter an integer greater than 0."));
 		return;
 	}
 	Matrix A;
 	A = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix m;
@@ -816,20 +816,20 @@ void caculator_gui::push_timeB_button()
 	}
 	if (strTime == "")
 	{
-		QMessageBox::about(NULL, "WRONG", "请输入数字");
+		QMessageBox::about(NULL, "WRONG", tr("please enter a number"));
 		return;
 	}
 	int num = strTime.toInt();
 	if (num <= 0)
 	{
-		QMessageBox::about(NULL, "WRONG", "请输入大于0的整数");
+		QMessageBox::about(NULL, "WRONG", tr("Please enter an integer greater than 0."));
 		return;
 	}
 	Matrix B;
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix m;
@@ -853,7 +853,7 @@ void caculator_gui::push_dialog_matrixA_button()
 	A = QString_to_matrix(strA, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix vector(A.getRow(), A.getColumn(), false);
@@ -861,7 +861,7 @@ void caculator_gui::push_dialog_matrixA_button()
 	value = new double[A.getRow() + 1];
 	if (!A.showFeatureVector_Value(vector, value))
 	{
-		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		QMessageBox::about(NULL, "WRONG", tr("Not positive definite matrix"));
 		return;
 	}
 	Matrix dialog_matrix(A.getRow(), A.getColumn(), false);
@@ -888,7 +888,7 @@ void caculator_gui::push_dialog_matrixB_button()
 	B = QString_to_matrix(strB, type);
 	if (type == false)
 	{
-		QMessageBox::about(NULL, "WRONG", "矩阵输入有误");
+		QMessageBox::about(NULL, "WRONG", tr("Incorrect matrix input"));
 		return;
 	}
 	Matrix vector(B.getRow(), B.getColumn(), false);
@@ -896,7 +896,7 @@ void caculator_gui::push_dialog_matrixB_button()
 	value = new double[B.getRow() + 1];
 	if (!B.showFeatureVector_Value(vector, value))
 	{
-		QMessageBox::about(NULL, "WRONG", "非正定矩阵");
+		QMessageBox::about(NULL, "WRONG", tr("Not positive definite matrix"));
 		return;
 	}
 	Matrix dialog_matrix(B.getRow(), B.getColumn(), false);
