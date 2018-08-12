@@ -10,10 +10,8 @@ int main(int argc, char *argv[])
 {
 	srand((unsigned)time(NULL));
 	QApplication a(argc, argv);
-	main_window surface;
+	main_window surface(argc, argv);
 	surface.show();
-	//caculator_gui w;
-	//w.show(); //创建控制台函数
 	return a.exec();
 }
 //目前测试只输入整数吧...非整数太麻烦了

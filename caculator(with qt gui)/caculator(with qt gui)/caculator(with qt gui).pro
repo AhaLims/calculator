@@ -18,3 +18,4 @@ UI_DIR += ./GeneratedFiles
 RCC_DIR += ./GeneratedFiles
 QT += widgets
 CONFIG += c++11
+QT += opengl

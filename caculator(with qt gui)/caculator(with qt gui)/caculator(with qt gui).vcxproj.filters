@@ -23,6 +23,9 @@
     <ClCompile Include="main_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QT_OpenGL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -61,6 +64,9 @@
     <QtUic Include="main_window.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="QT_OpenGL.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="caculator_gui.qrc">
@@ -83,5 +89,11 @@
     <ClInclude Include="LinearEqaution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QT_OpenGL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
