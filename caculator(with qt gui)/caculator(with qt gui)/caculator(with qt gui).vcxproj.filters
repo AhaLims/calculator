@@ -56,6 +56,9 @@
     <QtMoc Include="main_window.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="QT_OpenGL.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="caculator_gui.ui">
@@ -87,9 +90,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LinearEqaution.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QT_OpenGL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

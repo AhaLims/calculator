@@ -1,23 +1,53 @@
-//#pragma once
-//
-//#include <QtWidgets/QWidget>
-//#include "ui_QT_OpenGL.h"
-//#include <GL/glut.h>
-//
-//#include <QtOpenGL/QGLWidget>
-//
-//#include<QtOpenGL/qgl.h>//加载模块
-////class main_window;
-////virtual void initializeGL();
-////virtual void resizeGL(int w, int h);
-////virtual void paintGL();
-//
-////virtual void initializeOverlayGL();
-////virtual void resizeOverlayGL(int w, int h);
-////virtual void paintOverlayGL();
-////virtual void glInit();
-////virtual void glDraw();
-//class function_GL :public QGLWidget// ,protected QGLFunctions//QOpenGLFunctions
+#pragma once
+
+#include <QtWidgets/QWidget>
+#include "ui_QT_OpenGL.h"
+#include <GL/glut.h>
+//？？？？？？？？？为什么加了extern就可以了？？？？？
+extern class QTOpenGL
+{
+public:
+	QTOpenGL(int, char*[]);//传递命令行参数
+	static void draw_axis();//画坐标轴
+	static void draw_function();
+	void start_OpenGL();//开启OpenGL 窗口
+	static float getY(float);//通过计算得到y的值
+private:
+	int argc;
+	char **argv;
+	static const int Width;
+	static const int Height;
+	static double times;
+	static const GLfloat PI;
+	static const int centre_x; //中心点
+	static const int centre_y;
+};
+
+/*界面*/
+class QT_OpenGL : public QWidget
+{
+	Q_OBJECT
+
+public:
+	QT_OpenGL(QTOpenGL * ptr = nullptr,QWidget *parent = Q_NULLPTR);
+
+private:
+	Ui::QT_OpenGLClass ui;
+	QTOpenGL * qtopengl_ptr;
+private slots:
+	void push_help();
+	void push_example();
+	void push_OK();
+	void push_enlarge();
+	void push_lessen();
+	void push_left();
+	void push_right();
+	void push_up();
+	void push_down();
+};
+
+
+//extern class function_GL :public QGLWidget// ,protected QGLFunctions//QOpenGLFunctions
 //{
 //	Q_OBJECT
 //public:
@@ -49,15 +79,5 @@
 //
 //	
 //};
-//
-extern class QTOpenGL//？？？？？？？？？为什么加了extern就可以了？？？？？
-{
-public:
-	QTOpenGL(int, char*[]);
-	 static void draw_axis();
-	//void myDisplay_(void);
-	void start_OpenGL();
-private:
-	int argc;
-	char **argv;
-};
+
+

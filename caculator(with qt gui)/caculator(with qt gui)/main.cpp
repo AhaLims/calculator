@@ -1,6 +1,5 @@
 #include "caculator_gui.h"
 #include <QtWidgets/QApplication>
-//#define DEBUG
 #include <QTextCodec>
 #include"main_window.h"
 //#define DEBUG

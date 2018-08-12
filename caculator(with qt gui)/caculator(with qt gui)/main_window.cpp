@@ -5,18 +5,24 @@ main_window::main_window(int Argc,
 	char *Argv[], QWidget *parent)
 	: QMainWindow(parent),argc(Argc),argv(Argv)
 {
+	matrix_caculator = new caculator_gui;
+	//Ó¦¸ÃÃ»´í°É.....
 	qtopengl = new QTOpenGL(argc, argv);
+	qtopengl_widget = new QT_OpenGL(qtopengl);
+
 	ui.setupUi(this);
 	//QT_OpenGL_function = new QT_OpenGL(this);
 }
 main_window::~main_window()
 {
 	delete qtopengl;
+	delete matrix_caculator;
+	delete qtopengl_widget;
 }
 
 void  main_window::push_matrix_caculator_button()
 {
-	matrix_caculator.show();
+	matrix_caculator->show();
 }
 
 void main_window::push_scientic_caculator_button()
@@ -25,9 +31,7 @@ void main_window::push_scientic_caculator_button()
 }
 void main_window::push_function_caculator_button()
 {
-	qtopengl->start_OpenGL();
-	//QT_OpenGL_function.show();
-	//QT_OpenGL_function->show();
+	qtopengl_widget->show();
 }
 void main_window::push_help_button()
 {

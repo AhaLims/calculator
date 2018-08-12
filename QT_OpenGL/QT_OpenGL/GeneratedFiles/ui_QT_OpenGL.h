@@ -11,10 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,34 +23,36 @@ class Ui_QT_OpenGLClass
 {
 public:
     QPushButton *pushOK;
-    QLineEdit *get_function;
+    QLineEdit *function_edit;
     QLabel *label;
     QLabel *label_2;
     QPushButton *heLp;
     QPushButton *example;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
+    QLabel *label_3;
+    QLineEdit *variabl_name;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
     QPushButton *enlarge;
     QPushButton *lessen;
-    QPushButton *left;
     QPushButton *right;
     QPushButton *pushButton_4;
+    QPushButton *left;
     QPushButton *pushButton_5;
 
     void setupUi(QWidget *QT_OpenGLClass)
     {
         if (QT_OpenGLClass->objectName().isEmpty())
             QT_OpenGLClass->setObjectName(QStringLiteral("QT_OpenGLClass"));
-        QT_OpenGLClass->resize(1189, 954);
+        QT_OpenGLClass->resize(1128, 724);
         pushOK = new QPushButton(QT_OpenGLClass);
         pushOK->setObjectName(QStringLiteral("pushOK"));
-        pushOK->setGeometry(QRect(900, 160, 101, 41));
-        get_function = new QLineEdit(QT_OpenGLClass);
-        get_function->setObjectName(QStringLiteral("get_function"));
-        get_function->setGeometry(QRect(260, 160, 611, 41));
+        pushOK->setGeometry(QRect(890, 160, 101, 41));
+        function_edit = new QLineEdit(QT_OpenGLClass);
+        function_edit->setObjectName(QStringLiteral("function_edit"));
+        function_edit->setGeometry(QRect(260, 160, 611, 41));
         QFont font;
         font.setPointSize(12);
-        get_function->setFont(font);
+        function_edit->setFont(font);
         label = new QLabel(QT_OpenGLClass);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(210, 160, 41, 31));
@@ -67,46 +69,63 @@ public:
         example = new QPushButton(QT_OpenGLClass);
         example->setObjectName(QStringLiteral("example"));
         example->setGeometry(QRect(610, 100, 93, 28));
-        verticalLayoutWidget = new QWidget(QT_OpenGLClass);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(900, 250, 95, 411));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        enlarge = new QPushButton(verticalLayoutWidget);
+        label_3 = new QLabel(QT_OpenGLClass);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(30, 160, 72, 31));
+        label_3->setFont(font);
+        variabl_name = new QLineEdit(QT_OpenGLClass);
+        variabl_name->setObjectName(QStringLiteral("variabl_name"));
+        variabl_name->setGeometry(QRect(110, 160, 71, 41));
+        variabl_name->setFont(font);
+        gridLayoutWidget = new QWidget(QT_OpenGLClass);
+        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(640, 220, 391, 191));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        enlarge = new QPushButton(gridLayoutWidget);
         enlarge->setObjectName(QStringLiteral("enlarge"));
 
-        verticalLayout->addWidget(enlarge);
+        gridLayout->addWidget(enlarge, 0, 0, 1, 1);
 
-        lessen = new QPushButton(verticalLayoutWidget);
+        lessen = new QPushButton(gridLayoutWidget);
         lessen->setObjectName(QStringLiteral("lessen"));
 
-        verticalLayout->addWidget(lessen);
+        gridLayout->addWidget(lessen, 0, 1, 1, 1);
 
-        left = new QPushButton(verticalLayoutWidget);
-        left->setObjectName(QStringLiteral("left"));
-
-        verticalLayout->addWidget(left);
-
-        right = new QPushButton(verticalLayoutWidget);
+        right = new QPushButton(gridLayoutWidget);
         right->setObjectName(QStringLiteral("right"));
 
-        verticalLayout->addWidget(right);
+        gridLayout->addWidget(right, 1, 1, 1, 1);
 
-        pushButton_4 = new QPushButton(verticalLayoutWidget);
+        pushButton_4 = new QPushButton(gridLayoutWidget);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
 
-        verticalLayout->addWidget(pushButton_4);
+        gridLayout->addWidget(pushButton_4, 2, 0, 1, 1);
 
-        pushButton_5 = new QPushButton(verticalLayoutWidget);
+        left = new QPushButton(gridLayoutWidget);
+        left->setObjectName(QStringLiteral("left"));
+
+        gridLayout->addWidget(left, 1, 0, 1, 1);
+
+        pushButton_5 = new QPushButton(gridLayoutWidget);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
 
-        verticalLayout->addWidget(pushButton_5);
+        gridLayout->addWidget(pushButton_5, 2, 1, 1, 1);
 
 
         retranslateUi(QT_OpenGLClass);
+        QObject::connect(heLp, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_help()));
+        QObject::connect(example, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_example()));
+        QObject::connect(pushOK, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_OK()));
+        QObject::connect(enlarge, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_enlarge()));
+        QObject::connect(lessen, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_lessen()));
+        QObject::connect(left, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_left()));
+        QObject::connect(right, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_right()));
+        QObject::connect(pushButton_4, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_up()));
+        QObject::connect(pushButton_5, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_down()));
 
         QMetaObject::connectSlotsByName(QT_OpenGLClass);
     } // setupUi
@@ -119,11 +138,12 @@ public:
         label_2->setText(QApplication::translate("QT_OpenGLClass", "\344\272\214\347\273\264\345\207\275\346\225\260\350\256\241\347\256\227\345\231\250", nullptr));
         heLp->setText(QApplication::translate("QT_OpenGLClass", "\345\270\256\345\212\251", nullptr));
         example->setText(QApplication::translate("QT_OpenGLClass", "\347\244\272\344\276\213", nullptr));
+        label_3->setText(QApplication::translate("QT_OpenGLClass", "\345\217\230\351\207\217\345\220\215", nullptr));
         enlarge->setText(QApplication::translate("QT_OpenGLClass", "\346\224\276\345\244\247", nullptr));
         lessen->setText(QApplication::translate("QT_OpenGLClass", "\347\274\251\345\260\217", nullptr));
-        left->setText(QApplication::translate("QT_OpenGLClass", "\345\267\246\347\247\273", nullptr));
         right->setText(QApplication::translate("QT_OpenGLClass", "\345\217\263\347\247\273", nullptr));
         pushButton_4->setText(QApplication::translate("QT_OpenGLClass", "\344\270\212\347\247\273", nullptr));
+        left->setText(QApplication::translate("QT_OpenGLClass", "\345\267\246\347\247\273", nullptr));
         pushButton_5->setText(QApplication::translate("QT_OpenGLClass", "\344\270\213\347\247\273", nullptr));
     } // retranslateUi
 
