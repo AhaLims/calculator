@@ -9,7 +9,6 @@
 caculator_gui::caculator_gui(QWidget *parent)
 	: QMainWindow(parent)
 {
-
 	ui.setupUi(this);
 	ui.use_float->setCheckable(true);
 	ui.use_float->setChecked(true);

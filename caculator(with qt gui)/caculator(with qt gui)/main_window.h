@@ -7,6 +7,7 @@
 class QTOpenGL;
 class caculator_gui;
 class QT_OpenGL;
+class help_window;
 class main_window : public QMainWindow
 {
 	Q_OBJECT
@@ -16,6 +17,7 @@ public:
 		char *Argv[],QWidget *parent = Q_NULLPTR );
 	~main_window();
 	caculator_gui * matrix_caculator;
+	help_window *Help_window;
 private:
 	Ui::main_windowClass ui;
 	int argc;
