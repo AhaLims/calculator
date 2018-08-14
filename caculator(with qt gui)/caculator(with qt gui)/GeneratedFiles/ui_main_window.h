@@ -32,33 +32,34 @@ public:
     {
         if (main_windowClass->objectName().isEmpty())
             main_windowClass->setObjectName(QStringLiteral("main_windowClass"));
-        main_windowClass->resize(1117, 769);
+        main_windowClass->resize(1000, 800);
+        main_windowClass->setStyleSheet(QStringLiteral("background-image: url(:/caculator_gui/picture/background.jpg)"));
         centralWidget = new QWidget(main_windowClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         function_caculator_button = new QPushButton(centralWidget);
         function_caculator_button->setObjectName(QStringLiteral("function_caculator_button"));
         function_caculator_button->setEnabled(true);
-        function_caculator_button->setGeometry(QRect(370, 210, 171, 81));
+        function_caculator_button->setGeometry(QRect(390, 310, 170, 80));
         help_function = new QPushButton(centralWidget);
         help_function->setObjectName(QStringLiteral("help_function"));
         help_function->setEnabled(true);
-        help_function->setGeometry(QRect(340, 300, 171, 81));
+        help_function->setGeometry(QRect(390, 520, 170, 80));
         exit_button = new QPushButton(centralWidget);
         exit_button->setObjectName(QStringLiteral("exit_button"));
         exit_button->setEnabled(true);
-        exit_button->setGeometry(QRect(360, 440, 171, 81));
+        exit_button->setGeometry(QRect(390, 630, 170, 80));
         scientic_caculator_button = new QPushButton(centralWidget);
         scientic_caculator_button->setObjectName(QStringLiteral("scientic_caculator_button"));
         scientic_caculator_button->setEnabled(true);
-        scientic_caculator_button->setGeometry(QRect(260, 110, 229, 28));
+        scientic_caculator_button->setGeometry(QRect(390, 210, 170, 80));
         matrix_caculator_button = new QPushButton(centralWidget);
         matrix_caculator_button->setObjectName(QStringLiteral("matrix_caculator_button"));
         matrix_caculator_button->setEnabled(true);
-        matrix_caculator_button->setGeometry(QRect(290, 50, 171, 28));
+        matrix_caculator_button->setGeometry(QRect(390, 110, 170, 80));
         linear_equation_button = new QPushButton(centralWidget);
         linear_equation_button->setObjectName(QStringLiteral("linear_equation_button"));
         linear_equation_button->setEnabled(true);
-        linear_equation_button->setGeometry(QRect(370, 160, 158, 28));
+        linear_equation_button->setGeometry(QRect(390, 410, 170, 80));
         main_windowClass->setCentralWidget(centralWidget);
 
         retranslateUi(main_windowClass);
