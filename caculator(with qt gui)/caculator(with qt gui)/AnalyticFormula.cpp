@@ -35,11 +35,6 @@ double AnalyticFormula::getNum(string str)//does not support fraction
 }
 
 /*analyse the expression of formula*/
-void AnalyticFormula::Computational_formula(string expression)
-{
-	stack<string> operation, operand;
-
-}
 
 
 

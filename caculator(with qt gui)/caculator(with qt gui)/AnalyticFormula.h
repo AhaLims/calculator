@@ -12,13 +12,3 @@ namespace AnalyticFormula
 	void function_formula(string, string);
 	//Fraction getFraction(string); 也许不必要？
 }
-
-class express
-{
-private:
-	string expression;
-public:
-	express(string);
-	double getAns();
-
-};
