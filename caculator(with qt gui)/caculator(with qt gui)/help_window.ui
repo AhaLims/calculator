@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>help_window</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#help_window-help_window{background-image: url(:/caculator_gui/picture/background.jpg);}</string>
+  </property>
   <widget class="QPushButton" name="help_button">
    <property name="geometry">
     <rect>
@@ -68,7 +71,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="help_window.qrc"/>
+  <include location="caculator_gui.qrc"/>
  </resources>
  <connections/>
 </ui>

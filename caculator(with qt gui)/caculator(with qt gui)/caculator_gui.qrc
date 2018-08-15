@@ -4,5 +4,6 @@
         <file>picture/wiki.PNG</file>
         <file>picture/background.jpg</file>
         <file>picture/caculator_icon.ico</file>
+        <file>picture/white.png</file>
     </qresource>
 </RCC>

@@ -30,6 +30,7 @@ public:
         if (help_windowClass->objectName().isEmpty())
             help_windowClass->setObjectName(QStringLiteral("help_windowClass"));
         help_windowClass->resize(951, 857);
+        help_windowClass->setStyleSheet(QStringLiteral("#help_window-help_window{background-image: url(:/caculator_gui/picture/background.jpg);}"));
         help_button = new QPushButton(help_windowClass);
         help_button->setObjectName(QStringLiteral("help_button"));
         help_button->setGeometry(QRect(80, 70, 101, 61));

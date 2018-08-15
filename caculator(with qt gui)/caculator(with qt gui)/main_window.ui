@@ -29,6 +29,9 @@
       <height>80</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
+    </property>
     <property name="text">
      <string>函数图像计算器</string>
     </property>
@@ -44,6 +47,9 @@
       <width>170</width>
       <height>80</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
     </property>
     <property name="text">
      <string>帮助</string>
@@ -61,6 +67,9 @@
       <height>80</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
+    </property>
     <property name="text">
      <string>退出</string>
     </property>
@@ -76,6 +85,9 @@
       <width>170</width>
       <height>80</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
     </property>
     <property name="text">
      <string>科学计算器</string>
@@ -93,6 +105,9 @@
       <height>80</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
+    </property>
     <property name="text">
      <string>矩阵计算器</string>
     </property>
@@ -108,6 +123,9 @@
       <width>170</width>
       <height>80</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
     </property>
     <property name="text">
      <string>解线性方程</string>
