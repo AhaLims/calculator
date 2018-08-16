@@ -1,7 +1,8 @@
 #include"FunctionFormula.h"
 using namespace EXPRESSION;
-
-//单个字符读不出来
+//还需要增加角度 弧度制
+//增加常量e的赋值
+//最后一个字符可能...会被读两遍....
 int main()
 {
 	string str;
