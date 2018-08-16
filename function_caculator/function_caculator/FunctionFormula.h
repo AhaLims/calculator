@@ -10,7 +10,7 @@
 //未知数第一个字符只能是字母 且后面只能出现字母和数字
 using namespace std;
 
-const int OPERATOR_AMOUNT = 7;
+const int OPERATOR_AMOUNT = 8;
 const int FUN_AMOUNT = 10;
 
 namespace EXPRESSION 
@@ -60,14 +60,22 @@ protected:
 	static const int functionNeedAmount[FUN_AMOUNT];//mark the data of function
 
 	string input(const string str);
+
+	/*calculate part*/
+	int compare(string, string)const;//compare operator 
 	double OperatorCalculate(string, double[]);
 	double FunctionCalculate(string, double[]);
 
 	static int isFunction(string str);//judge if it is function and return the number of function
 
-	int isVariable(string str);
+	int isVariable(string str)const;
 
 	static int isOperator(string str);//judge if it is operator and return the number of operator
+	
+
+	
+	
+	
 	map<string, int>VariableMap;
 	string *VariableName;
 	int VariableAmount;

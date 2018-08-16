@@ -1,19 +1,25 @@
 #include"FunctionFormula.h"
 using namespace EXPRESSION;
 using namespace std;
+/*Operator[0] is function(like sin cos and so on)*/
 const string Expression::Operator[OPERATOR_AMOUNT] = 
-{ "+" , "-" , "*" , "/" , "(" , ")" , "#" };
+{"", "+" , "-" , "*" , "/" , "(" , ")" , "#" };
 const int Expression::OperatorNeedAmount[OPERATOR_AMOUNT] =
-{  2   , 2 ,   2   , 2  ,  0  ,  0  ,  0 };
+{0 ,  2   , 2 ,   2   , 2  ,  0  ,  0  ,  0 };
 const int Expression::OperatorMap[OPERATOR_AMOUNT][OPERATOR_AMOUNT] =
-{ 
-	// +
-	// -
+{ //判断优先级 OperatorMap[后一个符号][前一个符号] 例子：3 + 5 * 7 则 operatormap[*][+] = 1 
+// fun(等价于"("   2 * ( 5 + (2 + 2 ) 则operator[(][(] = 1
+//operator[(][]
+//operator[任意除了)][(] = 1
+//  "f(" "+" "-" "*" "/" "(" ")" "#"
+	  1,  1,  1 , 1,  1,  1 , 0 ,0//最后两个有点晕...//fun( is similar to 
+	  -1,-1, -1 ,-1 -1 , 1 , 0 ,0,// +
+	  // -
 	// *
 	// /
 	// %
-	// (
-	// )
+	1,1,1,1,1,1,1,0,       // (
+	-1,-1                 // )
 	// #
 
 
@@ -65,8 +71,9 @@ string Expression::input(const string str)
 	exp += "#";
 	return exp;
 }
-double Expression::getAns(double Value[])
+double Expression::getAns(double Value[])//啊...还是先回去写伪代码把...好乱啊
 {
+	int judge_ = 0;//判断括号是否成对
 	stack<string>OperatorStack;
 	stack<double>OperandStack;
 	int pos = 0;
@@ -87,7 +94,31 @@ double Expression::getAns(double Value[])
 	}
 	else if (type == OPERATOR_TYPE)
 	{
+		if (OperatorStack.empty())
+		{
+			OperatorStack.push(token);
+		}
+		else
+		{
+			if (compare(token,OperatorStack.top()) == -1)
+			{
+				//先出栈计算
+				double x[2];
+				x[0] = OperandStack.top();
+				OperandStack.pop();
+				x[1] = OperandStack.top();
+				double tmp = OperatorCalculate(OperatorStack.top(), x);
+				OperandStack.push(tmp);
+			}
+			else if (compare(token, OperatorStack.top()) == 0)
+			{
 
+			}
+			else if (compare(token, OperatorStack.top()) == 1)
+			{
+
+			}
+		}
 
 
 
@@ -95,7 +126,25 @@ double Expression::getAns(double Value[])
 	}
 	else if (type == FUNCTION_TYPE)
 	{
+		if (OperatorStack.empty())
+		{
+			OperatorStack.push(token);
+		}
+		else
+		{
+			if (compare(token, OperatorStack.top()) == -1)
+			{
 
+			}
+			else if (compare(token, OperatorStack.top()) == 0)
+			{
+
+			}
+			else if (compare(token, OperatorStack.top()) == 1)
+			{
+
+			}
+		}
 
 
 		read(pos);
@@ -110,7 +159,15 @@ double Expression::getAns(double Value[])
 	}
 	else if (type == END_TYPE)
 	{
+		if (OperatorStack.empty())//栈空了 则得到答案
+		{
+			return OperandStack.top();
+		}
+		else
+		{
+			//栈没有空 回溯
 
+		}
 	}
 }
 
@@ -188,6 +245,21 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次...
 	}
 }
 
+int Expression::compare(string str1, string str2)const
+{
+	int a = isOperator(str1);
+	int b = isOperator(str2);
+	if (a == -1)
+	{
+		a = 0;
+	}
+	if (b == -1)
+	{
+		b = 0;
+	}
+	return OperatorMap[a][b];
+}
+
 double Expression::OperatorCalculate(string Operator, double Operand[])
 {
 	int index = isOperator(Operator);
@@ -263,7 +335,7 @@ int Expression::isFunction(string str)//judge if it is function and return the n
 	}
 	return -1;
 }
-int Expression::isVariable(string str)
+int Expression::isVariable(string str)const
 {
 	if (VariableName == nullptr)return -1;
 	for (int i = 0; i < VariableAmount; i++)
@@ -287,6 +359,9 @@ int Expression::isOperator(string str)//judge if it is operator and return the n
 
 
 
+
+
+
 Function_2D::Function_2D(string expression_,string VariableName_):eps(0.00001)
 {
 	VariableName[0] = VariableName_;
@@ -294,6 +369,11 @@ Function_2D::Function_2D(string expression_,string VariableName_):eps(0.00001)
 	FunctionExpression = new Expression(expression,1, VariableName);//会不会有问题啊...感觉会有问题啊...
 
 }
+
+
+
+
+
 
 
 Function_2D::~Function_2D()
