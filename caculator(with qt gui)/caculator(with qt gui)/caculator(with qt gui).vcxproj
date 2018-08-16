@@ -168,6 +168,8 @@
     <ClInclude Include="source.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="caculator(with qt gui)_en.ts" />
+    <None Include="caculator(with qt gui)_zh.ts" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
