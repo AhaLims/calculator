@@ -29,6 +29,12 @@
     <ClCompile Include="help_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DynamicModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearEquation_gui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -70,6 +76,9 @@
     <QtMoc Include="help_window.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="LinearEquation_gui.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="caculator_gui.ui">
@@ -82,6 +91,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="help_window.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LinearEquation_gui.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -104,6 +116,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LinearEqaution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

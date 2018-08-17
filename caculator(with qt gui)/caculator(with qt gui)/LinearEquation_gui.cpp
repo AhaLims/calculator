@@ -24,11 +24,9 @@ void LinearEquation_gui::set()
 	{
 		delete[] Module;//这里出现了断点？
 	}
-	//if (Module != nullptr)
-	//{
-	//	ui.verticalLayout->removeWidget(this);
-	//}
 	Module = new DynamicModule[amount];
+	//要改变 layout 的长宽高
+	ui.verticalLayoutWidget->setGeometry(QRect(30, 140, 90 * amount, 60 *amount));
 	for (int i = 0; i < amount; i++)
 	{
 		ui.verticalLayout->addLayout(Module[i].set(amount,this));
@@ -43,6 +41,7 @@ void LinearEquation_gui::change_equation()
 
 void LinearEquation_gui::push_get_answer_button()
 {
+	//get data
 
 }
 

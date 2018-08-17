@@ -35,9 +35,9 @@ QHBoxLayout* DynamicModule::set(int amount, QWidget * parent)//amount must >= 1
 		elements[i].setParent(parent);
 		names[i].setText(name);
 		names[i].setFixedWidth(30);
-		elements[i].setMaximumWidth(maxwidth);
+		elements[i].setMaximumWidth(maxwidth*3);
 	}
-	elements[amount].setMaximumWidth(maxwidth);
+	elements[amount].setMaximumWidth(maxwidth*3);
 	elements[amount].setParent(parent);
 
 	/*set in the HBLayout*/

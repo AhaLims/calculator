@@ -2,6 +2,7 @@
 #include"QT_OpenGL.h"
 #include <QtWidgets/QMessageBox>
 #include"help_window.h"
+#include"LinearEquation_gui.h"
 main_window::main_window(int Argc,
 	char *Argv[], QWidget *parent)
 	: QMainWindow(parent),argc(Argc),argv(Argv)
@@ -11,6 +12,7 @@ main_window::main_window(int Argc,
 	qtopengl = new QTOpenGL(argc, argv);
 	qtopengl_widget = new QT_OpenGL(qtopengl);
 	Help_window = new help_window();
+	linear_equation_gui = new LinearEquation_gui();
 	ui.setupUi(this);
 	//QT_OpenGL_function = new QT_OpenGL(this);
 }
@@ -20,6 +22,7 @@ main_window::~main_window()
 	delete matrix_caculator;
 	delete qtopengl_widget;
 	delete Help_window;
+	delete linear_equation_gui;
 }
 
 void  main_window::push_matrix_caculator_button()
@@ -42,5 +45,5 @@ void main_window::push_help_button()
 }
 void main_window::push_linear_equation_button()
 {
-
+	linear_equation_gui->show();
 }
