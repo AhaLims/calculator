@@ -1,6 +1,7 @@
 ﻿#include"FunctionFormula.h"
 using namespace EXPRESSION;
 using namespace std;
+delete[];
 /*Operator[0] is function(like sin cos and so on)*/
 const string Expression::Operator[OPERATOR_AMOUNT] = 
 {"", "+" , "-" , "*" , "/" , "(" , ")" , "#" };
@@ -8,21 +9,21 @@ const int Expression::OperatorNeedAmount[OPERATOR_AMOUNT] =
 {0 ,  2   , 2 ,   2   , 2  ,  0  ,  0  ,  0 };
 const int Expression::OperatorMap[OPERATOR_AMOUNT][OPERATOR_AMOUNT] =
 { //判断优先级 OperatorMap[后一个符号][前一个符号] 例子：3 + 5 * 7 则 operatormap[*][+] = 1 
-// fun(等价于"("   2 * ( 5 + (2 + 2 ) 则operator[(][(] = 1
+// = 0 意味着同级
+  // fun(等价于"("   2 * ( 5 + (2 + 2 ) 则operator[(][(] = 1
 //operator[(][]
 //operator[任意除了)][(] = 1
 	//异常情况 2
 	//好像暂时不能处理 省略✖的情况
-//  "f(" "+" "-" "*" "/" "(" ")" "#"
-	 1,   1,  1 , 1,  1,  1 , 0 ,  0 ,//fun( is similar to 
-	-1,  -1, -1 ,-1, -1 , 1 , 2 ,  0 ,// '+'
-	-1,  -1, -1 ,-1, -1 , 1 , 2 ,  0 , // '-'
-	-1,   1,  1 ,-1, -1 , 1 , 2 ,  0 , // *
-	-1,   1,  1 , 1,  1 , 1 , 2 ,  0 ,// '/'
-	 1,   1,  1 , 1,  1 , 1 , 0 ,  0 ,// '('
-	 0,  -1, -1 ,-1, -1 , 0 , 0 ,  0 ,// ')'
-	 0,   0,  0 , 0,  0 , 0 , 0 ,  0// '#'
-
+//{f(,  ,  +,  -,  *,  /,  (,  ), #}
+	{ -1, -1, -1, -1, -1, -1,  1, 1 },  //f(
+{ -1,    1,  1,  -1, -1, -1, 1, 1 },  //+
+{ -1,    1,  1,  -1, -1, -1, 1, 1 },  //-
+{ -1,    1,  1,  1,  1,  -1, 1, 1 },  //*
+{ -1,    1,  1,  1,  1,  -1, 1, 1 },  ///
+{ -1,  -1, -1, -1, -1,  -1, 0, 1 },  //(
+{ 1,    1,  1,  1,  1,   1, 1, 1 },  //)
+{ -1,   -1, -1, -1, -1,  -1,-1, 0 },  //#
 
 
 };//优先级是怎么判定的...
@@ -72,17 +73,125 @@ string Expression::input(const string str)
 	exp += "#";
 	return exp;
 }
-double Expression::getAns(double Value[])// Value[] 未知数的值
-{
-	/*judge the amount of  '('  ')'*/
-	int judge_ = 0;//判断括号是否成对
-	double ans = 0;
-	stack<string>OperatorStack;
-	stack<double>OperandStack;
-	int pos = 0;
-	read(pos);
+//int Expression::getAns(double&ans, double Value[] )// Value[] 未知数的值
+//{
+//	ans = 0;
+//	/*judge the amount of  '('  ')'*/
+//	int judge_ = 0;//判断括号是否成对
+//	stack<string>OperatorStack;
+//	stack<double>OperandStack;
+//	
+//
+//
+//	/*get value of variables*/
+//	if (VariableAmount > 0)
+//	{
+//		for (int i = 0; i < VariableAmount; i++)
+//		{
+//			VariableMap[VariableName[i]] = Value[i];
+//		}
+//	}
+//	int pos = 0;
+//	read(pos);
+//	OperatorStack.push("#");
+//
+//	while (type != END_TYPE || !OperatorStack.empty())
+//	{
+//		
+//		//if (OperatorStack.empty())cout << "empty of Operator stack\n";
+//		//if (type == END_TYPE) cout << "end type\n";
+//		//if (!OperatorStack.empty())
+//		//	cout << "the top element is "<<OperatorStack.top() << endl;
+//		if (type == UNKNOW_TYPE)
+//		{
+//			check_input = false;
+//			return -1;
+//		}//return
+//		if (type == NUM_TYPE)
+//		{
+//			double num = atof(token.c_str());/*string to double*/
+//			OperandStack.push(num);
+//			read(pos);
+//		}
+//		else if (type == VARIABLE_TYPE)
+//		{
+//			double num = VariableMap[token];
+//			OperandStack.push(num);
+//			read(pos);
+//		}
+//
+//		else// if (type == OPERATOR_TYPE || type == FUNCTION_TYPE || type == END_TYPE)//function equal to "("
+//		{
+//			if (!check_input)
+//			{
+//				cout << "check_input = 0?\n";
+//				return -1;
+//			}//return
+//
+//			//operator or function
+//			int order = compare(token, OperatorStack.top());
+//			
+//			
+//			double x[2] = { 0,0 };
+//			double tmp = 0;
+//			switch (order)
+//			{
+//			case 1:
+//			{
+//				string top_element = OperatorStack.top();
+//				OperatorStack.pop();
+//
+//				int index = isOperator(top_element);
+//				int NeedAmount = 0;
+//				//double res, a[10];
+//				double res;
+//				if (index != -1)//it's operator
+//				{
+//					if (OperatorNeedAmount[index] != 0)
+//					{
+//						NeedAmount = OperatorNeedAmount[index];
+//						if (!getValue(OperandStack, x, NeedAmount)) //这里不明白
+//						{
+//							return -2;//表达式错误 
+//						}
+//						res = OperatorCalculate(top_element, x);
+//						OperandStack.push(res);
+//					}
+//				}
+//				else//function 
+//				{
+//					int index = isFunction(top_element);
+//					int NeedAmount = functionNeedAmount[index];
+//					if (!getValue(OperandStack, x, NeedAmount)) //这里不明白
+//					{
+//						return -2;//表达式错误 
+//					}
+//					res = FunctionCalculate(top_element, x);
+//					OperandStack.push(res);
+//					read(pos);
+//				}
+//				break;
+//			}
+//			case 0:
+//				OperatorStack.pop();
+//				read(pos);
+//				break;
+//			case -1:
+//				OperatorStack.push(token);
+//				read(pos);
+//				break;
+//			}
+//			read(pos);
+//		}
+//	}
+//	ans = OperandStack.top();
+//	return 0;
+//	//}
+//}
 
-	/*get value of variables*/
+int Expression::getAns(double &res, double Value[])//在这里计算每一次的值
+								//return -1 -2的含义不同（虽然都是错误的输入）
+{
 	if (VariableAmount > 0)
 	{
 		for (int i = 0; i < VariableAmount; i++)
@@ -90,161 +199,111 @@ double Expression::getAns(double Value[])// Value[] 未知数的值
 			VariableMap[VariableName[i]] = Value[i];
 		}
 	}
-	while (token != "" && token !="#" && type != END_TYPE)
+	res = 0;
+	std::stack<std::string> optr;  //算符栈 
+	std::stack<double> opnd;       //算数栈 
+
+	optr.push("#");
+	int pos = 0;
+	read(pos);//分割分割
+				//先读入一个字符或数字（或未知数
+	while (type != END_TYPE || !optr.empty()) //还没读完 或者操作符栈里面还有元素
 	{
+		/*#ifdef EXP_DEBUG
+		std::cout << "TkT = " << tkType << ", ";
+		std::cout << "Pos = " << pos << "/" << length << ", ";
+		std::cout << "Token = '" << token << "'" << std::endl;
+		#endif*/
+		//std::cout << "token is" << token << std::endl;
 		if (type == UNKNOW_TYPE)
 		{
-			check_input = false;
-			return 0;
-		}//return
+			return -1; //未知符号 错误的输入
+		}
+
 		if (type == NUM_TYPE)
 		{
-			double num = atof(token.c_str());/*string to double*/
-			OperandStack.push(num);
+			opnd.push(atof(token.c_str()));//直接转换了！ 不用手写
+			read(pos);//再进入循环 读下一个字符
+		}
+		if (type == VARIABLE_TYPE)
+		{
+			double val = VariableMap[token];
+			opnd.push(val);
 			read(pos);
-		}
-		else if (type == VARIABLE_TYPE)
-		{
-			double num = VariableMap[token];
-			OperandStack.push(num);
-			read(pos);
-		}
-		else if (type == OPERATOR_TYPE  || type == FUNCTION_TYPE)//function equal to "("
-		{
-			if (!check_input)
-			{
-				return 0;
-			}//return
-			if (OperatorStack.empty())
-			{
-				OperatorStack.push(token);
-			}
-			//if (type == FUNCTION_TYPE)
-			//{
-			//	judge_++;
-			//}
-			else//operator or function
-			{
-				if (compare(token, OperatorStack.top()) == -1)
-				{
-					//先出栈计算
-					double x[2] = { 0,0 };
-					x[0] = OperandStack.top();
-					OperandStack.pop();
-					double tmp = 0;
-					string top_element = OperatorStack.top();
-					OperatorStack.pop();
-
-					if (isOperator(top_element) != -1)//it's operator
-					{
-						if (OperatorNeedAmount[isOperator(top_element)] == 2)
-						{
-							x[1] = OperandStack.top();
-							OperandStack.pop();
-						}
-#ifdef DEBUG
-						cout << x[1] << " " << top_element << x[0] << endl;
-#endif // DEBUG
-						tmp = OperatorCalculate(top_element, x);
-					}
-
-					else// if(isFunction(OperatorStack.top != -1) its's function
-					{
-						//if (functionNeedAmount[isFunction(top_element)] == 2)
-						if(top_element == "^")
-						{
-							x[1] = OperandStack.top();
-							OperandStack.pop();
-						}
-#ifdef DEBUG
-						cout << x[1] << " " << top_element << x[0] << endl;
-#endif // DEBUG
-						tmp = FunctionCalculate(top_element, x);
-					}
-					OperandStack.push(tmp);
-					if (token != ")")//  not ')'
-					{
-						OperatorStack.push(token);
-					}
-					else//is ')'
-					{
-						judge_--;
-					}
-				}
-				else if (compare(token, OperatorStack.top()) == 0)//unnessary
-				{
-					OperatorStack.pop();
-					judge_--;
-				}
-				else if (compare(token, OperatorStack.top()) == 1)
-				{
-					if (token == "(")//is '('
-					{
-						judge_++;
-					}
-					OperatorStack.push(token);
-
-				}
-				else if (compare(token, OperatorStack.top()) == 2)//wrong input
-				{
-					check_input = false;
-					return 0;
-				}
-			}
-			read(pos);
-		}
-	}
-	//if (type == END_TYPE ||type )
-	//{
-	//now at the end
-	while (!OperatorStack.empty())
-	{
-		if (OperandStack.empty())
-		{
-			check_input = false;
-			return 0;
-		}
-		double x[2] = { 0,0 };
-		string top_element = OperatorStack.top();
-		OperatorStack.pop();
-		if (isOperator(top_element) != -1)
-		{
-			if (top_element == "#")
-				return OperandStack.top();
-			if(top_element == "(")
-				OperandStack.pop();
-			x[0] = OperandStack.top();
-			OperandStack.pop();
-			x[1] = OperandStack.top();
-#ifdef DEBUG
-			cout << x[1] << " " << top_element << x[0] << endl;
-#endif // DEBUG
-			OperandStack.pop();
-			double tmp = OperatorCalculate(top_element, x);
-			OperandStack.push(tmp);
 		}
 		else
 		{
-			x[0] = OperandStack.top();
-			OperandStack.pop();
-			if (top_element == "^")
+			//token不是数字的情况
+			//判断top 与token的优先级关系
+			int comRes = compare(optr.top(), token);//token 与栈顶的元素进行优先级判断
+														 /*#ifdef EXP_DEBUG
+														 std::cout << "compare('" << optr.top() << "', '" << token << "') = " << comRes << std::endl;
+														 #endif*/
+			switch (comRes)//说明token优先 所以放到栈里面
 			{
-				x[1] = OperandStack.top();
-				OperandStack.pop();
-			}
-			double tmp = FunctionCalculate(top_element, x);
-			OperandStack.push(tmp);
-		}
+			case -1://top是落后于token的 那么就把token压栈
+				optr.push(token);
+				read(pos);
+				break;
 
+			case 1://top优先于token 那么就出栈进行计算
+			{
+				std::string ptr = optr.top();
+				optr.pop();
+
+				int idx = isOperator(ptr), argCnt;
+				double arg[10], res = 0;
+				if (-1 != idx)// -1 说明他不是运算符part的
+				{
+					argCnt = OperatorNeedAmount[idx];//需要的数字
+					if (argCnt)
+					{
+						if (!getValue(opnd, arg, argCnt)) 
+						{
+							return -2;//表达式错误 
+						}
+						res = OperatorCalculate(ptr, arg);
+						opnd.push(res);
+					}
+				}
+				else
+				{
+					idx = isFunction(ptr);//判断是不是函数part的
+										   //如果idx = -1的话那不是有问题？？
+										   //或者说根本不会等于 -1 前面已经判断过了？
+					argCnt = functionNeedAmount[idx];
+					if (!getValue(opnd, arg, argCnt))
+					{
+						return -2;//表达式错误 
+					}
+					res = FunctionCalculate(ptr, arg);
+					opnd.push(res);
+					read(pos);
+				}
+#ifdef EXP_DEBUG
+				if (argCnt) {
+					std::cout << "('" << ptr << "', ";
+					for (int i = 0; i < argCnt; ++i) {
+						std::cout << arg[i];
+						if (i + 1 < argCnt) {
+							std::cout << ", ";
+						}
+					}
+					std::cout << ") = " << res << std::endl;
+				}
+#endif
+				break;
+			}
+
+			case 0:
+				optr.pop();
+				read(pos);
+				break;
+			}
+		}
 	}
-	if (judge_ == 0)
-		return OperandStack.top();
-	else
-	{
-		check_input = false;
-		return 0;
-	}
-	//}
+	res = opnd.top();
+	return 0;
 }
 
 void Expression::read(int & pos)//注意最后一个字符可能会输出两次...
@@ -254,6 +313,7 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 	if (exp[pos] == '#'||pos >= exp.length())
 	{
 		type = END_TYPE;
+		token = "#";
 		return;
 	}
 	int next_pos = pos + 1;
@@ -271,7 +331,7 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 		}
 		pos = next_pos;
 #ifdef DEBUG
-		cout << token << endl;
+		cout <<"token is"<< token << endl;
 #endif // DEBUG
 		return;
 	}
@@ -286,7 +346,7 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 		}
 		pos = next_pos;
 #ifdef DEBUG
-		cout << token << endl;
+		cout << "token is "<<token << endl;
 #endif // DEBUG
 		return;
 	}
@@ -299,7 +359,7 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 			type = FUNCTION_TYPE;
 			pos = next_pos;
 #ifdef DEBUG
-			cout << token << endl;
+			cout << "token is " << token << endl;
 #endif // DEBUG
 			return;
 		}
@@ -308,7 +368,7 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 			type = OPERATOR_TYPE;
 			pos = next_pos;
 #ifdef DEBUG
-			cout << token << endl;
+			cout << "token is " << token << endl;
 #endif // DEBUG
 			return;
 		}
@@ -317,7 +377,7 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 			type = VARIABLE_TYPE;
 			pos = next_pos;
 #ifdef DEBUG
-			cout << token << endl;
+			cout << "token is " << token << endl;
 #endif // DEBUG
 			return;
 		}
@@ -351,24 +411,38 @@ int Expression::compare(string str1, string str2)const
 	return OperatorMap[a][b];
 }
 
+bool Expression::getValue(stack<double>& opnd, double x[], int n)
+{
+	if (opnd.size() < n)
+	{
+		return false;
+	}
+	for (int i = n - 1; i >= 0; --i) {
+		x[i] = opnd.top();
+		opnd.pop();
+	}
+	return true;
+}
+
 double Expression::OperatorCalculate(string Operator, double Operand[])
 {
+	//{"fc", "+", "-", "*", "/", "(", ")", "#" };
 	int index = isOperator(Operator);
 	switch (index)
 	{
 	case 1:
-		return Operand[1] + Operand[0];
+		return Operand[0] + Operand[1];
 	case 2:
-		return Operand[1] - Operand[0];
+		return Operand[0] - Operand[1];
 	case 3:
-		return Operand[1] * Operand[0];
+		return Operand[0] * Operand[1];
 	case 4:
 		if (Operand[0] == 0)
 		{
 			check_input = false;
 			return 0;
 		}
-		return Operand[1] / Operand[0];
+		return Operand[0] / Operand[1];
 	}
 }
 
@@ -477,7 +551,11 @@ Function_2D::~Function_2D()
 double Function_2D::getAns(double Value_)
 {
 	double value[1] = { Value_ };
-	return FunctionExpression->getAns(value);
+	double ans;
+
+	if(FunctionExpression->getAns(ans,value) == 0)
+		return ans;
+	else return 0;//bug here 
 }
 double Function_2D::getDerivativeValue(double Value_)//微分具体的值
 {

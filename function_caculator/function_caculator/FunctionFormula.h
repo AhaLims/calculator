@@ -37,7 +37,7 @@ public:
 	Expression(string str, int variable_amount = 0, string variable[] = nullptr);
 	~Expression();
 	//string input(const string str);
-	double getAns(double Value[] = nullptr);//计算的外部接口
+	int getAns(double &,double Value[] = nullptr);//计算的外部接口
 	
 #ifdef DEBUG
 	void read(int & pos);//read a "word" each time and judge what tpye the word is
@@ -63,9 +63,11 @@ protected:
 
 	/*calculate part*/
 	int compare(string, string)const;//compare operator 
+	bool getValue(stack<double>& operand, double x[], int n);
 	double OperatorCalculate(string, double[]);
 	double FunctionCalculate(string, double[]);
 
+	
 	static int isFunction(string str);//judge if it is function and return the number of function
 
 	int isVariable(string str)const;
@@ -76,13 +78,21 @@ protected:
 	
 	
 	
-	map<string, int>VariableMap;
+	map<string, double>VariableMap;
 	string *VariableName;
 	int VariableAmount;
 	string exp;//expression
 	bool check_input;//judge if the expression is bad expression
 	EXPRESSION::SYSTERM expression_systerm;//弧度或者角度
 };
+
+
+
+
+
+
+
+
 class Function_2D 
 {
 public://先想想...想想...
