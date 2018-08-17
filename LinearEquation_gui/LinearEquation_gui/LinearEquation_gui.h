@@ -9,6 +9,7 @@ class LinearEquation_gui : public QWidget
 
 public:
 	LinearEquation_gui(QWidget *parent = Q_NULLPTR);
+	~LinearEquation_gui();
 private:
 	Ui::LinearEquation_guiClass ui;
 	int amount;

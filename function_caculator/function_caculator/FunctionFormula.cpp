@@ -1,31 +1,30 @@
 ﻿#include"FunctionFormula.h"
 using namespace EXPRESSION;
 using namespace std;
+
+/*data initialize*/
+
 /*Operator[0] is function(like sin cos and so on)*/
 const string Expression::Operator[OPERATOR_AMOUNT] = 
 {"", "+" , "-" , "*" , "/" , "(" , ")" , "#" };
 const int Expression::OperatorNeedAmount[OPERATOR_AMOUNT] =
 {0 ,  2   , 2 ,   2   , 2  ,  0  ,  0  ,  0 };
+
+//used to judge the pres
 const int Expression::OperatorMap[OPERATOR_AMOUNT][OPERATOR_AMOUNT] =
-{ //判断优先级 OperatorMap[后一个符号][前一个符号] 例子：3 + 5 * 7 则 operatormap[*][+] = 1 
-// = 0 意味着同级
-  // fun(等价于"("   2 * ( 5 + (2 + 2 ) 则operator[(][(] = 1
-//operator[(][]
-//operator[任意除了)][(] = 1
-	//异常情况 2
-	//好像暂时不能处理 省略✖的情况
-//{f(,  ,  +,  -,  *,  /,  (,  ), #}
-	{ -1, -1, -1, -1, -1, -1,  1, 1 },  //f(
-{ -1,    1,  1,  -1, -1, -1, 1, 1 },  //+
-{ -1,    1,  1,  -1, -1, -1, 1, 1 },  //-
-{ -1,    1,  1,  1,  1,  -1, 1, 1 },  //*
-{ -1,    1,  1,  1,  1,  -1, 1, 1 },  ///
-{ -1,  -1, -1, -1, -1,  -1, 0, 1 },  //(
-{ 1,    1,  1,  1,  1,   1, 1, 1 },  //)
-{ -1,   -1, -1, -1, -1,  -1,-1, 0 },  //#
+{ 
+//  {f(,   +, -,   *,  /,  (,  ),  #}
+	{ -1, -1, -1, -1, -1, -1,  1,  1 },  //f(
+    { -1,  1,  1, -1, -1, -1,  1,  1 },  //+
+	{ -1,  1,  1, -1, -1, -1,  1,  1 },  //-
+	{ -1,  1,  1,  1,  1, -1,  1,  1 },  //*
+	{ -1,  1,  1,  1,  1, -1,  1,  1 },  ///
+	{ -1, -1, -1, -1, -1, -1,  0,  1 },  //(
+	{  1,  1,  1,  1,  1,  1,  1,  1 },  //)
+	{ -1, -1, -1, -1, -1, -1,- 1,  0 },  //#
 
 
-};//优先级是怎么判定的...
+};
 
 const string Expression::function[FUN_AMOUNT] =
 {  "sin("    , "cos("    , "tan(" , 
@@ -33,29 +32,31 @@ const string Expression::function[FUN_AMOUNT] =
    "ln("     , "lg("     , "sqrt("  , 
    "^" };
 const int Expression::functionNeedAmount[FUN_AMOUNT] 
-= { 1,1,1,1,1,1,1,1,1,2 };//记录函数需要的参数个数
-//                         变量个数          变量名             变量取的值   表达式
-Expression::Expression(string str,int variable_amount,string variable[])
+= { 1,1,1,1,1,1,1,1,1,2 };//mark the amount of variable that the fucntion need 
+
+
+/*function part*/
+Expression::Expression(string expression,int variable_amount,string variable[])
 	:VariableAmount(variable_amount),check_input(true),expression_systerm(RADIAN_SYSTERM)
 {
-	exp = this->input(str);
+	exp = this->input(expression);
 	if (VariableAmount != 0)
 	{
+		/*get the name of each variable*/
 		VariableName = new string[VariableAmount];
 		for (int i = 0; i < variable_amount; i++)
 		{
 			VariableName[i] = variable[i];
-			//未知数肯定应该到getAns()再赋值啦
-			//VariableMap[variable[i]] = value[i];好乱啊...
-			//VariableMap[VariableName[i]] = value[i];//未知数应该一开始就赋值？还是到getAns()再赋值？
 		}
 	}
 }
+
 Expression::~Expression()
 {
 	if (VariableAmount != 0)
 		delete[] VariableName;
 }
+
 string Expression::input(const string str)
 {
 	int len = str.length();
@@ -84,113 +85,92 @@ int Expression::getAns(double &res, double Value[])//在这里计算每一次的
 		}
 	}
 	res = 0;
-	std::stack<std::string> optr;  //算符栈 
-	std::stack<double> opnd;       //算数栈 
+	std::stack<std::string> OperatorStack; 
+	std::stack<double> OperandStack;
 
-	optr.push("#");
+	OperatorStack.push("#");
 	int pos = 0;
-	read(pos);//分割分割
-				//先读入一个字符或数字（或未知数
-	while (type != END_TYPE || !optr.empty()) //还没读完 或者操作符栈里面还有元素
+	read(pos);//read one word at first
+
+	while (type != END_TYPE || !OperatorStack.empty())
 	{
-		/*#ifdef EXP_DEBUG
-		std::cout << "TkT = " << tkType << ", ";
-		std::cout << "Pos = " << pos << "/" << length << ", ";
-		std::cout << "Token = '" << token << "'" << std::endl;
-		#endif*/
-		//std::cout << "token is" << token << std::endl;
 		if (type == UNKNOW_TYPE)
 		{
-			return -1; //未知符号 错误的输入
+			return -1; // wrong input: undifined 
 		}
 
 		if (type == NUM_TYPE)
 		{
-			opnd.push(atof(token.c_str()));//直接转换了！ 不用手写
-			read(pos);//再进入循环 读下一个字符
+			OperandStack.push(atof(token.c_str()));//string to double
+			read(pos);
 		}
-		if (type == VARIABLE_TYPE)
+		if (type == VARIABLE_TYPE)//replace variable
 		{
 			double val = VariableMap[token];
-			opnd.push(val);
+			OperandStack.push(val);
 			read(pos);
 		}
 		else
 		{
-			//token不是数字的情况
-			//判断top 与token的优先级关系
-			int comRes = compare(optr.top(), token);//token 与栈顶的元素进行优先级判断
-														 /*#ifdef EXP_DEBUG
-														 std::cout << "compare('" << optr.top() << "', '" << token << "') = " << comRes << std::endl;
-														 #endif*/
-			switch (comRes)//说明token优先 所以放到栈里面
+			//token is operator or function
+			//judge priority
+			int comRes = compare(OperatorStack.top(), token);
+			switch (comRes)
 			{
-			case -1://top是落后于token的 那么就把token压栈
-				optr.push(token);
+			case -1://top() is background  ,so push(token)
+				OperatorStack.push(token);
 				read(pos);
 				break;
 
-			case 1://top优先于token 那么就出栈进行计算
+			case 1://token is background ,so calculate token
 			{
-				std::string ptr = optr.top();
-				optr.pop();
+				string ptr = OperatorStack.top();
+				OperatorStack.pop();
 
 				int idx = isOperator(ptr), argCnt;
 				double arg[10], res = 0;
-				if (-1 != idx)// -1 说明他不是运算符part的
+				if (-1 != idx)// -1 means it not a operator
 				{
-					argCnt = OperatorNeedAmount[idx];//需要的数字
+					argCnt = OperatorNeedAmount[idx];//get the amount of number it need 
 					if (argCnt)
 					{
-						if (!getValue(opnd, arg, argCnt)) 
+						//judge if the expression is right and get the value of number
+						if (!getValue(OperandStack, arg, argCnt))
 						{
-							return -2;//表达式错误 
+							return -2;//wrong input
 						}
 						res = OperatorCalculate(ptr, arg);
-						opnd.push(res);
+						OperandStack.push(res);
 					}
 				}
-				else
+				else//it is function
 				{
-					idx = isFunction(ptr);//判断是不是函数part的
-										   //如果idx = -1的话那不是有问题？？
-										   //或者说根本不会等于 -1 前面已经判断过了？
+					idx = isFunction(ptr);
 					argCnt = functionNeedAmount[idx];
-					if (!getValue(opnd, arg, argCnt))
+					if (!getValue(OperandStack, arg, argCnt))
 					{
-						return -2;//表达式错误 
+						return -2;//wrong input
 					}
 					res = FunctionCalculate(ptr, arg);
-					opnd.push(res);
+					OperandStack.push(res);
 					read(pos);
 				}
-#ifdef EXP_DEBUG
-				if (argCnt) {
-					std::cout << "('" << ptr << "', ";
-					for (int i = 0; i < argCnt; ++i) {
-						std::cout << arg[i];
-						if (i + 1 < argCnt) {
-							std::cout << ", ";
-						}
-					}
-					std::cout << ") = " << res << std::endl;
-				}
-#endif
 				break;
 			}
 
-			case 0:
-				optr.pop();
+			case 0://unnecessary word like )
+				OperatorStack.pop();
 				read(pos);
 				break;
 			}
 		}
 	}
-	res = opnd.top();
+	res = OperandStack.top();// the top element is the answer
 	return 0;
 }
 
-void Expression::read(int & pos)//注意最后一个字符可能会输出两次...
+/*divide expression into "word"*/
+void Expression::read(int & pos)
 {
 	token = "";
 	//cout << "pos = " << pos << endl;
@@ -214,9 +194,9 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 			
 		}
 		pos = next_pos;
-#ifdef DEBUG
-		cout <<"token is"<< token << endl;
-#endif // DEBUG
+//#ifdef DEBUG
+//		cout <<"token is"<< token << endl;
+//#endif // DEBUG
 		return;
 	}
 	else if(isdigit(exp.at(pos)))
@@ -229,9 +209,9 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 				next_pos++;
 		}
 		pos = next_pos;
-#ifdef DEBUG
-		cout << "token is "<<token << endl;
-#endif // DEBUG
+//#ifdef DEBUG
+//		cout << "token is "<<token << endl;
+//#endif // DEBUG
 		return;
 	}
 
@@ -242,27 +222,27 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 		{
 			type = FUNCTION_TYPE;
 			pos = next_pos;
-#ifdef DEBUG
-			cout << "token is " << token << endl;
-#endif // DEBUG
+//#ifdef DEBUG
+//			cout << "token is " << token << endl;
+//#endif // DEBUG
 			return;
 		}
 		else if (isOperator(token) != -1)
 		{
 			type = OPERATOR_TYPE;
 			pos = next_pos;
-#ifdef DEBUG
-			cout << "token is " << token << endl;
-#endif // DEBUG
+//#ifdef DEBUG
+//			cout << "token is " << token << endl;
+//#endif // DEBUG
 			return;
 		}
 		else if (isVariable(token) != -1)//是变量
 		{
 			type = VARIABLE_TYPE;
 			pos = next_pos;
-#ifdef DEBUG
-			cout << "token is " << token << endl;
-#endif // DEBUG
+//#ifdef DEBUG
+//			cout << "token is " << token << endl;
+//#endif // DEBUG
 			return;
 		}
 		else if (exp[next_pos - 1] == '#')
@@ -280,6 +260,7 @@ void Expression::read(int & pos)//注意最后一个字符可能会输出两次.
 	}
 }
 
+//get priority
 int Expression::compare(string str1, string str2)const
 {
 	int a = isOperator(str1);
@@ -332,17 +313,29 @@ double Expression::OperatorCalculate(string Operator, double Operand[])
 
 double Expression::FunctionCalculate(string Function, double  Operand[])
 {
-	//目前默认是弧度制
 	int index = isFunction(Function);
 	switch (index)
 	{
 	case 0:
-		return sin(Operand[0]);
+		if (expression_systerm == RADIAN_SYSTERM)
+			return sin(Operand[0]);
+		else //ANGLE_SYSTERM
+			return sin(Operand[0] / 360 * pi);
 	case 1:
-		return cos(Operand[0]);
+		if (expression_systerm == RADIAN_SYSTERM)
+			return cos(Operand[0]);
+		else //ANGLE_SYSTERM
+			return cos(Operand[0] / 360 * pi);
 	case 2:
-		//if(Operand[0] == )
-		return tan(Operand[0]);
+		if (expression_systerm == RADIAN_SYSTERM)
+		{
+			return tan(Operand[0]);
+		}
+		else //ANGLE_SYSTERM
+		{
+			//if(Operand[0] % 360 == 0)
+			return tan(Operand[0] / 360 * pi);
+		}
 	case 3:
 		return asin(Operand[0]);
 	case 4:
@@ -385,6 +378,7 @@ int Expression::isFunction(string str)//judge if it is function and return the n
 	}
 	return -1;
 }
+
 int Expression::isVariable(string str)const
 {
 	if (VariableName == nullptr)return -1;
@@ -395,6 +389,7 @@ int Expression::isVariable(string str)const
 	}
 	return -1;
 }
+
 int Expression::isOperator(string str)//judge if it is operator and return the number of operator
 {
 	for (int i = 0; i < OPERATOR_AMOUNT;i++)
@@ -407,11 +402,6 @@ int Expression::isOperator(string str)//judge if it is operator and return the n
 
 
 
-
-
-
-
-
 Function_2D::Function_2D(string expression_,string VariableName_):eps(0.00001)
 {
 	VariableName[0] = VariableName_;
@@ -419,11 +409,6 @@ Function_2D::Function_2D(string expression_,string VariableName_):eps(0.00001)
 	FunctionExpression = new Expression(expression,1, VariableName);//会不会有问题啊...感觉会有问题啊...
 
 }
-
-
-
-
-
 
 
 Function_2D::~Function_2D()

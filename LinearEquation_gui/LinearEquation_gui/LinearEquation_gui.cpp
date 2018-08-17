@@ -12,22 +12,22 @@ LinearEquation_gui::LinearEquation_gui(QWidget *parent)
 	ui.spinBox->setWrapping(false);  // 不开启循环
 }
 
+LinearEquation_gui::~LinearEquation_gui()
+{
+	if ((Module != nullptr))
+		delete[] Module;
+}
+
 void LinearEquation_gui::set()
 {
-	//if (Module != nullptr)
-	//{
-#ifdef DEBUG
-		std::cout << "delete module\n";
-#endif // DEBUG
-		//delete Module;//这里出现了断点？
-	//}
-#ifdef DEBUG
-	std::cout << "new dynamic module\n";
-#endif // DEBUG
 	if (Module != nullptr)
 	{
-		ui.verticalLayout->removeWidget(this);
+		delete[] Module;//这里出现了断点？
 	}
+	//if (Module != nullptr)
+	//{
+	//	ui.verticalLayout->removeWidget(this);
+	//}
 	Module = new DynamicModule[amount];
 	for (int i = 0; i < amount; i++)
 	{

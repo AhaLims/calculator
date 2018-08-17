@@ -4,30 +4,24 @@
 #include"LinearEquation_gui.h"
 DynamicModule::DynamicModule()
 {
-#ifdef DEBUG
-	std::cout << "use DynamicModule construct\n";
-#endif // DEBUG
-
 	names = nullptr;
 	elements = nullptr;
 }
 QHBoxLayout* DynamicModule::set(int amount, QWidget * parent)//amount must >= 1
 {
-#ifdef DEBUG
-	std::cout << "use set function\n";
-#endif // DEBUG
 	int maxwidth = 25;
 	QString name;
-	//if (names != nullptr)
-	//{
-	//	delete names;
-	//}
-	//if (elements != nullptr)
-	//{
-		//delete elements;
-	//}
-	names = new QLabel[amount];
-	elements = new QLineEdit[amount + 1];
+	if (names != nullptr)
+	{
+		delete[] names;
+	}
+	if (elements != nullptr)
+	{
+		delete[] elements;
+	}
+
+	names = new QLabel[amount + 5];
+	elements = new QLineEdit[amount + 5];
 	for (unsigned int i = 0; i < amount; i++)
 	{
 		name = "x" + QString::number(i + 1);
@@ -58,15 +52,13 @@ QHBoxLayout* DynamicModule::set(int amount, QWidget * parent)//amount must >= 1
 
 DynamicModule::~DynamicModule()
 {
-#ifdef DEBUG
 	std::cout << "use DynamicModule destruct\n";
-#endif // DEBUG
-	//if (names != nullptr)
-	//{
-	//	delete names;
-	//}
-	//if (elements != nullptr)
-	//{
-	//	delete elements;
-	//}
+	if (names != nullptr)
+	{
+		delete[] names;
+	}
+	if (elements != nullptr)
+	{
+		delete[] elements;
+	}
 }
