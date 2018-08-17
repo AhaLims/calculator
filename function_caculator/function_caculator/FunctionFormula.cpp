@@ -1,7 +1,6 @@
 ﻿#include"FunctionFormula.h"
 using namespace EXPRESSION;
 using namespace std;
-delete[];
 /*Operator[0] is function(like sin cos and so on)*/
 const string Expression::Operator[OPERATOR_AMOUNT] = 
 {"", "+" , "-" , "*" , "/" , "(" , ")" , "#" };
@@ -55,7 +54,7 @@ Expression::Expression(string str,int variable_amount,string variable[])
 Expression::~Expression()
 {
 	if (VariableAmount != 0)
-		delete VariableName;
+		delete[] VariableName;
 }
 string Expression::input(const string str)
 {
@@ -73,121 +72,6 @@ string Expression::input(const string str)
 	exp += "#";
 	return exp;
 }
-//int Expression::getAns(double&ans, double Value[] )// Value[] 未知数的值
-//{
-//	ans = 0;
-//	/*judge the amount of  '('  ')'*/
-//	int judge_ = 0;//判断括号是否成对
-//	stack<string>OperatorStack;
-//	stack<double>OperandStack;
-//	
-//
-//
-//	/*get value of variables*/
-//	if (VariableAmount > 0)
-//	{
-//		for (int i = 0; i < VariableAmount; i++)
-//		{
-//			VariableMap[VariableName[i]] = Value[i];
-//		}
-//	}
-//	int pos = 0;
-//	read(pos);
-//	OperatorStack.push("#");
-//
-//	while (type != END_TYPE || !OperatorStack.empty())
-//	{
-//		
-//		//if (OperatorStack.empty())cout << "empty of Operator stack\n";
-//		//if (type == END_TYPE) cout << "end type\n";
-//		//if (!OperatorStack.empty())
-//		//	cout << "the top element is "<<OperatorStack.top() << endl;
-//		if (type == UNKNOW_TYPE)
-//		{
-//			check_input = false;
-//			return -1;
-//		}//return
-//		if (type == NUM_TYPE)
-//		{
-//			double num = atof(token.c_str());/*string to double*/
-//			OperandStack.push(num);
-//			read(pos);
-//		}
-//		else if (type == VARIABLE_TYPE)
-//		{
-//			double num = VariableMap[token];
-//			OperandStack.push(num);
-//			read(pos);
-//		}
-//
-//		else// if (type == OPERATOR_TYPE || type == FUNCTION_TYPE || type == END_TYPE)//function equal to "("
-//		{
-//			if (!check_input)
-//			{
-//				cout << "check_input = 0?\n";
-//				return -1;
-//			}//return
-//
-//			//operator or function
-//			int order = compare(token, OperatorStack.top());
-//			
-//			
-//			double x[2] = { 0,0 };
-//			double tmp = 0;
-//			switch (order)
-//			{
-//			case 1:
-//			{
-//				string top_element = OperatorStack.top();
-//				OperatorStack.pop();
-//
-//				int index = isOperator(top_element);
-//				int NeedAmount = 0;
-//				//double res, a[10];
-//				double res;
-//				if (index != -1)//it's operator
-//				{
-//					if (OperatorNeedAmount[index] != 0)
-//					{
-//						NeedAmount = OperatorNeedAmount[index];
-//						if (!getValue(OperandStack, x, NeedAmount)) //这里不明白
-//						{
-//							return -2;//表达式错误 
-//						}
-//						res = OperatorCalculate(top_element, x);
-//						OperandStack.push(res);
-//					}
-//				}
-//				else//function 
-//				{
-//					int index = isFunction(top_element);
-//					int NeedAmount = functionNeedAmount[index];
-//					if (!getValue(OperandStack, x, NeedAmount)) //这里不明白
-//					{
-//						return -2;//表达式错误 
-//					}
-//					res = FunctionCalculate(top_element, x);
-//					OperandStack.push(res);
-//					read(pos);
-//				}
-//				break;
-//			}
-//			case 0:
-//				OperatorStack.pop();
-//				read(pos);
-//				break;
-//			case -1:
-//				OperatorStack.push(token);
-//				read(pos);
-//				break;
-//			}
-//			read(pos);
-//		}
-//	}
-//	ans = OperandStack.top();
-//	return 0;
-//	//}
-//}
 
 int Expression::getAns(double &res, double Value[])//在这里计算每一次的值
 								//return -1 -2的含义不同（虽然都是错误的输入）
