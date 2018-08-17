@@ -37,7 +37,7 @@ public:
 	Expression(string str, int variable_amount = 0, string variable[] = nullptr);
 	~Expression();
 	//string input(const string str);
-	double getAns(double []);//计算的外部接口
+	double getAns(double Value[] = nullptr);//计算的外部接口
 	
 #ifdef DEBUG
 	void read(int & pos);//read a "word" each time and judge what tpye the word is

@@ -1,4 +1,4 @@
-#include"FunctionFormula.h"
+ï»¿#include"FunctionFormula.h"
 using namespace EXPRESSION;
 using namespace std;
 /*Operator[0] is function(like sin cos and so on)*/
@@ -7,24 +7,25 @@ const string Expression::Operator[OPERATOR_AMOUNT] =
 const int Expression::OperatorNeedAmount[OPERATOR_AMOUNT] =
 {0 ,  2   , 2 ,   2   , 2  ,  0  ,  0  ,  0 };
 const int Expression::OperatorMap[OPERATOR_AMOUNT][OPERATOR_AMOUNT] =
-{ //ÅĞ¶ÏÓÅÏÈ¼¶ OperatorMap[ºóÒ»¸ö·ûºÅ][Ç°Ò»¸ö·ûºÅ] Àı×Ó£º3 + 5 * 7 Ôò operatormap[*][+] = 1 
-// fun(µÈ¼ÛÓÚ"("   2 * ( 5 + (2 + 2 ) Ôòoperator[(][(] = 1
+{ //åˆ¤æ–­ä¼˜å…ˆçº§ OperatorMap[åä¸€ä¸ªç¬¦å·][å‰ä¸€ä¸ªç¬¦å·] ä¾‹å­ï¼š3 + 5 * 7 åˆ™ operatormap[*][+] = 1 
+// fun(ç­‰ä»·äº"("   2 * ( 5 + (2 + 2 ) åˆ™operator[(][(] = 1
 //operator[(][]
-//operator[ÈÎÒâ³ıÁË)][(] = 1
+//operator[ä»»æ„é™¤äº†)][(] = 1
+	//å¼‚å¸¸æƒ…å†µ 2
+	//å¥½åƒæš‚æ—¶ä¸èƒ½å¤„ç† çœç•¥âœ–çš„æƒ…å†µ
 //  "f(" "+" "-" "*" "/" "(" ")" "#"
-	  1,  1,  1 , 1,  1,  1 , 0 ,0//×îºóÁ½¸öÓĞµãÔÎ...//fun( is similar to 
-	  -1,-1, -1 ,-1 -1 , 1 , 0 ,0,// +
-	  // -
-	// *
-	// /
-	// %
-	1,1,1,1,1,1,1,0,       // (
-	-1,-1                 // )
-	// #
+	 1,   1,  1 , 1,  1,  1 , 0 ,  0 ,//fun( is similar to 
+	-1,  -1, -1 ,-1, -1 , 1 , 2 ,  0 ,// '+'
+	-1,  -1, -1 ,-1, -1 , 1 , 2 ,  0 , // '-'
+	-1,   1,  1 ,-1, -1 , 1 , 2 ,  0 , // *
+	-1,   1,  1 , 1,  1 , 1 , 2 ,  0 ,// '/'
+	 1,   1,  1 , 1,  1 , 1 , 0 ,  0 ,// '('
+	 0,  -1, -1 ,-1, -1 , 0 , 0 ,  0 ,// ')'
+	 0,   0,  0 , 0,  0 , 0 , 0 ,  0// '#'
 
 
 
-};//ÓÅÏÈ¼¶ÊÇÔõÃ´ÅĞ¶¨µÄ...
+};//ä¼˜å…ˆçº§æ˜¯æ€ä¹ˆåˆ¤å®šçš„...
 
 const string Expression::function[FUN_AMOUNT] =
 {  "sin("    , "cos("    , "tan(" , 
@@ -32,8 +33,8 @@ const string Expression::function[FUN_AMOUNT] =
    "ln("     , "lg("     , "sqrt("  , 
    "^" };
 const int Expression::functionNeedAmount[FUN_AMOUNT] 
-= { 1,1,1,1,1,1,1,1,1,2 };//¼ÇÂ¼º¯ÊıĞèÒªµÄ²ÎÊı¸öÊı
-//                         ±äÁ¿¸öÊı          ±äÁ¿Ãû             ±äÁ¿È¡µÄÖµ   ±í´ïÊ½
+= { 1,1,1,1,1,1,1,1,1,2 };//è®°å½•å‡½æ•°éœ€è¦çš„å‚æ•°ä¸ªæ•°
+//                         å˜é‡ä¸ªæ•°          å˜é‡å             å˜é‡å–çš„å€¼   è¡¨è¾¾å¼
 Expression::Expression(string str,int variable_amount,string variable[])
 	:VariableAmount(variable_amount),check_input(true),expression_systerm(RADIAN_SYSTERM)
 {
@@ -44,9 +45,9 @@ Expression::Expression(string str,int variable_amount,string variable[])
 		for (int i = 0; i < variable_amount; i++)
 		{
 			VariableName[i] = variable[i];
-			//Î´ÖªÊı¿Ï¶¨Ó¦¸Ãµ½getAns()ÔÙ¸³ÖµÀ²
-			//VariableMap[variable[i]] = value[i];ºÃÂÒ°¡...
-			//VariableMap[VariableName[i]] = value[i];//Î´ÖªÊıÓ¦¸ÃÒ»¿ªÊ¼¾Í¸³Öµ£¿»¹ÊÇµ½getAns()ÔÙ¸³Öµ£¿
+			//æœªçŸ¥æ•°è‚¯å®šåº”è¯¥åˆ°getAns()å†èµ‹å€¼å•¦
+			//VariableMap[variable[i]] = value[i];å¥½ä¹±å•Š...
+			//VariableMap[VariableName[i]] = value[i];//æœªçŸ¥æ•°åº”è¯¥ä¸€å¼€å§‹å°±èµ‹å€¼ï¼Ÿè¿˜æ˜¯åˆ°getAns()å†èµ‹å€¼ï¼Ÿ
 		}
 	}
 }
@@ -71,110 +72,185 @@ string Expression::input(const string str)
 	exp += "#";
 	return exp;
 }
-double Expression::getAns(double Value[])//°¡...»¹ÊÇÏÈ»ØÈ¥Ğ´Î±´úÂë°Ñ...ºÃÂÒ°¡
+double Expression::getAns(double Value[])// Value[] æœªçŸ¥æ•°çš„å€¼
 {
-	int judge_ = 0;//ÅĞ¶ÏÀ¨ºÅÊÇ·ñ³É¶Ô
+	/*judge the amount of  '('  ')'*/
+	int judge_ = 0;//åˆ¤æ–­æ‹¬å·æ˜¯å¦æˆå¯¹
+	double ans = 0;
 	stack<string>OperatorStack;
 	stack<double>OperandStack;
 	int pos = 0;
 	read(pos);
-	/*È±ÉÙ¸³ÖµµÄ¹ı³Ì*/
-	if (type == NUM_TYPE )
+
+	/*get value of variables*/
+	if (VariableAmount > 0)
 	{
-		double num;
-		//token×ªÊı×Ö
-		OperandStack.push(num);
-		read(pos);
-	}
-	else if (type == VARIABLE_TYPE)
-	{
-		double num = VariableMap[token];
-		OperandStack.push(num);
-		read(pos);
-	}
-	else if (type == OPERATOR_TYPE)
-	{
-		if (OperatorStack.empty())
+		for (int i = 0; i < VariableAmount; i++)
 		{
-			OperatorStack.push(token);
+			VariableMap[VariableName[i]] = Value[i];
 		}
-		else
+	}
+	while (token != "" && token !="#" && type != END_TYPE)
+	{
+		if (type == UNKNOW_TYPE)
 		{
-			if (compare(token,OperatorStack.top()) == -1)
+			check_input = false;
+			return 0;
+		}//return
+		if (type == NUM_TYPE)
+		{
+			double num = atof(token.c_str());/*string to double*/
+			OperandStack.push(num);
+			read(pos);
+		}
+		else if (type == VARIABLE_TYPE)
+		{
+			double num = VariableMap[token];
+			OperandStack.push(num);
+			read(pos);
+		}
+		else if (type == OPERATOR_TYPE  || type == FUNCTION_TYPE)//function equal to "("
+		{
+			if (!check_input)
 			{
-				//ÏÈ³öÕ»¼ÆËã
-				double x[2];
-				x[0] = OperandStack.top();
+				return 0;
+			}//return
+			if (OperatorStack.empty())
+			{
+				OperatorStack.push(token);
+			}
+			//if (type == FUNCTION_TYPE)
+			//{
+			//	judge_++;
+			//}
+			else//operator or function
+			{
+				if (compare(token, OperatorStack.top()) == -1)
+				{
+					//å…ˆå‡ºæ ˆè®¡ç®—
+					double x[2] = { 0,0 };
+					x[0] = OperandStack.top();
+					OperandStack.pop();
+					double tmp = 0;
+					string top_element = OperatorStack.top();
+					OperatorStack.pop();
+
+					if (isOperator(top_element) != -1)//it's operator
+					{
+						if (OperatorNeedAmount[isOperator(top_element)] == 2)
+						{
+							x[1] = OperandStack.top();
+							OperandStack.pop();
+						}
+#ifdef DEBUG
+						cout << x[1] << " " << top_element << x[0] << endl;
+#endif // DEBUG
+						tmp = OperatorCalculate(top_element, x);
+					}
+
+					else// if(isFunction(OperatorStack.top != -1) its's function
+					{
+						//if (functionNeedAmount[isFunction(top_element)] == 2)
+						if(top_element == "^")
+						{
+							x[1] = OperandStack.top();
+							OperandStack.pop();
+						}
+#ifdef DEBUG
+						cout << x[1] << " " << top_element << x[0] << endl;
+#endif // DEBUG
+						tmp = FunctionCalculate(top_element, x);
+					}
+					OperandStack.push(tmp);
+					if (token != ")")//  not ')'
+					{
+						OperatorStack.push(token);
+					}
+					else//is ')'
+					{
+						judge_--;
+					}
+				}
+				else if (compare(token, OperatorStack.top()) == 0)//unnessary
+				{
+					OperatorStack.pop();
+					judge_--;
+				}
+				else if (compare(token, OperatorStack.top()) == 1)
+				{
+					if (token == "(")//is '('
+					{
+						judge_++;
+					}
+					OperatorStack.push(token);
+
+				}
+				else if (compare(token, OperatorStack.top()) == 2)//wrong input
+				{
+					check_input = false;
+					return 0;
+				}
+			}
+			read(pos);
+		}
+	}
+	//if (type == END_TYPE ||type )
+	//{
+	//now at the end
+	while (!OperatorStack.empty())
+	{
+		if (OperandStack.empty())
+		{
+			check_input = false;
+			return 0;
+		}
+		double x[2] = { 0,0 };
+		string top_element = OperatorStack.top();
+		OperatorStack.pop();
+		if (isOperator(top_element) != -1)
+		{
+			if (top_element == "#")
+				return OperandStack.top();
+			if(top_element == "(")
 				OperandStack.pop();
+			x[0] = OperandStack.top();
+			OperandStack.pop();
+			x[1] = OperandStack.top();
+#ifdef DEBUG
+			cout << x[1] << " " << top_element << x[0] << endl;
+#endif // DEBUG
+			OperandStack.pop();
+			double tmp = OperatorCalculate(top_element, x);
+			OperandStack.push(tmp);
+		}
+		else
+		{
+			x[0] = OperandStack.top();
+			OperandStack.pop();
+			if (top_element == "^")
+			{
 				x[1] = OperandStack.top();
-				double tmp = OperatorCalculate(OperatorStack.top(), x);
-				OperandStack.push(tmp);
+				OperandStack.pop();
 			}
-			else if (compare(token, OperatorStack.top()) == 0)
-			{
-
-			}
-			else if (compare(token, OperatorStack.top()) == 1)
-			{
-
-			}
+			double tmp = FunctionCalculate(top_element, x);
+			OperandStack.push(tmp);
 		}
 
-
-
-		read(pos);
 	}
-	else if (type == FUNCTION_TYPE)
+	if (judge_ == 0)
+		return OperandStack.top();
+	else
 	{
-		if (OperatorStack.empty())
-		{
-			OperatorStack.push(token);
-		}
-		else
-		{
-			if (compare(token, OperatorStack.top()) == -1)
-			{
-
-			}
-			else if (compare(token, OperatorStack.top()) == 0)
-			{
-
-			}
-			else if (compare(token, OperatorStack.top()) == 1)
-			{
-
-			}
-		}
-
-
-		read(pos);
-	}
-	else if (type == UNKNOW_TYPE)
-	{
+		check_input = false;
 		return 0;
 	}
-	else if (!check_input)
-	{
-		return 0;
-	}
-	else if (type == END_TYPE)
-	{
-		if (OperatorStack.empty())//Õ»¿ÕÁË ÔòµÃµ½´ğ°¸
-		{
-			return OperandStack.top();
-		}
-		else
-		{
-			//Õ»Ã»ÓĞ¿Õ »ØËİ
-
-		}
-	}
+	//}
 }
 
-void Expression::read(int & pos)//×¢Òâ×îºóÒ»¸ö×Ö·û¿ÉÄÜ»áÊä³öÁ½´Î...
+void Expression::read(int & pos)//æ³¨æ„æœ€åä¸€ä¸ªå­—ç¬¦å¯èƒ½ä¼šè¾“å‡ºä¸¤æ¬¡...
 {
 	token = "";
-	cout << "pos = " << pos << endl;
+	//cout << "pos = " << pos << endl;
 	if (exp[pos] == '#'||pos >= exp.length())
 	{
 		type = END_TYPE;
@@ -194,6 +270,9 @@ void Expression::read(int & pos)//×¢Òâ×îºóÒ»¸ö×Ö·û¿ÉÄÜ»áÊä³öÁ½´Î...
 			
 		}
 		pos = next_pos;
+#ifdef DEBUG
+		cout << token << endl;
+#endif // DEBUG
 		return;
 	}
 	else if(isdigit(exp.at(pos)))
@@ -206,6 +285,9 @@ void Expression::read(int & pos)//×¢Òâ×îºóÒ»¸ö×Ö·û¿ÉÄÜ»áÊä³öÁ½´Î...
 				next_pos++;
 		}
 		pos = next_pos;
+#ifdef DEBUG
+		cout << token << endl;
+#endif // DEBUG
 		return;
 	}
 
@@ -216,18 +298,27 @@ void Expression::read(int & pos)//×¢Òâ×îºóÒ»¸ö×Ö·û¿ÉÄÜ»áÊä³öÁ½´Î...
 		{
 			type = FUNCTION_TYPE;
 			pos = next_pos;
+#ifdef DEBUG
+			cout << token << endl;
+#endif // DEBUG
 			return;
 		}
 		else if (isOperator(token) != -1)
 		{
 			type = OPERATOR_TYPE;
 			pos = next_pos;
+#ifdef DEBUG
+			cout << token << endl;
+#endif // DEBUG
 			return;
 		}
-		else if (isVariable(token) != -1)//ÊÇ±äÁ¿
+		else if (isVariable(token) != -1)//æ˜¯å˜é‡
 		{
 			type = VARIABLE_TYPE;
 			pos = next_pos;
+#ifdef DEBUG
+			cout << token << endl;
+#endif // DEBUG
 			return;
 		}
 		else if (exp[next_pos - 1] == '#')
@@ -265,24 +356,25 @@ double Expression::OperatorCalculate(string Operator, double Operand[])
 	int index = isOperator(Operator);
 	switch (index)
 	{
-	case 0:
-		return Operand[0] + Operand[1];
 	case 1:
-		return Operand[0] - Operand[1];
+		return Operand[1] + Operand[0];
 	case 2:
-		return Operand[0] * Operand[1];
+		return Operand[1] - Operand[0];
 	case 3:
-		if (Operand[1] == 0)
+		return Operand[1] * Operand[0];
+	case 4:
+		if (Operand[0] == 0)
 		{
 			check_input = false;
 			return 0;
 		}
-		return Operand[0] / Operand[1];
+		return Operand[1] / Operand[0];
 	}
 }
 
 double Expression::FunctionCalculate(string Function, double  Operand[])
 {
+	//ç›®å‰é»˜è®¤æ˜¯å¼§åº¦åˆ¶
 	int index = isFunction(Function);
 	switch (index)
 	{
@@ -366,7 +458,7 @@ Function_2D::Function_2D(string expression_,string VariableName_):eps(0.00001)
 {
 	VariableName[0] = VariableName_;
 	expression = expression_;
-	FunctionExpression = new Expression(expression,1, VariableName);//»á²»»áÓĞÎÊÌâ°¡...¸Ğ¾õ»áÓĞÎÊÌâ°¡...
+	FunctionExpression = new Expression(expression,1, VariableName);//ä¼šä¸ä¼šæœ‰é—®é¢˜å•Š...æ„Ÿè§‰ä¼šæœ‰é—®é¢˜å•Š...
 
 }
 
@@ -387,13 +479,13 @@ double Function_2D::getAns(double Value_)
 	double value[1] = { Value_ };
 	return FunctionExpression->getAns(value);
 }
-double Function_2D::getDerivativeValue(double Value_)//Î¢·Ö¾ßÌåµÄÖµ
+double Function_2D::getDerivativeValue(double Value_)//å¾®åˆ†å…·ä½“çš„å€¼
 {
 	double y1 = getAns(Value_);
 	double y2 = getAns(Value_ + eps);
 	return (y2 - y1) / eps;
 }
-double Function_2D::getIntergralValue(double x1, double x2)//»ı·Ö¾ßÌåµÄÖµ
+double Function_2D::getIntergralValue(double x1, double x2)//ç§¯åˆ†å…·ä½“çš„å€¼
 {
 	double ans = 0;
 	for (; x1 < x2; x1 += eps)
