@@ -15,7 +15,7 @@ class caculator_gui : public QMainWindow
 
 public:
 	caculator_gui(QWidget *parent = Q_NULLPTR);
-public slots://信号与槽在这里定义！！！！！
+private slots://信号与槽在这里定义！！！！！
 	void push_add_button();
 	void push_subtract_button();
 	void push_multiply_button();
@@ -56,4 +56,5 @@ private:
 	QString Matrix_to_QString(const Matrix&, const unsigned int& )const;
 	unsigned int DecimalDigit;
 	bool float_use;
+	void paintEvent(QPaintEvent *e);
 };

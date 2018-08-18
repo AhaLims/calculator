@@ -39,7 +39,7 @@ public:
     {
         if (LinearEquation_guiClass->objectName().isEmpty())
             LinearEquation_guiClass->setObjectName(QStringLiteral("LinearEquation_guiClass"));
-        LinearEquation_guiClass->resize(1314, 886);
+        LinearEquation_guiClass->resize(1161, 967);
         label = new QLabel(LinearEquation_guiClass);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(30, 20, 321, 61));

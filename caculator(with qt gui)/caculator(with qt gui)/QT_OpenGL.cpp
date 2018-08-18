@@ -3,6 +3,7 @@
 #include <gl\GL.h>
 #include <math.h>
 #include"QT_OpenGL.h"
+#include<qpainter.h>
 
 const int QTOpenGL::Width = 800;
 const int QTOpenGL::Height = 800;
@@ -132,10 +133,20 @@ void QTOpenGL::move_down()
 }
 
 
+void QT_OpenGL::paintEvent(QPaintEvent *e)
+{
+	QPixmap pixmap = QPixmap(":/caculator_gui/picture/background.jpg").scaled(this->size());
+	QPalette palette(this->palette());
+	palette.setBrush(QPalette::Background, QBrush(pixmap));
+	this->setPalette(palette);
+}
+
 
 QT_OpenGL::QT_OpenGL( QTOpenGL * ptr , QWidget *parent )
 	: QWidget(parent),qtopengl_ptr(ptr)//这里是需要浅复制
 {
+	setMinimumSize(1060, 900);
+	setMaximumSize(1060, 900);
 	ui.setupUi(this);
 }
 void QT_OpenGL::push_help()
@@ -144,7 +155,9 @@ void QT_OpenGL::push_help()
 }
 void QT_OpenGL::push_example()
 {
-	//补充
+	ui.variabl_name->setText("x");
+	ui.function_edit->setText("sin(x)");
+	qtopengl_ptr->start_OpenGL();
 }
 void QT_OpenGL::push_OK()
 {

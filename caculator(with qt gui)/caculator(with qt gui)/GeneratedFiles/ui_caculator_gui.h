@@ -104,11 +104,12 @@ public:
             caculator_guiClass->setObjectName(QStringLiteral("caculator_guiClass"));
         caculator_guiClass->setEnabled(true);
         caculator_guiClass->resize(1627, 912);
+        caculator_guiClass->setStyleSheet(QStringLiteral(""));
         centralWidget = new QWidget(caculator_guiClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(270, 90, 1061, 291));
+        horizontalLayoutWidget->setGeometry(QRect(30, 110, 1061, 291));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -200,10 +201,10 @@ public:
 
         output_test_browser = new QTextBrowser(centralWidget);
         output_test_browser->setObjectName(QStringLiteral("output_test_browser"));
-        output_test_browser->setGeometry(QRect(340, 690, 861, 191));
+        output_test_browser->setGeometry(QRect(130, 690, 861, 191));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(380, 430, 381, 201));
+        layoutWidget->setGeometry(QRect(130, 430, 381, 201));
         gridLayoutA_2 = new QGridLayout(layoutWidget);
         gridLayoutA_2->setSpacing(6);
         gridLayoutA_2->setContentsMargins(11, 11, 11, 11);
@@ -283,7 +284,7 @@ public:
 
         layoutWidget1 = new QWidget(centralWidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(840, 430, 381, 201));
+        layoutWidget1->setGeometry(QRect(610, 430, 381, 201));
         gridLayoutA = new QGridLayout(layoutWidget1);
         gridLayoutA->setSpacing(6);
         gridLayoutA->setContentsMargins(11, 11, 11, 11);
@@ -363,7 +364,7 @@ public:
 
         horizontalLayoutWidget_4 = new QWidget(centralWidget);
         horizontalLayoutWidget_4->setObjectName(QStringLiteral("horizontalLayoutWidget_4"));
-        horizontalLayoutWidget_4->setGeometry(QRect(340, 640, 222, 41));
+        horizontalLayoutWidget_4->setGeometry(QRect(130, 640, 222, 41));
         horizontalLayout_8 = new QHBoxLayout(horizontalLayoutWidget_4);
         horizontalLayout_8->setSpacing(6);
         horizontalLayout_8->setContentsMargins(11, 11, 11, 11);
@@ -386,7 +387,7 @@ public:
 
         horizontalLayoutWidget_2 = new QWidget(centralWidget);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(270, 10, 1061, 80));
+        horizontalLayoutWidget_2->setGeometry(QRect(30, 10, 1061, 80));
         horizontalLayout_7 = new QHBoxLayout(horizontalLayoutWidget_2);
         horizontalLayout_7->setSpacing(6);
         horizontalLayout_7->setContentsMargins(11, 11, 11, 11);

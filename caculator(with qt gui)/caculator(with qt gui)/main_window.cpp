@@ -7,6 +7,7 @@ main_window::main_window(int Argc,
 	char *Argv[], QWidget *parent)
 	: QMainWindow(parent),argc(Argc),argv(Argv)
 {
+
 	matrix_caculator = new caculator_gui;
 	//”¶∏√√ª¥Ì∞….....
 	qtopengl = new QTOpenGL(argc, argv);
@@ -14,7 +15,9 @@ main_window::main_window(int Argc,
 	Help_window = new help_window();
 	linear_equation_gui = new LinearEquation_gui();
 	ui.setupUi(this);
-	//QT_OpenGL_function = new QT_OpenGL(this);
+	//fix 
+	setMinimumSize(1000, 800); 
+	setMaximumSize(1000, 800);
 }
 main_window::~main_window()
 {

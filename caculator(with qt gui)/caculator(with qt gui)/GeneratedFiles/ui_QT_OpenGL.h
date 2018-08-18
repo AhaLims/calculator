@@ -42,7 +42,7 @@ public:
     {
         if (QT_OpenGLClass->objectName().isEmpty())
             QT_OpenGLClass->setObjectName(QStringLiteral("QT_OpenGLClass"));
-        QT_OpenGLClass->resize(1128, 724);
+        QT_OpenGLClass->resize(1060, 900);
         pushOK = new QPushButton(QT_OpenGLClass);
         pushOK->setObjectName(QStringLiteral("pushOK"));
         pushOK->setGeometry(QRect(890, 160, 101, 41));
@@ -62,6 +62,7 @@ public:
         QFont font1;
         font1.setPointSize(15);
         label_2->setFont(font1);
+        label_2->setStyleSheet(QStringLiteral("background-image: url(:/caculator_gui/picture/white.png)"));
         heLp = new QPushButton(QT_OpenGLClass);
         heLp->setObjectName(QStringLiteral("heLp"));
         heLp->setGeometry(QRect(370, 100, 93, 28));

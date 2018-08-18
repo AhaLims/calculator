@@ -11,6 +11,7 @@ public:
 	LinearEquation_gui(QWidget *parent = Q_NULLPTR);
 	~LinearEquation_gui();
 private:
+	void paintEvent(QPaintEvent * e);
 	Ui::LinearEquation_guiClass ui;
 	int amount;
 	void set();

@@ -5,10 +5,21 @@
 #include"AnalyticFormula.h"
 #include"source.h"
 #include <QtWidgets/QMessageBox>
+void caculator_gui::paintEvent(QPaintEvent *e)
+{
+
+}
 
 caculator_gui::caculator_gui(QWidget *parent)
 	: QMainWindow(parent)
 {
+	setMinimumSize(1167, 967);
+	setMaximumSize(1167, 967);
+	QPixmap pixmap = QPixmap(":/caculator_gui/picture/white.png").scaled(this->size());
+	QPalette palette(this->palette());
+	palette.setBrush(QPalette::Background, QBrush(pixmap));
+	this->setPalette(palette);
+
 	ui.setupUi(this);
 	ui.use_float->setCheckable(true);
 	ui.use_float->setChecked(true);

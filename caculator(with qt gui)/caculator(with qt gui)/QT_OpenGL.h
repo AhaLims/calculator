@@ -44,6 +44,7 @@ public:
 	QT_OpenGL(QTOpenGL * ptr = nullptr,QWidget *parent = Q_NULLPTR);
 
 private:
+	void paintEvent(QPaintEvent * e);
 	Ui::QT_OpenGLClass ui;
 	QTOpenGL * qtopengl_ptr;
 private slots:
