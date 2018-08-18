@@ -18,6 +18,9 @@ public:
 	void move_right();
 	void move_up();
 	void move_down();
+	//void enlarge();
+	//void lessen();
+	//void reset();//还原
 private:
 	int argc;
 	char **argv;
@@ -28,6 +31,7 @@ private:
 	static const int centre_x; //中心点
 	static const int centre_y;
 	static double LevelMovement, ViticalMovement;
+	static double factor;//暂时不用
 };
 
 /*界面*/
@@ -45,12 +49,14 @@ private slots:
 	void push_help();
 	void push_example();
 	void push_OK();
-	void push_enlarge();
-	void push_lessen();
+	//void push_enlarge();
+	//void push_lessen();
 	void push_left();
 	void push_right();
 	void push_up();
 	void push_down();
+	//void reset();
+
 };
 
 

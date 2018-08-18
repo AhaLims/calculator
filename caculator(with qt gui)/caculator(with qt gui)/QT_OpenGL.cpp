@@ -12,12 +12,14 @@ const int QTOpenGL::centre_x = Width / 2; //中心点
 const int QTOpenGL::centre_y = Height / 2;
 double QTOpenGL::LevelMovement = 0;
 double QTOpenGL::ViticalMovement = 0;
+double QTOpenGL::factor = 1;
 
 QTOpenGL::QTOpenGL(int Argc, char* Argv[]) :
 	argc(Argc), argv(Argv)
 {
 	LevelMovement = 0;
 	ViticalMovement = 0;
+	factor = 1;
 }
 void QTOpenGL::draw_axis()
 {
@@ -29,19 +31,14 @@ void QTOpenGL::draw_axis()
 	glEnable(GL_LINE_STIPPLE);
 
 
-	///*带坐标平移变换的*/
-	//float pointx1[] = { -centre_x * times + LevelMovement,0 };
-	//float pointx2[] = { centre_x * times + LevelMovement, 0 };
-	//float pointy1[] = { 0 + LevelMovement, centre_y * times };
-	//float pointy2[] = { 0 + LevelMovement, -centre_y * times };
 
 	/*水平线*/
-	float pointx1[] = { -centre_x * times ,0 + ViticalMovement };
-	float pointx2[] = { centre_x * times, 0 + ViticalMovement };
+	float pointx1[] = { (-centre_x * times) * factor , (0 + ViticalMovement) * factor};
+	float pointx2[] = { centre_x * times * factor, (0 + ViticalMovement) * factor };
 
 	/*垂直线*/
-	float pointy1[] = { 0 + LevelMovement, centre_y * times };
-	float pointy2[] = { 0 + LevelMovement, -centre_y * times };
+	float pointy1[] = { 0 + LevelMovement * factor, centre_y * times* factor };
+	float pointy2[] = { 0 + LevelMovement * factor, -centre_y * times* factor };
 
 	/*画坐标轴 */
 	glBegin(GL_LINES);
@@ -62,18 +59,11 @@ void QTOpenGL::draw_function()
 
 						   //也许可以用多线程 算 + 画？
 						   /* 不闭合折线*/
-	//glBegin(GL_LINE_STRIP);
-	/*打点 连线*/
-	//for (x = -1.0f; x <= 1.0f; x += deltax)
-	//	glVertex2f(x * centre_x * times + LevelMovement, getY(x) * centre_y * times + ViticalMovement);
-
-	//glEnd();
 
 	glBegin(GL_LINE_STRIP);
 	/*打点 连线*/
 	for (x = -1.0f; x <= 1.0f; x += deltax)
-		glVertex2f(x * centre_x * times, getY(x - LevelMovement / Width * 2) * centre_y * times + ViticalMovement);
-		//没太弄明白这里 *2的含义..
+		glVertex2f(x * centre_x * times * factor, (getY(x - LevelMovement / Width * 2) * centre_y * times + ViticalMovement) * factor);
 	glEnd();
 }
 void myDisplay_(void)//回调函数
@@ -110,7 +100,6 @@ float QTOpenGL::getY(float x)
 	//return x;
 	return sin (x *PI);
 }
-
 void QTOpenGL::move_left()
 {
 	LevelMovement -= Width * 0.1;
@@ -141,6 +130,15 @@ void QTOpenGL::move_down()
 	glutMainLoop();
 }
 
+//void QTOpenGL::reset()
+//{
+//	factor = 1;
+//	ViticalMovement = 0;
+//	LevelMovement = 0;
+//	glClear(GL_COLOR_BUFFER_BIT);
+//	glutDisplayFunc(&myDisplay_);
+//	glutMainLoop();
+//}
 
 
 QT_OpenGL::QT_OpenGL( QTOpenGL * ptr , QWidget *parent )
@@ -160,14 +158,6 @@ void QT_OpenGL::push_OK()
 {
 	qtopengl_ptr->start_OpenGL();
 }
-void QT_OpenGL::push_enlarge()
-{
-
-}
-void QT_OpenGL::push_lessen()
-{
-
-}
 void QT_OpenGL::push_left()
 {
 	qtopengl_ptr->move_left();
@@ -184,3 +174,8 @@ void QT_OpenGL::push_down()
 {
 	qtopengl_ptr->move_down();
 }
+
+//void QT_OpenGL::reset()//不行？？？
+//{
+//	qtopengl_ptr->reset();
+//}
