@@ -33,7 +33,7 @@ public:
     QPushButton *change;
     QPushButton *get_answer;
     QWidget *verticalLayoutWidget_2;
-    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout_ans;
 
     void setupUi(QWidget *LinearEquation_guiClass)
     {
@@ -83,11 +83,11 @@ public:
         verticalLayoutWidget_2 = new QWidget(LinearEquation_guiClass);
         verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
         verticalLayoutWidget_2->setGeometry(QRect(970, 130, 160, 80));
-        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_ans = new QVBoxLayout(verticalLayoutWidget_2);
+        verticalLayout_ans->setSpacing(6);
+        verticalLayout_ans->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_ans->setObjectName(QStringLiteral("verticalLayout_ans"));
+        verticalLayout_ans->setContentsMargins(0, 0, 0, 0);
 
         retranslateUi(LinearEquation_guiClass);
         QObject::connect(change, SIGNAL(clicked()), LinearEquation_guiClass, SLOT(change_equation()));

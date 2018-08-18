@@ -19,6 +19,9 @@ LinearEquation_gui::~LinearEquation_gui()
 {
 	if ((Module != nullptr))
 		delete[] Module;
+	if (answer_show != nullptr)
+		//delete[] answer_show;
+		delete answer_show;
 }
 
 void LinearEquation_gui::set()
@@ -42,31 +45,35 @@ void LinearEquation_gui::change_equation()
 	set();
 }
 
+/*problem on b */
 void LinearEquation_gui::push_get_answer_button()
 {
 	/*get data*/
-	Matrix A(amount, amount, false),b(1,amount,false),ans;
+	//Matrix A(amount, amount, false),b(1,amount,false),ans;
+	Matrix A(amount, amount, false), b(amount, 1, false), ans;
 	int solve;
 	double tmp = 0;
 	QString qstr;
-	for (int i = 0; i <= amount; i++)
+	for (int i = 0; i < amount; i++)
 	{
-		for (int j = 0; j < amount; j++)
+		for (int j = 0; j <= amount; j++)
 		{
-			
-			qstr = Module[i].elements[j].text();
+			std::cout << "amount:" << amount << " ";
+			std::cout << "i j = " << i << " " << j << "\n";
+			qstr = Module[i].elements[j].text();////////
 			if (qstr == "")
 			{
 				QMessageBox::about(NULL, "WRONG", tr("please enter a number"));
 				return;
 			}
 			tmp = qstr.toDouble();
-			if(i != amount)
+			if(j != amount)
 				A.setData(i, j, tmp);
-			else b.setData(0, j, tmp);
+			//else b.setData(0, j, tmp);
+			else b.setData(i, 0, tmp);
 		}
 	}
-	ans = solveLinearEqaution::getSolution(A, b, solve);
+	ans = solveLinearEqaution::getSolution(A, b, solve);//problem!!
 	if (solve == 0)//no solution
 	{
 		QMessageBox::about(NULL, "Tip", tr("No solution"));
@@ -77,6 +84,21 @@ void LinearEquation_gui::push_get_answer_button()
 	}
 	else //if(solve == 1)//only one 
 	{
+		//x[i] = solution.data[i][0];
+		//answer_show = new QLabel[amount];
+		answer_show = new QLabel;
+		answer_show->setGeometry(990, 130, 280, 720);
+		QString qstr;
+		for (int i = 0; i < amount; i++)
+		{
+			qstr = "x" + QString::number(i) + "=" + "\n";
+			//qstr += QString::number(ans.getData(i, 0),10,2) +"\n";
+			//answer_show[i].setText(qstr);
+
+			//ui.verticalLayout_ans->
+		}
+		answer_show->setText(qstr);
+		answer_show->show();
 		//use label to show
 	}
 	/*manage*/

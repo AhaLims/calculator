@@ -12,6 +12,12 @@ public:
 	static void draw_function();
 	void start_OpenGL();//开启OpenGL 窗口
 	static float getY(float);//通过计算得到y的值
+
+	/*通过平移变换实现四个方向的移动*/
+	void move_left();
+	void move_right();
+	void move_up();
+	void move_down();
 private:
 	int argc;
 	char **argv;
@@ -21,6 +27,7 @@ private:
 	static const GLfloat PI;
 	static const int centre_x; //中心点
 	static const int centre_y;
+	static double LevelMovement, ViticalMovement;
 };
 
 /*界面*/

@@ -15,6 +15,7 @@ private:
 	int amount;
 	void set();
 	DynamicModule *Module;
+	QLabel *answer_show;
 private slots:
 	void change_equation();
 	void push_get_answer_button();

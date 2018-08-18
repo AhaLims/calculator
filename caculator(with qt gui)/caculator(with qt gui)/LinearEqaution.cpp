@@ -4,7 +4,7 @@
 
 
 /*judge if the linear equations is compatible and the number of solution*/
-int solveLinearEqaution::Compatible(const Matrix CoefficientMatrix, const Matrix AugmentedMatrix)
+int solveLinearEqaution::Compatible(const Matrix& CoefficientMatrix, const Matrix& AugmentedMatrix)
 {
 	int CRank = CoefficientMatrix.getRank();
 	int ARank = AugmentedMatrix.getRank();
@@ -24,11 +24,12 @@ int solveLinearEqaution::Compatible(const Matrix CoefficientMatrix, const Matrix
 
 /*num is the amount of solution .
 If there is only one solution, return solution matrix */
-Matrix solveLinearEqaution::getSolution(const Matrix A, const Matrix b,int & num)//solve Ax = b
+Matrix solveLinearEqaution::getSolution(const Matrix& A, const Matrix& b,int & num)//solve Ax = b
 {
 	//A is Coefficient Matrix
 	Matrix AugmentedMatrix(A.getRow(), A.getColumn() + 1,false);
-
+	std::cout <<"A row is "<< A.getRow() << "\n";
+	std::cout << "A column is " << A.getColumn() << "\n";
 	for (int i = 0; i < A.getRow(); i++)
 	{
 		for (int j = 0; j < A.getColumn() + 1; j++)
@@ -59,8 +60,6 @@ Matrix solveLinearEqaution::getSolution(const Matrix A, const Matrix b,int & num
 		Matrix solution(A.getRow(), 1, false);
 		solution = A.inverse_matrix() *b;
 		return solution;
-
-
 	}
 	else //if (num == 2)
 	{
