@@ -6,7 +6,6 @@ class Matrix
 public:
 	Matrix(unsigned int r, unsigned int c, bool ) ;
 	Matrix();
-	//Matrix(const Matrix&);//拷贝构造函数
 
 	bool check(const Matrix & )const;
 
@@ -72,9 +71,9 @@ public:
 	Matrix Adjoint()const;
 
 	/*LU decomposition*/
-	void LUdecomposition(Matrix & ,Matrix &)const;
+	//void LUdecomposition(Matrix & ,Matrix &)const;
 
-	Matrix Choleskydecomposition();//把一个对称正定的矩阵表示成一个下三角矩阵L和其转置的乘积的分解
+	//Matrix Choleskydecomposition();//把一个对称正定的矩阵表示成一个下三角矩阵L和其转置的乘积的分解
 
 	/*Jacobi iterative method to get characteristic value and feature vector*/
 	/*only get Real area value*/

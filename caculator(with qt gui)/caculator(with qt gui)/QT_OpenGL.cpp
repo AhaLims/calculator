@@ -83,16 +83,17 @@ void QTOpenGL::start_OpenGL()
 
 	glutCreateWindow("函数图像");
 	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
+	glLoadIdentity();	
 	gluOrtho2D(0.0, Width, 0.0, Height);
 
 	/*设置坐标原点*/
 	glTranslatef(centre_x, centre_y, 0);
 
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	glutKeyboardFunc(&KeyBoards);
+
 	glutDisplayFunc(&myDisplay_);
-	//glutKeyboardFunc(&test(VK_LEFT,0,0));
-	//glutKeyboardFunc(void(*func)(unsigned char key, int x, int y));
 	glutMainLoop();
 }
 float QTOpenGL::getY(float x)
@@ -130,15 +131,6 @@ void QTOpenGL::move_down()
 	glutMainLoop();
 }
 
-//void QTOpenGL::reset()
-//{
-//	factor = 1;
-//	ViticalMovement = 0;
-//	LevelMovement = 0;
-//	glClear(GL_COLOR_BUFFER_BIT);
-//	glutDisplayFunc(&myDisplay_);
-//	glutMainLoop();
-//}
 
 
 QT_OpenGL::QT_OpenGL( QTOpenGL * ptr , QWidget *parent )
@@ -179,3 +171,38 @@ void QT_OpenGL::push_down()
 //{
 //	qtopengl_ptr->reset();
 //}
+
+void KeyBoards(unsigned char key, int x, int y)
+{
+	switch (key)
+	{
+	case 'a':
+	case 'A':
+		QTOpenGL::LevelMovement -= QTOpenGL::Width * 0.1;
+		glClear(GL_COLOR_BUFFER_BIT);
+		glutDisplayFunc(&myDisplay_);
+		glutMainLoop();
+		break;
+	case 'd':
+	case 'D':
+		QTOpenGL::LevelMovement += QTOpenGL::Width * 0.1;
+		glClear(GL_COLOR_BUFFER_BIT);
+		glutDisplayFunc(&myDisplay_);
+		glutMainLoop();
+		break;
+	case 'w':
+	case 'W':
+		QTOpenGL::ViticalMovement += QTOpenGL::Height * 0.1;
+		glClear(GL_COLOR_BUFFER_BIT);
+		glutDisplayFunc(&myDisplay_);
+		glutMainLoop();
+		break;
+	case 's':
+	case 'S':
+		QTOpenGL::ViticalMovement -= QTOpenGL::Height * 0.1;
+		glClear(GL_COLOR_BUFFER_BIT);
+		glutDisplayFunc(&myDisplay_);
+		glutMainLoop();
+		break;
+	}
+}
