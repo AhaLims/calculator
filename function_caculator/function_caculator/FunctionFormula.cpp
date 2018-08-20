@@ -3,25 +3,26 @@ using namespace EXPRESSION;
 using namespace std;
 
 /*data initialize*/
-
+const int INF = 10e9;
 /*Operator[0] is function(like sin cos and so on)*/
 const string Expression::Operator[OPERATOR_AMOUNT] = 
-{"", "+" , "-" , "*" , "/" , "(" , ")" , "#" };
+{"", "+" , "-" , "^"  , "*" , "/" , "(" , ")" , "#" };
 const int Expression::OperatorNeedAmount[OPERATOR_AMOUNT] =
-{0 ,  2   , 2 ,   2   , 2  ,  0  ,  0  ,  0 };
+{0 ,  2   , 2 ,   2   ,  2  , 2  ,  0  ,  0  ,  0 };
 
 //used to judge the pres
 const int Expression::OperatorMap[OPERATOR_AMOUNT][OPERATOR_AMOUNT] =
 { 
-//  {f(,   +, -,   *,  /,  (,  ),  #}
-	{ -1, -1, -1, -1, -1, -1,  1,  1 },  //f(
-    { -1,  1,  1, -1, -1, -1,  1,  1 },  //+
-	{ -1,  1,  1, -1, -1, -1,  1,  1 },  //-
-	{ -1,  1,  1,  1,  1, -1,  1,  1 },  //*
-	{ -1,  1,  1,  1,  1, -1,  1,  1 },  ///
-	{ -1, -1, -1, -1, -1, -1,  0,  1 },  //(
-	{  1,  1,  1,  1,  1,  1,  1,  1 },  //)
-	{ -1, -1, -1, -1, -1, -1,- 1,  0 },  //#
+//  {f(,   +, -,  "^"  *,  /,  (,  ),  #}
+	{ -1, -1, -1, -1, -1, -1, -1,  1,  1 },  //f(
+    { -1,  1,  1, -1, -1, -1, -1,  1,  1 },  //+
+	{ -1,  1,  1, -1, -1, -1, -1,  1,  1 },  //-
+	{ -1,  1,  1,  1,  1,  1, -1,  1,  1 },//"^"
+	{ -1,  1,  1,  1,  1,  1, -1,  1,  1 },  //*
+	{ -1,  1,  1,  1,  1,  1, -1,  1,  1 },  ///
+	{ -1, -1, -1, -1, -1, -1, -1,  0,  1 },  //(
+	{  1,  1,  1,  1,  1,  1,  1,  1,  1 },  //)
+	{ -1, -1, -1, -1, -1, -1, -1,- 1,  0 },  //#
 
 
 };
@@ -30,9 +31,9 @@ const string Expression::function[FUN_AMOUNT] =
 {  "sin("    , "cos("    , "tan(" , 
    "arcsin(" , "arccos(" , "arctan(",
    "ln("     , "lg("     , "sqrt("  , 
-   "^" };
+    };
 const int Expression::functionNeedAmount[FUN_AMOUNT] 
-= { 1,1,1,1,1,1,1,1,1,2 };//mark the amount of variable that the fucntion need 
+= { 1,1,1,1,1,1,1,1,1 };//mark the amount of variable that the fucntion need 
 
 
 /*function part*/
@@ -291,7 +292,7 @@ bool Expression::getValue(stack<double>& opnd, double x[], int n)
 
 double Expression::OperatorCalculate(string Operator, double Operand[])
 {
-	//{"fc", "+", "-", "*", "/", "(", ")", "#" };
+	//{"fc", "+", "-", "^" , "*", "/", "(", ")", "#" };
 	int index = isOperator(Operator);
 	switch (index)
 	{
@@ -300,8 +301,10 @@ double Expression::OperatorCalculate(string Operator, double Operand[])
 	case 2:
 		return Operand[0] - Operand[1];
 	case 3:
-		return Operand[0] * Operand[1];
+		return pow(Operand[0], Operand[1]);
 	case 4:
+		return Operand[0] * Operand[1];
+	case 5:
 		if (Operand[0] == 0)
 		{
 			check_input = false;
@@ -363,8 +366,8 @@ double Expression::FunctionCalculate(string Function, double  Operand[])
 			return 0;
 		}
 		return sqrt(Operand[0]);
-	case 9:
-		pow(Operand[0], Operand[1]);
+	//case 9:
+	//	pow(Operand[0], Operand[1]);
 	}
 }
 

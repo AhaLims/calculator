@@ -21,7 +21,7 @@ int main()
 	//	cout << "the ans is " << ans << endl;
 	//}
 
-	Function_2D test("x", "x*3*x");
+	Function_2D test("x", "x^x-4");
 	//x^3»­²»³ö£¿£¿
 	cout << test.getAns(2);
 	system("pause");

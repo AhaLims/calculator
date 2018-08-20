@@ -37,8 +37,8 @@ namespace EXPRESSION
 //也许可以加入 pi 和 e
 //using namespace std;
 
-const int OPERATOR_AMOUNT = 8;
-const int FUN_AMOUNT = 10;
+const int OPERATOR_AMOUNT = 9;
+const int FUN_AMOUNT = 9;
 
 class Function_2D;
 class Expression;
