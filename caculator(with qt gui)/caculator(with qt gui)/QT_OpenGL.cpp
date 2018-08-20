@@ -190,7 +190,7 @@ void QT_OpenGL::push_example()
 }
 void QT_OpenGL::push_OK()
 {
-	if (function != nullptr) delete function;
+	//if (function != nullptr) delete function;
 	string str1, str2;
 	str1 = ui.variabl_name->text().toStdString();
 	str2 = ui.function_edit->text().toStdString();
