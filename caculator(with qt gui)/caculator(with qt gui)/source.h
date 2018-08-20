@@ -8,9 +8,11 @@
 #include<string>
 #include<stack>
 #include <time.h> 
+#include<map>
 using std::string;
 using std::vector;
 using std::stack;
+using std::map;
 namespace math
 {
 	const double pi = 3.1415926;

@@ -402,12 +402,11 @@ int Expression::isOperator(string str)//judge if it is operator and return the n
 
 
 
-Function_2D::Function_2D(string expression_,string VariableName_):eps(0.00001)
+Function_2D::Function_2D(string VariableName_, string expression_):eps(0.00001)
 {
 	VariableName[0] = VariableName_;
 	expression = expression_;
 	FunctionExpression = new Expression(expression,1, VariableName);//会不会有问题啊...感觉会有问题啊...
-
 }
 
 

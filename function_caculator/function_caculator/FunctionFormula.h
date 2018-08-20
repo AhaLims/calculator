@@ -50,7 +50,7 @@ private:
 	string input(const string str);
 
 	/*read a "word" each time and judge what tpye the word is*/
-	void read(int & pos);
+//	void read(int & pos);
 	
 	/*calculate part*/
 
@@ -69,7 +69,7 @@ private:
 	static int isOperator(string str);
 
 	/*get word type*/
-	EXPRESSION::TYPE type;
+//	EXPRESSION::TYPE type;
 	/*static operator funtion and the variable they need*/
 
 	/*operator*/
@@ -112,7 +112,7 @@ public:
 	double getDerivativeValue(double);//微分具体的值
 	double getIntergralValue(double, double);//积分具体的值
 private:
-	string VariableName[1];
+	string VariableName[1];//pi e
 	string expression;
 	Expression *FunctionExpression;
 	double eps;
