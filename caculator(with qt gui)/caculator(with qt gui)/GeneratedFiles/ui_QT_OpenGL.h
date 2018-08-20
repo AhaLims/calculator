@@ -32,10 +32,12 @@ public:
     QLineEdit *variabl_name;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
-    QPushButton *left;
     QPushButton *pushButton_5;
+    QPushButton *left;
     QPushButton *right;
     QPushButton *pushButton_4;
+    QPushButton *lesson_2;
+    QPushButton *lesson;
     QPushButton *reset;
 
     void setupUi(QWidget *QT_OpenGLClass)
@@ -79,21 +81,21 @@ public:
         variabl_name->setFont(font);
         gridLayoutWidget = new QWidget(QT_OpenGLClass);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(640, 220, 391, 131));
+        gridLayoutWidget->setGeometry(QRect(640, 220, 391, 211));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        left = new QPushButton(gridLayoutWidget);
-        left->setObjectName(QStringLiteral("left"));
-
-        gridLayout->addWidget(left, 0, 0, 1, 1);
-
         pushButton_5 = new QPushButton(gridLayoutWidget);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
 
         gridLayout->addWidget(pushButton_5, 1, 1, 1, 1);
+
+        left = new QPushButton(gridLayoutWidget);
+        left->setObjectName(QStringLiteral("left"));
+
+        gridLayout->addWidget(left, 0, 0, 1, 1);
 
         right = new QPushButton(gridLayoutWidget);
         right->setObjectName(QStringLiteral("right"));
@@ -105,9 +107,21 @@ public:
 
         gridLayout->addWidget(pushButton_4, 1, 0, 1, 1);
 
-        reset = new QPushButton(QT_OpenGLClass);
+        lesson_2 = new QPushButton(gridLayoutWidget);
+        lesson_2->setObjectName(QStringLiteral("lesson_2"));
+
+        gridLayout->addWidget(lesson_2, 2, 0, 1, 1);
+
+        lesson = new QPushButton(gridLayoutWidget);
+        lesson->setObjectName(QStringLiteral("lesson"));
+
+        gridLayout->addWidget(lesson, 2, 1, 1, 1);
+
+        reset = new QPushButton(gridLayoutWidget);
         reset->setObjectName(QStringLiteral("reset"));
-        reset->setGeometry(QRect(640, 370, 191, 31));
+
+        gridLayout->addWidget(reset, 3, 0, 1, 1);
+
 
         retranslateUi(QT_OpenGLClass);
         QObject::connect(heLp, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_help()));
@@ -117,6 +131,9 @@ public:
         QObject::connect(right, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_right()));
         QObject::connect(pushButton_4, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_up()));
         QObject::connect(pushButton_5, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_down()));
+        QObject::connect(lesson, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_lessen()));
+        QObject::connect(lesson_2, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_enlarge()));
+        QObject::connect(reset, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_reset()));
 
         QMetaObject::connectSlotsByName(QT_OpenGLClass);
     } // setupUi
@@ -130,10 +147,12 @@ public:
         heLp->setText(QApplication::translate("QT_OpenGLClass", "\345\270\256\345\212\251", nullptr));
         example->setText(QApplication::translate("QT_OpenGLClass", "\347\244\272\344\276\213", nullptr));
         label_3->setText(QApplication::translate("QT_OpenGLClass", "\345\217\230\351\207\217\345\220\215", nullptr));
-        left->setText(QApplication::translate("QT_OpenGLClass", "\345\267\246\347\247\273", nullptr));
         pushButton_5->setText(QApplication::translate("QT_OpenGLClass", "\344\270\213\347\247\273", nullptr));
+        left->setText(QApplication::translate("QT_OpenGLClass", "\345\267\246\347\247\273", nullptr));
         right->setText(QApplication::translate("QT_OpenGLClass", "\345\217\263\347\247\273", nullptr));
         pushButton_4->setText(QApplication::translate("QT_OpenGLClass", "\344\270\212\347\247\273", nullptr));
+        lesson_2->setText(QApplication::translate("QT_OpenGLClass", "\346\224\276\345\244\247", nullptr));
+        lesson->setText(QApplication::translate("QT_OpenGLClass", "\347\274\251\345\260\217", nullptr));
         reset->setText(QApplication::translate("QT_OpenGLClass", "\351\207\215\347\275\256", nullptr));
     } // retranslateUi
 

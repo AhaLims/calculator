@@ -56,9 +56,9 @@ public:
 	void move_right();
 	void move_up();
 	void move_down();
-	//void enlarge();
-	//void lessen();
-	//void reset();
+	void enlarge();
+	void lessen();
+	void reset();
 
 private:
 	int argc;
@@ -95,9 +95,9 @@ private slots:
 	void push_right();
 	void push_up();
 	void push_down();
-	//void push_enlarge();
-	//void push_lessen();
-	//void reset();
+	void push_enlarge();
+	void push_lessen();
+	void push_reset();
 
 };
 

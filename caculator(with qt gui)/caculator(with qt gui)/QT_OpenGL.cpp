@@ -33,15 +33,17 @@ void QTOpenGL::draw_axis()
 	glLineStipple(2, 0x5555);
 	glEnable(GL_LINE_STIPPLE);
 
-
-
 	/*水平线*/
-	float pointx1[] = { (-centre_x * times) * factor , (0 + ViticalMovement) * factor};
-	float pointx2[] = { centre_x * times * factor, (0 + ViticalMovement) * factor };
+	//float pointx1[] = { (-centre_x * times) * factor , (0 + ViticalMovement) * factor};
+	//float pointx2[] = { centre_x * times * factor, (0 + ViticalMovement) * factor };
+	float pointx1[] = { (-centre_x * times)  , (0 + ViticalMovement)};
+	float pointx2[] = { centre_x * times, (0 + ViticalMovement)  };
 
 	/*垂直线*/
-	float pointy1[] = { 0 + LevelMovement * factor, centre_y * times* factor };
-	float pointy2[] = { 0 + LevelMovement * factor, -centre_y * times* factor };
+	//float pointy1[] = { 0 + LevelMovement * factor, centre_y * times* factor };
+	//float pointy2[] = { 0 + LevelMovement * factor, -centre_y * times* factor };
+	float pointy1[] = { 0 + LevelMovement , centre_y * times };
+	float pointy2[] = { 0 + LevelMovement , -centre_y * times};
 
 	/*画坐标轴 */
 	glBegin(GL_LINES);
@@ -62,12 +64,14 @@ void QTOpenGL::draw_function()
 	float deltax = 0.005f; // 横坐标间隔
 
 						   //也许可以用多线程 算 + 画？
-						   /* 不闭合折线*/
+	/* 不闭合折线*/
 
 	glBegin(GL_LINE_STRIP);
 	/*打点 连线*/
 	for (x = -1.0f; x <= 1.0f; x += deltax)
-		glVertex2f(x * centre_x * times * factor, (getY(x - LevelMovement / Width * 2,function) * centre_y * times + ViticalMovement) * factor);
+		//glVertex2f(x * centre_x * times * factor, (getY(x - LevelMovement / Width * 2,function) * centre_y * times + ViticalMovement) * factor);
+		glVertex2f(x * centre_x * times,
+		(getY((x/factor - LevelMovement / Width * 2 ), function) * centre_y * times + ViticalMovement) * factor);
 	glEnd();
 }
 void myDisplay_(void)//回调函数
@@ -106,8 +110,6 @@ float QTOpenGL::getY(float x,Function_2D* function)
 }
 void QTOpenGL::move_left()
 {
-
-
 	LevelMovement += Width * 0.1;
 	glClear(GL_COLOR_BUFFER_BIT);
 	glutDisplayFunc(&myDisplay_);
@@ -119,7 +121,6 @@ void QTOpenGL::move_right()
 	glClear(GL_COLOR_BUFFER_BIT);
 	glutDisplayFunc(&myDisplay_);
 	glutMainLoop();
-	
 }
 void QTOpenGL::move_up()
 {
@@ -136,6 +137,30 @@ void QTOpenGL::move_down()
 	glutMainLoop();
 }
 
+void QTOpenGL::enlarge()
+{
+	factor *= (1 + 0.2);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glutDisplayFunc(&myDisplay_);
+	glutMainLoop();
+}
+
+void QTOpenGL::lessen()
+{
+	factor /= (1 + 0.2);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glutDisplayFunc(&myDisplay_);
+	glutMainLoop();
+}
+void QTOpenGL::reset()
+{
+	factor = 1;
+	ViticalMovement = 0;
+	LevelMovement = 0;
+	glClear(GL_COLOR_BUFFER_BIT);
+	glutDisplayFunc(&myDisplay_);
+	glutMainLoop();
+}
 
 void QT_OpenGL::paintEvent(QPaintEvent *e)
 {
@@ -188,7 +213,18 @@ void QT_OpenGL::push_down()
 {
 	qtopengl_ptr->move_down();
 }
-
+void QT_OpenGL::push_enlarge()
+{
+	qtopengl_ptr->enlarge();
+}
+void QT_OpenGL::push_lessen()
+{ 
+	qtopengl_ptr->lessen(); 
+}
+void QT_OpenGL::push_reset()
+{
+	qtopengl_ptr->reset();
+}
 
 void KeyBoards(unsigned char key, int x, int y)
 {
@@ -222,6 +258,30 @@ void KeyBoards(unsigned char key, int x, int y)
 		glutDisplayFunc(&myDisplay_);
 		glutMainLoop();
 		break;
+	case 'r':
+	case 'R':
+		QTOpenGL::factor = 1;
+		QTOpenGL::ViticalMovement = 0;
+		QTOpenGL::LevelMovement = 0;
+		glClear(GL_COLOR_BUFFER_BIT);
+		glutDisplayFunc(&myDisplay_);
+		glutMainLoop();
+	case 'J':
+	case'j':
+		QTOpenGL::factor *= (1 + 0.2);
+		QTOpenGL::ViticalMovement = 0;
+		QTOpenGL::LevelMovement = 0;
+		glClear(GL_COLOR_BUFFER_BIT);
+		glutDisplayFunc(&myDisplay_);
+		glutMainLoop();
+	case'k':
+	case'K':
+		QTOpenGL::factor /= (1 + 0.2);
+		QTOpenGL::ViticalMovement = 0;
+		QTOpenGL::LevelMovement = 0;
+		glClear(GL_COLOR_BUFFER_BIT);
+		glutDisplayFunc(&myDisplay_);
+		glutMainLoop();
 	}
 }
 
@@ -242,11 +302,10 @@ const int Expression::OperatorMap[OPERATOR_AMOUNT][OPERATOR_AMOUNT] =
 { -1,  1,  1, -1, -1, -1,  1,  1 },  //+
 { -1,  1,  1, -1, -1, -1,  1,  1 },  //-
 { -1,  1,  1,  1,  1, -1,  1,  1 },  //*
-{ -1,  1,  1,  1,  1, -1,  1,  1 },  ///
+{ -1,  1,  1,  1,  1, -1,  1,  1 },  // /
 { -1, -1, -1, -1, -1, -1,  0,  1 },  //(
 { 1,  1,  1,  1,  1,  1,  1,  1 },  //)
 { -1, -1, -1, -1, -1, -1,-1,  0 },  //#
-
 
 };
 

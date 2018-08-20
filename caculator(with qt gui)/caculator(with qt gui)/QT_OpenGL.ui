@@ -145,21 +145,21 @@
      <x>640</x>
      <y>220</y>
      <width>391</width>
-     <height>131</height>
+     <height>211</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QPushButton" name="left">
-      <property name="text">
-       <string>左移</string>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="1">
      <widget class="QPushButton" name="pushButton_5">
       <property name="text">
        <string>下移</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="left">
+      <property name="text">
+       <string>左移</string>
       </property>
      </widget>
     </item>
@@ -177,20 +177,28 @@
       </property>
      </widget>
     </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="lesson_2">
+      <property name="text">
+       <string>放大</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="lesson">
+      <property name="text">
+       <string>缩小</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="reset">
+      <property name="text">
+       <string>重置</string>
+      </property>
+     </widget>
+    </item>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="reset">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>370</y>
-     <width>191</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>重置</string>
-   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -253,8 +261,8 @@
    <slot>push_left()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>726</x>
-     <y>288</y>
+     <x>728</x>
+     <y>263</y>
     </hint>
     <hint type="destinationlabel">
      <x>145</x>
@@ -269,8 +277,8 @@
    <slot>push_right()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>952</x>
-     <y>298</y>
+     <x>1029</x>
+     <y>263</y>
     </hint>
     <hint type="destinationlabel">
      <x>339</x>
@@ -285,8 +293,8 @@
    <slot>push_up()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>695</x>
-     <y>341</y>
+     <x>697</x>
+     <y>313</y>
     </hint>
     <hint type="destinationlabel">
      <x>101</x>
@@ -301,12 +309,60 @@
    <slot>push_down()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>890</x>
-     <y>332</y>
+     <x>1029</x>
+     <y>313</y>
     </hint>
     <hint type="destinationlabel">
      <x>310</x>
      <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lesson</sender>
+   <signal>clicked()</signal>
+   <receiver>QT_OpenGLClass</receiver>
+   <slot>push_lessen()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1015</x>
+     <y>363</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>993</x>
+     <y>497</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lesson_2</sender>
+   <signal>clicked()</signal>
+   <receiver>QT_OpenGLClass</receiver>
+   <slot>push_enlarge()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>734</x>
+     <y>352</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>77</x>
+     <y>352</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>reset</sender>
+   <signal>clicked()</signal>
+   <receiver>QT_OpenGLClass</receiver>
+   <slot>push_reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>732</x>
+     <y>395</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>45</x>
+     <y>408</y>
     </hint>
    </hints>
   </connection>
@@ -321,5 +377,6 @@
   <slot>push_right()</slot>
   <slot>push_up()</slot>
   <slot>push_down()</slot>
+  <slot>push_reset()</slot>
  </slots>
 </ui>

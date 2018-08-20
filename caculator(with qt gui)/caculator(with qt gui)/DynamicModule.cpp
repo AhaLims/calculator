@@ -19,7 +19,6 @@ QHBoxLayout* DynamicModule::set(int amount, QWidget * parent)//amount must >= 1
 	{
 		delete[] elements;
 	}
-
 	names = new QLabel[amount + 5];
 	elements = new QLineEdit[amount + 5];
 	for (unsigned int i = 0; i < amount; i++)
@@ -39,7 +38,6 @@ QHBoxLayout* DynamicModule::set(int amount, QWidget * parent)//amount must >= 1
 	}
 	elements[amount].setMaximumWidth(maxwidth*3);
 	elements[amount].setParent(parent);
-
 	/*set in the HBLayout*/
 	for (unsigned int i = 0; i < amount; i++)
 	{
@@ -54,11 +52,7 @@ DynamicModule::~DynamicModule()
 {
 	std::cout << "use DynamicModule destruct\n";
 	if (names != nullptr)
-	{
 		delete[] names;
-	}
 	if (elements != nullptr)
-	{
 		delete[] elements;
-	}
 }
