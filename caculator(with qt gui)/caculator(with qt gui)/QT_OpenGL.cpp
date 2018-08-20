@@ -82,7 +82,7 @@ void QTOpenGL::draw_function()
 		}
 		//std::cout << getY((x / factor - LevelMovement / Width * 2) << std::endl;
 		glVertex2f(x * centre_x * times,
-			(getY((x / factor - LevelMovement / Width * 2), function) * centre_y * times + ViticalMovement) * factor);
+			(getY((x / factor - LevelMovement / Width * 2 / factor), function) * centre_y * times) * factor + +ViticalMovement);
 	}
 	glEnd();
 }
@@ -285,22 +285,21 @@ void KeyBoards(unsigned char key, int x, int y)
 		glClear(GL_COLOR_BUFFER_BIT);
 		glutDisplayFunc(&myDisplay_);
 		glutMainLoop();
+		break;
 	case 'J':
 	case'j':
 		QTOpenGL::factor *= (1 + 0.2);
-		QTOpenGL::ViticalMovement = 0;
-		QTOpenGL::LevelMovement = 0;
 		glClear(GL_COLOR_BUFFER_BIT);
 		glutDisplayFunc(&myDisplay_);
 		glutMainLoop();
+		break;
 	case'k':
 	case'K':
 		QTOpenGL::factor /= (1 + 0.2);
-		QTOpenGL::ViticalMovement = 0;
-		QTOpenGL::LevelMovement = 0;
 		glClear(GL_COLOR_BUFFER_BIT);
 		glutDisplayFunc(&myDisplay_);
 		glutMainLoop();
+		break;
 	}
 }
 
