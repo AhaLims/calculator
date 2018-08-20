@@ -17,7 +17,7 @@ double QTOpenGL::LevelMovement = 0;
 double QTOpenGL::ViticalMovement = 0;
 double QTOpenGL::factor = 0.25;
 Function_2D *function = nullptr;
-double INF = 10e6;
+double INF = 10e9;
 
 
 QTOpenGL::QTOpenGL(int Argc, char* Argv[])://, string VariableName_, string expression_) :
@@ -60,7 +60,6 @@ void QTOpenGL::draw_axis()
 }
 void QTOpenGL::draw_function()
 {
-
 	/*设置曲线的颜色*/
 	glColor3f(0.0f, 1.0f, 0.0f);
 	float x;
@@ -77,7 +76,8 @@ void QTOpenGL::draw_function()
 		if (fabs(getY((x / factor - LevelMovement / Width * 2), function)) >= INF)
 		{
 			glEnd();
-			glBegin(GL_LINE_STRIP);
+		    glBegin(GL_LINE_STRIP);
+
 			continue;
 		}
 		//std::cout << getY((x / factor - LevelMovement / Width * 2) << std::endl;
