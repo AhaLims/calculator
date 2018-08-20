@@ -6,7 +6,7 @@
 #include<qpainter.h>
 #include"source.h"
 
-const double NormalFactor  = 0.25;
+const double QTOpenGL::NormalFactor  = 0.25;
 const int QTOpenGL::Width = 800;
 const int QTOpenGL::Height = 800;
 double QTOpenGL::times = 1;
@@ -74,7 +74,12 @@ void QTOpenGL::draw_function()
 	for (x = -1.0f; x <= 1.0f; x += deltax)
 	{	
 		//glVertex2f(x * centre_x * times * factor, (getY(x - LevelMovement / Width * 2,function) * centre_y * times + ViticalMovement) * factor);
-		if (fabs(getY((x / factor - LevelMovement / Width * 2),function)) >= INF)continue;
+		if (fabs(getY((x / factor - LevelMovement / Width * 2), function)) >= INF)
+		{
+			glEnd();
+			glBegin(GL_LINE_STRIP);
+			continue;
+		}
 		//std::cout << getY((x / factor - LevelMovement / Width * 2) << std::endl;
 		glVertex2f(x * centre_x * times,
 			(getY((x / factor - LevelMovement / Width * 2), function) * centre_y * times + ViticalMovement) * factor);
@@ -185,6 +190,12 @@ QT_OpenGL::QT_OpenGL( QTOpenGL * ptr , QWidget *parent )
 	setMaximumSize(1060, 900);
 	ui.setupUi(this);
 }
+
+QT_OpenGL::~QT_OpenGL()
+{
+	if (function != nullptr) delete function;
+}
+
 void QT_OpenGL::push_help()
 {
 	//²¹³ä
@@ -201,7 +212,8 @@ void QT_OpenGL::push_OK()
 	string str1, str2;
 	str1 = ui.variabl_name->text().toStdString();
 	str2 = ui.function_edit->text().toStdString();
-	function = new Function_2D(str1,str2);
+	if (function != nullptr) function->reset(str1, str2);
+	else function = new Function_2D(str1,str2);
 	qtopengl_ptr->start_OpenGL();
 }
 void QT_OpenGL::push_left()
@@ -267,7 +279,7 @@ void KeyBoards(unsigned char key, int x, int y)
 		break;
 	case 'r':
 	case 'R':
-		QTOpenGL::factor = NormalFactor;
+		QTOpenGL::factor = QTOpenGL::NormalFactor;
 		QTOpenGL::ViticalMovement = 0;
 		QTOpenGL::LevelMovement = 0;
 		glClear(GL_COLOR_BUFFER_BIT);

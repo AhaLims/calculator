@@ -63,9 +63,10 @@ public:
 private:
 	int argc;
 	char **argv;
-	const static double NormalFactor;
+	
 	//Function_2D FunctionExpression;
 public:
+	static const double NormalFactor;
 	static const int Width;
 	static const int Height;
 	static double times;
@@ -83,7 +84,7 @@ class QT_OpenGL : public QWidget
 
 public:
 	QT_OpenGL(QTOpenGL * ptr = nullptr,QWidget *parent = Q_NULLPTR);
-
+	~QT_OpenGL();
 private:
 	void paintEvent(QPaintEvent * e);
 	Ui::QT_OpenGLClass ui;
