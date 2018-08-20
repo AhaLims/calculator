@@ -63,6 +63,7 @@ public:
 private:
 	int argc;
 	char **argv;
+	const static double NormalFactor;
 	//Function_2D FunctionExpression;
 public:
 	static const int Width;
@@ -170,8 +171,6 @@ private:
 
 
 };
-
-
 
 
 

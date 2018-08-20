@@ -6,6 +6,7 @@
 #include<qpainter.h>
 #include"source.h"
 
+const double NormalFactor  = 0.25;
 const int QTOpenGL::Width = 800;
 const int QTOpenGL::Height = 800;
 double QTOpenGL::times = 1;
@@ -14,15 +15,17 @@ const int QTOpenGL::centre_x = Width / 2; //中心点
 const int QTOpenGL::centre_y = Height / 2;
 double QTOpenGL::LevelMovement = 0;
 double QTOpenGL::ViticalMovement = 0;
-double QTOpenGL::factor = 1;
+double QTOpenGL::factor = 0.25;
 Function_2D *function = nullptr;
+double INF = 10e6;
+
 
 QTOpenGL::QTOpenGL(int Argc, char* Argv[])://, string VariableName_, string expression_) :
 	argc(Argc), argv(Argv)//, FunctionExpression(VariableName_,expression_)
 {
 	LevelMovement = 0;
 	ViticalMovement = 0;
-	factor = 1;
+	factor = NormalFactor;
 }
 void QTOpenGL::draw_axis()
 {
@@ -69,9 +72,13 @@ void QTOpenGL::draw_function()
 	glBegin(GL_LINE_STRIP);
 	/*打点 连线*/
 	for (x = -1.0f; x <= 1.0f; x += deltax)
+	{	
 		//glVertex2f(x * centre_x * times * factor, (getY(x - LevelMovement / Width * 2,function) * centre_y * times + ViticalMovement) * factor);
+		if (fabs(getY((x / factor - LevelMovement / Width * 2),function)) >= INF)continue;
+		//std::cout << getY((x / factor - LevelMovement / Width * 2) << std::endl;
 		glVertex2f(x * centre_x * times,
-		(getY((x/factor - LevelMovement / Width * 2 ), function) * centre_y * times + ViticalMovement) * factor);
+			(getY((x / factor - LevelMovement / Width * 2), function) * centre_y * times + ViticalMovement) * factor);
+	}
 	glEnd();
 }
 void myDisplay_(void)//回调函数
@@ -154,7 +161,7 @@ void QTOpenGL::lessen()
 }
 void QTOpenGL::reset()
 {
-	factor = 1;
+	factor = NormalFactor;
 	ViticalMovement = 0;
 	LevelMovement = 0;
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -260,7 +267,7 @@ void KeyBoards(unsigned char key, int x, int y)
 		break;
 	case 'r':
 	case 'R':
-		QTOpenGL::factor = 1;
+		QTOpenGL::factor = NormalFactor;
 		QTOpenGL::ViticalMovement = 0;
 		QTOpenGL::LevelMovement = 0;
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -591,8 +598,8 @@ double Expression::OperatorCalculate(string Operator, double Operand[])
 	case 5:
 		if (Operand[0] == 0)
 		{
-			check_input = false;
-			return 0;
+			//check_input = false;
+			return INF;
 		}
 		return Operand[0] / Operand[1];
 	}
@@ -632,22 +639,25 @@ double Expression::FunctionCalculate(string Function, double  Operand[])
 	case 6:
 		if (Operand[0] < 0)
 		{
-			check_input = false;
-			return 0;
+			return INF;
+			//check_input = false;
+			//return 0;
 		}
 		return log(Operand[0]);
 	case 7:
 		if (Operand[0] < 0)
 		{
-			check_input = false;
-			return 0;
+			return INF;
+			//check_input = false;
+			//return 0;
 		}
 		return log10(Operand[0]);
 	case 8:
 		if (Operand[0] < 0)
 		{
-			check_input = false;
-			return 0;
+			return INF;
+			//check_input = false;
+			//return 0;
 		}
 		return sqrt(Operand[0]);
 		//case 9:
