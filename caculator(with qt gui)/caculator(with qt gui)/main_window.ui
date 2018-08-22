@@ -24,7 +24,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>410</y>
+      <y>310</y>
       <width>170</width>
       <height>80</height>
      </rect>
@@ -43,7 +43,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>510</y>
+      <y>410</y>
       <width>170</width>
       <height>80</height>
      </rect>
@@ -62,7 +62,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>620</y>
+      <y>510</y>
       <width>170</width>
       <height>80</height>
      </rect>
@@ -110,25 +110,6 @@
     </property>
     <property name="text">
      <string>矩阵计算器</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="linear_equation_button">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>310</y>
-      <width>170</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
-    </property>
-    <property name="text">
-     <string>解线性方程</string>
     </property>
    </widget>
   </widget>
@@ -215,22 +196,6 @@
     <hint type="destinationlabel">
      <x>358</x>
      <y>331</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>linear_equation_button</sender>
-   <signal>clicked()</signal>
-   <receiver>main_windowClass</receiver>
-   <slot>push_linear_equation_button()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>432</x>
-     <y>169</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>195</x>
-     <y>186</y>
     </hint>
    </hints>
   </connection>

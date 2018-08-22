@@ -1,7 +1,7 @@
 #include <gl\glut.h>    
 #include <gl\GLU.h>
 #include <gl\GL.h>
-//#include <math.h>
+#include <QtWidgets/QMessageBox>
 #include"QT_OpenGL.h"
 #include<qpainter.h>
 #include"source.h"
@@ -198,13 +198,12 @@ QT_OpenGL::~QT_OpenGL()
 
 void QT_OpenGL::push_help()
 {
-	//²¹³ä
+	QMessageBox::about(NULL,"help",tr("enter your function and get graphic\nUse 'A' 'S' 'D' 'W' to move\nUse 'J' / 'K' to enlarge / lessen\nUse 'R' to reset."));
 }
 void QT_OpenGL::push_example()
 {
 	ui.variabl_name->setText("x");
 	ui.function_edit->setText("sin(x)");
-	qtopengl_ptr->start_OpenGL();
 }
 void QT_OpenGL::push_OK()
 {
