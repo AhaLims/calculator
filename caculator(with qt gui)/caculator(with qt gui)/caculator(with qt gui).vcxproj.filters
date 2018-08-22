@@ -115,6 +115,9 @@
     <ClInclude Include="DynamicModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ScienticCaculartor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
