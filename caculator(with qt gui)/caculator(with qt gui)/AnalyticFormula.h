@@ -6,9 +6,5 @@
 /*incuding analytic formula*/
 namespace AnalyticFormula
 {
-	Matrix Matrix_formula(string );
 	double getNum(string);
-	void Computational_formula(string);
-	void function_formula(string, string);
-	//Fraction getFraction(string); 也许不必要？
 }

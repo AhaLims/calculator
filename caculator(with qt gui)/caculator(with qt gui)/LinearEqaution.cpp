@@ -9,7 +9,20 @@ int solveLinearEqaution::Compatible(const Matrix& CoefficientMatrix, const Matri
 	std::cout << "what ???";
 	int CRank = CoefficientMatrix.getRank();
 	std::cout << "what";
-	int ARank = AugmentedMatrix.getRank();
+	//////////////////////
+	Matrix tmp(CoefficientMatrix.getRow() + 1, CoefficientMatrix.getColumn() + 1, false);
+	for (unsigned int i = 0; i < tmp.getRow(); i++)
+	{
+		for (unsigned int j = 0; j < tmp.getColumn(); j++)
+		{
+			if (j != tmp.getColumn() - 1)
+				tmp.setData(i, j, AugmentedMatrix.getData(i, j));
+			else tmp.setData(i, j, AugmentedMatrix.getData(i, j - 1));
+		}
+	}
+	//int ARank = AugmentedMatrix.getRank();
+	int ARank = tmp.getRank();
+	///////////////////////////
 	std::cout << "e,m";
 	if (CRank == ARank && CRank == CoefficientMatrix.getRow())//only one solution
 	{
@@ -42,18 +55,15 @@ Matrix solveLinearEqaution::getSolution(const Matrix& A, const Matrix& b,int & n
 	b.show();
 	for (int i = 0; i < A.getRow(); i++)
 	{
-		//std::cout << "5\n";
 		for (int j = 0; j <= A.getColumn(); j++)
 		{
 
 			if (j == A.getColumn())
 			{
-				//std::cout << "3\n";
 				AugmentedMatrix.setData(i, j, b.getData(i, 0));
 			}
 			else
 			{
-				//std::cout << "4\n";
 				AugmentedMatrix.setData(i, j, A.getData(i,j));
 			}
 		}

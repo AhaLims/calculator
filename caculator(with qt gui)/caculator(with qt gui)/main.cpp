@@ -2,7 +2,7 @@
 #include <QtWidgets/QApplication>
 #include <QTextCodec>
 #include"main_window.h"
-#define DEBUG
+//#define DEBUG
 
 #ifndef DEBUG
 int main(int argc, char *argv[])
@@ -142,11 +142,29 @@ void linear()
 		ans.show();
 	}
 }
+void no_sqaure()
+{
+	Matrix m(3, 4, false);
+	int tmp;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			cin >> tmp;
+			m.setData(i, j, tmp);
+		}
+	}
+	Matrix t;
+	unsigned int a, b;
+	m.getSimplest(t, a, b);
+	t.show();
+}
 int main()
 {
 	srand((unsigned)time(NULL));
 	//test();
 	linear();
+	//no_sqaure();
 	system("pause");
 	return 0;
 }

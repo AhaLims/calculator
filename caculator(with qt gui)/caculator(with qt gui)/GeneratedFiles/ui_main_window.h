@@ -83,7 +83,7 @@ public:
     {
         main_windowClass->setWindowTitle(QApplication::translate("main_windowClass", "main_window", nullptr));
         function_caculator_button->setText(QApplication::translate("main_windowClass", "\345\207\275\346\225\260\345\233\276\345\203\217\350\256\241\347\256\227\345\231\250", nullptr));
-        help_function->setText(QApplication::translate("main_windowClass", "\345\270\256\345\212\251", nullptr));
+        help_function->setText(QApplication::translate("main_windowClass", "\345\205\263\344\272\216", nullptr));
         exit_button->setText(QApplication::translate("main_windowClass", "\351\200\200\345\207\272", nullptr));
         scientic_caculator_button->setText(QApplication::translate("main_windowClass", "\347\247\221\345\255\246\350\256\241\347\256\227\345\231\250", nullptr));
         matrix_caculator_button->setText(QApplication::translate("main_windowClass", "\347\237\251\351\230\265\350\256\241\347\256\227\345\231\250", nullptr));

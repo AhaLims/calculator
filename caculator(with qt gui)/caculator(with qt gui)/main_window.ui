@@ -52,7 +52,7 @@
      <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
     </property>
     <property name="text">
-     <string>帮助</string>
+     <string>关于</string>
     </property>
    </widget>
    <widget class="QPushButton" name="exit_button">

@@ -35,6 +35,12 @@
     <ClCompile Include="LinearEquation_gui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ScienticCaculartor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SicenticCaculator_gui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -79,6 +85,9 @@
     <QtMoc Include="LinearEquation_gui.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ScienticCaculator_gui.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="caculator_gui.ui">
@@ -94,6 +103,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="LinearEquation_gui.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="SicenticCaculator_gui.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
