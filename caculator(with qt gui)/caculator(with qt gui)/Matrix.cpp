@@ -325,8 +325,8 @@ unsigned int Matrix::getRank()const
 	unsigned int time = 0, rank = 0;
 	Matrix sim(row, column);
 	getSimplest(sim, time, rank);
-	if (rank > std::min(row, column))
-		rank = std::min(row, column);
+	//if (rank > std::min(row, column))
+		//rank = std::min(row, column);?????????????????????bug????
 	return rank;
 }
 /*only square */
@@ -569,7 +569,7 @@ void Matrix::reset()
 }
 
 
-void Matrix::show()
+void Matrix::show()const
 {
 	for (unsigned int i = 0; i < row; i++)
 	{

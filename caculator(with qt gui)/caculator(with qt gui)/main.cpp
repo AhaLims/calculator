@@ -2,7 +2,7 @@
 #include <QtWidgets/QApplication>
 #include <QTextCodec>
 #include"main_window.h"
-//#define DEBUG
+#define DEBUG
 
 #ifndef DEBUG
 int main(int argc, char *argv[])
@@ -102,6 +102,7 @@ void test()
 		}
 	}
 }
+
 void test_simpliest()
 {
 	Matrix m(3, 3, false);
@@ -112,31 +113,40 @@ void test_simpliest()
 	m1.show();
 }
 
-void test_fraction()
+using std::cin;
+using std::cout;
+using std::endl;
+#include<iostream>
+#include"LinearEqaution.h"
+void linear()
 {
+	Matrix A(3, 3, 0);
+	Matrix b(3, 1, 0);
+	Matrix ans;
+	double tmp;
+	int solve;
 	while (true)
 	{
-		std::cout << "enter the fraction:\n";
-		int d, n;
+		cout << "3 * 3 matrix A * x = b\n";
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j <= 3; j++)
+			{
+				cin >> tmp;
+				if (j != 3) A.setData(i, j, tmp);
+				else b.setData(i, 0, tmp);
 
-		std::cin >> n >> d;
-
-		Fraction f(n, d);
-		std::cin >> n >> d;
-		Fraction ff(n, d);
-		ff = 1.145;
-		ff.show();
-
-		//std::cout << f.getN() << "/" << f.getD()<<std::endl;
-		//std::cout << f.toString()<<std::endl;
+			}
+		}
+		ans = solveLinearEqaution::getSolution(A, b,solve);
+		ans.show();
 	}
-	return;
 }
-
 int main()
 {
 	srand((unsigned)time(NULL));
-	test();
+	//test();
+	linear();
 	system("pause");
 	return 0;
 }

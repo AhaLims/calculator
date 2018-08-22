@@ -1,20 +1,20 @@
 #include"source.h"
 #include"fraction.h"
 
-Fraction::Fraction()
+Fraction::Fraction():use_decimal(false)
 {
 	numerator = 0;
 	denominator = 1;
 }
-Fraction::Fraction(int a, int b)
+Fraction::Fraction(int a, int b):use_decimal(false)
 {
 	reset(a, b);
 }
-Fraction::Fraction(double num)
+Fraction::Fraction(double num,bool use_d): use_decimal(use_d)
 {
 	reset(num);
 }
-Fraction::Fraction(string str)
+Fraction::Fraction(string str): use_decimal(false)
 {
 	reset(str);
 }
@@ -28,7 +28,8 @@ void Fraction::reset(int a,int b = 1)
 	}
 	numerator = a;
 	denominator = b;
-	FractionReduce();
+	if(!use_decimal)
+		FractionReduce();
 	return;
 }
 
@@ -65,8 +66,8 @@ void Fraction::reset(string str)
 		tmp *= 10;
 		tmp += str.at(i) - '0';	
 	}
-	
-	FractionReduce();
+	if(!use_decimal)
+		FractionReduce();
 }
 
 double Fraction::toDouble()
@@ -96,6 +97,7 @@ Fraction Fraction::operator + (const Fraction & f)const
 		int nume = tmp.getN() * f.getD() + f.getN() * tmp.getD();
 		tmp.reset(nume, deno);
 	}
+	if (!tmp.use_decimal)
 	tmp.FractionReduce();
 	return tmp;
 }
@@ -114,7 +116,8 @@ Fraction Fraction::operator * (const Fraction & f)const
 {
 	Fraction tmp;
 	tmp.reset(this->getN() * f.getN(), this->getD() *f.getD());
-	tmp.FractionReduce();
+	if(!tmp.use_decimal)
+		tmp.FractionReduce();
 	return tmp;
 }
 
@@ -122,7 +125,8 @@ Fraction Fraction::operator / (const Fraction & f)const
 {
 	Fraction tmp;
 	tmp.reset(this -> getN() * f.getD(),this ->getD() * f.getN());
-	tmp.FractionReduce();
+	if (!tmp.use_decimal)
+		tmp.FractionReduce();
 	return tmp;
 }
 
@@ -156,16 +160,21 @@ Fraction& Fraction::operator = (const Fraction & f)
 Fraction& Fraction::operator = ( double num)
 {
 	denominator = 1;
-	while (true)
+	if (!use_decimal)
 	{
-		double tmp = floor(num);
-		if (fabs(tmp - num) < math::eps)
-			break;
-		denominator *= 10;
-		num *= 10;
+		while (true)
+		{
+			double tmp = floor(num);
+			if (fabs(tmp - num) < math::eps)
+				break;
+			denominator *= 10;
+			num *= 10;
+		}
+		numerator = num;
+
+		FractionReduce();
 	}
-	numerator = num;
-	FractionReduce();
+	else numerator = num;
 	return *this;
 }
 bool Fraction::operator > (const Fraction& f) const
@@ -224,7 +233,7 @@ Fraction Fraction::operator +(const double &D)const
 
 Fraction Fraction::operator -(const double &D)const
 {
-	Fraction f(D);
+	Fraction f(D,false);
 	return *this - f;
 }
 
@@ -279,7 +288,7 @@ int Fraction::getD()const
 {
 	return denominator;
 }
-int Fraction::getN()const
+double Fraction::getN()const
 {
 	return numerator;
 }
@@ -288,6 +297,10 @@ void Fraction::setD(int d)
 	denominator = d;
 }
 void Fraction::setN(int n)
+{
+	numerator = n;
+}
+void Fraction::setN(double n)
 {
 	numerator = n;
 }

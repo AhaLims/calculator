@@ -93,7 +93,7 @@ public:
 
 	/*test part*/
 	void reset();
-	void show();
+	void show()const;
 	void debug();
 private:
 	vector <vector <double>  >data;

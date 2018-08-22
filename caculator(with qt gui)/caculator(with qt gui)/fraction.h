@@ -8,7 +8,7 @@ class Fraction
 public:
 	Fraction();
 	Fraction(int ,int);
-	Fraction(double);
+	Fraction(double,bool use_d = false);
 	Fraction(string);
 
 	void reset(int, int);
@@ -52,13 +52,15 @@ public:
 	/*debug part*/
 	void show();
 	int getD()const;
-	int getN()const;
+	double getN()const;
 	void setD(int );
 	void setN(int );
+	void setN(double);
 	void FractionReduce();//get the simplest formF
+	bool use_decimal;
 private:
-	int numerator; 
-	int denominator; 
+	double numerator; 
+	int denominator;
 
 	/*Automatic reduce*/
 	int maxFactor(int, int)const;
