@@ -114,14 +114,21 @@ bool Poly::solve(double a, double b, double* ans ,int &amount)
 	/*get answer and update tmp*/
 	for (int i = 0; i<ans_amount; i++)
 	{
-		ans[i] = tmp.get_one_ans();
-		int temp;
+		ans[i] = tmp.get_one_ans(MaxTime - i);//right
+		double temp,t;
 		//Г§ШЅвђзг
+		t = tmp.get_coeff(MaxTime);
+		//tmp.set_coeff(MaxTime, 0);
+		//tmp.set_coeff(MaxTime  - 1, tmp.get_coeff(MaxTime));
 		for (int j = MaxTime - 1; j >= 0; j--)
 		{
-			temp = tmp.get_coeff(j + 1) * ans[i] + tmp.get_coeff(j);////
-			tmp.set_coeff(j - 1,temp);
+			if (j == MaxTime - 1)temp = t;
+			else temp = tmp.get_coeff(j + 1) * ans[i] + t;////
+			t = tmp.get_coeff(j);
+			tmp.set_coeff(j,temp);
 		}
+		tmp.set_coeff(MaxTime, 0);
+		//tmp.set_MaxTime(MaxTime - 1);
 	}
 #ifdef DEBUG
 	std::cout << "ans is\n";
@@ -131,14 +138,16 @@ bool Poly::solve(double a, double b, double* ans ,int &amount)
 
 	return true;
 }
-double Poly::get_one_ans() 
+double Poly::get_one_ans(int time) 
 {
 	int B, k;
 	bool flag = false;
 	/*get the first value and then use newton way to get one answer*/
-	for (int i = get_MaxTime() - 1; i >= 0; i--)
+	//for (int i = get_MaxTime() - 1; i >= 0; i--)
+	for (int i = time - 1; i >= 0; i--)
 	{
-		if ((get_coeff(i) < 0 && get_coeff(MaxTime) > 0) || (get_coeff(i) > 0 && get_coeff(MaxTime) < 0))
+		//if ((get_coeff(i) < 0 && get_coeff(MaxTime) > 0) || (get_coeff(i) > 0 && get_coeff(MaxTime) < 0))
+		if ((get_coeff(i) < 0 && get_coeff(time) > 0) || (get_coeff(i) > 0 && get_coeff(time) < 0))
 		{
 			if (flag == false)
 			{
@@ -154,7 +163,7 @@ double Poly::get_one_ans()
 
 		}
 	}
-	double x = 1 + pow(fabs(B / get_coeff(MaxTime)), (double)(1)/k);
+	double x = 1 + pow(fabs(B / get_coeff(time)), (double)(1)/k);
 	return newton(x);
 }
 int Poly::get_ans_amount(double a,double b)

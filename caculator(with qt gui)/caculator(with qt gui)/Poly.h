@@ -17,7 +17,7 @@ public:
 private:
 	int MaxTime;
 	vector<double>coefficient;
-	double get_one_ans();
+	double get_one_ans(int );
 	int get_ans_amount(double,double);
 	string variable;
 	double newton(double);
