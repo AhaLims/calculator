@@ -26,6 +26,7 @@ public:
     QPushButton *exit_button;
     QPushButton *scientic_caculator_button;
     QPushButton *matrix_caculator_button;
+    QPushButton *linear_fucntion;
 
     void setupUi(QMainWindow *main_windowClass)
     {
@@ -43,12 +44,12 @@ public:
         help_function = new QPushButton(centralWidget);
         help_function->setObjectName(QStringLiteral("help_function"));
         help_function->setEnabled(true);
-        help_function->setGeometry(QRect(390, 410, 170, 80));
+        help_function->setGeometry(QRect(390, 510, 170, 80));
         help_function->setStyleSheet(QStringLiteral("background-image: url(:/caculator_gui/picture/white.png)"));
         exit_button = new QPushButton(centralWidget);
         exit_button->setObjectName(QStringLiteral("exit_button"));
         exit_button->setEnabled(true);
-        exit_button->setGeometry(QRect(390, 510, 170, 80));
+        exit_button->setGeometry(QRect(390, 610, 170, 80));
         exit_button->setStyleSheet(QStringLiteral("background-image: url(:/caculator_gui/picture/white.png)"));
         scientic_caculator_button = new QPushButton(centralWidget);
         scientic_caculator_button->setObjectName(QStringLiteral("scientic_caculator_button"));
@@ -60,6 +61,11 @@ public:
         matrix_caculator_button->setEnabled(true);
         matrix_caculator_button->setGeometry(QRect(390, 110, 170, 80));
         matrix_caculator_button->setStyleSheet(QStringLiteral("background-image: url(:/caculator_gui/picture/white.png)"));
+        linear_fucntion = new QPushButton(centralWidget);
+        linear_fucntion->setObjectName(QStringLiteral("linear_fucntion"));
+        linear_fucntion->setEnabled(true);
+        linear_fucntion->setGeometry(QRect(390, 410, 170, 80));
+        linear_fucntion->setStyleSheet(QStringLiteral("background-image: url(:/caculator_gui/picture/white.png)"));
         main_windowClass->setCentralWidget(centralWidget);
 
         retranslateUi(main_windowClass);
@@ -68,6 +74,7 @@ public:
         QObject::connect(scientic_caculator_button, SIGNAL(clicked()), main_windowClass, SLOT(push_scientic_caculator_button()));
         QObject::connect(function_caculator_button, SIGNAL(clicked()), main_windowClass, SLOT(push_function_caculator_button()));
         QObject::connect(help_function, SIGNAL(clicked()), main_windowClass, SLOT(push_help_button()));
+        QObject::connect(linear_fucntion, SIGNAL(clicked()), main_windowClass, SLOT(push_linear_equation_button()));
 
         QMetaObject::connectSlotsByName(main_windowClass);
     } // setupUi
@@ -80,6 +87,7 @@ public:
         exit_button->setText(QApplication::translate("main_windowClass", "\351\200\200\345\207\272", nullptr));
         scientic_caculator_button->setText(QApplication::translate("main_windowClass", "\347\247\221\345\255\246\350\256\241\347\256\227\345\231\250", nullptr));
         matrix_caculator_button->setText(QApplication::translate("main_windowClass", "\347\237\251\351\230\265\350\256\241\347\256\227\345\231\250", nullptr));
+        linear_fucntion->setText(QApplication::translate("main_windowClass", "\350\247\243\347\272\277\346\200\247\346\226\271\347\250\213", nullptr));
     } // retranslateUi
 
 };

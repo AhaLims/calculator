@@ -3,7 +3,7 @@
 #include <QtWidgets/QMessageBox>
 #include"help_window.h"
 #include"ScienticCaculator_gui.h"
-//#include"LinearEquation_gui.h"
+#include"LinearEquation_gui.h"
 main_window::main_window(int Argc,
 	char *Argv[], QWidget *parent)
 	: QMainWindow(parent),argc(Argc),argv(Argv)
@@ -13,7 +13,7 @@ main_window::main_window(int Argc,
 	qtopengl = new QTOpenGL(argc, argv);
 	qtopengl_widget = new QT_OpenGL(qtopengl);
 	Help_window = new help_window();
-	//linear_equation_gui = new LinearEquation_gui();
+	linear_equation_gui = new LinearEquation_gui();
 	ui.setupUi(this);
 	//fix 
 	setMinimumSize(1000, 800); 
@@ -26,7 +26,7 @@ main_window::~main_window()
 	delete qtopengl_widget;
 	delete Help_window;
 	delete scientic_caculator_gui;
-	//delete linear_equation_gui;
+	delete linear_equation_gui;
 }
 
 void  main_window::push_matrix_caculator_button()
@@ -46,7 +46,7 @@ void main_window::push_help_button()
 {
 	Help_window->show();
 }
-//void main_window::push_linear_equation_button()
-//{
-	//linear_equation_gui->show();
-//}
+void main_window::push_linear_equation_button()
+{
+	linear_equation_gui->show();
+}

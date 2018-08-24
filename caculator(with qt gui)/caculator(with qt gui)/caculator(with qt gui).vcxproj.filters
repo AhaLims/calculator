@@ -29,7 +29,19 @@
     <ClCompile Include="ScienticCaculartor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SicenticCaculator_gui.cpp">
+    <ClCompile Include="ScienticCaculator_gui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearEqaution.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearEquation_gui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Poly.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -76,6 +88,9 @@
     <QtMoc Include="ScienticCaculator_gui.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="LinearEquation_gui.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="caculator_gui.ui">
@@ -93,6 +108,9 @@
     <QtUic Include="SicenticCaculator_gui.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="LinearEquation_gui.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="caculator_gui.qrc">
@@ -103,19 +121,22 @@
     <ClInclude Include="AnalyticFormula.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fraction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ScienticCaculartor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="DynamicModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScienticCaculartor.h">
+    <ClInclude Include="LinearEqaution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Poly.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

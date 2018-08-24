@@ -9,7 +9,7 @@ class caculator_gui;
 class QT_OpenGL;
 class help_window;
 class SicenticCaculator_gui;
-//class LinearEquation_gui;
+class LinearEquation_gui;
 class main_window : public QMainWindow
 {
 	Q_OBJECT
@@ -26,7 +26,7 @@ private:
 	caculator_gui * matrix_caculator;
 	help_window *Help_window;
 
-	//LinearEquation_gui *linear_equation_gui;
+	LinearEquation_gui *linear_equation_gui;
 	QTOpenGL *qtopengl;//实际操作 在QT_OpenGL 界面中
 	QT_OpenGL *qtopengl_widget;
 	SicenticCaculator_gui * scientic_caculator_gui;
@@ -35,5 +35,5 @@ public slots:
 	void push_scientic_caculator_button();
 	void push_function_caculator_button();
 	void push_help_button();
-	//void push_linear_equation_button();
+	void push_linear_equation_button();
 };

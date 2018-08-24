@@ -28,9 +28,6 @@ LinearEquation_gui::~LinearEquation_gui()
 {
 	if ((Module != nullptr))
 		delete[] Module;
-	//if (answer_show != nullptr)
-		//delete[] answer_show;
-		//delete answer_show;
 }
 
 void LinearEquation_gui::set()
@@ -40,7 +37,6 @@ void LinearEquation_gui::set()
 		delete[] Module;
 	}
 	Module = new DynamicModule[amount];
-	//要改变 layout 的长宽高
 	ui.verticalLayoutWidget->setGeometry(QRect(30, 140, 90 * amount, 60 *amount));
 	for (int i = 0; i < amount; i++)
 	{
@@ -93,22 +89,12 @@ void LinearEquation_gui::push_get_answer_button()
 	}
 	else //if(solve == 1)//only one 
 	{
-		//x[i] = solution.data[i][0];
-		//answer_show = new QLabel[amount];
-		answer_show = new QLabel;
-		answer_show->setGeometry(990, 130, 280, 720);
 		QString qstr;
 		for (int i = 0; i < amount; i++)
 		{
-			qstr = "x" + QString::number(i) + "=" + "\n";
-			//qstr += QString::number(ans.getData(i, 0),10,2) +"\n";
-			//answer_show[i].setText(qstr);
-
-			//ui.verticalLayout_ans->
+			qstr += "x" + QString::number(i) + "=" + QString::number(ans.getData(i, 0), 10, 2) + "\n" + "\n";
 		}
-		answer_show->setText(qstr);
-		answer_show->show();
-		//use label to show
+		ui.answer_show->setText(qstr);
 	}
 	///*manage*/
 

@@ -15,6 +15,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -32,8 +33,7 @@ public:
     QSpinBox *spinBox;
     QPushButton *change;
     QPushButton *get_answer;
-    QWidget *verticalLayoutWidget_2;
-    QVBoxLayout *verticalLayout_ans;
+    QTextBrowser *answer_show;
 
     void setupUi(QWidget *LinearEquation_guiClass)
     {
@@ -80,14 +80,9 @@ public:
         get_answer = new QPushButton(LinearEquation_guiClass);
         get_answer->setObjectName(QStringLiteral("get_answer"));
         get_answer->setGeometry(QRect(500, 80, 93, 28));
-        verticalLayoutWidget_2 = new QWidget(LinearEquation_guiClass);
-        verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(970, 130, 160, 80));
-        verticalLayout_ans = new QVBoxLayout(verticalLayoutWidget_2);
-        verticalLayout_ans->setSpacing(6);
-        verticalLayout_ans->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_ans->setObjectName(QStringLiteral("verticalLayout_ans"));
-        verticalLayout_ans->setContentsMargins(0, 0, 0, 0);
+        answer_show = new QTextBrowser(LinearEquation_guiClass);
+        answer_show->setObjectName(QStringLiteral("answer_show"));
+        answer_show->setGeometry(QRect(850, 140, 256, 731));
 
         retranslateUi(LinearEquation_guiClass);
         QObject::connect(change, SIGNAL(clicked()), LinearEquation_guiClass, SLOT(change_equation()));

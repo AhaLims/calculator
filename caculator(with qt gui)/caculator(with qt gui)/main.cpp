@@ -2,7 +2,8 @@
 #include <QtWidgets/QApplication>
 #include <QTextCodec>
 #include"main_window.h"
-//#define DEBUG
+
+#define DEBUG
 
 #ifndef DEBUG
 int main(int argc, char *argv[])
@@ -13,7 +14,6 @@ int main(int argc, char *argv[])
 	surface.show();
 	return a.exec();
 }
-//目前测试只输入整数吧...非整数太麻烦了
 #endif // DEBUG
 
 
@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 #include"source.h"
 #include"Matrix.h"
 #include"fraction.h"
+#include"Poly.h"
 void test()
 {
 	Matrix m1(2, 2, true);
@@ -159,12 +160,22 @@ void no_sqaure()
 	m.getSimplest(t, a, b);
 	t.show();
 }
+void poly_test()
+{
+	Poly p("test", "x");
+	double *ptr = nullptr, a, b;
+	int amount;
+	std::cout << "range";
+	std::cin >> a >> b;
+	p.solve(a,b,ptr,amount);
+	if (ptr != nullptr)
+		delete[] ptr;
+}
 int main()
 {
 	srand((unsigned)time(NULL));
-	//test();
-	linear();
-	//no_sqaure();
+	while(true)
+		poly_test();
 	system("pause");
 	return 0;
 }

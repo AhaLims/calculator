@@ -6,24 +6,24 @@
 /*judge if the linear equations is compatible and the number of solution*/
 int solveLinearEqaution::Compatible(const Matrix& CoefficientMatrix, const Matrix& AugmentedMatrix)
 {
-	std::cout << "what ???";
+	//std::cout << "what ???";
 	int CRank = CoefficientMatrix.getRank();
-	std::cout << "what";
+	//std::cout << "what";
 	//////////////////////
 	Matrix tmp(CoefficientMatrix.getRow() + 1, CoefficientMatrix.getColumn() + 1, false);
 	for (unsigned int i = 0; i < tmp.getRow(); i++)
 	{
 		for (unsigned int j = 0; j < tmp.getColumn(); j++)
 		{
-			if (j != tmp.getColumn() - 1)
+			if (i != tmp.getRow() - 1)
 				tmp.setData(i, j, AugmentedMatrix.getData(i, j));
-			else tmp.setData(i, j, AugmentedMatrix.getData(i, j - 1));
+			else tmp.setData(i, j, AugmentedMatrix.getData(i - 1, j));
 		}
 	}
-	//int ARank = AugmentedMatrix.getRank();
+	tmp.show();
+	//std::cout << "e,mmmmm";
 	int ARank = tmp.getRank();
-	///////////////////////////
-	std::cout << "e,m";
+	//std::cout << "e,m";
 	if (CRank == ARank && CRank == CoefficientMatrix.getRow())//only one solution
 	{
 		return 1;
@@ -32,13 +32,8 @@ int solveLinearEqaution::Compatible(const Matrix& CoefficientMatrix, const Matri
 	{
 		return 2;
 	}
-	if (CRank != ARank)//it's not compatible
+	else //if (CRank != ARank)//it's not compatible
 	{
-		return 0;
-	}
-	else
-	{
-		std::cout << "???";
 		return 0;
 	}
 }
@@ -70,6 +65,8 @@ Matrix solveLinearEqaution::getSolution(const Matrix& A, const Matrix& b,int & n
 	}
 	std::cout << "1\n";
 	num = 0;
+	A.show();
+	AugmentedMatrix.show();
 	num = Compatible(A,AugmentedMatrix);
 	std::cout << "compatible wrong \n";
 	if (num == 0)
@@ -85,8 +82,9 @@ Matrix solveLinearEqaution::getSolution(const Matrix& A, const Matrix& b,int & n
 	else if (num == 1)
 	{
 		//Matrix solution(A.getRow(), 1, false);
-		A.inverse_matrix().show();
+		//A.inverse_matrix().show();
 		Matrix solution = A.inverse_matrix() * b;
+		solution.show();
 		return solution;
 	}
 	else //if (num == 2)

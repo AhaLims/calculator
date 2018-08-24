@@ -101,16 +101,15 @@
     <string>求解</string>
    </property>
   </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_2">
+  <widget class="QTextBrowser" name="answer_show">
    <property name="geometry">
     <rect>
-     <x>970</x>
-     <y>130</y>
-     <width>160</width>
-     <height>80</height>
+     <x>850</x>
+     <y>140</y>
+     <width>256</width>
+     <height>731</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_ans"/>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
