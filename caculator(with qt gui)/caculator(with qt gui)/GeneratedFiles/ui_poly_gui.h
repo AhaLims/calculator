@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
@@ -27,11 +28,13 @@ public:
     QPushButton *pushButton_2;
     QLabel *label_2;
     QSpinBox *spinBox;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
+    QPushButton *get_der;
+    QPushButton *get_inter;
+    QPushButton *get_zero;
     QLabel *label_3;
     QTextBrowser *textBrowser;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
 
     void setupUi(QWidget *poly_guiClass)
     {
@@ -56,15 +59,15 @@ public:
         spinBox = new QSpinBox(poly_guiClass);
         spinBox->setObjectName(QStringLiteral("spinBox"));
         spinBox->setGeometry(QRect(110, 150, 46, 22));
-        pushButton_3 = new QPushButton(poly_guiClass);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setGeometry(QRect(100, 640, 101, 31));
-        pushButton_4 = new QPushButton(poly_guiClass);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(230, 640, 101, 31));
-        pushButton_5 = new QPushButton(poly_guiClass);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        pushButton_5->setGeometry(QRect(350, 640, 201, 31));
+        get_der = new QPushButton(poly_guiClass);
+        get_der->setObjectName(QStringLiteral("get_der"));
+        get_der->setGeometry(QRect(100, 640, 101, 31));
+        get_inter = new QPushButton(poly_guiClass);
+        get_inter->setObjectName(QStringLiteral("get_inter"));
+        get_inter->setGeometry(QRect(230, 640, 101, 31));
+        get_zero = new QPushButton(poly_guiClass);
+        get_zero->setObjectName(QStringLiteral("get_zero"));
+        get_zero->setGeometry(QRect(350, 640, 201, 31));
         label_3 = new QLabel(poly_guiClass);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(10, 190, 72, 31));
@@ -72,8 +75,20 @@ public:
         textBrowser = new QTextBrowser(poly_guiClass);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
         textBrowser->setGeometry(QRect(90, 690, 491, 192));
+        horizontalLayoutWidget = new QWidget(poly_guiClass);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(100, 190, 160, 80));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
 
         retranslateUi(poly_guiClass);
+        QObject::connect(spinBox, SIGNAL(valueChanged(int)), poly_guiClass, SLOT(change_time()));
+        QObject::connect(get_der, SIGNAL(clicked()), poly_guiClass, SLOT(get_der()));
+        QObject::connect(get_inter, SIGNAL(clicked()), poly_guiClass, SLOT(get_inter()));
+        QObject::connect(get_zero, SIGNAL(clicked()), poly_guiClass, SLOT(get_zero()));
 
         QMetaObject::connectSlotsByName(poly_guiClass);
     } // setupUi
@@ -85,9 +100,9 @@ public:
         label->setText(QApplication::translate("poly_guiClass", "\345\244\232\351\241\271\345\274\217\347\233\270\345\205\263", nullptr));
         pushButton_2->setText(QApplication::translate("poly_guiClass", "\344\275\215\347\275\256\357\274\232\357\274\21080\357\274\214140\357\274\211\345\256\275\345\272\246\357\274\232941 \351\225\277\345\272\246\357\274\210441\357\274\211\345\217\257\344\273\245\351\200\211\346\213\2515\344\270\252\344\270\200\350\241\214", nullptr));
         label_2->setText(QApplication::translate("poly_guiClass", "\346\234\200\351\253\230\347\263\273\346\225\260", nullptr));
-        pushButton_3->setText(QApplication::translate("poly_guiClass", "\346\261\202\345\257\274\346\225\260\350\247\243\346\236\220\345\274\217", nullptr));
-        pushButton_4->setText(QApplication::translate("poly_guiClass", "\346\261\202\347\247\257\345\210\206\350\247\243\346\236\220\345\274\217", nullptr));
-        pushButton_5->setText(QApplication::translate("poly_guiClass", "\346\261\202\346\211\200\346\234\211\347\232\204\351\233\266\347\202\271\357\274\210\345\256\236\346\225\260\350\214\203\345\233\264\345\206\205\357\274\211", nullptr));
+        get_der->setText(QApplication::translate("poly_guiClass", "\346\261\202\345\257\274\346\225\260\350\247\243\346\236\220\345\274\217", nullptr));
+        get_inter->setText(QApplication::translate("poly_guiClass", "\346\261\202\347\247\257\345\210\206\350\247\243\346\236\220\345\274\217", nullptr));
+        get_zero->setText(QApplication::translate("poly_guiClass", "\346\261\202\346\211\200\346\234\211\347\232\204\351\233\266\347\202\271\357\274\210\345\256\236\346\225\260\350\214\203\345\233\264\345\206\205\357\274\211", nullptr));
         label_3->setText(QApplication::translate("poly_guiClass", "F(x) = ", nullptr));
     } // retranslateUi
 

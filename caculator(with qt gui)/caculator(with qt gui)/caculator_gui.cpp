@@ -57,7 +57,6 @@ Matrix caculator_gui::get_random_matrix()
 	//m.show();
 	return m;
 }
-///////////////////////////////////////////////////////////////////need to be test
 /*manage string to get matrix*/
 Matrix caculator_gui::QString_to_matrix(const QString& qstr ,bool &type)const
 {
@@ -84,11 +83,6 @@ Matrix caculator_gui::QString_to_matrix(const QString& qstr ,bool &type)const
 				column++;
 			}
 			tmp += str.at(i);
-			//maybe wrong 
-			//if (i == length - 1 || !number_judge(str.at(i + 1)))//the signal of number end
-			//{
-
-			//}
 		}
 		else if (c == '\n' && row == 0)//when in the first row ,set first column
 		{

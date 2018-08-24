@@ -4,6 +4,8 @@
 #include<qlineedit.h>
 #include<qlayout.h>
 #include<qlayoutitem.h>
+
+//dynamic module of linear eqaution
 class DynamicModule
 {
 public:
@@ -14,3 +16,4 @@ public:
 	QHBoxLayout HBoxLayout;
 	~DynamicModule();
 };
+

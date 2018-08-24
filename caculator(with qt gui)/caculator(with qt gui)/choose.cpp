@@ -8,9 +8,10 @@ choose::choose(QWidget *parent, poly_gui *p, QT_OpenGL *Opengl_gui)
 }
 void choose::push_2D_painter()
 {
-	poly->show();
+	opengl_gui->show();
 }
 void choose::push_poly()
 {
-	opengl_gui->show();
+	poly->show();
+	
 }

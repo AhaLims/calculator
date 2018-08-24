@@ -2,6 +2,7 @@
 #include<qstring.h>
 #include<iostream>
 #include"LinearEquation_gui.h"
+
 DynamicModule::DynamicModule()
 {
 	names = nullptr;

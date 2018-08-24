@@ -80,7 +80,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="get_der">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -93,7 +93,7 @@
     <string>求导数解析式</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="get_inter">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -106,7 +106,7 @@
     <string>求积分解析式</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="get_zero">
    <property name="geometry">
     <rect>
      <x>350</x>
@@ -147,10 +147,92 @@
     </rect>
    </property>
   </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>190</y>
+     <width>160</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout"/>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="poly_gui.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>poly_guiClass</receiver>
+   <slot>change_time()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>133</x>
+     <y>155</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>235</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>get_der</sender>
+   <signal>clicked()</signal>
+   <receiver>poly_guiClass</receiver>
+   <slot>get_der()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>658</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>51</x>
+     <y>649</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>get_inter</sender>
+   <signal>clicked()</signal>
+   <receiver>poly_guiClass</receiver>
+   <slot>get_inter()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>660</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>687</x>
+     <y>642</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>get_zero</sender>
+   <signal>clicked()</signal>
+   <receiver>poly_guiClass</receiver>
+   <slot>get_zero()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>403</x>
+     <y>652</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>885</x>
+     <y>658</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>change_time()</slot>
+  <slot>get_der()</slot>
+  <slot>get_inter()</slot>
+  <slot>get_zero()</slot>
+ </slots>
 </ui>
