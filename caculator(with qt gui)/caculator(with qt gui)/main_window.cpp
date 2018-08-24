@@ -4,6 +4,8 @@
 #include"help_window.h"
 #include"ScienticCaculator_gui.h"
 #include"LinearEquation_gui.h"
+#include"poly_gui.h"
+#include"choose.h"
 main_window::main_window(int Argc,
 	char *Argv[], QWidget *parent)
 	: QMainWindow(parent),argc(Argc),argv(Argv)
@@ -14,6 +16,8 @@ main_window::main_window(int Argc,
 	qtopengl_widget = new QT_OpenGL(qtopengl);
 	Help_window = new help_window();
 	linear_equation_gui = new LinearEquation_gui();
+	Poly_gui = new poly_gui;
+	choose_gui = new choose(Q_NULLPTR, Poly_gui, qtopengl_widget);
 	ui.setupUi(this);
 	//fix 
 	setMinimumSize(1000, 800); 
@@ -27,6 +31,8 @@ main_window::~main_window()
 	delete Help_window;
 	delete scientic_caculator_gui;
 	delete linear_equation_gui;
+	delete Poly_gui;
+	delete choose_gui;
 }
 
 void  main_window::push_matrix_caculator_button()
@@ -40,7 +46,8 @@ void main_window::push_scientic_caculator_button()
 }
 void main_window::push_function_caculator_button()
 {
-	qtopengl_widget->show();
+	choose_gui->show();
+	//qtopengl_widget->show();
 }
 void main_window::push_help_button()
 {

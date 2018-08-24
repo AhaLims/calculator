@@ -44,6 +44,15 @@
     <ClCompile Include="Poly.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="choose.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="poly_gui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -91,6 +100,12 @@
     <QtMoc Include="LinearEquation_gui.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="choose.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="poly_gui.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="caculator_gui.ui">
@@ -109,6 +124,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="LinearEquation_gui.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="choose.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="poly_gui.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

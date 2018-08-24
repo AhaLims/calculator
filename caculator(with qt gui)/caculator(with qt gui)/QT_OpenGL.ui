@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1060</width>
+    <width>1123</width>
     <height>900</height>
    </rect>
   </property>
@@ -62,9 +62,9 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>430</x>
      <y>40</y>
-     <width>291</width>
+     <width>321</width>
      <height>51</height>
     </rect>
    </property>
@@ -77,7 +77,7 @@
     <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
    </property>
    <property name="text">
-    <string>二维函数计算器</string>
+    <string>二维函数计算器：绘图工具</string>
    </property>
   </widget>
   <widget class="QPushButton" name="heLp">
@@ -152,49 +152,49 @@
     <item row="1" column="1">
      <widget class="QPushButton" name="pushButton_5">
       <property name="text">
-       <string>下移</string>
+       <string>下移(S)</string>
       </property>
      </widget>
     </item>
     <item row="0" column="0">
      <widget class="QPushButton" name="left">
       <property name="text">
-       <string>左移</string>
+       <string>左移(A)</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
      <widget class="QPushButton" name="right">
       <property name="text">
-       <string>右移</string>
+       <string>右移(D)</string>
       </property>
      </widget>
     </item>
     <item row="1" column="0">
      <widget class="QPushButton" name="pushButton_4">
       <property name="text">
-       <string>上移</string>
+       <string>上移(W)</string>
       </property>
      </widget>
     </item>
     <item row="2" column="0">
      <widget class="QPushButton" name="lesson_2">
       <property name="text">
-       <string>放大</string>
+       <string>放大(J)</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
      <widget class="QPushButton" name="lesson">
       <property name="text">
-       <string>缩小</string>
+       <string>缩小(K)</string>
       </property>
      </widget>
     </item>
     <item row="3" column="0">
      <widget class="QPushButton" name="reset">
       <property name="text">
-       <string>重置</string>
+       <string>重置(R)</string>
       </property>
      </widget>
     </item>

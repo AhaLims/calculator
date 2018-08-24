@@ -4,6 +4,7 @@ class Poly
 {
 public:
 	Poly(string ,string);
+	Poly(int, double *, string);
 	Poly get_derivative();
 	double get_derivative_value(double);
 	Poly get_integral();

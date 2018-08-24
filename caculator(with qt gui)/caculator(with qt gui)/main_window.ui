@@ -33,7 +33,7 @@
      <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
     </property>
     <property name="text">
-     <string>函数图像计算器</string>
+     <string>函数计算器</string>
     </property>
    </widget>
    <widget class="QPushButton" name="help_function">

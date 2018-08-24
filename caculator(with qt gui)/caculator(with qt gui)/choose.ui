@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>chooseClass</class>
+ <widget class="QWidget" name="chooseClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>291</width>
+    <height>388</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>291</width>
+    <height>388</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>291</width>
+    <height>388</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>choose</string>
+  </property>
+  <widget class="QPushButton" name="paint_button">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>90</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>121</width>
+     <height>61</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>121</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>2D函数画图器</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="poly_button">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>180</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>多项式解析</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="choose.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>paint_button</sender>
+   <signal>clicked()</signal>
+   <receiver>chooseClass</receiver>
+   <slot>push_2D_painter()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>119</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>234</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>poly_button</sender>
+   <signal>clicked()</signal>
+   <receiver>chooseClass</receiver>
+   <slot>push_poly()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>143</x>
+     <y>189</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>47</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>push_2D_painter()</slot>
+  <slot>push_poly()</slot>
+ </slots>
+</ui>

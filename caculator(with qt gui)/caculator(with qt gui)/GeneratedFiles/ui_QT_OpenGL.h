@@ -44,7 +44,7 @@ public:
     {
         if (QT_OpenGLClass->objectName().isEmpty())
             QT_OpenGLClass->setObjectName(QStringLiteral("QT_OpenGLClass"));
-        QT_OpenGLClass->resize(1060, 900);
+        QT_OpenGLClass->resize(1123, 900);
         pushOK = new QPushButton(QT_OpenGLClass);
         pushOK->setObjectName(QStringLiteral("pushOK"));
         pushOK->setGeometry(QRect(890, 160, 101, 41));
@@ -60,7 +60,7 @@ public:
         label->setFont(font);
         label_2 = new QLabel(QT_OpenGLClass);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(470, 40, 291, 51));
+        label_2->setGeometry(QRect(430, 40, 321, 51));
         QFont font1;
         font1.setPointSize(15);
         label_2->setFont(font1);
@@ -143,17 +143,17 @@ public:
         QT_OpenGLClass->setWindowTitle(QApplication::translate("QT_OpenGLClass", "QT_OpenGL", nullptr));
         pushOK->setText(QApplication::translate("QT_OpenGLClass", "OK", nullptr));
         label->setText(QApplication::translate("QT_OpenGLClass", "y = ", nullptr));
-        label_2->setText(QApplication::translate("QT_OpenGLClass", "\344\272\214\347\273\264\345\207\275\346\225\260\350\256\241\347\256\227\345\231\250", nullptr));
+        label_2->setText(QApplication::translate("QT_OpenGLClass", "\344\272\214\347\273\264\345\207\275\346\225\260\350\256\241\347\256\227\345\231\250\357\274\232\347\273\230\345\233\276\345\267\245\345\205\267", nullptr));
         heLp->setText(QApplication::translate("QT_OpenGLClass", "\345\270\256\345\212\251", nullptr));
         example->setText(QApplication::translate("QT_OpenGLClass", "\347\244\272\344\276\213", nullptr));
         label_3->setText(QApplication::translate("QT_OpenGLClass", "\345\217\230\351\207\217\345\220\215", nullptr));
-        pushButton_5->setText(QApplication::translate("QT_OpenGLClass", "\344\270\213\347\247\273", nullptr));
-        left->setText(QApplication::translate("QT_OpenGLClass", "\345\267\246\347\247\273", nullptr));
-        right->setText(QApplication::translate("QT_OpenGLClass", "\345\217\263\347\247\273", nullptr));
-        pushButton_4->setText(QApplication::translate("QT_OpenGLClass", "\344\270\212\347\247\273", nullptr));
-        lesson_2->setText(QApplication::translate("QT_OpenGLClass", "\346\224\276\345\244\247", nullptr));
-        lesson->setText(QApplication::translate("QT_OpenGLClass", "\347\274\251\345\260\217", nullptr));
-        reset->setText(QApplication::translate("QT_OpenGLClass", "\351\207\215\347\275\256", nullptr));
+        pushButton_5->setText(QApplication::translate("QT_OpenGLClass", "\344\270\213\347\247\273(S)", nullptr));
+        left->setText(QApplication::translate("QT_OpenGLClass", "\345\267\246\347\247\273(A)", nullptr));
+        right->setText(QApplication::translate("QT_OpenGLClass", "\345\217\263\347\247\273(D)", nullptr));
+        pushButton_4->setText(QApplication::translate("QT_OpenGLClass", "\344\270\212\347\247\273(W)", nullptr));
+        lesson_2->setText(QApplication::translate("QT_OpenGLClass", "\346\224\276\345\244\247(J)", nullptr));
+        lesson->setText(QApplication::translate("QT_OpenGLClass", "\347\274\251\345\260\217(K)", nullptr));
+        reset->setText(QApplication::translate("QT_OpenGLClass", "\351\207\215\347\275\256(R)", nullptr));
     } // retranslateUi
 
 };

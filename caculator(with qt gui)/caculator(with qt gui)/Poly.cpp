@@ -1,6 +1,6 @@
 #include"Poly.h"
 #include"source.h"
-#define DEBUG
+//#define DEBUG
 Poly::Poly(string expression, string v):variable(v),MaxTime(0)
 {//必须是不含括号的 可以不按照顺序
 #ifdef DEBUG
@@ -14,6 +14,13 @@ Poly::Poly(string expression, string v):variable(v),MaxTime(0)
 			std::cin >> coefficient[i];
 	}
 #endif // DEBUG
+}
+Poly::Poly(int time, double * value, string v) :MaxTime(time), variable(v)
+{
+	for (int i = MaxTime; i >= 0; i--)
+	{
+		coefficient[i] = value[i];
+	}
 }
 Poly Poly::get_derivative()
 {
