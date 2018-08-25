@@ -77,7 +77,7 @@ public:
         textBrowser->setGeometry(QRect(90, 690, 491, 192));
         horizontalLayoutWidget = new QWidget(poly_guiClass);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(100, 190, 160, 80));
+        horizontalLayoutWidget->setGeometry(QRect(100, 190, 801, 61));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);

@@ -145,9 +145,10 @@ void poly_test()
 	Poly p("test", "x");
 	double *ptr = nullptr, a, b;
 	int amount;
-	std::cout << "range";
-	std::cin >> a >> b;
-	p.solve(a, b, ptr, amount);
+	//std::cout << "range";
+	//std::cin >> a >> b;
+	//p.solve(a, b, ptr, amount);
+	p.solve(ptr, amount);
 	if (ptr != nullptr)
 		delete[] ptr;
 }

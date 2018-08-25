@@ -63,9 +63,9 @@ void LinearEquation_gui::push_get_answer_button()
 	{
 		for (int j = 0; j <= amount; j++)
 		{
-			std::cout << "amount:" << amount << " ";
-			std::cout << "i j = " << i << " " << j << "\n";
-			qstr = Module[i].elements[j].text();////////
+			//std::cout << "amount:" << amount << " ";
+			//std::cout << "i j = " << i << " " << j << "\n";
+			qstr = Module[i].elements[j].text();
 			if (qstr == "")
 			{
 				QMessageBox::about(NULL, "WRONG", tr("please enter a number"));

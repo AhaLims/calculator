@@ -17,6 +17,7 @@ Poly::Poly(string expression, string v):variable(v),MaxTime(0)
 }
 Poly::Poly(int time, double * value, string v) :MaxTime(time), variable(v)
 {
+	coefficient.resize(MaxTime + 1);
 	for (int i = MaxTime; i >= 0; i--)
 	{
 		coefficient[i] = value[i];
@@ -70,13 +71,13 @@ string Poly::output()
 		}
 		else if (coefficient[i] < 0)
 		{
-			expression += std::to_string(coefficient[i]) + variable + "^" + std::to_string(i);
+			expression += std::to_string(coefficient[i]) +"*"  + variable + "^" + std::to_string(i);
 		}
 		else
-		expression += "+" + std::to_string(coefficient[i]) + variable + "^" + std::to_string(i);
+		expression += "+" + std::to_string(coefficient[i]) + "*" + variable + "^" + std::to_string(i);
 	}
 	if(coefficient[0] < 0)expression += std::to_string(coefficient[0]);
-	else expression += "+" + std::to_string(coefficient[0]);
+	else if(coefficient[0] > 0) expression += "+" + std::to_string(coefficient[0]);
 	return expression;
 }
 double Poly::get_ans(double value)
@@ -110,11 +111,12 @@ double Poly::get_coeff(int time)
 	return coefficient[time];
 }
 //[a,b] 
-bool Poly::solve(double a, double b, double* ans ,int &amount)
+bool Poly::solve(double* ans ,int &amount)
 {
 	if (MaxTime == 0)return false;
-	int ans_amount = get_ans_amount(a, b);
+	int ans_amount = get_ans_amount();
 	if (ans_amount == 0)return false;
+	amount = ans_amount;
 	ans = new double[ans_amount];
 	Poly tmp = *this;
 	/////////////////////////////////////////////////////////
@@ -173,7 +175,7 @@ double Poly::get_one_ans(int time)
 	double x = 1 + pow(fabs(B / get_coeff(time)), (double)(1)/k);
 	return newton(x);
 }
-int Poly::get_ans_amount(double a,double b)
+int Poly::get_ans_amount()
 {
 	//看的是负无穷 正无穷 所以只看系数的正负就好了
 	int ans_amount = 0;

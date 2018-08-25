@@ -21,7 +21,11 @@ private:
 	QLabel * names;
 	QLineEdit * elements;
 	void reset(int );
+	void get_value(double[]);
+	int time;
 private slots:
+	
+
 	void change_time();
 	void get_der();
 	void get_inter();

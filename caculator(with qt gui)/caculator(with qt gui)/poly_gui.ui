@@ -152,8 +152,8 @@
     <rect>
      <x>100</x>
      <y>190</y>
-     <width>160</width>
-     <height>80</height>
+     <width>801</width>
+     <height>61</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout"/>

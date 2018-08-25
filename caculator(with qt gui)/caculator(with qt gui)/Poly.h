@@ -14,12 +14,12 @@ public:
 	int get_MaxTime();
 	void set_coeff(int, double);
 	double get_coeff(int);
-	bool solve(double, double, double*, int&);
+	bool solve(double*, int&);
 private:
 	int MaxTime;
 	vector<double>coefficient;
 	double get_one_ans(int );
-	int get_ans_amount(double,double);
+	int get_ans_amount();
 	string variable;
 	double newton(double);
 };
