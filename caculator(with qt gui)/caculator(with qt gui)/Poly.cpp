@@ -111,7 +111,7 @@ double Poly::get_coeff(int time)
 	return coefficient[time];
 }
 //[a,b] 
-bool Poly::solve(double* ans ,int &amount)
+bool Poly::solve(double*& ans ,int &amount)
 {
 	if (MaxTime == 0)return false;
 	int ans_amount = get_ans_amount();
@@ -124,6 +124,8 @@ bool Poly::solve(double* ans ,int &amount)
 	for (int i = 0; i<ans_amount; i++)
 	{
 		ans[i] = tmp.get_one_ans(MaxTime - i);//right
+		///////////////////////////
+		//std::cout << "ans[i] = " << ans[i] << std::endl;
 		double temp,t;
 		//Г§ШЅвђзг
 		t = tmp.get_coeff(MaxTime);

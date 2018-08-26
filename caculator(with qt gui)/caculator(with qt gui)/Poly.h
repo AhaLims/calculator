@@ -14,7 +14,7 @@ public:
 	int get_MaxTime();
 	void set_coeff(int, double);
 	double get_coeff(int);
-	bool solve(double*, int&);
+	bool solve(double*&, int&);//指针的传引用
 private:
 	int MaxTime;
 	vector<double>coefficient;

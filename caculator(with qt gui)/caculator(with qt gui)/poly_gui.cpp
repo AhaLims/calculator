@@ -37,7 +37,7 @@ void poly_gui::reset(int num)//reset dynamic module
 		elements[i].setParent(this);
 		ui.horizontalLayout->addWidget(&elements[i]);
 		if (i != num)tmp = "x^"+ QString::number(num - i) + "+";
-		else tmp = "x^" + QString::number(num - i);
+		else tmp = "";
 		names[i].setText(tmp);
 		ui.horizontalLayout->addWidget(&names[i]);
 	}
@@ -80,7 +80,7 @@ void poly_gui::get_inter()
 {
 	if (poly_expression != nullptr)
 		delete poly_expression;
-	double *value = new double[time + 1];
+	double * value = new double[time + 1];
 	get_value(value);
 	poly_expression = new Poly(time, value, "x");
 	string output = poly_expression->get_integral().output();
@@ -92,20 +92,30 @@ void poly_gui::get_zero()
 {
 	if (poly_expression != nullptr)
 		delete poly_expression;
-	double *ans;
+	double *ans = nullptr;
 	int ans_amount;
-	double *value = new double[time + 1];
+	double * value = new double[time + 1];
 	get_value(value);
 	poly_expression = new Poly(time, value, "x");
-	poly_expression->solve(ans, ans_amount);
-	//ans is all the answer of this poly 
-	QString qstr;
-	for (int i = 0; i < ans_amount; i++)
+	
+	if (poly_expression->solve(ans, ans_amount))
 	{
-		qstr += "x" + QString::number(i + 1) + " = ";//∑√Œ ≥ÂÕª //+ QString::number(ans[i]) + "\n";
+		//ans is all the answer of this poly 
+		QString qstr;
+		
+		for (int i = 0; i < ans_amount; i++)
+		{
+			qstr += "x" + QString::number(i + 1) + " = " + QString::number(ans[i]) + "\n";
+		}
+		ui.textBrowser->setText(qstr);
+		if(ans != nullptr)
+			delete[] ans;
 	}
-	ui.textBrowser->setText(qstr);
-	delete[] ans;
-	delete[] value;
-}////////////////
+	else
+	{
+		ui.textBrowser->setText("no answer");
+	}
+	if(value != nullptr)
+		delete[] value;
+}
 
