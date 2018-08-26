@@ -19,7 +19,7 @@ LinearEquation_gui::LinearEquation_gui(QWidget *parent)
 	Module = nullptr;
 	amount = 3;
 	set();//初始化的时候设置为3个变量
-	ui.spinBox->setRange(1, 10);  // 范围
+	ui.spinBox->setRange(2, 9);  // 范围
 	ui.spinBox->setValue(3);//当前值
 	ui.spinBox->setWrapping(false);  // 不开启循环
 }

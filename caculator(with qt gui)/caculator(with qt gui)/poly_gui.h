@@ -21,8 +21,9 @@ private:
 	QLabel * names;
 	QLineEdit * elements;
 	void reset(int );
-	void get_value(double[]);
+	bool get_value(double[]);
 	int time;
+	int digits;
 private slots:
 	
 	void get_help();

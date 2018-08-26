@@ -31,7 +31,6 @@ public:
     QHBoxLayout *HL;
     QLabel *label_2;
     QSpinBox *spinBox;
-    QPushButton *change;
     QPushButton *get_answer;
     QTextBrowser *answer_show;
 
@@ -74,19 +73,16 @@ public:
 
         HL->addWidget(spinBox);
 
-        change = new QPushButton(LinearEquation_guiClass);
-        change->setObjectName(QStringLiteral("change"));
-        change->setGeometry(QRect(390, 80, 93, 28));
         get_answer = new QPushButton(LinearEquation_guiClass);
         get_answer->setObjectName(QStringLiteral("get_answer"));
-        get_answer->setGeometry(QRect(500, 80, 93, 28));
+        get_answer->setGeometry(QRect(400, 80, 93, 28));
         answer_show = new QTextBrowser(LinearEquation_guiClass);
         answer_show->setObjectName(QStringLiteral("answer_show"));
         answer_show->setGeometry(QRect(850, 140, 256, 731));
 
         retranslateUi(LinearEquation_guiClass);
-        QObject::connect(change, SIGNAL(clicked()), LinearEquation_guiClass, SLOT(change_equation()));
         QObject::connect(get_answer, SIGNAL(clicked()), LinearEquation_guiClass, SLOT(push_get_answer_button()));
+        QObject::connect(spinBox, SIGNAL(valueChanged(int)), LinearEquation_guiClass, SLOT(change_equation()));
 
         QMetaObject::connectSlotsByName(LinearEquation_guiClass);
     } // setupUi
@@ -95,8 +91,7 @@ public:
     {
         LinearEquation_guiClass->setWindowTitle(QApplication::translate("LinearEquation_guiClass", "LinearEquation_gui", nullptr));
         label->setText(QApplication::translate("LinearEquation_guiClass", "\345\234\250\346\234\254\347\225\214\351\235\242,\344\275\240\345\217\257\344\273\245\346\261\202\350\247\243\347\272\277\346\200\247\346\226\271\347\250\213\347\273\204", nullptr));
-        label_2->setText(QApplication::translate("LinearEquation_guiClass", "\346\234\252\347\237\245\346\225\260\357\274\210\344\270\273\345\205\203\357\274\211\344\270\252\346\225\260\357\274\2101-10\357\274\211", nullptr));
-        change->setText(QApplication::translate("LinearEquation_guiClass", "\347\241\256\345\256\232", nullptr));
+        label_2->setText(QApplication::translate("LinearEquation_guiClass", "\346\234\252\347\237\245\346\225\260\357\274\210\344\270\273\345\205\203\357\274\211\344\270\252\346\225\260\357\274\2102-9\357\274\211", nullptr));
         get_answer->setText(QApplication::translate("LinearEquation_guiClass", "\346\261\202\350\247\243", nullptr));
     } // retranslateUi
 

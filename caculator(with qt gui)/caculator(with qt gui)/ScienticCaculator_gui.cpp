@@ -1,5 +1,6 @@
 #include "ScienticCaculator_gui.h"
 #include"ScienticCaculartor.h"
+#include"qmessagebox.h"
 SicenticCaculator_gui::SicenticCaculator_gui(QWidget *parent)
 	: QWidget(parent)
 {
@@ -221,10 +222,17 @@ void SicenticCaculator_gui::click_ans()
 {
 	double ans;
 	string str = ui.textEdit->toPlainText().toStdString();
-	caculator->getAns(ans, str);
-	store_data(ans, str);
-	QString qstr = QString::number(ans, 10, caculator->get_digits());
-	ui.ans->setText(qstr);
+	if (caculator->getAns(ans, str))
+
+	{
+		store_data(ans, str);
+		QString qstr = QString::number(ans, 10, caculator->get_digits());
+		ui.ans->setText(qstr);
+	}
+	else
+	{
+		QMessageBox::about(NULL, "wrong", tr("wrong intput"));
+	}
 }
 void SicenticCaculator_gui::store_data(double ans,string str)
 {

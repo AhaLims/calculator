@@ -7,7 +7,7 @@
 #include<qmessagebox.h>
 #include"ScienticCaculartor.h"
 poly_gui::poly_gui(QWidget *parent)
-	: QWidget(parent),poly_expression(nullptr),names(nullptr),elements(nullptr)
+	: QWidget(parent),poly_expression(nullptr),names(nullptr),elements(nullptr),digits(3)
 {
 	ui.setupUi(this);
 	ui.spinBox->setRange(1, 10);
@@ -44,7 +44,7 @@ void poly_gui::reset(int num)//reset dynamic module
 	}
 }
 
-void poly_gui::get_value(double value[])
+bool poly_gui::get_value(double value[])
 {
 	QString qstr;
 	string expression;
@@ -56,13 +56,13 @@ void poly_gui::get_value(double value[])
 		if (qstr == "")
 		{
 			QMessageBox::about(NULL, "WRONG", tr("please enter a number"));
-			return;
+			return false;
 		}
-
 		expression = qstr.toStdString();
-		exp.getAns(tmp, expression);
+		if (!exp.getAns(tmp, expression)) return false;
 		value[i] = tmp;
 	}
+	return true;
 }
 void poly_gui::get_help()
 {
@@ -78,7 +78,10 @@ void poly_gui::get_der()
 	if (poly_expression != nullptr)
 		delete poly_expression;
 	double *value = new double[time + 1];
-	get_value(value);
+	if (!get_value(value))
+	{
+		return;
+	}
 	poly_expression = new Poly(time , value ,"x");
 	string output = poly_expression->get_derivative().output();
 	QString qstr = QString::fromStdString(output);
@@ -90,7 +93,11 @@ void poly_gui::get_inter()
 	if (poly_expression != nullptr)
 		delete poly_expression;
 	double * value = new double[time + 1];
-	get_value(value);
+
+	if (!get_value(value))
+	{
+		return;
+	}
 	poly_expression = new Poly(time, value, "x");
 	string output = poly_expression->get_integral().output();
 	QString qstr = QString::fromStdString(output);
@@ -104,7 +111,10 @@ void poly_gui::get_zero()
 	double *ans = nullptr;
 	int ans_amount;
 	double * value = new double[time + 1];
-	get_value(value);
+	if (!get_value(value))
+	{
+		return;
+	}
 	poly_expression = new Poly(time, value, "x");
 	
 	if (poly_expression->solve(ans, ans_amount))

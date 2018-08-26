@@ -60,7 +60,7 @@
        </font>
       </property>
       <property name="text">
-       <string>未知数（主元）个数（1-10）</string>
+       <string>未知数（主元）个数（2-9）</string>
       </property>
      </widget>
     </item>
@@ -75,23 +75,10 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="change">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>80</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>确定</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="get_answer">
    <property name="geometry">
     <rect>
-     <x>500</x>
+     <x>400</x>
      <y>80</y>
      <width>93</width>
      <height>28</height>
@@ -116,22 +103,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>change</sender>
-   <signal>clicked()</signal>
-   <receiver>LinearEquation_guiClass</receiver>
-   <slot>change_equation()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>411</x>
-     <y>93</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>643</x>
-     <y>86</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>get_answer</sender>
    <signal>clicked()</signal>
    <receiver>LinearEquation_guiClass</receiver>
@@ -144,6 +115,22 @@
     <hint type="destinationlabel">
      <x>896</x>
      <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>LinearEquation_guiClass</receiver>
+   <slot>change_equation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>346</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>456</x>
+     <y>24</y>
     </hint>
    </hints>
   </connection>
