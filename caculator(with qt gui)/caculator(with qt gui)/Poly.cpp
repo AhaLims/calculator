@@ -119,18 +119,13 @@ bool Poly::solve(double*& ans ,int &amount)
 	amount = ans_amount;
 	ans = new double[ans_amount];
 	Poly tmp = *this;
-	/////////////////////////////////////////////////////////
 	/*get answer and update tmp*/
 	for (int i = 0; i<ans_amount; i++)
 	{
 		ans[i] = tmp.get_one_ans(MaxTime - i);//right
-		///////////////////////////
-		//std::cout << "ans[i] = " << ans[i] << std::endl;
 		double temp,t;
 		//Г§ШЅвђзг
 		t = tmp.get_coeff(MaxTime);
-		//tmp.set_coeff(MaxTime, 0);
-		//tmp.set_coeff(MaxTime  - 1, tmp.get_coeff(MaxTime));
 		for (int j = MaxTime - 1; j >= 0; j--)
 		{
 			if (j == MaxTime - 1)temp = t;

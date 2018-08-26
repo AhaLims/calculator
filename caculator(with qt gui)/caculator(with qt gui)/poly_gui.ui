@@ -44,19 +44,6 @@
     <string>多项式相关</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>190</y>
-     <width>941</width>
-     <height>441</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>位置：（80，140）宽度：941 长度（441）可以选择5个一行</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
@@ -142,7 +129,7 @@
     <rect>
      <x>90</x>
      <y>690</y>
-     <width>491</width>
+     <width>461</width>
      <height>192</height>
     </rect>
    </property>
@@ -228,11 +215,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>poly_guiClass</receiver>
+   <slot>get_help()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>498</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>661</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>change_time()</slot>
   <slot>get_der()</slot>
   <slot>get_inter()</slot>
   <slot>get_zero()</slot>
+  <slot>get_help()</slot>
  </slots>
 </ui>

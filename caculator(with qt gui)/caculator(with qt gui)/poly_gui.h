@@ -25,7 +25,7 @@ private:
 	int time;
 private slots:
 	
-
+	void get_help();
 	void change_time();
 	void get_der();
 	void get_inter();

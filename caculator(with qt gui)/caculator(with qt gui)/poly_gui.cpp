@@ -59,6 +59,10 @@ void poly_gui::get_value(double value[])
 		value[i] = tmp;
 	}
 }
+void poly_gui::get_help()
+{
+	QMessageBox::about(NULL, "Help", tr("You can caculate polynomial,get its value,derivative,\nintegral and even caculate all the zero point(in real range)"));
+}
 void poly_gui::change_time()
 {
 	time = ui.spinBox->value();
@@ -70,7 +74,7 @@ void poly_gui::get_der()
 		delete poly_expression;
 	double *value = new double[time + 1];
 	get_value(value);
-	poly_expression = new Poly(time,value,"x");
+	poly_expression = new Poly(time , value ,"x");
 	string output = poly_expression->get_derivative().output();
 	QString qstr = QString::fromStdString(output);
 	ui.textBrowser->setText(qstr);
@@ -116,6 +120,6 @@ void poly_gui::get_zero()
 		ui.textBrowser->setText("no answer");
 	}
 	if(value != nullptr)
-		delete[] value;
+		delete[] value;//rememeber to delete value (it was new in solve)
 }
 
