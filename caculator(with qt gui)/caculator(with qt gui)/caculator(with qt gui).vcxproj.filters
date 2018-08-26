@@ -8,9 +8,6 @@
     <ClCompile Include="AnalyticFormula.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fraction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Matrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -42,9 +39,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Poly.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="debug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="choose.cpp">

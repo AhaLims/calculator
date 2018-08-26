@@ -51,7 +51,7 @@ QHBoxLayout* DynamicModule::set(int amount, QWidget * parent)//amount must >= 1
 
 DynamicModule::~DynamicModule()
 {
-	std::cout << "use DynamicModule destruct\n";
+	//std::cout << "use DynamicModule destruct\n";
 	if (names != nullptr)
 		delete[] names;
 	if (elements != nullptr)
