@@ -5,6 +5,7 @@
 #include<qlayout.h>
 #include <QtWidgets/QWidget>
 #include<qmessagebox.h>
+#include"ScienticCaculartor.h"
 poly_gui::poly_gui(QWidget *parent)
 	: QWidget(parent),poly_expression(nullptr),names(nullptr),elements(nullptr)
 {
@@ -46,7 +47,9 @@ void poly_gui::reset(int num)//reset dynamic module
 void poly_gui::get_value(double value[])
 {
 	QString qstr;
-	double tmp;
+	string expression;
+	double tmp = 0;
+	scientic_calculator exp;
 	for (int i = time; i >= 0; i--)
 	{
 		qstr = elements[time - i].text();
@@ -55,7 +58,9 @@ void poly_gui::get_value(double value[])
 			QMessageBox::about(NULL, "WRONG", tr("please enter a number"));
 			return;
 		}
-		tmp = qstr.toDouble();
+
+		expression = qstr.toStdString();
+		exp.getAns(tmp, expression);
 		value[i] = tmp;
 	}
 }
