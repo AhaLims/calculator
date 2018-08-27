@@ -50,7 +50,23 @@ bool poly_gui::get_value(double value[])
 	string expression;
 	double tmp = 0;
 	scientic_calculator exp;
-	for (int i = time; i >= 0; i--)
+	//bool flag = true;//to mark the first not zero place(to get the ×î¸ßÎ»£©/////////
+	int i = time;
+	while (true)
+	{
+		qstr = elements[time - i].text();
+		if (qstr == "")
+		{
+			QMessageBox::about(NULL, "WRONG", tr("please enter a number"));
+			return false;
+		}
+		expression = qstr.toStdString();
+		if (!exp.getAns(tmp, expression)) return false;
+		if (tmp != 0) break;
+		i--;
+	}
+	real_time = i;
+	for (; i >= 0; i--)
 	{
 		qstr = elements[time - i].text();
 		if (qstr == "")
@@ -82,7 +98,7 @@ void poly_gui::get_der()
 	{
 		return;
 	}
-	poly_expression = new Poly(time , value ,"x");
+	poly_expression = new Poly(real_time , value ,"x");
 	string output = poly_expression->get_derivative().output();
 	QString qstr = QString::fromStdString(output);
 	ui.textBrowser->setText(qstr);
@@ -98,7 +114,7 @@ void poly_gui::get_inter()
 	{
 		return;
 	}
-	poly_expression = new Poly(time, value, "x");
+	poly_expression = new Poly(real_time, value, "x");
 	string output = poly_expression->get_integral().output();
 	QString qstr = QString::fromStdString(output);
 	ui.textBrowser->setText(qstr);
@@ -115,7 +131,7 @@ void poly_gui::get_zero()
 	{
 		return;
 	}
-	poly_expression = new Poly(time, value, "x");
+	poly_expression = new Poly(real_time, value, "x");
 	
 	if (poly_expression->solve(ans, ans_amount))
 	{

@@ -23,6 +23,7 @@ private:
 	void reset(int );
 	bool get_value(double[]);
 	int time;
+	int real_time;//use to get the real time(if the highest time x = 0)
 	int digits;
 private slots:
 	
