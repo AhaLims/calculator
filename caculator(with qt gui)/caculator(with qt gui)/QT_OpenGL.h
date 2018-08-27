@@ -116,6 +116,7 @@ public:
 	EXPRESSION::TYPE type;
 	string token;//"word"
 private:
+	int brackets_amount;
 
 	/*manage the expression*/
 	string input(const string str);

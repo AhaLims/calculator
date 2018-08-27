@@ -339,7 +339,8 @@ const int Expression::functionNeedAmount[FUN_AMOUNT]
 
 						  /*function part*/
 Expression::Expression(string expression, int variable_amount, string variable[])
-	:VariableAmount(variable_amount), check_input(true), expression_systerm(EXPRESSION::RADIAN_SYSTERM)
+	:VariableAmount(variable_amount), check_input(true),
+	expression_systerm(EXPRESSION::RADIAN_SYSTERM),brackets_amount(0)
 {
 	exp = this->input(expression);
 	if (VariableAmount != 0)
@@ -361,6 +362,7 @@ Expression::~Expression()
 
 string Expression::input(const string str)
 {
+	brackets_amount = 0;
 	int len = str.length();
 	string exp;
 	char c;
@@ -369,7 +371,8 @@ string Expression::input(const string str)
 		c = str.at(i);
 		if (c == '\n' || c == ' ')//delete space
 			continue;
-
+		else if (c == '(')brackets_amount++;
+		else if (c == ')')brackets_amount--;
 		exp += c;
 	}
 	exp += "#";
@@ -379,6 +382,7 @@ string Expression::input(const string str)
 int Expression::getAns(double &res, double Value[])//在这里计算每一次的值
 												   //return -1 -2的含义不同（虽然都是错误的输入）
 {
+	if (brackets_amount != 0)return -1;
 	if (VariableAmount > 0)
 	{
 		for (int i = 0; i < VariableAmount; i++)
@@ -736,7 +740,7 @@ double Function_2D::getAns(double Value_)
 	double value[1] = { Value_ };
 	double ans;
 
-	if (FunctionExpression->getAns(ans, value) == 0)
+	if (FunctionExpression->getAns(ans, value) == 0)//good input
 		return ans;
 	else return 0;//bug here 
 }
