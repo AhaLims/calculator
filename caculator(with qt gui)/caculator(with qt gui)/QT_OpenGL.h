@@ -50,7 +50,7 @@ public:
 	static void draw_axis();
 	static void draw_function();
 	void start_OpenGL();
-	static float getY(float, Function_2D*);
+	static bool getY(float, Function_2D*,double &);
 
 	void move_left();
 	void move_right();
@@ -179,9 +179,9 @@ public:
 	Function_2D(string, string);
 	void reset(string,string);
 	~Function_2D();
-	double getAns(double);
-	double getDerivativeValue(double);//微分具体的值
-	double getIntergralValue(double, double);//积分具体的值
+	bool getAns(double,double &);
+	bool getDerivativeValue(double,double &);//微分具体的值
+	bool getIntergralValue(double, double,double &);//积分具体的值
 private:
 	string VariableName[1];//pi e
 	string expression;

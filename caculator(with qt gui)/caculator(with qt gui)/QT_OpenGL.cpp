@@ -70,19 +70,24 @@ void QTOpenGL::draw_function()
 
 	glBegin(GL_LINE_STRIP);
 	/*打点 连线*/
+	double y;
+
 	for (x = -1.0f; x <= 1.0f; x += deltax)
 	{	
-		//glVertex2f(x * centre_x * times * factor, (getY(x - LevelMovement / Width * 2,function) * centre_y * times + ViticalMovement) * factor);
-		if (fabs(getY((x / factor - LevelMovement / Width * 2), function)) >= INF)
+		if (!getY((x / factor - LevelMovement / Width * 2 / factor), function, y))
+		{
+			glEnd();
+			return;
+		}
+		if (fabs(y) >= INF)
 		{
 			glEnd();
 		    glBegin(GL_LINE_STRIP);
 
 			continue;
 		}
-		//std::cout << getY((x / factor - LevelMovement / Width * 2) << std::endl;
-		glVertex2f(x * centre_x * times,
-			(getY((x / factor - LevelMovement / Width * 2 / factor), function) * centre_y * times) * factor + +ViticalMovement);
+		glVertex2f(x * centre_x * times, (y * centre_y * times) * factor + +ViticalMovement);
+		//(getY((x / factor - LevelMovement / Width * 2 / factor), function) * centre_y * times) * factor + +ViticalMovement);
 	}
 	glEnd();
 }
@@ -116,9 +121,11 @@ void QTOpenGL::start_OpenGL()
 	glutDisplayFunc(&myDisplay_);
 	glutMainLoop();
 }
-float QTOpenGL::getY(float x,Function_2D* function)
+bool QTOpenGL::getY(float x,Function_2D* function,double & y)
 {
-	return function->getAns(x);
+	if (function->getAns(x,y))return true;
+	else return false;
+	//return function->getAns(x);
 }
 void QTOpenGL::move_left()
 {
@@ -213,6 +220,12 @@ void QT_OpenGL::push_OK()
 	str2 = ui.function_edit->text().toStdString();
 	if (function != nullptr) function->reset(str1, str2);
 	else function = new Function_2D(str1,str2);
+	double test;
+	if (!function->getAns(0,test))//just to see if the expression is right
+	{
+		QMessageBox::about(NULL, "wrong", tr("wrong input"));
+		return;
+	}
 	qtopengl_ptr->start_OpenGL();
 }
 void QT_OpenGL::push_left()
@@ -735,27 +748,36 @@ Function_2D::~Function_2D()
 }
 
 
-double Function_2D::getAns(double Value_)
+bool Function_2D::getAns(double Value_,double & answer)
 {
 	double value[1] = { Value_ };
 	double ans;
-
+	answer = 0;
 	if (FunctionExpression->getAns(ans, value) == 0)//good input
-		return ans;
-	else return 0;//bug here 
+	{
+		answer = ans;
+		return true;
+	}
+	else return false;//bug here 
 }
-double Function_2D::getDerivativeValue(double Value_)//微分具体的值
+bool Function_2D::getDerivativeValue(double Value_,double& ans)//微分具体的值
 {
-	double y1 = getAns(Value_);
-	double y2 = getAns(Value_ + eps);
-	return (y2 - y1) / eps;
+	double y1 ,y2;
+	ans = 0;
+	if (getAns(Value_, y1) == true && getAns(Value_ + eps, y2) == true)
+	{
+		ans = (y2 - y1) / eps;
+		return true;
+	}
+	else return false;
 }
-double Function_2D::getIntergralValue(double x1, double x2)//积分具体的值
+bool Function_2D::getIntergralValue(double x1, double x2,double &ans)//积分具体的值
 {
-	double ans = 0;
+	double tmp = 0;
 	for (; x1 < x2; x1 += eps)
 	{
-		ans += eps * getAns(x1);
+		if (getAns(x1, tmp) == true)ans += tmp;
+		else return false;
 	}
-	return ans;
+	return false;
 }
