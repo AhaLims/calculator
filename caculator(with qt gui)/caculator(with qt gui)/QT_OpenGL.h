@@ -168,7 +168,13 @@ private:
 	EXPRESSION::SYSTERM expression_systerm;
 
 
-
+	/*this three functions are used to fill the ellipsis operator*/
+	bool preposition(char);
+	bool postposition(char);
+	bool isOperator(char);//operator except brackets and '#'
+	//bool isVariable_head(char);
+	//bool isVariable_end(char);
+	int isVariable(string, int);
 };
 
 

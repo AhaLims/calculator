@@ -267,7 +267,7 @@ public:
 
         label = new QLabel(Form);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(630, 180, 251, 61));
+        label->setGeometry(QRect(630, 180, 251, 51));
         spinBox = new QSpinBox(Form);
         spinBox->setObjectName(QStringLiteral("spinBox"));
         spinBox->setGeometry(QRect(670, 150, 46, 22));
@@ -354,9 +354,7 @@ public:
         arctan->setText(QApplication::translate("Form", "arctan(", nullptr));
         arccos->setText(QApplication::translate("Form", "arccos(", nullptr));
         arcsin->setText(QApplication::translate("Form", "arcsin(", nullptr));
-        label->setText(QApplication::translate("Form", "tips:\n"
-"\346\213\254\345\217\267\345\277\205\351\241\273\344\270\272\350\213\261\346\226\207\350\276\223\345\205\245\346\263\225\344\270\213\347\232\204\346\213\254\345\217\267\n"
-"\347\254\246\345\217\267\344\270\215\350\203\275\347\234\201\347\225\245", nullptr));
+        label->setText(QApplication::translate("Form", "<html><head/><body><p>tips:</p><p>\346\213\254\345\217\267\345\277\205\351\241\273\344\270\272<span style=\" text-decoration: underline; color:#ff0000;\">\350\213\261\346\226\207\350\276\223\345\205\245\346\263\225</span>\344\270\213\347\232\204\346\213\254\345\217\267</p><p><br/></p></body></html>", nullptr));
         label_2->setText(QApplication::translate("Form", "\345\260\217\346\225\260\344\275\215", nullptr));
     } // retranslateUi
 

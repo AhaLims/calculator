@@ -19,6 +19,7 @@ SicenticCaculator_gui::~SicenticCaculator_gui()
 void SicenticCaculator_gui::click_num1()
 {
 	QString str = ui.textEdit->toPlainText();
+	ui.textEdit->cursor();
 	str += "1";
 	ui.textEdit->setText(str);
 }
@@ -220,12 +221,13 @@ void SicenticCaculator_gui::click_history()
 }
 void SicenticCaculator_gui::click_ans()
 {
+	double eps = 0.0000001;
 	double ans;
 	string str = ui.textEdit->toPlainText().toStdString();
 	if (caculator->getAns(ans, str))
-
 	{
 		store_data(ans, str);
+		if (fabs(ans) < eps)ans = 0;
 		QString qstr = QString::number(ans, 10, caculator->get_digits());
 		ui.ans->setText(qstr);
 	}

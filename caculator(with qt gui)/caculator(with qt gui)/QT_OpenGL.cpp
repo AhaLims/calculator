@@ -355,7 +355,7 @@ Expression::Expression(string expression, int variable_amount, string variable[]
 	:VariableAmount(variable_amount), check_input(true),
 	expression_systerm(EXPRESSION::RADIAN_SYSTERM),brackets_amount(0)
 {
-	exp = this->input(expression);
+	
 	if (VariableAmount != 0)
 	{
 		/*get the name of each variable*/
@@ -365,6 +365,7 @@ Expression::Expression(string expression, int variable_amount, string variable[]
 			VariableName[i] = variable[i];
 		}
 	}
+	exp = this->input(expression);//////////////
 }
 
 Expression::~Expression()
@@ -382,18 +383,65 @@ string Expression::input(const string str)
 	for (int i = 0; i < len; i++)
 	{
 		c = str.at(i);
-		if (c == '\n' || c == ' ')//delete space
+		if (c == '\n' || c == ' ')//delete space and '\n'
 			continue;
-		else if (c == '(')brackets_amount++;
-		else if (c == ')')brackets_amount--;
+		int index = isVariable(str, i);
+		if (index != -1)//is variable
+		{
+			if (i > 0 && str[i - 1] >= '0' && str[i - 1] <= '9')
+			{
+				exp += "*";
+			}
+			exp += VariableName[index];
+			i += VariableName[index].length() - 1;
+			if (i < len - 1 && !isOperator(str.at(i + 1)))
+			{
+				exp += '*';
+			}
+			continue;
+		}
+		else if (preposition(c))
+		{
+			if (c == '(')//to juedge whether the brackets is mate
+			{
+				brackets_amount++;
+			}
+			if (i == 0 || !isdigit(str.at(i - 1))|| str.at(i - 1) == ')')//now we don't need to add '*'
+			{
+				exp += c;
+				continue;
+			}
+			else if(i != 0 && !isOperator(str.at(i-1)))
+			{
+				c = '*';
+				exp += c;
+				c = str.at(i);
+			}
+		}
+		else if(postposition(c))
+		{
+			if (c == ')')brackets_amount--;
+			if(i != len - 1 && !isOperator(str.at(i + 1)) && str.at(i + 1) !=')' )
+			{
+				exp += c;
+				c = '*';
+			}
+		}
 		exp += c;
 	}
+	while (brackets_amount > 0)//complete brackets auto
+	{
+		exp += ')';
+		brackets_amount--;
+	}
 	exp += "#";
+	std::cout << exp << std::endl;
 	return exp;
 }
 
-int Expression::getAns(double &res, double Value[])//在这里计算每一次的值
-												   //return -1 -2的含义不同（虽然都是错误的输入）
+/*	caculate value here each time
+*	different meaning of -1 -2(thought they are both wrong input)*/
+int Expression::getAns(double &res, double Value[])
 {
 	if (brackets_amount != 0)return -1;
 	if (VariableAmount > 0)
@@ -724,6 +772,45 @@ int Expression::isOperator(string str)//judge if it is operator and return the n
 	return -1;
 }
 
+bool Expression::preposition(char c)
+{
+	if (c == '(')return true;
+	for (int i = 0; i < FUN_AMOUNT; i++)
+	{
+		if (c == function[i].at(0))
+			return true;
+	}
+	return false;
+}
+bool Expression::postposition( char c)
+{
+	if (c == ')')return true;
+	else return false;
+}
+bool Expression::isOperator(char c)
+{
+	for (int i = 1; i < OPERATOR_AMOUNT - 3; i++)// + - ^ * / 
+	{
+		if (c == Operator[i].at(0))
+			return true;
+	}
+	return false;
+}
+int Expression::isVariable(string str, int place)//返回序号
+{
+	//std::cout << "place" << place << std::endl;
+	if (VariableAmount == 0)return -1;
+	int len = str.length();
+	for (int i = 0; i < VariableAmount; i++)
+	{
+		if (place + VariableName[i].length() > len)continue;
+		if (str.substr(place, place + VariableName[i].length()) == VariableName[i])
+		{
+			return i;
+		}
+	}
+	return -1;
+}
 
 
 Function_2D::Function_2D(string VariableName_, string expression_) :eps(0.00001)
