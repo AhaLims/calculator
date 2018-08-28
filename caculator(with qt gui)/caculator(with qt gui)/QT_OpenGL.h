@@ -109,26 +109,20 @@ class Expression
 public:
 	Expression(string str, int variable_amount = 0, string variable[] = nullptr);
 	~Expression();
-	//string input(const string str);
 	int getAns(double &, double Value[] = nullptr);//计算的外部接口
-
-	void read(int & pos);//read a "word" each time and judge what tpye the word is
-	EXPRESSION::TYPE type;
-	string token;//"word"
 private:
 	int brackets_amount;
+	void read(int & pos);//read a "word" each time and judge what tpye the word is
+	EXPRESSION::TYPE type;
 
 	/*manage the expression*/
 	string input(const string str);
-
-	/*read a "word" each time and judge what tpye the word is*/
-	//	void read(int & pos);
+	string token;//"word"
 
 	/*calculate part*/
 
 	/*compare operator */
 	int compare(string, string)const;
-
 	bool getValue(stack<double>& operand, double x[], int n);
 
 	/*caculator*/
@@ -140,8 +134,6 @@ private:
 	int isVariable(string str)const;
 	static int isOperator(string str);
 
-	/*get word type*/
-	//	EXPRESSION::TYPE type;
 	/*static operator funtion and the variable they need*/
 
 	/*operator*/
@@ -172,8 +164,6 @@ private:
 	bool preposition(char);
 	bool postposition(char);
 	bool isOperator(char);//operator except brackets and '#'
-	//bool isVariable_head(char);
-	//bool isVariable_end(char);
 	int isVariable(string, int);
 };
 

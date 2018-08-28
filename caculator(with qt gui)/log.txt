@@ -6,3 +6,6 @@
 8.28
 修改了Expression类的接口，现在输入可以省略符号了
 修改了sicenticCaculator_gui显示答案出现-0.00的bug
+修改了科学计算器save 的bug
+增加了多项式求导数值，求定积分功能
+bug:2D函数绘图器 只能绘制一次...

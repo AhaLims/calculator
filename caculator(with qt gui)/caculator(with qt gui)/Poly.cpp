@@ -58,6 +58,24 @@ Poly Poly::get_integral()
 	}
 	return integral;
 }
+double Poly::get_intergral_value(double range1, double range2)
+{
+	double ans = 0;
+	if (range1 > range2)
+	{
+		double tmp = range1;
+		range1 = range2;
+		range2 = tmp;
+	}
+	/*double eps = 0.0001;
+	for (int i = range1; i <= range2; i += eps)
+	{
+		ans += eps * get_ans(i);
+	}*/
+	Poly intergral = this->get_integral();
+	ans = intergral.get_ans(range2) - intergral.get_ans(range1);
+	return ans;
+}
 string Poly::output()
 {
 	string expression;

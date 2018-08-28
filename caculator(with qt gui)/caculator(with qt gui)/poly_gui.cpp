@@ -61,7 +61,11 @@ bool poly_gui::get_value(double value[])
 			return false;
 		}
 		expression = qstr.toStdString();
-		if (!exp.getAns(tmp, expression)) return false;
+		if (!exp.getAns(tmp, expression))
+		{
+			QMessageBox::about(NULL, "WRONG", tr("wrong input"));
+			return false;
+		}
 		if (tmp != 0) break;
 		i--;
 	}
@@ -75,7 +79,11 @@ bool poly_gui::get_value(double value[])
 			return false;
 		}
 		expression = qstr.toStdString();
-		if (!exp.getAns(tmp, expression)) return false;
+		if (!exp.getAns(tmp, expression))
+		{
+			QMessageBox::about(NULL, "WRONG", tr("wrong input"));
+			return false;
+		}
 		value[i] = tmp;
 	}
 	return true;
@@ -152,5 +160,42 @@ void poly_gui::get_zero()
 	}
 	if(value != nullptr)
 		delete[] value;//rememeber to delete value (it was new in solve)
+}
+
+void poly_gui::get_diff_value()
+{
+	if (poly_expression != nullptr)
+		delete poly_expression;
+	double * value = new double[time + 1];
+
+	if (!get_value(value))
+	{
+		return;
+	}
+	poly_expression = new Poly(real_time, value, "x");
+	double v = (ui.dif_value->text().toDouble());
+	double ans = poly_expression->get_derivative_value(v);
+	QString qstr = QString::number(ans, 10, digits);
+	ui.textBrowser->setText(qstr);
+	delete[] value;
+}
+void poly_gui::get_inter_value()
+{
+	if (poly_expression != nullptr)
+		delete poly_expression;
+	double * value = new double[time + 1];
+
+	if (!get_value(value))
+	{
+		return;
+	}
+	poly_expression = new Poly(real_time, value, "x");
+	double range1, range2;// = (ui.dif_value->text().toDouble());
+	range1 = ui.range1->text().toDouble();
+	range2 = ui.range2->text().toDouble();
+	double ans = poly_expression->get_intergral_value(range1, range2);
+	QString qstr = QString::number(ans, 10, digits);
+	ui.textBrowser->setText(qstr);
+	delete[] value;
 }
 

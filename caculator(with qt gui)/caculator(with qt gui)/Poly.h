@@ -8,6 +8,7 @@ public:
 	Poly get_derivative();
 	double get_derivative_value(double);
 	Poly get_integral();
+	double get_intergral_value(double, double);
 	string output();
 	double get_ans(double);
 	void set_MaxTime(int);

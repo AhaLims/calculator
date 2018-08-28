@@ -32,4 +32,6 @@ private slots:
 	void get_der();
 	void get_inter();
 	void get_zero();
+	void get_diff_value();
+	void get_inter_value();
 };

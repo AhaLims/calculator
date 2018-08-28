@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextBrowser>
@@ -34,6 +35,14 @@ public:
     QTextBrowser *textBrowser;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
+    QPushButton *get_dif_value;
+    QLabel *label_4;
+    QPushButton *get_zero_3;
+    QLabel *label_5;
+    QLabel *label_6;
+    QLineEdit *dif_value;
+    QLineEdit *range1;
+    QLineEdit *range2;
 
     void setupUi(QWidget *poly_guiClass)
     {
@@ -79,6 +88,30 @@ public:
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        get_dif_value = new QPushButton(poly_guiClass);
+        get_dif_value->setObjectName(QStringLiteral("get_dif_value"));
+        get_dif_value->setGeometry(QRect(570, 640, 121, 31));
+        label_4 = new QLabel(poly_guiClass);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(580, 690, 72, 15));
+        get_zero_3 = new QPushButton(poly_guiClass);
+        get_zero_3->setObjectName(QStringLiteral("get_zero_3"));
+        get_zero_3->setGeometry(QRect(730, 640, 111, 31));
+        label_5 = new QLabel(poly_guiClass);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(720, 690, 41, 16));
+        label_6 = new QLabel(poly_guiClass);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(830, 690, 21, 16));
+        dif_value = new QLineEdit(poly_guiClass);
+        dif_value->setObjectName(QStringLiteral("dif_value"));
+        dif_value->setGeometry(QRect(630, 680, 61, 31));
+        range1 = new QLineEdit(poly_guiClass);
+        range1->setObjectName(QStringLiteral("range1"));
+        range1->setGeometry(QRect(760, 680, 61, 31));
+        range2 = new QLineEdit(poly_guiClass);
+        range2->setObjectName(QStringLiteral("range2"));
+        range2->setGeometry(QRect(850, 680, 61, 31));
 
         retranslateUi(poly_guiClass);
         QObject::connect(spinBox, SIGNAL(valueChanged(int)), poly_guiClass, SLOT(change_time()));
@@ -86,6 +119,8 @@ public:
         QObject::connect(get_inter, SIGNAL(clicked()), poly_guiClass, SLOT(get_inter()));
         QObject::connect(get_zero, SIGNAL(clicked()), poly_guiClass, SLOT(get_zero()));
         QObject::connect(pushButton, SIGNAL(clicked()), poly_guiClass, SLOT(get_help()));
+        QObject::connect(get_dif_value, SIGNAL(clicked()), poly_guiClass, SLOT(get_diff_value()));
+        QObject::connect(get_zero_3, SIGNAL(clicked()), poly_guiClass, SLOT(get_inter_value()));
 
         QMetaObject::connectSlotsByName(poly_guiClass);
     } // setupUi
@@ -100,6 +135,11 @@ public:
         get_inter->setText(QApplication::translate("poly_guiClass", "\346\261\202\347\247\257\345\210\206\350\247\243\346\236\220\345\274\217", nullptr));
         get_zero->setText(QApplication::translate("poly_guiClass", "\346\261\202\346\211\200\346\234\211\347\232\204\351\233\266\347\202\271\357\274\210\345\256\236\346\225\260\350\214\203\345\233\264\345\206\205\357\274\211", nullptr));
         label_3->setText(QApplication::translate("poly_guiClass", "F(x) = ", nullptr));
+        get_dif_value->setText(QApplication::translate("poly_guiClass", "\346\261\202\345\257\274\346\225\260\347\232\204\345\200\274", nullptr));
+        label_4->setText(QApplication::translate("poly_guiClass", "\345\217\226 x = ", nullptr));
+        get_zero_3->setText(QApplication::translate("poly_guiClass", "\346\261\202\345\256\232\347\247\257\345\210\206", nullptr));
+        label_5->setText(QApplication::translate("poly_guiClass", "\350\214\203\345\233\264", nullptr));
+        label_6->setText(QApplication::translate("poly_guiClass", "\345\210\260", nullptr));
     } // retranslateUi
 
 };

@@ -3,7 +3,6 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_main_window.h"
 #include"caculator_gui.h"
-//#include"QT_OpenGL.cpp"
 class QTOpenGL;
 class caculator_gui;
 class QT_OpenGL;
@@ -11,7 +10,7 @@ class help_window;
 class SicenticCaculator_gui;
 class LinearEquation_gui;
 class poly_gui;
-class choose;
+
 class main_window : public QMainWindow
 {
 	Q_OBJECT
@@ -33,11 +32,11 @@ private:
 	QT_OpenGL *qtopengl_widget;
 	SicenticCaculator_gui * scientic_caculator_gui;
 	poly_gui *Poly_gui;
-	choose *choose_gui;
 public slots:
 	void push_matrix_caculator_button();
 	void push_scientic_caculator_button();
 	void push_function_caculator_button();
 	void push_help_button();
 	void push_linear_equation_button();
+	void push_poly_caculator_button();
 };

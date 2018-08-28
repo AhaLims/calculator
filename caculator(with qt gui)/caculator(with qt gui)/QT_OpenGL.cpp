@@ -435,7 +435,7 @@ string Expression::input(const string str)
 		brackets_amount--;
 	}
 	exp += "#";
-	std::cout << exp << std::endl;
+	//std::cout << exp << std::endl;
 	return exp;
 }
 

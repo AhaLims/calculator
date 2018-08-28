@@ -5,11 +5,12 @@ SicenticCaculator_gui::SicenticCaculator_gui(QWidget *parent)
 	: QWidget(parent)
 {
 	caculator = new scientic_calculator;
-
+	
 	ui.setupUi(this);
 	ui.spinBox->setRange(0, 6);
 	ui.spinBox->setValue(2);
 	ui.spinBox->setWrapping(false);
+	ui.histrory->hide();
 }
 
 SicenticCaculator_gui::~SicenticCaculator_gui()
@@ -176,7 +177,11 @@ void SicenticCaculator_gui::click_save()
 {
 	double ans;
 	string str = ui.textEdit->toPlainText().toStdString();
-	caculator->getAns(ans, str);
+	if (str == "" ||!caculator->getAns(ans, str))
+	{
+		QMessageBox::about(NULL, "wrong", tr("wrong intput"));
+		return;
+	}
 	caculator->setC(ans);
 }
 void SicenticCaculator_gui::click_read()
