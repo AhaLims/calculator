@@ -3,6 +3,7 @@
 #include"Matrix.h"
 #include"source.h"
 #include"LinearEqaution.h"
+#include"QT_OpenGL.h"
 void LinearEquation_gui::paintEvent(QPaintEvent *e)
 {
 	setMinimumSize(1167, 967);
@@ -54,7 +55,6 @@ void LinearEquation_gui::change_equation()
 void LinearEquation_gui::push_get_answer_button()
 {
 	/*get data*/
-	//Matrix A(amount, amount, false),b(1,amount,false),ans;
 	Matrix A(amount, amount, false), b(amount, 1, false), ans;
 	int solve;
 	double tmp = 0;
@@ -74,7 +74,6 @@ void LinearEquation_gui::push_get_answer_button()
 			tmp = qstr.toDouble();
 			if(j != amount)
 				A.setData(i, j, tmp);
-			//else b.setData(0, j, tmp);
 			else b.setData(i, 0, tmp);
 		}
 	}

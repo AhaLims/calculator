@@ -39,6 +39,7 @@ public:
     QPushButton *lesson_2;
     QPushButton *lesson;
     QPushButton *reset;
+    QLabel *label_4;
 
     void setupUi(QWidget *QT_OpenGLClass)
     {
@@ -122,6 +123,9 @@ public:
 
         gridLayout->addWidget(reset, 3, 0, 1, 1);
 
+        label_4 = new QLabel(QT_OpenGLClass);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(50, 230, 451, 16));
 
         retranslateUi(QT_OpenGLClass);
         QObject::connect(heLp, SIGNAL(clicked()), QT_OpenGLClass, SLOT(push_help()));
@@ -154,6 +158,7 @@ public:
         lesson_2->setText(QApplication::translate("QT_OpenGLClass", "\346\224\276\345\244\247(J)", nullptr));
         lesson->setText(QApplication::translate("QT_OpenGLClass", "\347\274\251\345\260\217(K)", nullptr));
         reset->setText(QApplication::translate("QT_OpenGLClass", "\351\207\215\347\275\256(R)", nullptr));
+        label_4->setText(QApplication::translate("QT_OpenGLClass", "\346\263\250\346\204\217\350\241\250\350\276\276\345\274\217\344\271\213\351\227\264\347\232\204\347\254\246\345\217\267\344\270\215\350\203\275\347\234\201\347\225\245", nullptr));
     } // retranslateUi
 
 };

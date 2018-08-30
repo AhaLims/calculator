@@ -3,6 +3,7 @@
 #include <QtWidgets/QWidget>
 #include "ui_LinearEquation_gui.h"
 #include"DynamicModule.h"
+
 class LinearEquation_gui : public QWidget
 {
 	Q_OBJECT

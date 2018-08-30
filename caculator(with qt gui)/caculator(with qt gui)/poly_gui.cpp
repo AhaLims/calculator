@@ -108,7 +108,7 @@ void poly_gui::get_der()
 	}
 	poly_expression = new Poly(real_time , value ,"x");
 	string output = poly_expression->get_derivative().output();
-	QString qstr = QString::fromStdString(output);
+	QString qstr = "the derivative is\ny = " + QString::fromStdString(output);
 	ui.textBrowser->setText(qstr);
 	delete[] value;
 }
@@ -124,7 +124,7 @@ void poly_gui::get_inter()
 	}
 	poly_expression = new Poly(real_time, value, "x");
 	string output = poly_expression->get_integral().output();
-	QString qstr = QString::fromStdString(output);
+	QString qstr = "the integral is \ny = " + QString::fromStdString(output);
 	ui.textBrowser->setText(qstr);
 	delete[] value;
 }

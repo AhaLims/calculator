@@ -385,48 +385,52 @@ string Expression::input(const string str)
 		c = str.at(i);
 		if (c == '\n' || c == ' ')//delete space and '\n'
 			continue;
-		int index = isVariable(str, i);
-		if (index != -1)//is variable
-		{
-			if (i > 0 && str[i - 1] >= '0' && str[i - 1] <= '9')
-			{
-				exp += "*";
-			}
-			exp += VariableName[index];
-			i += VariableName[index].length() - 1;
-			if (i < len - 1 && !isOperator(str.at(i + 1)))
-			{
-				exp += '*';
-			}
-			continue;
-		}
-		else if (preposition(c))
-		{
+		//used to coplete the ignore * but is not well
+		//int index = isVariable(str, i);
+		//if (index != -1)//is variable
+		//{
+		//	std::cout << exp << "\n";
+		//	if (i > 0 && str[i - 1] >= '0' && str[i - 1] <= '9')
+		//	{
+		//		exp += "*";
+		//		std::cout << exp << "\n";
+		//	}
+		//	exp += VariableName[index];
+		//	i += VariableName[index].length() - 1;
+		//	if (i < len - 1 && !isOperator(str.at(i + 1)))
+		//	{
+		//		exp += '*';
+		//		std::cout << exp<<"\n";
+		//	}
+		//	continue;
+		//}
+		//else if (preposition(c))
+		//{
 			if (c == '(')//to juedge whether the brackets is mate
 			{
 				brackets_amount++;
 			}
-			if (i == 0 || !isdigit(str.at(i - 1))|| str.at(i - 1) == ')')//now we don't need to add '*'
-			{
-				exp += c;
-				continue;
-			}
-			else if(i != 0 && !isOperator(str.at(i-1)))
-			{
-				c = '*';
-				exp += c;
-				c = str.at(i);
-			}
-		}
-		else if(postposition(c))
-		{
+		//	if (i == 0 || !isdigit(str.at(i - 1))|| str.at(i - 1) == ')')//now we don't need to add '*'
+		//	{
+		//		exp += c;
+		//		continue;
+		//	}
+		//	else if(i != 0 && !isOperator(str.at(i-1)))
+		//	{
+		//		c = '*';
+		//		exp += c;
+		//		c = str.at(i);
+		//	}
+		//}
+		//else if(postposition(c))
+		//{
 			if (c == ')')brackets_amount--;
-			if(i != len - 1 && !isOperator(str.at(i + 1)) && str.at(i + 1) !=')' )
-			{
-				exp += c;
-				c = '*';
-			}
-		}
+		//	if(i != len - 1 && !isOperator(str.at(i + 1)) && str.at(i + 1) !=')' )
+		//	{
+		//		exp += c;
+		//		c = '*';
+		//	}
+		//}
 		exp += c;
 	}
 	while (brackets_amount > 0)//complete brackets auto
@@ -435,7 +439,7 @@ string Expression::input(const string str)
 		brackets_amount--;
 	}
 	exp += "#";
-	//std::cout << exp << std::endl;
+	std::cout << exp << std::endl;
 	return exp;
 }
 
@@ -533,7 +537,9 @@ int Expression::getAns(double &res, double Value[])
 		}
 	}
 	res = OperandStack.top();// the top element is the answer
-	return 0;
+	OperandStack.pop();
+	if (!OperandStack.empty())return -2;
+	else return 0;
 }
 
 /*divide expression into "word"*/

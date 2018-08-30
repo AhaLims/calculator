@@ -45,7 +45,7 @@ class Point24
 {
 public:
 	Point24(int *);
-	void getAns();
+	void getAns(string &);
 	vector<string> getAnsString() { return AnsString; };
 	void show(int a);
 private:
@@ -59,7 +59,7 @@ private:
 	vector<string>AnsString;
 	double caculate(const Operator & ) const;
 	Operator s[100];//use to get all the final answer
-	void RecallAns(Operator);
+	void RecallAns(Operator,string&);
 	char getOperator(int);
 };
 

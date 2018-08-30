@@ -314,11 +314,11 @@
      <x>630</x>
      <y>180</y>
      <width>251</width>
-     <height>51</height>
+     <height>91</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;tips:&lt;/p&gt;&lt;p&gt;括号必须为&lt;span style=&quot; text-decoration: underline; color:#ff0000;&quot;&gt;英文输入法&lt;/span&gt;下的括号&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;tips:&lt;/p&gt;&lt;p&gt;括号必须为&lt;span style=&quot; text-decoration: underline; color:#ff0000;&quot;&gt;英文输入法&lt;/span&gt;下的括号&lt;/p&gt;&lt;p&gt;不能省略符号&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="spinBox">

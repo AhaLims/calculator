@@ -43,6 +43,7 @@ public:
     QLineEdit *dif_value;
     QLineEdit *range1;
     QLineEdit *range2;
+    QLabel *label_7;
 
     void setupUi(QWidget *poly_guiClass)
     {
@@ -112,6 +113,9 @@ public:
         range2 = new QLineEdit(poly_guiClass);
         range2->setObjectName(QStringLiteral("range2"));
         range2->setGeometry(QRect(850, 680, 61, 31));
+        label_7 = new QLabel(poly_guiClass);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(170, 150, 381, 16));
 
         retranslateUi(poly_guiClass);
         QObject::connect(spinBox, SIGNAL(valueChanged(int)), poly_guiClass, SLOT(change_time()));
@@ -140,6 +144,7 @@ public:
         get_zero_3->setText(QApplication::translate("poly_guiClass", "\346\261\202\345\256\232\347\247\257\345\210\206", nullptr));
         label_5->setText(QApplication::translate("poly_guiClass", "\350\214\203\345\233\264", nullptr));
         label_6->setText(QApplication::translate("poly_guiClass", "\345\210\260", nullptr));
+        label_7->setText(QApplication::translate("poly_guiClass", "\350\257\267\350\276\223\345\205\245\346\225\260\345\255\227\346\210\226\350\241\250\350\276\276\345\274\217\357\274\214\346\263\250\346\204\217\350\241\250\350\276\276\345\274\217\344\271\213\351\227\264\347\232\204\347\254\246\345\217\267\344\270\215\350\203\275\347\234\201\347\225\245", nullptr));
     } // retranslateUi
 
 };

@@ -240,11 +240,22 @@
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>150</y>
+     <width>381</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>请输入数字或表达式，注意表达式之间的符号不能省略</string>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="poly_gui.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>spinBox</sender>

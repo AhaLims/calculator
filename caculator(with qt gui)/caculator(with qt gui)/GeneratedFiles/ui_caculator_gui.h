@@ -96,6 +96,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QLabel *label_2;
     QSpacerItem *horizontalSpacer_3;
+    QLabel *label_4;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *caculator_guiClass)
@@ -420,6 +421,9 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer_3);
 
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(30, 60, 191, 78));
         caculator_guiClass->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(caculator_guiClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -502,6 +506,7 @@ public:
         label_3->setText(QApplication::translate("caculator_guiClass", "\345\260\217\346\225\260\344\275\215", nullptr));
         label->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265A", nullptr));
         label_2->setText(QApplication::translate("caculator_guiClass", "\347\237\251\351\230\265B", nullptr));
+        label_4->setText(QApplication::translate("caculator_guiClass", "tips:\345\205\203\347\264\240\344\271\213\351\227\264\347\224\250\347\251\272\346\240\274\351\232\224\345\274\200", nullptr));
     } // retranslateUi
 
 };

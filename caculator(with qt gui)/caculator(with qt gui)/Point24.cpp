@@ -21,7 +21,7 @@ void Point24::show(int a )
 	}
 }
 
-void Point24::getAns()//get all answer and store in vector<string>AnsString
+void Point24::getAns(string & answer_string)//get all answer and store in vector<string>AnsString
 {
 	int amount = 0;
 	for (int i = 0; i < OperatorAmount; i++,amount++)
@@ -46,7 +46,7 @@ void Point24::getAns()//get all answer and store in vector<string>AnsString
 			if (now.value == TargetValue)
 			{
 				//std::cout << "now value == TargetValue" << std::endl;
-				RecallAns(now);
+				RecallAns(now,answer_string);
 				//找到了一个答案
 				//string RecallAns()
 			}
@@ -79,7 +79,7 @@ double Point24::caculate( const Operator & o)const
 		return o.value / value[o.index];
 	}
 }
-void Point24::RecallAns(Operator o)
+void Point24::RecallAns(Operator o,string & answer_string)
 {
 	AnsAmount++;
 	//std::cout << "now recall answer\n";
@@ -107,7 +107,8 @@ void Point24::RecallAns(Operator o)
 			ans += getOperator(o.NowOperator) + std::to_string(value[o.index + 1]) + ")";
 		}
 	}
-	std::cout << "ans is "<<ans << std::endl;
+	answer_string += ans + '\n';
+	//std::cout << "ans is "<<ans << std::endl;
 }
 
 char Point24::getOperator(int i)
