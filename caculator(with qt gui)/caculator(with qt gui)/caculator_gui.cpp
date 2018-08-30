@@ -15,10 +15,10 @@ caculator_gui::caculator_gui(QWidget *parent)
 {
 	setMinimumSize(1167, 967);
 	setMaximumSize(1167, 967);
-	QPixmap pixmap = QPixmap(":/caculator_gui/picture/white.png").scaled(this->size());
-	QPalette palette(this->palette());
-	palette.setBrush(QPalette::Background, QBrush(pixmap));
-	this->setPalette(palette);
+	//QPixmap pixmap = QPixmap(":/caculator_gui/picture/white.png").scaled(this->size());
+	//QPalette palette(this->palette());
+	//palette.setBrush(QPalette::Background, QBrush(pixmap));
+	//this->setPalette(palette);
 
 	ui.setupUi(this);
 	ui.use_float->setCheckable(true);
