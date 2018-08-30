@@ -10,6 +10,7 @@ class help_window;
 class SicenticCaculator_gui;
 class LinearEquation_gui;
 class poly_gui;
+class Point24_gui;
 
 class main_window : public QMainWindow
 {
@@ -31,7 +32,8 @@ private:
 	QTOpenGL *qtopengl;
 	QT_OpenGL *qtopengl_widget;
 	SicenticCaculator_gui * scientic_caculator_gui;
-	poly_gui *Poly_gui;
+	poly_gui *Poly_gui; 
+	Point24_gui *point24_gui;
 public slots:
 	void push_matrix_caculator_button();
 	void push_scientic_caculator_button();
@@ -39,4 +41,5 @@ public slots:
 	void push_help_button();
 	void push_linear_equation_button();
 	void push_poly_caculator_button();
+	void push_point24_button();
 };

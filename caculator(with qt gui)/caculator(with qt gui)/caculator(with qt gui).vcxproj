@@ -131,6 +131,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_window.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Point24.cpp" />
+    <ClCompile Include="Point24_gui.cpp" />
     <ClCompile Include="Poly.cpp" />
     <ClCompile Include="poly_gui.cpp" />
     <ClCompile Include="QT_OpenGL.cpp" />
@@ -146,6 +148,7 @@
     <QtUic Include="help_window.ui" />
     <QtUic Include="LinearEquation_gui.ui" />
     <QtUic Include="main_window.ui" />
+    <QtUic Include="Point24_gui.ui" />
     <QtUic Include="poly_gui.ui" />
     <QtUic Include="QT_OpenGL.ui" />
     <QtUic Include="SicenticCaculator_gui.ui" />
@@ -194,6 +197,13 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtHelp;$(QTDIR)\include\QtWidgets</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_HELP_LIB;QT_WIDGETS_LIB</Define>
     </QtMoc>
+    <QtMoc Include="Point24_gui.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtHelp;$(QTDIR)\include\QtWidgets</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_HELP_LIB;QT_WIDGETS_LIB</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtHelp;$(QTDIR)\include\QtWidgets</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_HELP_LIB;QT_WIDGETS_LIB</Define>
+    </QtMoc>
+    <ClInclude Include="Point24.h" />
     <ClInclude Include="Poly.h" />
     <QtMoc Include="poly_gui.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtHelp;$(QTDIR)\include\QtWidgets</IncludePath>

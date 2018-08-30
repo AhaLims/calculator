@@ -5,6 +5,7 @@
 #include"ScienticCaculator_gui.h"
 #include"LinearEquation_gui.h"
 #include"poly_gui.h"
+#include"Point24_gui.h"
 main_window::main_window(int Argc,
 	char *Argv[], QWidget *parent)
 	: QMainWindow(parent),argc(Argc),argv(Argv)
@@ -16,6 +17,8 @@ main_window::main_window(int Argc,
 	Help_window = new help_window();
 	linear_equation_gui = new LinearEquation_gui();
 	Poly_gui = new poly_gui;
+	//Point24_gui *point24_gui;
+	point24_gui = new Point24_gui;
 	ui.setupUi(this);
 	//fix 
 	setMinimumSize(1000, 800); 
@@ -30,7 +33,7 @@ main_window::~main_window()
 	delete scientic_caculator_gui;
 	delete linear_equation_gui;
 	delete Poly_gui;
-
+	delete point24_gui;
 }
 
 void  main_window::push_matrix_caculator_button()
@@ -57,4 +60,8 @@ void main_window::push_linear_equation_button()
 void main_window::push_poly_caculator_button()
 {
 	Poly_gui->show();
+}
+void main_window::push_point24_button()
+{
+	point24_gui->show();
 }

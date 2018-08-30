@@ -47,6 +47,12 @@
     <ClCompile Include="poly_gui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Point24_gui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Point24.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -100,6 +106,9 @@
     <QtMoc Include="poly_gui.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Point24_gui.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="caculator_gui.ui">
@@ -124,6 +133,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="poly_gui.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Point24_gui.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -152,6 +164,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Poly.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Point24.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

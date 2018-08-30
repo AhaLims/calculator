@@ -150,6 +150,25 @@
      <string>多项式计算器</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="function_caculator_button_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>630</y>
+      <width>170</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/caculator_gui/picture/white.png)</string>
+    </property>
+    <property name="text">
+     <string>24点</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -269,6 +288,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>function_caculator_button_2</sender>
+   <signal>clicked()</signal>
+   <receiver>main_windowClass</receiver>
+   <slot>push_point24_button()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>482</x>
+     <y>673</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>287</x>
+     <y>657</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>push_matrix_caculator_button()</slot>
@@ -277,5 +312,6 @@
   <slot>push_help_button()</slot>
   <slot>push_linear_equation_button()</slot>
   <slot>push_poly_caculator_button()</slot>
+  <slot>push_point24_button()</slot>
  </slots>
 </ui>

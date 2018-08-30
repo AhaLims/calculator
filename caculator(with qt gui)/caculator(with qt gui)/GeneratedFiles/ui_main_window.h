@@ -28,6 +28,7 @@ public:
     QPushButton *matrix_caculator_button;
     QPushButton *linear_fucntion;
     QPushButton *poly_caculator_button;
+    QPushButton *function_caculator_button_2;
 
     void setupUi(QMainWindow *main_windowClass)
     {
@@ -72,6 +73,11 @@ public:
         poly_caculator_button->setEnabled(true);
         poly_caculator_button->setGeometry(QRect(390, 430, 170, 80));
         poly_caculator_button->setStyleSheet(QStringLiteral("background-image: url(:/caculator_gui/picture/white.png)"));
+        function_caculator_button_2 = new QPushButton(centralWidget);
+        function_caculator_button_2->setObjectName(QStringLiteral("function_caculator_button_2"));
+        function_caculator_button_2->setEnabled(true);
+        function_caculator_button_2->setGeometry(QRect(390, 630, 170, 80));
+        function_caculator_button_2->setStyleSheet(QStringLiteral("background-image: url(:/caculator_gui/picture/white.png)"));
         main_windowClass->setCentralWidget(centralWidget);
 
         retranslateUi(main_windowClass);
@@ -82,6 +88,7 @@ public:
         QObject::connect(help_function, SIGNAL(clicked()), main_windowClass, SLOT(push_help_button()));
         QObject::connect(linear_fucntion, SIGNAL(clicked()), main_windowClass, SLOT(push_linear_equation_button()));
         QObject::connect(poly_caculator_button, SIGNAL(clicked()), main_windowClass, SLOT(push_poly_caculator_button()));
+        QObject::connect(function_caculator_button_2, SIGNAL(clicked()), main_windowClass, SLOT(push_point24_button()));
 
         QMetaObject::connectSlotsByName(main_windowClass);
     } // setupUi
@@ -96,6 +103,7 @@ public:
         matrix_caculator_button->setText(QApplication::translate("main_windowClass", "\347\237\251\351\230\265\350\256\241\347\256\227\345\231\250", nullptr));
         linear_fucntion->setText(QApplication::translate("main_windowClass", "\350\247\243\347\272\277\346\200\247\346\226\271\347\250\213", nullptr));
         poly_caculator_button->setText(QApplication::translate("main_windowClass", "\345\244\232\351\241\271\345\274\217\350\256\241\347\256\227\345\231\250", nullptr));
+        function_caculator_button_2->setText(QApplication::translate("main_windowClass", "24\347\202\271", nullptr));
     } // retranslateUi
 
 };
